@@ -42,9 +42,9 @@
                 </materialDesign:ColorZone>
 
                 <Grid>
-                    <game:Game DataContext="{Binding GameViewModel}" />
-                    <data:Data DataContext="{Binding DataViewModel}" />
-                    <settings:Settings DataContext="{Binding SettingsViewModel}" />
+                    <game:Game x:Name="Game" DataContext="{Binding GameViewModel}" />
+                    <data:Data x:Name="Data" DataContext="{Binding DataViewModel}" />
+                    <settings:Settings x:Name="Settings" DataContext="{Binding SettingsViewModel}" />
                 </Grid>
             </DockPanel>
         </materialDesign:DrawerHost>

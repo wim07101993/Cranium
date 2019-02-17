@@ -20,7 +20,7 @@
 
         <ListBox
             Background="Transparent"
-            SelectedItem="{Binding SelectedView}"
+            SelectedIndex="{Binding SelectedView}"
             Style="{StaticResource MaterialDesignToolToggleFlatListBox}">
 
             <ListBoxItem>

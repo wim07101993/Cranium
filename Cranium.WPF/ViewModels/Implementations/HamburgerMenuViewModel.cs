@@ -5,7 +5,7 @@ namespace Cranium.WPF.ViewModels.Implementations
     public class HamburgerMenuViewModel : AViewModelBase, IHamburgerMenuViewModel
     {
         private bool _isOpen;
-        private string _selectedView;
+        private int _selectedView;
 
 
         public HamburgerMenuViewModel(IStringsProvider stringsProvider) : base(stringsProvider)
@@ -19,7 +19,7 @@ namespace Cranium.WPF.ViewModels.Implementations
             set => SetProperty(ref _isOpen, value);
         }
 
-        public string SelectedView
+        public int SelectedView
         {
             get => _selectedView;
             set => SetProperty(ref _selectedView, value);
