@@ -1,7 +1,9 @@
-﻿using Cranium.Data.ViewModels.Models.Bases;
+﻿using Cranium.Data.RestClient.Attributes;
+using Cranium.Data.RestClient.Models.Bases;
 
-namespace Cranium.Data.ViewModels.Models
+namespace Cranium.Data.RestClient.Models
 {
+    [HasController]
     public class QuestionType : AWithId
     {
         private string _name;

@@ -1,6 +1,6 @@
-﻿using Cranium.Data.ViewModels.Models.Bases;
+﻿using Cranium.Data.RestClient.Models.Bases;
 
-namespace Cranium.Data.ViewModels.Models
+namespace Cranium.Data.RestClient.Models
 {
     public class Answer : AWithId
     {
