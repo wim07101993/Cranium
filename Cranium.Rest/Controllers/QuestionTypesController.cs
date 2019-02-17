@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cranium.Data.Models;
 using Cranium.Data.Services;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cranium.Rest.Controllers
@@ -19,8 +18,8 @@ namespace Cranium.Rest.Controllers
 
         // GET api/values
         [HttpGet]
-        public override async Task<ActionResult<IEnumerable<QuestionType>>> Get()
-            => await base.Get();
+        public override async Task<ActionResult<IEnumerable<QuestionType>>> Get([FromQuery] int skip = 0, [FromQuery] int take = -1)
+            => await base.Get(skip, take);
 
         // GET api/values/5
         [HttpGet("{id}")]
