@@ -17,28 +17,28 @@ namespace Cranium.Rest.Controllers
         }
 
         // GET api/values
-        [HttpGet]
-        public override async Task<ActionResult<IEnumerable<QuestionType>>> Get([FromQuery] int skip = 0, [FromQuery] int take = -1)
-            => await base.Get(skip, take);
+        //[HttpGet]
+        //public override async Task<ActionResult<IEnumerable<QuestionType>>> Get([FromQuery] int skip = 0, [FromQuery] int take = -1)
+        //    => await base.Get(skip, take);
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public override async Task<ActionResult<QuestionType>> Get(Guid id)
-            => await base.Get(id);
+        //// GET api/values/5
+        //[HttpGet("{id}")]
+        //public override async Task<ActionResult<QuestionType>> Get(Guid id)
+        //    => await base.Get(id);
 
-        // POST api/values
-        [HttpPost]
-        public override async Task<IActionResult> Post([FromBody] QuestionType value)
-            => await base.Post(value);
+        //// POST api/values
+        //[HttpPost]
+        //public override async Task<IActionResult> Post([FromBody] QuestionType value)
+        //    => await base.Post(value);
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public override async Task<IActionResult> Put(Guid id, [FromBody] QuestionType value)
-            => await base.Put(id,value);
+        //// PUT api/values/5
+        //[HttpPut("{id}")]
+        //public override async Task<IActionResult> Put(Guid id, [FromBody] QuestionType value)
+        //    => await base.Put(id,value);
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public override async Task<IActionResult> Delete(Guid id)
-            => await base.Delete(id);
+        //// DELETE api/values/5
+        //[HttpDelete("{id}")]
+        //public override async Task<IActionResult> Delete(Guid id)
+        //    => await base.Delete(id);
     }
 }

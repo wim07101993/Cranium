@@ -9,8 +9,6 @@ namespace Cranium.Data.Models
 
         public string Explanation { get; set; }
 
-        public bool HasMultipleAnswers { get; set; }
-
         public ICollection<Question> Questions { get; set; }
     }
 }
