@@ -2,5 +2,6 @@
 {
     public interface IGameViewModel : IViewModelBase
     {
+        IHamburgerMenuViewModel HamburgerMenuViewModel { get; }
     }
 }

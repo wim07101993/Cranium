@@ -10,7 +10,7 @@ namespace Cranium.WPF.Services.Strings
         private string _game = "Spel";
         private string _data = "Data";
         private string _settings = "Instellingen";
-        private string _cranium;
+        private string _cranium = "Cranium";
 
 
         public string Questions

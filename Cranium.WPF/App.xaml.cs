@@ -43,7 +43,7 @@ namespace Cranium.WPF
                 .RegisterType<IDataViewModel, DataViewModel>()
                 .RegisterType<IGameViewModel, GameViewModel>()
                 .RegisterType<ISettingsViewModel, SettingsViewModel>()
-                .RegisterType<IHamburgerMenuViewModel, HamburgerMenuViewModel>();
+                .RegisterSingleton<IHamburgerMenuViewModel, HamburgerMenuViewModel>();
         }
     }
 }

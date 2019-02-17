@@ -21,32 +21,11 @@
                 <hamburgerMenu:HamburgerMenu x:Name="HamburgerMenu" DataContext="{Binding HamburgerMenuViewModel}" />
             </materialDesign:DrawerHost.LeftDrawerContent>
 
-            <DockPanel>
-                <materialDesign:ColorZone
-                    Padding="16"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                    DockPanel.Dock="Top"
-                    Mode="PrimaryMid">
-                    <DockPanel>
-                        <ToggleButton
-                            x:Name="MenuToggleButton"
-                            IsChecked="{Binding HamburgerMenuViewModel.IsOpen}"
-                            Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
-
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource MaterialDesignHeadlineTextBlock}"
-                            Text="{Binding Strings.Cranium}" />
-                    </DockPanel>
-                </materialDesign:ColorZone>
-
-                <Grid>
-                    <game:Game x:Name="Game" DataContext="{Binding GameViewModel}" />
-                    <data:Data x:Name="Data" DataContext="{Binding DataViewModel}" />
-                    <settings:Settings x:Name="Settings" DataContext="{Binding SettingsViewModel}" />
-                </Grid>
-            </DockPanel>
+            <Grid>
+                <game:Game x:Name="Game" DataContext="{Binding GameViewModel}" />
+                <data:Data x:Name="Data" DataContext="{Binding DataViewModel}" />
+                <settings:Settings x:Name="Settings" DataContext="{Binding SettingsViewModel}" />
+            </Grid>
         </materialDesign:DrawerHost>
     </Grid>
 </Window>

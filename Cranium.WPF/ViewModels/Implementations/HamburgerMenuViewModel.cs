@@ -8,7 +8,8 @@ namespace Cranium.WPF.ViewModels.Implementations
         private int _selectedView;
 
 
-        public HamburgerMenuViewModel(IStringsProvider stringsProvider) : base(stringsProvider)
+        public HamburgerMenuViewModel(IStringsProvider stringsProvider)
+            : base(stringsProvider)
         {
         }
 

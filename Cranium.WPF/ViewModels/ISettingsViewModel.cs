@@ -2,5 +2,6 @@
 {
     public interface ISettingsViewModel : IViewModelBase
     {
+        IHamburgerMenuViewModel HamburgerMenuViewModel { get; }
     }
 }
