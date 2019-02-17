@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Data.Models.Bases
+namespace Cranium.Data.Models.Bases
 {
     public interface IWithId
     {

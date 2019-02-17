@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Data.Models.Bases;
 
 namespace Data.Models
@@ -17,6 +18,7 @@ namespace Data.Models
         private byte[] _attachment;
 
         private ObservableCollection<string> _possibleAnswers;
+        private Guid _categoryId;
 
         #endregion FIELDS
 
@@ -41,17 +43,25 @@ namespace Data.Models
             set => SetProperty(ref _tip, value);
         }
 
-        public Category Category
+        public Guid CategoryId
         {
-            get => _category;
-            set => SetProperty(ref _category, value);
+            get => _categoryId;
+            set => SetProperty( ref _categoryId, value);
         }
+//        
+//        public Category Category
+//        {
+//            get => _category;
+//            set => SetProperty(ref _category, value);
+//        }
 
-        public QuestionType QuestionType
-        {
-            get => _questionType;
-            set => SetProperty(ref _questionType, value);
-        }
+        public Guid QuestionTypeId { get; set; }
+//
+//        public QuestionType QuestionType
+//        {
+//            get => _questionType;
+//            set => SetProperty(ref _questionType, value);
+//        }
 
         public byte[] Attachment
         {

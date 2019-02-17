@@ -1,12 +1,13 @@
-﻿using Prism.Mvvm;
+﻿using System;
+using Prism.Mvvm;
 
 namespace Data.Models.Bases
 {
     public abstract class AWithId : BindableBase, IWithId
     {
-        private long _id;
+        private Guid _id;
 
-        public long Id
+        public Guid Id
         {
             get => _id;
             set => SetProperty(ref _id, value);

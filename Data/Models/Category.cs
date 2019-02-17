@@ -1,7 +1,9 @@
-﻿using Data.Models.Bases;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Data.Models.Bases;
 
 namespace Data.Models
 {
+    [Table("Categories")]
     public class Category : AWithId
     {
         #region FIELDS
