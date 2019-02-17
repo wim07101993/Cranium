@@ -8,9 +8,7 @@ namespace Cranium.Data.Models
     public class Question : AWithId
     {
         public string Task { get; set; }
-
-        public string Answer { get; set; }
-
+        
         public string Tip { get; set; }
 
         public Guid CategoryId { get; set; }
@@ -25,6 +23,6 @@ namespace Cranium.Data.Models
 
         public byte[] Attachment { get; set; }
 
-        public ICollection<Answer> PossibleAnswers { get; set; }
+        public ICollection<Answer> Answers { get; set; }
     }
 }

@@ -19,8 +19,7 @@ namespace Cranium.Data.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            //modelBuilder.Entity<Question>().HasMany(x => x.PossibleAnswers).WithOne(x => x.Question);
+            
             modelBuilder.Entity<Question>().HasMany<Answer>().WithOne(x => x.Question);
             modelBuilder.Entity<QuestionType>().HasMany<Question>().WithOne(x => x.QuestionType);
             modelBuilder.Entity<Category>().HasMany<Question>().WithOne(x => x.Category);
