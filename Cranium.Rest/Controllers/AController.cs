@@ -27,9 +27,9 @@ namespace Cranium.Rest.Controllers
 
         // GET api/values
         [HttpGet]
-        public virtual async Task<ActionResult<IEnumerable<T>>> Get()
+        public virtual async Task<ActionResult<IEnumerable<T>>> Get([FromQuery] int skip = 0, [FromQuery] int take = -1)
         {
-            var questions = await _dataService.GetAsync(SetSelector);
+            var questions = await _dataService.GetAsync(SetSelector, skip, take);
             return Ok(questions);
         }
 
