@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Cranium.Data.RestClient.Services;
+using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels;
 using Cranium.WPF.ViewModels.Implementations;
 using Cranium.WPF.Views;
@@ -36,9 +37,13 @@ namespace Cranium.WPF
             UnityContainer
                 // services
                 .RegisterType<IClient, Client>()
+                .RegisterSingleton<IStringsProvider, StringsProvider>()
                 // view-models
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
-                .RegisterType<IDataEditingViewModel, DataEditingViewModel>();
+                .RegisterType<IDataViewModel, DataViewModel>()
+                .RegisterType<IGameViewModel, GameViewModel>()
+                .RegisterType<ISettingsViewModel, SettingsViewModel>()
+                .RegisterType<IHamburgerMenuViewModel, HamburgerMenuViewModel>();
         }
     }
 }

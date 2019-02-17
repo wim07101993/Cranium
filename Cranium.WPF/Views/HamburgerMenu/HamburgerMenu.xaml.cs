@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cranium.WPF.Views.DataEditing
+namespace Cranium.WPF.Views.HamburgerMenu
 {
     /// <summary>
-    /// Interaction logic for DataEditing.xaml
+    /// Interaction logic for HamburgerMenu.xaml
     /// </summary>
-    public partial class DataEditing : UserControl
+    public partial class HamburgerMenu : UserControl
     {
-        public DataEditing()
+        public HamburgerMenu()
         {
             InitializeComponent();
         }

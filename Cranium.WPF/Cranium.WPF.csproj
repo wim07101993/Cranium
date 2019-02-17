@@ -80,7 +80,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\DataEditing\DataEditing.xaml">
+    <Compile Include="ViewModels\IGameViewModel.cs" />
+    <Compile Include="ViewModels\IHamburgerMenuViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\GameViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\HamburgerMenuViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\ISettingsViewModel.cs" />
+    <Compile Include="Views\HamburgerMenu\HamburgerMenu.xaml.cs">
+      <DependentUpon>HamburgerMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Data\Data.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Game\Game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HamburgerMenu\HamburgerMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,17 +112,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\IDataEditingViewModel.cs" />
+    <Compile Include="Services\Strings\IStringsProvider.cs" />
+    <Compile Include="Services\Strings\Strings.cs" />
+    <Compile Include="Services\Strings\StringsProvider.cs" />
+    <Compile Include="ViewModels\IDataViewModel.cs" />
     <Compile Include="ViewModels\IMainWindowViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\DataEditingViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\AViewModelBase.cs" />
+    <Compile Include="ViewModels\Implementations\DataViewModel.cs" />
     <Compile Include="ViewModels\Implementations\MainWindowViewModel.cs" />
-    <Compile Include="Views\DataEditing\DataEditing.xaml.cs">
-      <DependentUpon>DataEditing.xaml</DependentUpon>
+    <Compile Include="ViewModels\IViewModelBase.cs" />
+    <Compile Include="Views\Data\Data.xaml.cs">
+      <DependentUpon>Data.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Game\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Settings\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

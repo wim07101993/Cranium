@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
-
-namespace Cranium.WPF.ViewModels
+﻿namespace Cranium.WPF.ViewModels
 {
-    public interface IMainWindowViewModel : INotifyPropertyChanged
+    public interface IMainWindowViewModel : IViewModelBase
     {
+        IHamburgerMenuViewModel HamburgerMenuViewModel { get; }
+        IGameViewModel GameViewModel { get; }
+        IDataViewModel DataViewModel { get; }
+        ISettingsViewModel SettingsViewModel { get; }
     }
 }
