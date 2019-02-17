@@ -8,12 +8,11 @@ namespace Cranium.Data.ViewModels.Models
         #region FIELDS
 
         private string _task;
-        private string _answer;
         private string _tip;
         private Category _category;
         private QuestionType _questionType;
         private byte[] _attachment;
-        private ObservableCollection<Answer> _possibleAnswers;
+        private ObservableCollection<Answer> _answers;
 
         #endregion FIELDS
 
@@ -25,13 +24,7 @@ namespace Cranium.Data.ViewModels.Models
             get => _task;
             set => SetProperty(ref _task, value);
         }
-
-        public string Answer
-        {
-            get => _answer;
-            set => SetProperty(ref _answer, value);
-        }
-
+        
         public string Tip
         {
             get => _tip;
@@ -56,10 +49,10 @@ namespace Cranium.Data.ViewModels.Models
             set => SetProperty(ref _attachment, value);
         }
 
-        public ObservableCollection<Answer> PossibleAnswers
+        public ObservableCollection<Answer> Answers
         {
-            get => _possibleAnswers;
-            set => SetProperty(ref _possibleAnswers, value);
+            get => _answers;
+            set => SetProperty(ref _answers, value);
         }
 
         #endregion PROPERTIES
