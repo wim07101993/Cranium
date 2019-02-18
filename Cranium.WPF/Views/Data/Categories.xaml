@@ -9,7 +9,7 @@
     d:DataContext="{d:DesignInstance viewModels:ICategoriesViewModel}"
     mc:Ignorable="d">
     <Grid>
-        <DataGrid ItemsSource="{Binding ItemsSource}" />
+
         <Button
             Margin="0,0,20,20"
             HorizontalAlignment="Right"

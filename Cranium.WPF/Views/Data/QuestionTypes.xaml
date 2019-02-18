@@ -9,7 +9,12 @@
     d:DataContext="{d:DesignInstance viewModels:IQuestionTypesViewModel}"
     mc:Ignorable="d">
     <Grid>
-        <DataGrid ItemsSource="{Binding ItemsSource}" />
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding ItemsSource}">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="NameColumn" Binding="{Binding Name}" />
+                <DataGridTextColumn x:Name="ExplanationColumn" Binding="{Binding Explanation}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
 
         <materialDesign:PopupBox

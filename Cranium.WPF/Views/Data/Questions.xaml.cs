@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Collections.Generic;
+using Cranium.WPF.Services.Strings;
 
 namespace Cranium.WPF.Views.Data
 {
-    /// <summary>
-    /// Interaction logic for Questions.xaml
-    /// </summary>
-    public partial class Questions : UserControl
+    public partial class Questions
     {
         public Questions()
         {
             InitializeComponent();
+            ColumnNames = new[]
+            {
+                new ColumnHeader
+                {
+                    Column = TaskColuumn,
+                    PropertyName = nameof(Strings.Task),
+                    HeaderValue = x => x.Task
+                },
+            };
         }
+
+        protected override IEnumerable<ColumnHeader> ColumnNames { get; }
     }
 }

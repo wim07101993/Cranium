@@ -8,7 +8,6 @@ namespace Cranium.Data.RestClient.Models
     {
         private string _name;
         private string _explanation;
-        private bool _hasMultipleAnswers;
 
 
         public string Name
@@ -21,12 +20,6 @@ namespace Cranium.Data.RestClient.Models
         {
             get => _explanation;
             set => SetProperty(ref _explanation, value);
-        }
-
-        public bool HasMultipleAnswers
-        {
-            get => _hasMultipleAnswers;
-            set => SetProperty(ref _hasMultipleAnswers, value);
         }
     }
 }

@@ -1,15 +1,20 @@
-﻿<UserControl
+﻿<data:AUserControlWithDataGrid
     x:Class="Cranium.WPF.Views.Data.Questions"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:Cranium.WPF.Views.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels"
     d:DataContext="{d:DesignInstance viewModels:IQuestionsViewModel}"
     mc:Ignorable="d">
     <Grid>
-        <DataGrid ItemsSource="{Binding ItemsSource}" />
+        <DataGrid ItemsSource="{Binding ItemsSource}">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="TaskColuumn" Binding="{Binding Task}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <Button
             Margin="0,0,20,20"
             HorizontalAlignment="Right"
@@ -22,4 +27,4 @@
                 Kind="Plus" />
         </Button>
     </Grid>
-</UserControl>
+</data:AUserControlWithDataGrid>

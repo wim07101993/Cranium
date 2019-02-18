@@ -104,6 +104,9 @@
     <Compile Include="Views\Data\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Data\AUserControlWithDataGrid.cs" />
+    <Compile Include="Views\Data\ColumnHeader.cs" />
+    <Compile Include="Views\UserControlWithStrings.cs" />
     <Compile Include="Views\Data\Questions.xaml.cs">
       <DependentUpon>Questions.xaml</DependentUpon>
     </Compile>
