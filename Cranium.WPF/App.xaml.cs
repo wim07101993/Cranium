@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Cranium.Data.RestClient.Services;
+using Cranium.WPF.Services.Data;
 using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels;
 using Cranium.WPF.ViewModels.Implementations;
@@ -36,7 +37,8 @@ namespace Cranium.WPF
         {
             UnityContainer
                 // services
-                .RegisterType<IClient, Client>()
+                //.RegisterType<IClient, Client>()
+                .RegisterType<IClient, MockDataService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 // view-models
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
