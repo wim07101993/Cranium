@@ -9,12 +9,15 @@ using Cranium.Data.RestClient.Models.Bases;
 using Cranium.Data.RestClient.Services;
 using Cranium.WPF.Services.Strings;
 using Prism.Commands;
+using Shared.Extensions;
 
 namespace Cranium.WPF.ViewModels.Implementations
 {
     public class DataGridViewModel<T> : AViewModelBase, IDataGridViewModel<T> where T : AWithId
     {
         #region FIELDS
+
+        private bool _isUpdating;
 
         #endregion FIELDS
 
@@ -31,6 +34,9 @@ namespace Cranium.WPF.ViewModels.Implementations
 
             CreateCommand = new DelegateCommand(Create);
             SaveCommand = new DelegateCommand(async () => await SaveAsync());
+            DeleteCommand = new DelegateCommand<T>(Delete);
+
+            UpdateCollectionAsync();
         }
 
         #endregion CONSTRUCTOR
@@ -54,11 +60,27 @@ namespace Cranium.WPF.ViewModels.Implementations
         public ICommand CreateCommand { get; }
 
         public ICommand SaveCommand { get; }
+        public ICommand DeleteCommand { get; }
 
         #endregion PROPERTIES
 
 
         #region METHODS
+
+        public async Task UpdateCollectionAsync()
+        {
+            _isUpdating = true;
+            var newItems = await DataService.GetAsync<T>();
+            ItemsSource.Clear();
+
+            foreach (var newItem in newItems)
+            {
+                newItem.Save();
+                ItemsSource.Add(newItem);
+            }
+
+            _isUpdating = false;
+        }
 
         public void Create() => ItemsSource.Add(ConstructElement());
 
@@ -67,17 +89,31 @@ namespace Cranium.WPF.ViewModels.Implementations
         public async Task SaveAsync()
         {
             foreach (var item in ItemsSource.Where(x => CreatedItems.Any(c => c == x.Id)))
-                await DataService.CreateAsync(item);
+            {
+                var newItem = await DataService.CreateAsync(item);
+                item.Id = newItem.Id;
+                item.Save();
+            }
+            CreatedItems.Clear();
 
             foreach (var guid in DeletedItems)
                 await DataService.DeleteAsync<T>(guid);
+            DeletedItems.Clear();
 
             foreach (var item in ItemsSource.Where(x => ModifiedItems.Any(c => c == x.Id)))
+            {
                 await DataService.UpdateAsync(item);
+                item.Save();
+            }
         }
+
+        public void Delete(T item) => ItemsSource.Remove(item);
 
         private void OnItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            if (_isUpdating)
+                return;
+
             var newItems = e.NewItems?.Cast<IWithId>().Select(x => x.Id);
             var oldItems = e.OldItems?.Cast<IWithId>().Select(x => x.Id);
 

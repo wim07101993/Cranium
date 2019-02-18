@@ -3,7 +3,7 @@ using Cranium.Data.RestClient.Models.Bases;
 
 namespace Cranium.Data.RestClient.Models
 {
-    [HasController("Categories")]
+    [HasController("Categories", true)]
     public class Category : AWithId
     {
         private string _name;

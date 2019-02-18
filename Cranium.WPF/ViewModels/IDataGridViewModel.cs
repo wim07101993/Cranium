@@ -12,8 +12,11 @@ namespace Cranium.WPF.ViewModels
         
         ICommand SaveCommand { get; }
 
+        ICommand DeleteCommand { get; }
+
 
         void Create();
         Task SaveAsync();
+        void Delete(T item);
     }
 }

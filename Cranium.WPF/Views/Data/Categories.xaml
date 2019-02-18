@@ -41,16 +41,29 @@
                                 Source="{Binding Image, Converter={StaticResource BytesToImageConverter}}"
                                 Stretch="UniformToFill" />
 
-                            <Button
+                            <StackPanel
                                 Grid.Row="1"
                                 Margin="0,0,16,-20"
                                 HorizontalAlignment="Right"
-                                Background="{DynamicResource SecondaryAccentBrush}"
-                                Command="{Binding DataContext.EditPictureCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Categories}}}"
-                                CommandParameter="{Binding}"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
-                                <materialDesign:PackIcon Kind="InsertPhoto" />
-                            </Button>
+                                Orientation="Horizontal">
+                                <Button
+                                    Margin="0,0,12,0"
+                                    Background="{DynamicResource SecondaryAccentBrush}"
+                                    Command="{Binding DataContext.EditPictureCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Categories}}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                    <materialDesign:PackIcon Kind="InsertPhoto" />
+                                </Button>
+                                <Button
+                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Categories}}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                    <Button.Background>
+                                        <SolidColorBrush Color="{StaticResource RedPrimary800}" />
+                                    </Button.Background>
+                                    <materialDesign:PackIcon Kind="Delete" />
+                                </Button>
+                            </StackPanel>
 
                             <StackPanel
                                 Grid.Row="2"
@@ -60,7 +73,7 @@
                                     Margin="0,12,0,0"
                                     materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Name, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Categories}}}"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                    Text="{Binding Name}" />
+                                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBox
                                     Margin="0,12,0,0"
                                     HorizontalAlignment="Stretch"
@@ -69,7 +82,7 @@
                                     AcceptsReturn="True"
                                     SpellCheck.IsEnabled="True"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                    Text="{Binding Description}"
+                                    Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                                     TextWrapping="Wrap"
                                     VerticalScrollBarVisibility="Auto" />
                             </StackPanel>
@@ -79,16 +92,25 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <Button
-            Margin="0,0,20,20"
+        <materialDesign:PopupBox
+            Margin="32"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Command="{Binding CreateCommand}"
-            Style="{StaticResource MaterialDesignFloatingActionButton}">
-            <materialDesign:PackIcon
-                Width="24"
-                Height="24"
-                Kind="Plus" />
-        </Button>
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+            <StackPanel>
+                <Button Command="{Binding SaveCommand}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                    <Button.Background>
+                        <SolidColorBrush Color="{StaticResource BluePrimary800}" />
+                    </Button.Background>
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
+                <Button Command="{Binding CreateCommand}" Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
+                    <Button.Background>
+                        <SolidColorBrush Color="{StaticResource LimePrimary800}" />
+                    </Button.Background>
+                    <materialDesign:PackIcon Kind="Add" />
+                </Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
     </Grid>
 </UserControl>

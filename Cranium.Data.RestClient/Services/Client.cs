@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace Cranium.Data.RestClient.Services
         public Client(IClientSettings clientSettings)
         {
             _clientSettings = clientSettings;
+            // allow all certificates
+            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
         }
 
         #region generic
@@ -49,7 +52,9 @@ namespace Cranium.Data.RestClient.Services
 
         public async Task<T> UpdateAsync<T>(T t) where T : class, IWithId
         {
-            var response = await GetUrl<T>().PutJsonAsync(t);
+            var response = await GetUrl<T>()
+                .AppendPathSegment(t.Id)
+                .PutJsonAsync(t);
 
             CheckStatusCode(response);
 
@@ -71,6 +76,7 @@ namespace Cranium.Data.RestClient.Services
                 .Content
                 .ReadAsStringAsync();
 
+            content = content.Remove(content.Length - 1).Remove(0,1);
             return Guid.Parse(content);
         }
 

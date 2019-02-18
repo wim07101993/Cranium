@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using Cranium.Data.RestClient;
 using Cranium.Data.RestClient.Services;
-using Cranium.WPF.Services.Data;
 using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels;
 using Cranium.WPF.ViewModels.Implementations;
@@ -38,7 +37,7 @@ namespace Cranium.WPF
         {
             UnityContainer
                 // services
-                .RegisterInstance<IClientSettings>(new ClientSettings{HostName = "https://localhost"})
+                .RegisterInstance<IClientSettings>(new ClientSettings{HostName = "http://localhost:5000/api"})
                 .RegisterType<IClient, Client>()
 //                .RegisterType<IClient, MockDataService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()

@@ -14,12 +14,6 @@ namespace Cranium.Data.RestClient.Models.Bases
     {
         #region FIELDS
 
-        /// <summary>
-        /// Dictionary to store all old values of properties
-        /// </summary>
-        private readonly Dictionary<string, IList<object>>
-            _oldValueDictionary = new Dictionary<string, IList<object>>();
-
         #endregion FIELDS
 
 
@@ -27,11 +21,10 @@ namespace Cranium.Data.RestClient.Models.Bases
 
         [JsonIgnore]
         public virtual IReadOnlyCollection<string> ChangedProperties
-            => new ReadOnlyCollection<string>(_oldValueDictionary.Keys.ToList());
+            => new ReadOnlyCollection<string>(OldValues.Keys.ToList());
 
         [JsonIgnore]
-        public virtual IReadOnlyDictionary<string, IList<object>> OldValues
-            => _oldValueDictionary;
+        public virtual Dictionary<string, IList<object>> OldValues { get; } = new Dictionary<string, IList<object>>();
 
         #endregion PROPERTIES
 
@@ -79,21 +72,21 @@ namespace Cranium.Data.RestClient.Models.Bases
 
         private void AddValueToOldValueDictionary(string propertyName, object value)
         {
-            if (_oldValueDictionary.ContainsKey(propertyName))
-                _oldValueDictionary[propertyName].Add(value);
+            if (OldValues.ContainsKey(propertyName))
+                OldValues[propertyName].Add(value);
             else
-                _oldValueDictionary.Add(propertyName, new List<object> {value});
+                OldValues.Add(propertyName, new List<object> {value});
         }
 
         public virtual bool Undo(string propertyName)
         {
-            if (_oldValueDictionary == null)
+            if (OldValues == null)
                 return false;
 
             if (string.IsNullOrWhiteSpace(propertyName))
                 throw new ArgumentException("Property cannot be null or whitespace", propertyName);
 
-            if (!_oldValueDictionary.ContainsKey(propertyName))
+            if (!OldValues.ContainsKey(propertyName))
                 return false;
 
             var property = GetType().GetProperty(propertyName);
@@ -101,14 +94,19 @@ namespace Cranium.Data.RestClient.Models.Bases
             if (property == null)
                 throw new ArgumentException("Unknown property", propertyName);
 
-            property.SetValue(this, _oldValueDictionary[propertyName].Last());
-            _oldValueDictionary[propertyName].RemoveLast();
+            property.SetValue(this, OldValues[propertyName].Last());
+            OldValues[propertyName].RemoveLast();
 
-            if (_oldValueDictionary[propertyName].Count == 0)
-                _oldValueDictionary.Remove(propertyName);
+            if (OldValues[propertyName].Count == 0)
+                OldValues.Remove(propertyName);
 
             RaisePropertyChanged(propertyName);
             return true;
+        }
+
+        public virtual void Save()
+        {
+            OldValues.Clear();
         }
 
         protected new virtual void OnPropertyChanged(string propertyName)

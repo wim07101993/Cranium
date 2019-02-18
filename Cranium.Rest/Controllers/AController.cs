@@ -63,6 +63,9 @@ namespace Cranium.Rest.Controllers
         public virtual async Task<IActionResult> Delete(Guid id)
         {
             var item = await _dataService.GetAsync(SetSelector, id);
+            if (item == null)
+                return NotFound(id);
+
             await _dataService.DeleteAsync(SetSelector, item);
             return Ok(id);
         }

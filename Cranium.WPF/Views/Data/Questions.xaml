@@ -12,19 +12,29 @@
     <Grid>
         <DataGrid ItemsSource="{Binding ItemsSource}">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="TaskColuumn" Binding="{Binding Task}" />
+                <DataGridTextColumn x:Name="TaskColumn" Binding="{Binding Task}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button
-            Margin="0,0,20,20"
+
+        <materialDesign:PopupBox
+            Margin="32"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Command="{Binding CreateCommand}"
-            Style="{StaticResource MaterialDesignFloatingActionButton}">
-            <materialDesign:PackIcon
-                Width="24"
-                Height="24"
-                Kind="Plus" />
-        </Button>
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+            <StackPanel>
+                <Button
+                    Background="{DynamicResource PrimaryHueMidBrush}"
+                    Command="{Binding SaveCommand}"
+                    Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
+                <Button
+                    Background="{DynamicResource SecondaryAccentBrush}"
+                    Command="{Binding CreateCommand}"
+                    Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
+                    <materialDesign:PackIcon Kind="Add" />
+                </Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
     </Grid>
 </data:AUserControlWithDataGrid>

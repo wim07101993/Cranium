@@ -12,7 +12,7 @@ namespace Cranium.WPF.Views.Data
             {
                 new ColumnHeader
                 {
-                    Column = TaskColuumn,
+                    Column = TaskColumn,
                     PropertyName = nameof(Strings.Task),
                     HeaderValue = x => x.Task
                 },
