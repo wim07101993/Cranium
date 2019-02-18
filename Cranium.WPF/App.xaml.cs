@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Cranium.Data.RestClient;
 using Cranium.Data.RestClient.Services;
 using Cranium.WPF.Services.Data;
 using Cranium.WPF.Services.Strings;
@@ -37,8 +38,9 @@ namespace Cranium.WPF
         {
             UnityContainer
                 // services
-                //.RegisterType<IClient, Client>()
-                .RegisterType<IClient, MockDataService>()
+                .RegisterInstance<IClientSettings>(new ClientSettings{HostName = "https://localhost"})
+                .RegisterType<IClient, Client>()
+//                .RegisterType<IClient, MockDataService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 // view-models
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()

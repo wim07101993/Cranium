@@ -86,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BytesToImageConverter.cs" />
     <Compile Include="Services\Data\MockDataServic.cs" />
     <Compile Include="ViewModels\ICategoriesViewModel.cs" />
     <Compile Include="ViewModels\IDataGridViewModel.cs" />
