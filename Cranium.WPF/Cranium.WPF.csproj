@@ -87,13 +87,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Services\Data\MockDataServic.cs" />
+    <Compile Include="ViewModels\ICategoriesViewModel.cs" />
     <Compile Include="ViewModels\IDataGridViewModel.cs" />
     <Compile Include="ViewModels\IGameViewModel.cs" />
     <Compile Include="ViewModels\IHamburgerMenuViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\ADataGridViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\DataGridViewModel.cs" />
     <Compile Include="ViewModels\Implementations\GameViewModel.cs" />
     <Compile Include="ViewModels\Implementations\HamburgerMenuViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\QuestionsViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\QuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\Implementations\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\IQuestionsViewModel.cs" />
+    <Compile Include="ViewModels\IQuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
     <Compile Include="Views\Data\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>

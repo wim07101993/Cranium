@@ -43,6 +43,9 @@ namespace Cranium.WPF
                 // view-models
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
                 .RegisterType<IDataViewModel, DataViewModel>()
+                .RegisterType<IQuestionsViewModel, QuestionsViewModel>()
+                .RegisterType<IQuestionTypesViewModel, QuestionTypesViewModel>()
+                .RegisterType<ICategoriesViewModel, CategoriesViewModel>()
                 .RegisterType<IGameViewModel, GameViewModel>()
                 .RegisterType<ISettingsViewModel, SettingsViewModel>()
                 .RegisterSingleton<IHamburgerMenuViewModel, HamburgerMenuViewModel>();

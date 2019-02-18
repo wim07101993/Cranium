@@ -12,17 +12,16 @@ using Prism.Commands;
 
 namespace Cranium.WPF.ViewModels.Implementations
 {
-    public abstract class ADataGridViewModel<T> : AViewModelBase, IDataGridViewModel<T> where T : AWithId
+    public class DataGridViewModel<T> : AViewModelBase, IDataGridViewModel<T> where T : AWithId
     {
         #region FIELDS
-
 
         #endregion FIELDS
 
 
         #region CONSTRUCTOR
 
-        public ADataGridViewModel(IStringsProvider stringsProvider, IClient dataService) 
+        protected DataGridViewModel(IStringsProvider stringsProvider, IClient dataService)
             : base(stringsProvider)
         {
             DataService = dataService;
@@ -38,17 +37,19 @@ namespace Cranium.WPF.ViewModels.Implementations
 
 
         #region PROPERTIES
+
         protected IClient DataService { get; }
 
-        public ObservableCollection<T> ItemsSource { get; } 
+        public ObservableCollection<T> ItemsSource { get; }
 
         protected List<Guid> CreatedItems { get; } = new List<Guid>();
         protected List<Guid> DeletedItems { get; } = new List<Guid>();
-        protected List<Guid> ModifiedItems 
+
+        protected List<Guid> ModifiedItems
             => ItemsSource
-            ?.Where(x => x.ChangedProperties?.Any() == true)
-            .Select(x => x.Id)
-            .ToList();
+                ?.Where(x => x.ChangedProperties?.Any() == true)
+                .Select(x => x.Id)
+                .ToList();
 
         public ICommand CreateCommand { get; }
 
@@ -59,12 +60,9 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         #region METHODS
 
-        public void Create()
-        {
-            ItemsSource.Add(ConstructElement());
-        }
+        public void Create() => ItemsSource.Add(ConstructElement());
 
-        protected abstract T ConstructElement();
+        protected virtual T ConstructElement() => Activator.CreateInstance<T>();
 
         public async Task SaveAsync()
         {
@@ -86,17 +84,22 @@ namespace Cranium.WPF.ViewModels.Implementations
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    CreatedItems.AddRange(newItems);
+                    if (newItems != null)
+                        CreatedItems.AddRange(newItems);
                     break;
                 case NotifyCollectionChangedAction.Remove:
-                    DeletedItems.AddRange(oldItems);
+                    if (oldItems != null)
+                        DeletedItems.AddRange(oldItems);
                     break;
                 case NotifyCollectionChangedAction.Replace:
-                    CreatedItems.AddRange(newItems);
-                    DeletedItems.AddRange(oldItems);
+                    if (newItems != null)
+                        CreatedItems.AddRange(newItems);
+                    if (oldItems != null)
+                        DeletedItems.AddRange(oldItems);
                     break;
                 case NotifyCollectionChangedAction.Reset:
-                    DeletedItems.AddRange(oldItems);
+                    if (oldItems != null)
+                        DeletedItems.AddRange(oldItems);
                     break;
             }
         }

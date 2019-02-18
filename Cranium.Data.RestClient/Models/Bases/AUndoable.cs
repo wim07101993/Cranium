@@ -17,7 +17,8 @@ namespace Cranium.Data.RestClient.Models.Bases
         /// <summary>
         /// Dictionary to store all old values of properties
         /// </summary>
-        private Dictionary<string, IList<object>> _oldValueDictionary;
+        private readonly Dictionary<string, IList<object>>
+            _oldValueDictionary = new Dictionary<string, IList<object>>();
 
         #endregion FIELDS
 
@@ -50,7 +51,8 @@ namespace Cranium.Data.RestClient.Models.Bases
             return true;
         }
 
-        protected virtual bool SetProperty<T>(ref ObservableCollection<T> storage,
+        protected virtual bool SetProperty<T>(
+            ref ObservableCollection<T> storage,
             ObservableCollection<T> value,
             Action onChanged, string propertyName = null)
         {
@@ -77,18 +79,10 @@ namespace Cranium.Data.RestClient.Models.Bases
 
         private void AddValueToOldValueDictionary(string propertyName, object value)
         {
-            if (_oldValueDictionary == null)
-                _oldValueDictionary = new Dictionary<string, IList<object>>
-                {
-                    {
-                        propertyName,
-                        new List<object> {value}
-                    }
-                };
-            else if (_oldValueDictionary.ContainsKey(propertyName))
+            if (_oldValueDictionary.ContainsKey(propertyName))
                 _oldValueDictionary[propertyName].Add(value);
             else
-                _oldValueDictionary.Add(propertyName, new List<object> { value });
+                _oldValueDictionary.Add(propertyName, new List<object> {value});
         }
 
         public virtual bool Undo(string propertyName)

@@ -36,13 +36,13 @@
                     <dragablz:InterTabController />
                 </dragablz:TabablzControl.InterTabController>
                 <TabItem Header="{Binding Strings.Questions}">
-                    <data:Questions />
+                    <data:Questions DataContext="{Binding QuestionsViewModel}" />
                 </TabItem>
                 <TabItem Header="{Binding Strings.QuestionTypes}">
-                    <data:QuestionTypes />
+                    <data:QuestionTypes DataContext="{Binding QuestionTypesViewModel}" />
                 </TabItem>
                 <TabItem Header="{Binding Strings.Categories}">
-                    <data:Categories />
+                    <data:Categories DataContext="{Binding CategoriesViewModel}" />
                 </TabItem>
             </dragablz:TabablzControl>
         </Grid>

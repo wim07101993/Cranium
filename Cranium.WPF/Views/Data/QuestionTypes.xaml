@@ -5,19 +5,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels"
+    d:DataContext="{d:DesignInstance viewModels:IQuestionTypesViewModel}"
     mc:Ignorable="d">
     <Grid>
-        <DataGrid ItemsSource="{Binding QuestionTypes}" />
-        <Button
-            Margin="0,0,20,20"
+        <DataGrid ItemsSource="{Binding ItemsSource}" />
+
+
+        <materialDesign:PopupBox
+            Margin="32"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Command="{Binding CreateCommand}"
-            Style="{StaticResource MaterialDesignFloatingActionButton}">
-            <materialDesign:PackIcon
-                Width="24"
-                Height="24"
-                Kind="Plus" />
-        </Button>
+            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+            <StackPanel>
+                <Button
+                    Background="{DynamicResource PrimaryHueMidBrush}"
+                    Command="{Binding SaveCommand}"
+                    Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
+                <Button
+                    Background="{DynamicResource SecondaryAccentBrush}"
+                    Command="{Binding CreateCommand}"
+                    Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
+                    <materialDesign:PackIcon Kind="Add" />
+                </Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
     </Grid>
 </UserControl>
