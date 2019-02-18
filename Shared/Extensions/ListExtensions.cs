@@ -41,6 +41,17 @@ namespace Shared.Extensions
                 : indexes;
         }
 
+        public static int IndexOfLast<T>(this IList<T> list, Func<T, bool> predicate = null)
+        {
+            if (predicate == null)
+                return list.Count - 1;
+
+            for (var i = list.Count - 1; i >= 0; i--)
+                if (predicate(list[i]))
+                    return i;
+            return -1;
+        }
+
 
         public static bool RemoveFirst<T>(this IList<T> list, Func<T, bool> predicate = null)
         {
@@ -51,6 +62,21 @@ namespace Shared.Extensions
             }
 
             var index = list.IndexOfFirst(predicate);
+            if (index == -1)
+                return false;
+            list.RemoveAt(index);
+            return true;
+        }
+
+        public static bool RemoveLast<T>(this IList<T> list, Func<T, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                list.RemoveAt(list.Count - 1);
+                return true;
+            }
+
+            var index = list.IndexOfLast(predicate);
             if (index == -1)
                 return false;
             list.RemoveAt(index);

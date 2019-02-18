@@ -87,19 +87,42 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Services\Data\MockDataServic.cs" />
+    <Compile Include="ViewModels\IDataGridViewModel.cs" />
     <Compile Include="ViewModels\IGameViewModel.cs" />
     <Compile Include="ViewModels\IHamburgerMenuViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\ADataGridViewModel.cs" />
     <Compile Include="ViewModels\Implementations\GameViewModel.cs" />
     <Compile Include="ViewModels\Implementations\HamburgerMenuViewModel.cs" />
     <Compile Include="ViewModels\Implementations\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
+    <Compile Include="Views\Data\Categories.xaml.cs">
+      <DependentUpon>Categories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data\Questions.xaml.cs">
+      <DependentUpon>Questions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Data\QuestionTypes.xaml.cs">
+      <DependentUpon>QuestionTypes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HamburgerMenu\HamburgerMenu.xaml.cs">
       <DependentUpon>HamburgerMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Data\Categories.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Data\Data.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Data\Questions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Data\QuestionTypes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,7 +3,7 @@ using Prism.Mvvm;
 
 namespace Cranium.Data.RestClient.Models.Bases
 {
-    public abstract class AWithId : BindableBase, IWithId
+    public abstract class AWithId : AUndoable, IWithId
     {
         private Guid _id;
 

@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:Cranium.WPF.Views.Data"
     xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -35,13 +36,13 @@
                     <dragablz:InterTabController />
                 </dragablz:TabablzControl.InterTabController>
                 <TabItem Header="{Binding Strings.Questions}">
-                    <DataGrid ItemsSource="{Binding Questions}" />
+                    <data:Questions />
                 </TabItem>
                 <TabItem Header="{Binding Strings.QuestionTypes}">
-                    <DataGrid ItemsSource="{Binding QuestionTypes}" />
+                    <data:QuestionTypes />
                 </TabItem>
                 <TabItem Header="{Binding Strings.Categories}">
-                    <DataGrid ItemsSource="{Binding Categories}" />
+                    <data:Categories />
                 </TabItem>
             </dragablz:TabablzControl>
         </Grid>

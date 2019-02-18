@@ -9,5 +9,8 @@ namespace Shared.Extensions
 
         public static T CastObject<T>(this object o)
             => (T)o;
+
+        public static T Clone<T>(this T t)
+           => t.SerializeJson().DeserializeJson<T>();
     }
 }
