@@ -11,7 +11,6 @@ namespace Cranium.Data.RestClient.Models
 
         private string _task;
         private string _tip;
-        private Category _category;
         private QuestionType _questionType;
         private byte[] _attachment;
         private ObservableCollection<Answer> _answers;
@@ -32,13 +31,7 @@ namespace Cranium.Data.RestClient.Models
             get => _tip;
             set => SetProperty(ref _tip, value);
         }
-
-        public Category Category
-        {
-            get => _category;
-            set => SetProperty(ref _category, value);
-        }
-
+        
         public QuestionType QuestionType
         {
             get => _questionType;

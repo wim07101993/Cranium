@@ -16,5 +16,7 @@ namespace Cranium.Data.Models
         public string Value { get; set; }
 
         public string Info { get; set; }
+
+        public byte[] Attachment { get; set; }
     }
 }

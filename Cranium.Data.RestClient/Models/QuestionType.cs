@@ -8,6 +8,7 @@ namespace Cranium.Data.RestClient.Models
     {
         private string _name;
         private string _explanation;
+        private Category _category;
 
 
         public string Name
@@ -20,6 +21,12 @@ namespace Cranium.Data.RestClient.Models
         {
             get => _explanation;
             set => SetProperty(ref _explanation, value);
+        }
+
+        public Category Category
+        {
+            get => _category;
+            set => SetProperty(ref _category, value);
         }
     }
 }

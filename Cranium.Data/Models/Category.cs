@@ -13,6 +13,6 @@ namespace Cranium.Data.Models
 
         public byte[] Image { get; set; }
 
-        public ICollection<Question> Question { get; set; }
+        public ICollection<QuestionType> QuestionTypes { get; set; }
     }
 }

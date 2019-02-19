@@ -7,6 +7,7 @@ namespace Cranium.Data.RestClient.Models
         private bool _isCorrect;
         private string _value;
         private string _info;
+        private byte[] _attachment;
 
 
         public bool IsCorrect
@@ -25,6 +26,12 @@ namespace Cranium.Data.RestClient.Models
         {
             get => _info;
             set => SetProperty(ref _info, value);
+        }
+
+        public byte[] Attachment
+        {
+            get => _attachment;
+            set => SetProperty(ref _attachment, value);
         }
     }
 }

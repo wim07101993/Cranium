@@ -22,7 +22,7 @@ namespace Cranium.Data.Services
             
             modelBuilder.Entity<Question>().HasMany<Answer>().WithOne(x => x.Question);
             modelBuilder.Entity<QuestionType>().HasMany<Question>().WithOne(x => x.QuestionType);
-            modelBuilder.Entity<Category>().HasMany<Question>().WithOne(x => x.Category);
+            modelBuilder.Entity<Category>().HasMany<QuestionType>().WithOne(x => x.Category);
         }
     }
 }
