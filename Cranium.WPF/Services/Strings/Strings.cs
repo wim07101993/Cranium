@@ -31,6 +31,7 @@ namespace Cranium.WPF.Services.Strings
         private string _image = "Afbeelding";
         private string _edit = "Aanpassen";
         private string _selectAnImageFile = "Selecteer een afbeelding";
+        private string _color = "Kleur";
 
         #endregion data
 
@@ -168,6 +169,12 @@ namespace Cranium.WPF.Services.Strings
         {
             get => _selectAnImageFile;
             set => SetProperty(ref _selectAnImageFile, value);
+        }
+
+        public string Color
+        {
+            get => _color;
+            set => SetProperty(ref _color, value);
         }
 
         #endregion data

@@ -11,7 +11,7 @@ namespace Cranium.Data.RestClient.Models
         private string _name;
         private string _description;
         private byte[] _image;
-        private Color _color;
+        private Color _color = Color.Blue;
 
 
         public string Name

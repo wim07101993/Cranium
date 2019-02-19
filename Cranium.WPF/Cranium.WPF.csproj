@@ -96,6 +96,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BytesToImageConverter.cs" />
+    <Compile Include="Converters\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Converters\MinusConverter.cs" />
     <Compile Include="Services\Data\MockDataServic.cs" />
     <Compile Include="ViewModels\ICategoriesViewModel.cs" />
     <Compile Include="ViewModels\IDataGridViewModel.cs" />
@@ -111,6 +113,10 @@
     <Compile Include="ViewModels\IQuestionsViewModel.cs" />
     <Compile Include="ViewModels\IQuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
+    <Compile Include="Views\Controls\ColorPicker.cs" />
+    <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
+    <Compile Include="Views\Controls\ColorUtilities.cs" />
+    <Compile Include="Views\Controls\HsvColor.cs" />
     <Compile Include="Views\Data\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
@@ -181,6 +187,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Settings\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\ColorSpectrumSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
