@@ -23,7 +23,12 @@ namespace Cranium.WPF.ViewModels.Implementations
         public int SelectedView
         {
             get => _selectedView;
-            set => SetProperty(ref _selectedView, value);
+            set
+            {
+                if (!SetProperty(ref _selectedView, value))
+                    return;
+                IsOpen = false;
+            }
         }
     }
 }
