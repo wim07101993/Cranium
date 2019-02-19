@@ -71,16 +71,25 @@ namespace Cranium.WPF.ViewModels.Implementations
         public async Task UpdateCollectionAsync()
         {
             _isUpdating = true;
-            var newItems = await DataService.GetAsync<T>();
-            ItemsSource.Clear();
 
-            foreach (var newItem in newItems)
+            try
             {
-                newItem.Save();
-                ItemsSource.Add(newItem);
-            }
+                var newItems = await DataService.GetAsync<T>();
 
-            _isUpdating = false;
+                ItemsSource.Clear();
+
+                foreach (var newItem in newItems)
+                {
+                    newItem.Save();
+                    ItemsSource.Add(newItem);
+                }
+
+                _isUpdating = false;
+            }
+            catch (Exception e)
+            {
+                // todo
+            }
         }
 
         public void Create() => ItemsSource.Add(ConstructElement());
@@ -89,23 +98,30 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         public async Task SaveAsync()
         {
-            foreach (var item in ItemsSource.Where(x => CreatedItems.Any(c => c == x.Id)))
+            try
             {
-                var newItem = await DataService.CreateAsync(item);
-                item.Id = newItem.Id;
-                item.Save();
+                foreach (var item in ItemsSource.Where(x => CreatedItems.Any(c => c == x.Id)))
+                {
+                    var newItem = await DataService.CreateAsync(item);
+                    item.Id = newItem.Id;
+                    item.Save();
+                }
+
+                CreatedItems.Clear();
+
+                foreach (var guid in DeletedItems)
+                    await DataService.DeleteAsync<T>(guid);
+                DeletedItems.Clear();
+
+                foreach (var item in ItemsSource.Where(x => ModifiedItems.Any(c => c == x.Id)))
+                {
+                    await DataService.UpdateAsync(item);
+                    item.Save();
+                }
             }
-
-            CreatedItems.Clear();
-
-            foreach (var guid in DeletedItems)
-                await DataService.DeleteAsync<T>(guid);
-            DeletedItems.Clear();
-
-            foreach (var item in ItemsSource.Where(x => ModifiedItems.Any(c => c == x.Id)))
+            catch (Exception e)
             {
-                await DataService.UpdateAsync(item);
-                item.Save();
+                // todo
             }
         }
 

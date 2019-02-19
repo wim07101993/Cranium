@@ -57,14 +57,16 @@ namespace Cranium.WPF.ViewModels.Implementations
         {
             base.OnItemsCollectionChanged(sender, e);
 
-            foreach (var category in e.NewItems.Cast<Category>())
-                UpdateColor(category);
+            if (e.NewItems != null)
+                foreach (var category in e.NewItems.Cast<Category>())
+                    UpdateColor(category);
         }
 
 
         private static void UpdateColor(Category category)
         {
-            if (category.Color.A == 255 && category.Color.R == 255 && category.Color.G == 255 && category.Color.B == 255 ||
+            if (category.Color.A == 255 && category.Color.R == 255 && category.Color.G == 255 &&
+                category.Color.B == 255 ||
                 category.Color.A == 255 && category.Color.R == 0 && category.Color.G == 0 && category.Color.B == 0 ||
                 category.Color == Color.Empty)
                 category.Color = category.Image?.ToImage().GetAverageColorAsync() ?? Color.Empty;

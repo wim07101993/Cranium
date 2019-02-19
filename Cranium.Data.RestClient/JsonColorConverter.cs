@@ -15,7 +15,7 @@ namespace Cranium.Data.RestClient
 
         public override void WriteJson(JsonWriter writer, Color value, JsonSerializer serializer)
         {
-            writer.WriteValue($"#{value.R.ToString("X2")}{value.G.ToString("X2")}{value.B.ToString("X2")}");
+            writer.WriteValue($"#{value.A:X2}{value.R:X2}{value.G:X2}{value.B:X2}");
         }
     }
 }

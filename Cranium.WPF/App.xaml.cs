@@ -11,20 +11,22 @@ namespace Cranium.WPF
 {
     public partial class App
     {
-        public App()
+        static App()
         {
             UnityContainer = new UnityContainer();
+
+            RegisterTypes();
         }
 
 
-        public IUnityContainer UnityContainer { get; }
+        public static IUnityContainer UnityContainer { get; }
+
+        public static Strings Strings => UnityContainer.Resolve<IStringsProvider>().Strings;
 
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            RegisterTypes();
 
             MainWindow = UnityContainer.Resolve<MainWindow>();
             if (MainWindow == null)
@@ -33,7 +35,7 @@ namespace Cranium.WPF
                 MainWindow.Show();
         }
 
-        private void RegisterTypes()
+        private static void RegisterTypes()
         {
             UnityContainer
                 // services
