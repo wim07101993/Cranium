@@ -28,7 +28,7 @@
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:Category}">
-                    <materialDesign:Card Margin="6">
+                    <materialDesign:Card Margin="12">
                         <Grid Width="200" Height="Auto">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="140" />
