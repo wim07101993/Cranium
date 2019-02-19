@@ -18,9 +18,7 @@
         <converters:DrawingColorToMediaColorConverter x:Key="DrawingColorToMediaColorConverter" />
     </UserControl.Resources>
 
-
     <Grid>
-
         <ItemsControl ItemsSource="{Binding ItemsSource}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>

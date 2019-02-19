@@ -103,6 +103,7 @@
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Services\Data\MockDataServic.cs" />
+    <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="ViewModels\ICategoriesViewModel.cs" />
     <Compile Include="ViewModels\IDataGridViewModel.cs" />
     <Compile Include="ViewModels\IGameViewModel.cs" />
