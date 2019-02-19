@@ -19,15 +19,15 @@
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
-                
+
                 <ResourceDictionary>
                     <Style BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" TargetType="{x:Type dragablz:TabablzControl}" />
                 </ResourceDictionary>
 
 
-                <ResourceDictionary Source="Views/Themes/ColorPicker.xaml"/>
-                <ResourceDictionary Source="Views/Themes/ColorSpectrumSlider.xaml"/>
-                
+                <ResourceDictionary Source="Views/Themes/ColorPicker.xaml" />
+                <ResourceDictionary Source="Views/Themes/ColorSpectrumSlider.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

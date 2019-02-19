@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -94,6 +95,7 @@ namespace Cranium.WPF.ViewModels.Implementations
                 item.Id = newItem.Id;
                 item.Save();
             }
+
             CreatedItems.Clear();
 
             foreach (var guid in DeletedItems)
@@ -109,35 +111,66 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         public void Delete(T item) => ItemsSource.Remove(item);
 
-        private void OnItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected virtual void OnItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (_isUpdating)
-                return;
-
-            var newItems = e.NewItems?.Cast<IWithId>().Select(x => x.Id);
-            var oldItems = e.OldItems?.Cast<IWithId>().Select(x => x.Id);
+            var newItems = e.NewItems?.Cast<IWithId>();
+            var oldItems = e.OldItems?.Cast<IWithId>();
 
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
                     if (newItems != null)
-                        CreatedItems.AddRange(newItems);
+                        foreach (var item in newItems)
+                        {
+                            item.PropertyChanged += OnItemPropertyChanged;
+                            if (!_isUpdating)
+                                CreatedItems.Add(item.Id);
+                        }
+
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     if (oldItems != null)
-                        DeletedItems.AddRange(oldItems);
+                        foreach (var item in oldItems)
+                        {
+                            item.PropertyChanged -= OnItemPropertyChanged;
+                            if (!_isUpdating)
+                                DeletedItems.Add(item.Id);
+                        }
+
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     if (newItems != null)
-                        CreatedItems.AddRange(newItems);
+                        foreach (var item in newItems)
+                        {
+                            item.PropertyChanged += OnItemPropertyChanged;
+                            if (!_isUpdating)
+                                CreatedItems.Add(item.Id);
+                        }
+
                     if (oldItems != null)
-                        DeletedItems.AddRange(oldItems);
+                        foreach (var item in oldItems)
+                        {
+                            item.PropertyChanged -= OnItemPropertyChanged;
+                            if (!_isUpdating)
+                                DeletedItems.Add(item.Id);
+                        }
+
                     break;
                 case NotifyCollectionChangedAction.Reset:
                     if (oldItems != null)
-                        DeletedItems.AddRange(oldItems);
+                        foreach (var item in oldItems)
+                        {
+                            item.PropertyChanged -= OnItemPropertyChanged;
+                            if (!_isUpdating)
+                                DeletedItems.Add(item.Id);
+                        }
+
                     break;
             }
+        }
+
+        protected virtual void OnItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
         }
 
         #endregion METHODS

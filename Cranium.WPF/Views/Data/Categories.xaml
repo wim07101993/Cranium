@@ -15,6 +15,7 @@
 
     <UserControl.Resources>
         <converters:BytesToImageConverter x:Key="BytesToImageConverter" />
+        <converters:DrawingColorToMediaColorConverter x:Key="DrawingColorToMediaColorConverter" />
     </UserControl.Resources>
 
 
@@ -36,33 +37,23 @@
                         <materialDesign:DialogHost>
                             <materialDesign:DialogHost.DialogContent>
                                 <StackPanel Margin="16">
-                                    <controls:ColorPicker SelectedColor="{Binding Color}" />
-                                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                        <Button
-                                            Margin="0,8,8,0"
-                                            Command="materialDesign:DialogHost.CloseDialogCommand"
-                                            IsDefault="True"
-                                            Style="{StaticResource MaterialDesignFlatButton}">
-                                            <Button.CommandParameter>
-                                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                                                    True
-                                                </system:Boolean>
-                                            </Button.CommandParameter>
-                                            ACCEPT
-                                        </Button>
-                                        <Button
-                                            Margin="0,8,8,0"
-                                            Command="materialDesign:DialogHost.CloseDialogCommand"
-                                            IsCancel="True"
-                                            Style="{StaticResource MaterialDesignFlatButton}">
-                                            <Button.CommandParameter>
-                                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                                                    False
-                                                </system:Boolean>
-                                            </Button.CommandParameter>
-                                            CANCEL
-                                        </Button>
-                                    </StackPanel>
+                                    <controls:ColorPicker
+                                        Width="200"
+                                        Height="200"
+                                        SelectedColor="{Binding Color, Converter={StaticResource DrawingColorToMediaColorConverter}}" />
+                                    <Button
+                                        Margin="0,8,8,0"
+                                        HorizontalAlignment="Center"
+                                        Command="materialDesign:DialogHost.CloseDialogCommand"
+                                        Content="{Binding DataContext.Strings.Accept, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=data:Categories}}"
+                                        IsDefault="True"
+                                        Style="{StaticResource MaterialDesignFlatButton}">
+                                        <Button.CommandParameter>
+                                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                                True
+                                            </system:Boolean>
+                                        </Button.CommandParameter>
+                                    </Button>
                                 </StackPanel>
                             </materialDesign:DialogHost.DialogContent>
 
@@ -79,16 +70,18 @@
                                     Stretch="UniformToFill" />
 
                                 <StackPanel
-                                    Grid.Row="1"
-                                    Margin="0,0,16,-20"
+                                    Grid.Row="0"
+                                    Margin="0,0,12,-20"
                                     HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Background="Transparent"
                                     Orientation="Horizontal">
                                     <Button
                                         Margin="0,0,12,0"
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                         <Button.Background>
-                                            <SolidColorBrush Color="{Binding Color}" />
+                                            <SolidColorBrush Color="{Binding Color, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DrawingColorToMediaColorConverter}}" />
                                         </Button.Background>
                                         <materialDesign:PackIcon Kind="ColorLens" />
                                     </Button>
