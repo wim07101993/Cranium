@@ -13,6 +13,8 @@ namespace Cranium.Data.Models
 
         public byte[] Image { get; set; }
 
+        public string Color { get; set; }
+
         public ICollection<QuestionType> QuestionTypes { get; set; }
     }
 }

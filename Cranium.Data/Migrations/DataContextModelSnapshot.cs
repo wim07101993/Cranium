@@ -47,6 +47,8 @@ namespace Cranium.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Color");
+
                     b.Property<string>("Description");
 
                     b.Property<byte[]>("Image");
