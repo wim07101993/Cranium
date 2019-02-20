@@ -58,7 +58,7 @@
                                     <ComboBox.Text>
                                         <Binding
                                             Mode="TwoWay"
-                                            Path="Category.Name"
+                                            Path="Category"
                                             UpdateSourceTrigger="PropertyChanged">
                                             <Binding.ValidationRules>
                                                 <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />

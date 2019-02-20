@@ -8,15 +8,6 @@ namespace Cranium.WPF.Views.Data
         public Questions()
         {
             InitializeComponent();
-            ColumnNames = new[]
-            {
-                new ColumnHeader
-                {
-                    Column = TaskColumn,
-                    PropertyName = nameof(Strings.Task),
-                    HeaderValue = x => x.Task
-                },
-            };
         }
 
         protected override IEnumerable<ColumnHeader> ColumnNames { get; }

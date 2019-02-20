@@ -6,15 +6,68 @@
     xmlns:data="clr-namespace:Cranium.WPF.Views.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:Cranium.Data.RestClient.Models;assembly=Cranium.Data.RestClient"
+    xmlns:validationRules="clr-namespace:Cranium.WPF.ValidationRules"
     xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels"
     d:DataContext="{d:DesignInstance viewModels:IQuestionsViewModel}"
     mc:Ignorable="d">
     <Grid>
-        <DataGrid ItemsSource="{Binding ItemsSource}">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="TaskColumn" Binding="{Binding Task}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <ItemsControl ItemsSource="{Binding ItemsSource}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type models:Question}">
+                    <materialDesign:Card
+                        Width="200"
+                        Height="Auto"
+                        Margin="12">
+                        <Grid>
+                            <StackPanel Margin="16" VerticalAlignment="Center">
+                                <TextBox
+                                    Margin="0,12,0,0"
+                                    materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Task, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    Text="{Binding Task, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox
+                                    Margin="0,12,0,0"
+                                    materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Tip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    Text="{Binding Tip, UpdateSourceTrigger=PropertyChanged}" />
+                                <ComboBox
+                                    MinWidth="72"
+                                    Margin="0,12,0,12"
+                                    HorizontalAlignment="Stretch"
+                                    materialDesign:HintAssist.Hint="{Binding DataContext.Strings.QuestionType, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                    ItemsSource="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}, UpdateSourceTrigger=PropertyChanged}"
+                                    SelectedItem="{Binding QuestionType}"
+                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                    <ComboBox.Text>
+                                        <Binding
+                                            Mode="TwoWay"
+                                            Path="QuestionType.Name"
+                                            UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+                                                <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </ComboBox.Text>
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate DataType="{x:Type models:QuestionType}">
+                                            <TextBlock Text="{Binding Name}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <materialDesign:PopupBox
             Margin="32"
