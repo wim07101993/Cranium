@@ -28,6 +28,8 @@
             </DockPanel>
         </materialDesign:ColorZone>
 
-        <Grid />
+        <Grid >
+            
+        </Grid>
     </DockPanel>
 </UserControl>
