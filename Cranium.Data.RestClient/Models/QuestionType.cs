@@ -1,14 +1,17 @@
-﻿using Cranium.Data.RestClient.Attributes;
+﻿using System;
+using Cranium.Data.RestClient.Attributes;
 using Cranium.Data.RestClient.Models.Bases;
+using Newtonsoft.Json;
 
 namespace Cranium.Data.RestClient.Models
 {
-    [HasController]
+    [HasController(nameof(QuestionType))]
     public class QuestionType : AWithId
     {
         private string _name;
         private string _explanation;
         private Category _category;
+        private Guid _categoryId;
 
 
         public string Name
@@ -23,6 +26,13 @@ namespace Cranium.Data.RestClient.Models
             set => SetProperty(ref _explanation, value);
         }
 
+        public Guid CategoryId
+        {
+            get => _categoryId;
+            set => SetProperty(ref _categoryId, value);
+        }
+
+        [JsonIgnore]
         public Category Category
         {
             get => _category;

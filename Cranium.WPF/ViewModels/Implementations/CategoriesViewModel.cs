@@ -27,7 +27,7 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         public void EditPicture(Category category)
         {
-            var dialog = new OpenFileDialog()
+            var dialog = new OpenFileDialog
             {
                 Multiselect = false,
                 Title = Strings.SelectAnImageFile

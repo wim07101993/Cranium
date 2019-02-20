@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Cranium.Data.Models.Bases;
 using Cranium.Data.Services;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Shared.Extensions;
 
 namespace Cranium.Rest.Controllers
 {
@@ -45,8 +47,17 @@ namespace Cranium.Rest.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> Post([FromBody] T value)
         {
-            await _dataService.CreateAsync(SetSelector, value);
-            return Created($"{HttpContext.Request.GetDisplayUrl()}/{value.Id}", value);
+            try
+            {
+                await _dataService.CreateAsync(SetSelector, value);
+                return Created($"{HttpContext.Request.GetDisplayUrl()}/{value.Id}", value);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(value.SerializeJson());
+                Console.WriteLine(e.Message);
+                return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
+            }
         }
 
         // PUT api/values/5

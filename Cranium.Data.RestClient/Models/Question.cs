@@ -4,7 +4,7 @@ using Cranium.Data.RestClient.Models.Bases;
 
 namespace Cranium.Data.RestClient.Models
 {
-    [HasController]
+    [HasController(nameof(Question))]
     public class Question : AWithId
     {
         #region FIELDS

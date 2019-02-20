@@ -9,14 +9,16 @@ namespace Cranium.WPF.ViewModels
         ObservableCollection<T> ItemsSource { get; }
 
         ICommand CreateCommand { get; }
-        
         ICommand SaveCommand { get; }
-
         ICommand DeleteCommand { get; }
+        ICommand UpdateCommand { get; }
+
+        Task UpdateTask { get; }
 
 
         void Create();
         Task SaveAsync();
         void Delete(T item);
+        Task UpdateCollectionAsync();
     }
 }

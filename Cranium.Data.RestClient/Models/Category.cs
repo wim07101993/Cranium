@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace Cranium.Data.RestClient.Models
 {
-    [HasController("Categories", true)]
+    [HasController("Categories", false)]
     public class Category : AWithId
     {
         private string _name;

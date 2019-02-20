@@ -10,7 +10,6 @@ using Cranium.Data.RestClient.Models.Bases;
 using Cranium.Data.RestClient.Services;
 using Cranium.WPF.Services.Strings;
 using Prism.Commands;
-using Shared.Extensions;
 
 namespace Cranium.WPF.ViewModels.Implementations
 {
@@ -36,8 +35,9 @@ namespace Cranium.WPF.ViewModels.Implementations
             CreateCommand = new DelegateCommand(Create);
             SaveCommand = new DelegateCommand(async () => await SaveAsync());
             DeleteCommand = new DelegateCommand<T>(Delete);
+            UpdateCommand = new DelegateCommand(async () => await UpdateCollectionAsync());
 
-            UpdateCollectionAsync();
+            UpdateTask = UpdateCollectionAsync();
         }
 
         #endregion CONSTRUCTOR
@@ -62,6 +62,9 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         public ICommand SaveCommand { get; }
         public ICommand DeleteCommand { get; }
+        public ICommand UpdateCommand { get; }
+
+        public Task UpdateTask { get; protected set; }
 
         #endregion PROPERTIES
 
@@ -80,16 +83,22 @@ namespace Cranium.WPF.ViewModels.Implementations
 
                 foreach (var newItem in newItems)
                 {
+                    await OnReceivedItemAsync(newItem);
                     newItem.Save();
                     ItemsSource.Add(newItem);
                 }
-
-                _isUpdating = false;
             }
             catch (Exception e)
             {
                 // todo
             }
+
+            _isUpdating = false;
+        }
+
+        protected virtual Task OnReceivedItemAsync(T item)
+        {
+            return Task.CompletedTask;
         }
 
         public void Create() => ItemsSource.Add(ConstructElement());
@@ -113,9 +122,13 @@ namespace Cranium.WPF.ViewModels.Implementations
                     await DataService.DeleteAsync<T>(guid);
                 DeletedItems.Clear();
 
+                if (UpdateTask.Status == TaskStatus.Running)
+                    UpdateTask.Wait();
+
                 foreach (var item in ItemsSource.Where(x => ModifiedItems.Any(c => c == x.Id)))
                 {
-                    await DataService.UpdateAsync(item);
+                    UpdateTask = DataService.UpdateAsync(item);
+                    await UpdateTask;
                     item.Save();
                 }
             }
