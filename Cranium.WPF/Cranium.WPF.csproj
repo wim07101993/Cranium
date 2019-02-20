@@ -120,6 +120,8 @@
     <Compile Include="ViewModels\IQuestionsViewModel.cs" />
     <Compile Include="ViewModels\IQuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
+    <Compile Include="Views\Controls\AnswerDatagridColumn.cs" />
+    <Compile Include="Views\Controls\AnswerEditingControl.cs" />
     <Compile Include="Views\Controls\ColorPicker.cs" />
     <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
     <Compile Include="Views\Controls\ColorUtilities.cs" />

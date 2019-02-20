@@ -106,9 +106,29 @@
                                         <DataGrid
                                             Width="200"
                                             Margin="0,6,0,0"
+                                            AutoGenerateColumns="False"
                                             CanUserAddRows="True"
                                             HeadersVisibility="None"
-                                            ItemsSource="{Binding Answers}" />
+                                            ItemsSource="{Binding Answers}">
+                                            <DataGrid.Columns>
+                                                <DataGridCheckBoxColumn
+                                                    Binding="{Binding IsCorrect}"
+                                                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                                    ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" />
+                                                <DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Value}" />
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                                        <DataTemplate>
+                                                            <TextBox Text="{Binding Value}" />
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                                </DataGridTemplateColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
                                     </StackPanel>
                                 </Expander>
                             </StackPanel>

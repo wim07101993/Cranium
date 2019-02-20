@@ -25,8 +25,8 @@
                 </ResourceDictionary>
 
 
-                <ResourceDictionary Source="Views/Themes/ColorPicker.xaml" />
-                <ResourceDictionary Source="Views/Themes/ColorSpectrumSlider.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/ColorPicker.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/ColorSpectrumSlider.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
