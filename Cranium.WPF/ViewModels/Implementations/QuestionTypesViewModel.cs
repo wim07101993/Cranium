@@ -14,8 +14,6 @@ namespace Cranium.WPF.ViewModels.Implementations
             : base(stringsProvider, dataService)
         {
             _categoriesViewModel = categoriesViewModel;
-            _categoriesViewModel.ItemsSource.CollectionChanged +=
-                (sender, args) => RaisePropertyChanged(nameof(Categories));
         }
 
 
