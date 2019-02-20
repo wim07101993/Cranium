@@ -69,7 +69,7 @@ namespace Cranium.Data.Models
 
         public struct TileEnumerator : IEnumerator<Tile>
         {
-            private IList<Tile> _tiles;
+            private readonly IList<Tile> _tiles;
             private Tile _current;
 
             private List<Tile> _splits;
@@ -80,6 +80,8 @@ namespace Cranium.Data.Models
             {
                 _tiles = tiles;
                 _current = null;
+
+                _splits = new List<Tile>();
             }
 
 
@@ -106,7 +108,7 @@ namespace Cranium.Data.Models
                     return false;
                 }
 
-
+                return true;
             }
 
             public void Reset()
