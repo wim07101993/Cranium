@@ -1,6 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using Cranium.Data.RestClient.Attributes;
 using Cranium.Data.RestClient.Models.Bases;
+using Newtonsoft.Json;
 
 namespace Cranium.Data.RestClient.Models
 {
@@ -12,6 +14,7 @@ namespace Cranium.Data.RestClient.Models
         private string _task;
         private string _tip;
         private QuestionType _questionType;
+        private Guid _questionTypeId;
         private byte[] _attachment;
         private ObservableCollection<Answer> _answers;
 
@@ -32,10 +35,17 @@ namespace Cranium.Data.RestClient.Models
             set => SetProperty(ref _tip, value);
         }
         
+        [JsonIgnore]
         public QuestionType QuestionType
         {
             get => _questionType;
             set => SetProperty(ref _questionType, value);
+        }
+
+        public Guid QuestionTypeId
+        {
+            get => _questionTypeId;
+            set => SetProperty(ref _questionTypeId, value);
         }
 
         public byte[] Attachment
@@ -46,7 +56,7 @@ namespace Cranium.Data.RestClient.Models
 
         public ObservableCollection<Answer> Answers
         {
-            get => _answers;
+            get => _answers ?? (_answers = new ObservableCollection<Answer>());
             set => SetProperty(ref _answers, value);
         }
 

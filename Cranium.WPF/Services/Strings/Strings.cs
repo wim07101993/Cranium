@@ -34,6 +34,7 @@ namespace Cranium.WPF.Services.Strings
         private string _color = "Kleur";
         private string _accept = "Accepteren";
         private string _required = "Verplicht";
+        private string _more = "Meer";
 
         #endregion data
 
@@ -189,6 +190,12 @@ namespace Cranium.WPF.Services.Strings
         {
             get => _required;
             set => SetProperty(ref _required, value);
+        }
+
+        public string More
+        {
+            get => _more;
+            set => SetProperty(ref _more, value);
         }
 
         #endregion data

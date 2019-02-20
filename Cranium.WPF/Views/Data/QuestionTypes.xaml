@@ -2,8 +2,6 @@
     x:Class="Cranium.WPF.Views.Data.QuestionTypes"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
-    xmlns:converters="clr-namespace:Cranium.WPF.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="clr-namespace:Cranium.WPF.Views.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -11,7 +9,6 @@
     xmlns:models="clr-namespace:Cranium.Data.RestClient.Models;assembly=Cranium.Data.RestClient"
     xmlns:validationRules="clr-namespace:Cranium.WPF.ValidationRules"
     xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels"
-    xmlns:wpf="clr-namespace:Cranium.WPF"
     d:DataContext="{d:DesignInstance viewModels:IQuestionTypesViewModel}"
     mc:Ignorable="d">
 
@@ -39,6 +36,7 @@
                             </Button.Background>
                             <materialDesign:PackIcon Kind="Delete" />
                         </Button>
+
                         <materialDesign:Card
                             Width="200"
                             Height="Auto"
@@ -66,7 +64,7 @@
 
                                     <ComboBox
                                         MinWidth="72"
-                                        Margin="0,24,0,0"
+                                        Margin="0,16,0,0"
                                         HorizontalAlignment="Stretch"
                                         materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Category, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:QuestionTypes}}}"
                                         ItemsSource="{Binding DataContext.Categories, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:QuestionTypes}}, UpdateSourceTrigger=PropertyChanged}"
@@ -90,7 +88,7 @@
                                     </ComboBox>
 
                                     <TextBox
-                                        Margin="0,24,0,0"
+                                        Margin="0,16,0,0"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Top"
                                         materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Explanation, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:QuestionTypes}}}"
