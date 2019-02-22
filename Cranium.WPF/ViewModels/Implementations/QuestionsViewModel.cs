@@ -21,18 +21,14 @@ namespace Cranium.WPF.ViewModels.Implementations
         {
             _questionTypesViewModel = questionTypesViewModel;
             _questionTypesViewModel.ItemsSource.CollectionChanged += OnCategoriesChanged;
-
-            AddAnswerCommand = new DelegateCommand<Question>(AddAnswer);
         }
 
 
         public ObservableCollection<QuestionType> QuestionTypes => _questionTypesViewModel.ItemsSource;
 
-        public ICommand AddAnswerCommand { get; }
+        public ICommand PickFileCommand { get; }
 
-
-        public void AddAnswer(Question question) => question.Answers.Add(new Answer());
-
+        
         protected override async Task OnReceivedItemAsync(Question item)
         {
             if (_questionTypesViewModel.ItemsSource.Count == 0)

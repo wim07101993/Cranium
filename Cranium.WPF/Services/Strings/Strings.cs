@@ -35,6 +35,7 @@ namespace Cranium.WPF.Services.Strings
         private string _accept = "Accepteren";
         private string _required = "Verplicht";
         private string _more = "Meer";
+        private string _file = "Bestand";
 
         #endregion data
 
@@ -196,6 +197,12 @@ namespace Cranium.WPF.Services.Strings
         {
             get => _more;
             set => SetProperty(ref _more, value);
+        }
+
+        public string File
+        {
+            get => _file;
+            set => SetProperty(ref _file, value);
         }
 
         #endregion data

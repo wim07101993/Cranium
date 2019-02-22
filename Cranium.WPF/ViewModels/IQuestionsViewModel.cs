@@ -8,9 +8,6 @@ namespace Cranium.WPF.ViewModels
     {
         ObservableCollection<QuestionType> QuestionTypes { get; }
 
-        ICommand AddAnswerCommand { get; }
-
-
-        void AddAnswer(Question question);
+        ICommand PickFileCommand { get; }
     }
 }

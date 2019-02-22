@@ -52,7 +52,7 @@ namespace Cranium.WPF.Views.Controls
         #endregion PROPERTIES
 
 
-        #region Constructors
+        #region CONSTRUCTOR
 
         static ColorPicker()
         {
@@ -60,7 +60,7 @@ namespace Cranium.WPF.Views.Controls
                 new FrameworkPropertyMetadata(typeof(ColorPicker)));
         }
 
-        #endregion Constructors
+        #endregion CONSTRUCTOR
 
 
         #region METHODS

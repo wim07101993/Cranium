@@ -1,7 +1,10 @@
-﻿<data:AUserControlWithDataGrid
+﻿<UserControl
     x:Class="Cranium.WPF.Views.Data.Questions"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
+    xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
+    xmlns:converters="clr-namespace:Cranium.WPF.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="clr-namespace:Cranium.WPF.Views.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -11,76 +14,158 @@
     xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels"
     d:DataContext="{d:DesignInstance viewModels:IQuestionsViewModel}"
     mc:Ignorable="d">
-    <Grid>
-        <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type models:Question}">
-                    <Grid>
+    <UserControl.Resources>
+        <converters:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <materialDesign:DialogHost>
+
+        <materialDesign:DialogHost.Resources>
+            <ResourceDictionary>
+                <DataTemplate DataType="{x:Type models:AnswerCollection}">
+                    <StackPanel Margin="16" Orientation="Vertical">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" MinWidth="100" />
+                                <ColumnDefinition Width="Auto" MaxWidth="500" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <ListBox
+                                x:Name="ListBox"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="8"
+                                ItemsSource="{Binding}"
+                                KeyDown="OnListBoxKeyDown">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type models:Answer}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition
+                                                    Width="Auto"
+                                                    MinWidth="100"
+                                                    MaxWidth="500" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <CheckBox Grid.Column="0" IsChecked="{Binding IsCorrect}" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                MaxWidth="500"
+                                                Text="{Binding Value}"
+                                                TextWrapping="Wrap" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                            <controls:AnswerEditingControl
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                MaxWidth="500"
+                                Margin="8"
+                                Answer="{Binding ElementName=ListBox, Path=SelectedItem}"
+                                PickFileCommand="{Binding DataContext.PickFileCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                Visibility="{Binding ElementName=ListBox, Path=SelectedItem, Converter={StaticResource ObjectToVisibilityConverter}}" />
+
+                            <Button
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="8"
+                                Click="OnAddAnswerButtonClick"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                ToolTip="MaterialDesignFloatingActionMiniButton">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Kind="Add" />
+                            </Button>
+                        </Grid>
+
                         <Button
-                            Margin="0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Top"
-                            Panel.ZIndex="5"
-                            Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                            CommandParameter="{Binding}"
-                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
-                            <Button.Background>
-                                <SolidColorBrush Color="{StaticResource RedPrimary800}" />
-                            </Button.Background>
-                            <materialDesign:PackIcon Kind="Delete" />
-                        </Button>
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            Content="{Binding DataContext.Strings.Accept, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                            Style="{StaticResource MaterialDesignFlatButton}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ResourceDictionary>
+        </materialDesign:DialogHost.Resources>
 
-                        <materialDesign:Card
-                            Height="Auto"
-                            MinWidth="200"
-                            Margin="12,16,16,12"
-                            Background="{DynamicResource MaterialDesignPaper}">
-                            <StackPanel>
 
-                                <Border VerticalAlignment="Top" Background="{Binding QuestionType.Category.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-                                    <TextBlock
-                                        Margin="12"
-                                        HorizontalAlignment="Center"
-                                        Foreground="{DynamicResource MaterialDesignBackground}"
-                                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                                        Text="{Binding QuestionType.Name}" />
-                                </Border>
+        <Grid>
+            <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-                                <StackPanel Margin="16,8,16,16" VerticalAlignment="Center">
-                                    <TextBox
-                                        Margin="0,16,0,0"
-                                        materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Task, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                                        FontSize="16"
-                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                        TextWrapping="Wrap">
-                                        <TextBox.Text>
-                                            <Binding Path="Task" UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.ValidationRules>
-                                                    <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                                </Binding.ValidationRules>
-                                            </Binding>
-                                        </TextBox.Text>
-                                    </TextBox>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:Question}">
+                        <Grid>
+                            <Button
+                                Margin="0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Panel.ZIndex="5"
+                                Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                <Button.Background>
+                                    <SolidColorBrush Color="{StaticResource RedPrimary800}" />
+                                </Button.Background>
+                                <materialDesign:PackIcon Kind="Delete" />
+                            </Button>
 
-                                    <TextBox
-                                        Margin="0,16,0,0"
-                                        materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Tip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                        Text="{Binding Tip, UpdateSourceTrigger=PropertyChanged}"
-                                        TextWrapping="Wrap" />
-                                </StackPanel>
+                            <materialDesign:Card
+                                Height="Auto"
+                                MinWidth="200"
+                                Margin="12,16,16,12"
+                                Background="{DynamicResource MaterialDesignPaper}">
+                                <StackPanel>
 
-                                <Expander Header="{Binding DataContext.Strings.More, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}">
-                                    <StackPanel Margin="16,8,16,16" VerticalAlignment="Center">
+                                    <Border VerticalAlignment="Top" Background="{Binding QuestionType.Category.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                                        <TextBlock
+                                            Margin="12"
+                                            HorizontalAlignment="Center"
+                                            Foreground="{DynamicResource MaterialDesignBackground}"
+                                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                            Text="{Binding QuestionType.Name}" />
+                                    </Border>
+
+                                    <StackPanel Margin="16,0,16,16" VerticalAlignment="Center">
+                                        <TextBox
+                                            Margin="0,16,0,0"
+                                            materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Task, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                            TextWrapping="Wrap">
+                                            <TextBox.Text>
+                                                <Binding Path="Task" UpdateSourceTrigger="PropertyChanged">
+                                                    <Binding.ValidationRules>
+                                                        <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </TextBox.Text>
+                                        </TextBox>
+
+                                        <TextBox
+                                            Margin="0,16,0,0"
+                                            materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Tip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                            Text="{Binding Tip, UpdateSourceTrigger=PropertyChanged}"
+                                            TextWrapping="Wrap" />
+
                                         <ComboBox
                                             MinWidth="72"
-                                            Margin="0,-20,0,16"
+                                            Margin="0,16,0,0"
                                             HorizontalAlignment="Stretch"
                                             materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Category, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
                                             ItemsSource="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}, UpdateSourceTrigger=PropertyChanged}"
@@ -103,60 +188,40 @@
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
 
-                                        <DataGrid
-                                            Width="200"
-                                            Margin="0,6,0,0"
-                                            AutoGenerateColumns="False"
-                                            CanUserAddRows="True"
-                                            HeadersVisibility="None"
-                                            ItemsSource="{Binding Answers}">
-                                            <DataGrid.Columns>
-                                                <DataGridCheckBoxColumn
-                                                    Binding="{Binding IsCorrect}"
-                                                    EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-                                                    ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" />
-                                                <DataGridTemplateColumn>
-                                                    <DataGridTemplateColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <TextBlock Text="{Binding Value}" />
-                                                        </DataTemplate>
-                                                    </DataGridTemplateColumn.CellTemplate>
-                                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                                        <DataTemplate>
-                                                            <TextBox Text="{Binding Value}" />
-                                                        </DataTemplate>
-                                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                                </DataGridTemplateColumn>
-                                            </DataGrid.Columns>
-                                        </DataGrid>
+                                        <Button
+                                            Margin="0,24,0,0"
+                                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                            CommandParameter="{Binding Answers}"
+                                            Content="{Binding DataContext.Strings.Answers, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
+                                            Style="{StaticResource MaterialDesignFlatButton}" />
                                     </StackPanel>
-                                </Expander>
-                            </StackPanel>
-                        </materialDesign:Card>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                                </StackPanel>
+                            </materialDesign:Card>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
-        <materialDesign:PopupBox
-            Margin="32"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
-            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
-            <StackPanel>
-                <Button Command="{Binding SaveCommand}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
-                    <Button.Background>
-                        <SolidColorBrush Color="{StaticResource BluePrimary800}" />
-                    </Button.Background>
-                    <materialDesign:PackIcon Kind="ContentSave" />
-                </Button>
-                <Button Command="{Binding CreateCommand}" Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
-                    <Button.Background>
-                        <SolidColorBrush Color="{StaticResource LimePrimary800}" />
-                    </Button.Background>
-                    <materialDesign:PackIcon Kind="Add" />
-                </Button>
-            </StackPanel>
-        </materialDesign:PopupBox>
-    </Grid>
-</data:AUserControlWithDataGrid>
+            <materialDesign:PopupBox
+                Margin="32"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
+                <StackPanel>
+                    <Button Command="{Binding SaveCommand}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
+                        <Button.Background>
+                            <SolidColorBrush Color="{StaticResource BluePrimary800}" />
+                        </Button.Background>
+                        <materialDesign:PackIcon Kind="ContentSave" />
+                    </Button>
+                    <Button Command="{Binding CreateCommand}" Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
+                        <Button.Background>
+                            <SolidColorBrush Color="{StaticResource LimePrimary800}" />
+                        </Button.Background>
+                        <materialDesign:PackIcon Kind="Add" />
+                    </Button>
+                </StackPanel>
+            </materialDesign:PopupBox>
+        </Grid>
+    </materialDesign:DialogHost>
+</UserControl>

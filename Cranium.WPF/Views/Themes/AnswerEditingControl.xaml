@@ -1,0 +1,46 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Style TargetType="{x:Type controls:AnswerEditingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:AnswerEditingControl}">
+                    <StackPanel>
+                        <TextBox
+                            MaxWidth="{TemplateBinding MaxWidth}"
+                            Margin="8"
+                            materialDesign:HintAssist.Hint="{Binding Strings.Value, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text="{Binding Answer.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            TextWrapping="Wrap" />
+
+                        <CheckBox
+                            Margin="8"
+                            Content="{Binding Strings.IsCorrect, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            IsChecked="{Binding Answer.IsCorrect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Style="{StaticResource MaterialDesignCheckBox}" />
+
+                        <TextBox
+                            MaxWidth="{TemplateBinding MaxWidth}"
+                            Margin="8"
+                            materialDesign:HintAssist.Hint="{Binding Strings.Info, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            Text="{Binding Answer.Info, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            TextWrapping="Wrap" />
+
+                        <Button
+                            Margin="8"
+                            Command="{TemplateBinding PickFileCommand}"
+                            CommandParameter="{TemplateBinding Answer}"
+                            Content="{Binding Strings.File, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                            Style="{StaticResource MaterialDesignFlatButton}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

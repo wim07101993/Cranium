@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using Cranium.Data.RestClient.Attributes;
 using Cranium.Data.RestClient.Models.Bases;
 using Newtonsoft.Json;
@@ -16,7 +15,7 @@ namespace Cranium.Data.RestClient.Models
         private QuestionType _questionType;
         private Guid _questionTypeId;
         private byte[] _attachment;
-        private ObservableCollection<Answer> _answers;
+        private AnswerCollection _answers;
 
         #endregion FIELDS
 
@@ -54,9 +53,9 @@ namespace Cranium.Data.RestClient.Models
             set => SetProperty(ref _attachment, value);
         }
 
-        public ObservableCollection<Answer> Answers
+        public AnswerCollection Answers
         {
-            get => _answers ?? (_answers = new ObservableCollection<Answer>());
+            get => _answers ?? (_answers = new AnswerCollection());
             set => SetProperty(ref _answers, value);
         }
 

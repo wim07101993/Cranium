@@ -101,6 +101,7 @@
     <Compile Include="Converters\ColorToSolidColorBrushConverter.cs" />
     <Compile Include="Converters\DrawingColorToMediaColorConverter.cs" />
     <Compile Include="Converters\MinusConverter.cs" />
+    <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
@@ -120,7 +121,6 @@
     <Compile Include="ViewModels\IQuestionsViewModel.cs" />
     <Compile Include="ViewModels\IQuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
-    <Compile Include="Views\Controls\AnswerDatagridColumn.cs" />
     <Compile Include="Views\Controls\AnswerEditingControl.cs" />
     <Compile Include="Views\Controls\ColorPicker.cs" />
     <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
@@ -196,6 +196,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Settings\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\AnswerEditingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
