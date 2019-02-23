@@ -24,11 +24,11 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         public override async Task UpdateCollectionAsync()
         {
+            await base.UpdateCollectionAsync();
+
             var categories = await _categoryService.GetAsync();
             Categories.Clear();
             Categories.Add(categories);
-
-            await base.UpdateCollectionAsync();
         }
     }
 }

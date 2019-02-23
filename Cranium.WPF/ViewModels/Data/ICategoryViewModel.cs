@@ -3,7 +3,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Cranium.WPF.Models;
 
-namespace Cranium.WPF.ViewModels
+namespace Cranium.WPF.ViewModels.Data
 {
     public interface ICategoryViewModel : IModelContainer<Category>
     {

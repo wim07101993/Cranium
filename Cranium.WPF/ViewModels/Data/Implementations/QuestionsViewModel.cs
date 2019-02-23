@@ -24,11 +24,11 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         public override async Task UpdateCollectionAsync()
         {
+            await base.UpdateCollectionAsync();
+
             var questionTypes = await _questionTypeService.GetAsync();
             QuestionTypes.Clear();
             QuestionTypes.Add(questionTypes);
-
-            await base.UpdateCollectionAsync();
         }
     }
 }

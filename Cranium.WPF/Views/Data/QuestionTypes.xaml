@@ -111,8 +111,12 @@
             Margin="32"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Command="{Binding CreateCommand}">
-            <materialDesign:PackIcon Kind="Add" />
+            Command="{Binding CreateCommand}"
+            Style="{StaticResource MaterialDesignFloatingActionButton}">
+            <materialDesign:PackIcon
+                Width="24"
+                Height="24"
+                Kind="Add" />
         </Button>
     </Grid>
 </UserControl>

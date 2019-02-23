@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using Prism.Mvvm;
 
 namespace Cranium.WPF.Models.Bases
@@ -7,6 +8,7 @@ namespace Cranium.WPF.Models.Bases
     {
         private ObjectId _id;
 
+        [BsonId]
         public ObjectId Id
         {
             get => _id;

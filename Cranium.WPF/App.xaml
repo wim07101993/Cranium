@@ -18,17 +18,12 @@
                 <!--  Include the Dragablz Material Design style  -->
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
 
                 <ResourceDictionary>
                     <Style BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" TargetType="{x:Type dragablz:TabablzControl}" />
                 </ResourceDictionary>
 
-
-                <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/ColorPicker.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/ColorSpectrumSlider.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/AnswerEditingControl.xaml" />
-
+                <ResourceDictionary Source="pack://application:,,,/Cranium;component/CustomThemes.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

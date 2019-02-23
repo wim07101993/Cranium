@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -28,7 +29,8 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         #region CONSTRUCTOR
 
-        public CategoryViewModel(IStringsProvider stringsProvider, IFileService fileService, ICategoryService categoryService)
+        public CategoryViewModel(
+            IStringsProvider stringsProvider, IFileService fileService, ICategoryService categoryService)
             : base(stringsProvider)
         {
             _fileService = fileService;
@@ -50,7 +52,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 if (Equals(_model, value))
                     return;
 
-                if (value != null)
+                if (_model != null)
                     value.PropertyChanged -= OnCategoryPropertyChanged;
 
                 SetProperty(ref _model, value);
@@ -77,16 +79,23 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         public async Task GetImageFromDb()
         {
-            if (Model == null)
+            if (Model == null || Model.Image == default)
             {
                 Image = null;
                 return;
             }
 
-            using (var stream = new MemoryStream())
+            try
             {
-                await _fileService.GetOneAsync(_model.Image, stream);
-                Image = stream.ToImage();
+                using (var stream = new MemoryStream())
+                {
+                    await _fileService.GetOneAsync(_model.Image, stream);
+                    Image = stream.ToImage();
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO
             }
         }
 
@@ -138,7 +147,6 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                     await _categoryService.UpdatePropertyAsync(item.Id, x => x.Name, item.Name);
                     break;
             }
-
         }
 
         private void UpdateColor(Category category)
@@ -147,7 +155,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 category.Color.B == 255 ||
                 category.Color.A == 255 && category.Color.R == 0 && category.Color.G == 0 && category.Color.B == 0 ||
                 category.Color == default)
-                category.Color = Image?.GetAverageColorAsync().ToMediaColor() ?? default;
+                category.Color = new Color {BaseColor = Image?.GetAverageColorAsync().ToMediaColor() ?? default};
         }
 
         #endregion METHODS

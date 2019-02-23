@@ -38,7 +38,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 if (Equals(_model, value))
                     return;
 
-                if (value != null)
+                if (_model != null)
                     value.PropertyChanged -= OnQuestionPropertyChanged;
 
                 SetProperty(ref _model, value);

@@ -127,9 +127,9 @@
     <Compile Include="BindingProxy.cs" />
     <Compile Include="Converters\BytesToImageConverter.cs" />
     <Compile Include="Converters\ColorToSolidColorBrushConverter.cs" />
-    <Compile Include="Converters\DrawingColorToMediaColorConverter.cs" />
     <Compile Include="Converters\MinusConverter.cs" />
     <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
+    <Compile Include="Converters\TestConverter.cs" />
     <Compile Include="Exceptions\DatabaseException.cs" />
     <Compile Include="Exceptions\EDatabaseMethod.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
@@ -142,6 +142,7 @@
     <Compile Include="Models\Bases\AWithId.cs" />
     <Compile Include="Models\Bases\IWithId.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Color.cs" />
     <Compile Include="Models\EAttachmentType.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="ViewModels\Data\IQuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
     <Compile Include="Views\Controls\AnswerEditingControl.cs" />
+    <Compile Include="Views\Controls\CategoryEditingControl.cs" />
     <Compile Include="Views\Controls\ColorPicker.cs" />
     <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
     <Compile Include="Views\Controls\ColorUtilities.cs" />
@@ -204,6 +206,10 @@
     <Compile Include="Views\Settings\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Data\Categories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -260,6 +266,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Themes\AnswerEditingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\CategoryEditingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

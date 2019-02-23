@@ -82,7 +82,11 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         protected virtual TModel ConstructElement() => Activator.CreateInstance<TModel>();
 
-        public async Task DeleteAsync(TViewModel viewModel) => await DataService.RemoveAsync(viewModel.Model.Id);
+        public async Task DeleteAsync(TViewModel viewModel)
+        {
+            await DataService.RemoveAsync(viewModel.Model.Id);
+            ItemsSource.Remove(viewModel);
+        }
 
         protected virtual void AddModelToCollection(TModel model)
         {

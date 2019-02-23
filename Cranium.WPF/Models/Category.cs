@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System.ComponentModel;
+using System.Windows.Media;
 using Cranium.WPF.Models.Bases;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -10,8 +11,15 @@ namespace Cranium.WPF.Models
         private string _name;
         private string _description;
         private ObjectId _image;
-        private Color _color;
+        private Color _color = new Color{ BaseColor = Colors.Transparent };
 
+
+        public Category()
+        {
+            Color.PropertyChanged += OnColorPropertyChanged;
+        }
+
+        
         [BsonRequired]
         [BsonElement("name")]
         public string Name
@@ -27,7 +35,6 @@ namespace Cranium.WPF.Models
             set => SetProperty(ref _description, value);
         }
 
-        [BsonIgnore]
         [BsonElement("image")]
         public ObjectId Image
         {
@@ -39,7 +46,25 @@ namespace Cranium.WPF.Models
         public Color Color
         {
             get => _color;
-            set => SetProperty(ref _color, value);
+            set
+            {
+                
+                if (Equals(_color, value))
+                    return;
+
+                if (_color != null)
+                    Color.PropertyChanged -= OnColorPropertyChanged;
+
+                SetProperty(ref _color, value);
+
+                if (_color != null)
+                    Color.PropertyChanged += OnColorPropertyChanged;
+
+                RaisePropertyChanged(nameof(Color));
+            }
         }
+
+        private void OnColorPropertyChanged(object sender, PropertyChangedEventArgs e) 
+            => RaisePropertyChanged(nameof(Color));
     }
 }

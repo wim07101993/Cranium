@@ -1,0 +1,115 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
+    xmlns:converters="clr-namespace:Cranium.WPF.Converters"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib" x:Key="True">
+        True
+    </system:Boolean>
+
+
+    <converters:TestConverter x:Key="TestConverter" />
+
+    <Style TargetType="{x:Type controls:CategoryEditingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CategoryEditingControl}">
+                    <materialDesign:Card
+                        Width="200"
+                        Height="Auto"
+                        Margin="12">
+                        <materialDesign:DialogHost>
+                            <materialDesign:DialogHost.DialogContent>
+                                <StackPanel Margin="16">
+                                    <controls:ColorPicker
+                                        Width="200"
+                                        Height="200"
+                                        SelectedColor="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                    <Button
+                                        Margin="0,8,8,0"
+                                        HorizontalAlignment="Center"
+                                        Command="materialDesign:DialogHost.CloseDialogCommand"
+                                        CommandParameter="{StaticResource True}"
+                                        Content="{Binding Strings.Accept, RelativeSource={RelativeSource TemplatedParent}}"
+                                        IsDefault="True"
+                                        Style="{StaticResource MaterialDesignFlatButton}" />
+                                </StackPanel>
+                            </materialDesign:DialogHost.DialogContent>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="140" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <Image
+                                    Grid.Row="0"
+                                    Source="{TemplateBinding Image}"
+                                    Stretch="UniformToFill" />
+
+                                <StackPanel
+                                    Grid.Row="0"
+                                    Margin="0,0,12,-20"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Bottom"
+                                    Background="Transparent"
+                                    Orientation="Horizontal">
+                                    <Button
+                                        Margin="0,0,12,0"
+                                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TestConverter}}" />
+                                        </Button.Background>
+                                        <materialDesign:PackIcon Kind="ColorLens" />
+                                    </Button>
+                                    <Button
+                                        Margin="0,0,12,0"
+                                        Background="{DynamicResource SecondaryAccentBrush}"
+                                        Command="{TemplateBinding ChangeImageCommand}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                        <materialDesign:PackIcon Kind="InsertPhoto" />
+                                    </Button>
+                                    <Button
+                                        Command="{TemplateBinding DeleteCommand}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                        <Button.Background>
+                                            <SolidColorBrush Color="{StaticResource RedPrimary800}" />
+                                        </Button.Background>
+                                        <materialDesign:PackIcon Kind="Delete" />
+                                    </Button>
+                                </StackPanel>
+
+                                <StackPanel
+                                    Grid.Row="2"
+                                    Margin="16"
+                                    VerticalAlignment="Center">
+                                    <TextBox
+                                        Margin="0,12,0,0"
+                                        materialDesign:HintAssist.Hint="{Binding Strings.Name, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                        Text="{Binding Category.Name, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBox
+                                        Margin="0,12,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Top"
+                                        materialDesign:HintAssist.Hint="{Binding Strings.Description, RelativeSource={RelativeSource TemplatedParent}}"
+                                        AcceptsReturn="True"
+                                        SpellCheck.IsEnabled="True"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                        Text="{Binding Category.Description, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        TextWrapping="Wrap"
+                                        VerticalScrollBarVisibility="Auto" />
+                                </StackPanel>
+                            </Grid>
+                        </materialDesign:DialogHost>
+                    </materialDesign:Card>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
