@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows.Media.Imaging;
 
 namespace Cranium.WPF.Extensions
@@ -24,6 +25,13 @@ namespace Cranium.WPF.Extensions
 
             image.Freeze();
             return image;
+        }
+
+        public static TList Add<TList, T>(this TList list, IEnumerable<T> itemsToAdd) where TList : ICollection<T>
+        {
+            foreach (var item in itemsToAdd)
+                list.Add(item);
+            return list;
         }
     }
 }

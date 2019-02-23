@@ -42,6 +42,10 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.0.7\lib\net45\DnsClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
     </Reference>
@@ -57,6 +61,22 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.7.3\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.7.3\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.7.3\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.GridFS, Version=2.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.GridFS.2.7.3\lib\net45\MongoDB.Driver.GridFS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -64,10 +84,18 @@
       <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.3.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
@@ -102,24 +130,56 @@
     <Compile Include="Converters\DrawingColorToMediaColorConverter.cs" />
     <Compile Include="Converters\MinusConverter.cs" />
     <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
+    <Compile Include="Exceptions\DatabaseException.cs" />
+    <Compile Include="Exceptions\EDatabaseMethod.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
-    <Compile Include="Services\Data\MockDataServic.cs" />
+    <Compile Include="Extensions\MongoExtensions.cs" />
+    <Compile Include="Extensions\SteamExtensions.cs" />
+    <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\Bases\AWithId.cs" />
+    <Compile Include="Models\Bases\IWithId.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\EAttachmentType.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\QuestionType.cs" />
+    <Compile Include="Models\Tile.cs" />
+    <Compile Include="Models\Tiles.cs" />
+    <Compile Include="Services\Mongo\ICategoryService.cs" />
+    <Compile Include="Services\Mongo\IDataService.cs" />
+    <Compile Include="Services\Mongo\IFileService.cs" />
+    <Compile Include="Services\Mongo\IMongoDataServiceSettings.cs" />
+    <Compile Include="Services\Mongo\Implementations\AMongoDataService.cs" />
+    <Compile Include="Services\Mongo\Implementations\CategoryService.cs" />
+    <Compile Include="Services\Mongo\Implementations\FileService.cs" />
+    <Compile Include="Services\Mongo\Implementations\MongoDataServiceSettings.cs" />
+    <Compile Include="Services\Mongo\Implementations\QuestionService.cs" />
+    <Compile Include="Services\Mongo\Implementations\QuestionTypeService.cs" />
+    <Compile Include="Services\Mongo\IQuestionService.cs" />
+    <Compile Include="Services\Mongo\IQuestionTypeService.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
-    <Compile Include="ViewModels\ICategoriesViewModel.cs" />
-    <Compile Include="ViewModels\IDataGridViewModel.cs" />
+    <Compile Include="ViewModels\Data\ICategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Data\ICategoryViewModel.cs" />
+    <Compile Include="ViewModels\Data\Implementations\QuestionTypeViewModel.cs" />
+    <Compile Include="ViewModels\Data\Implementations\QuestionViewModel.cs" />
+    <Compile Include="ViewModels\Data\IQuestionTypeViewModel.cs" />
+    <Compile Include="ViewModels\Data\IQuestionViewModel.cs" />
+    <Compile Include="ViewModels\ICollectionViewModel.cs" />
     <Compile Include="ViewModels\IGameViewModel.cs" />
     <Compile Include="ViewModels\IHamburgerMenuViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\CategoriesViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\DataGridViewModel.cs" />
+    <Compile Include="ViewModels\IModelContainer.cs" />
+    <Compile Include="ViewModels\Data\Implementations\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Implementations\ACollectionViewModel.cs" />
+    <Compile Include="ViewModels\Data\Implementations\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Implementations\GameViewModel.cs" />
     <Compile Include="ViewModels\Implementations\HamburgerMenuViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\QuestionsViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\QuestionTypesViewModel.cs" />
+    <Compile Include="ViewModels\Data\Implementations\QuestionsViewModel.cs" />
+    <Compile Include="ViewModels\Data\Implementations\QuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\Implementations\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\IQuestionsViewModel.cs" />
-    <Compile Include="ViewModels\IQuestionTypesViewModel.cs" />
+    <Compile Include="ViewModels\Data\IQuestionsViewModel.cs" />
+    <Compile Include="ViewModels\Data\IQuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
     <Compile Include="Views\Controls\AnswerEditingControl.cs" />
     <Compile Include="Views\Controls\ColorPicker.cs" />
@@ -182,7 +242,7 @@
     <Compile Include="ViewModels\IDataViewModel.cs" />
     <Compile Include="ViewModels\IMainWindowViewModel.cs" />
     <Compile Include="ViewModels\Implementations\AViewModelBase.cs" />
-    <Compile Include="ViewModels\Implementations\DataViewModel.cs" />
+    <Compile Include="ViewModels\Data\Implementations\DataViewModel.cs" />
     <Compile Include="ViewModels\Implementations\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\IViewModelBase.cs" />
     <Compile Include="Views\Data\Data.xaml.cs">
@@ -240,10 +300,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cranium.Data.RestClient\Cranium.Data.RestClient.csproj">
-      <Project>{c722990d-c0e6-4b5c-b767-261904857a2a}</Project>
-      <Name>Cranium.Data.RestClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{8f915249-65c5-44e7-8e96-6f9b65e0957b}</Project>
       <Name>Shared</Name>

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Cranium.Data.RestClient.Models;
+using Cranium.WPF.Models;
 using Cranium.WPF.Services.Strings;
 
 namespace Cranium.WPF.Views.Controls

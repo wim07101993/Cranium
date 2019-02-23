@@ -2,16 +2,15 @@
     x:Class="Cranium.WPF.Views.Data.Questions"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
     xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
     xmlns:converters="clr-namespace:Cranium.WPF.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="clr-namespace:Cranium.WPF.Views.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="clr-namespace:Cranium.Data.RestClient.Models;assembly=Cranium.Data.RestClient"
+    xmlns:models="clr-namespace:Cranium.WPF.Models"
     xmlns:validationRules="clr-namespace:Cranium.WPF.ValidationRules"
-    xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels"
+    xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels.Data"
     d:DataContext="{d:DesignInstance viewModels:IQuestionsViewModel}"
     mc:Ignorable="d">
 
@@ -23,7 +22,7 @@
 
         <materialDesign:DialogHost.Resources>
             <ResourceDictionary>
-                <DataTemplate DataType="{x:Type models:AnswerCollection}">
+                <DataTemplate DataType="{x:Type models:Answer}">
                     <StackPanel Margin="16" Orientation="Vertical">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -202,26 +201,14 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <materialDesign:PopupBox
+
+            <Button
                 Margin="32"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}">
-                <StackPanel>
-                    <Button Command="{Binding SaveCommand}" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}">
-                        <Button.Background>
-                            <SolidColorBrush Color="{StaticResource BluePrimary800}" />
-                        </Button.Background>
-                        <materialDesign:PackIcon Kind="ContentSave" />
-                    </Button>
-                    <Button Command="{Binding CreateCommand}" Foreground="{DynamicResource SecondaryAccentForegroundBrush}">
-                        <Button.Background>
-                            <SolidColorBrush Color="{StaticResource LimePrimary800}" />
-                        </Button.Background>
-                        <materialDesign:PackIcon Kind="Add" />
-                    </Button>
-                </StackPanel>
-            </materialDesign:PopupBox>
+                Command="{Binding CreateCommand}">
+                <materialDesign:PackIcon Kind="Add" />
+            </Button>
         </Grid>
     </materialDesign:DialogHost>
 </UserControl>

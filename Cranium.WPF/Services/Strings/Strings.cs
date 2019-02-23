@@ -36,6 +36,7 @@ namespace Cranium.WPF.Services.Strings
         private string _required = "Verplicht";
         private string _more = "Meer";
         private string _file = "Bestand";
+        private string _selectAnAttachment = "Selecteer een bijlage";
 
         #endregion data
 
@@ -203,6 +204,12 @@ namespace Cranium.WPF.Services.Strings
         {
             get => _file;
             set => SetProperty(ref _file, value);
+        }
+
+        public string SelectAnAttachment
+        {
+            get => _selectAnAttachment;
+            set => SetProperty( ref  _selectAnAttachment, value);
         }
 
         #endregion data
