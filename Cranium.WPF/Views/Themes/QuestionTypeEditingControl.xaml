@@ -1,0 +1,104 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
+    xmlns:converters="clr-namespace:Cranium.WPF.Converters"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:models="clr-namespace:Cranium.WPF.Models"
+    xmlns:validationRules="clr-namespace:Cranium.WPF.ValidationRules">
+
+    <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+
+    <Style TargetType="{x:Type controls:QuestionTypeEditingControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:QuestionTypeEditingControl}">
+                    <Grid>
+                        <Button
+                            Margin="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Panel.ZIndex="5"
+                            Command="{TemplateBinding DeleteCommand}"
+                            CommandParameter="{Binding}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                            <Button.Background>
+                                <SolidColorBrush Color="{StaticResource RedPrimary800}" />
+                            </Button.Background>
+                            <materialDesign:PackIcon Kind="Delete" />
+                        </Button>
+
+                        <materialDesign:Card
+                            Width="200"
+                            Height="Auto"
+                            Margin="12,16,16,12">
+                            <Grid>
+
+                                <Rectangle
+                                    Height="30"
+                                    VerticalAlignment="Top"
+                                    Fill="{Binding Model.Category.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                <StackPanel Margin="16,24,16,16" VerticalAlignment="Center">
+
+                                    <TextBox
+                                        Margin="0,30,0,0"
+                                        materialDesign:HintAssist.Hint="{Binding Strings.Name, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                                        <TextBox.Text>
+                                            <Binding
+                                                Path="Model.Name"
+                                                RelativeSource="{RelativeSource TemplatedParent}"
+                                                UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </TextBox.Text>
+                                    </TextBox>
+
+                                    <ComboBox
+                                        MinWidth="72"
+                                        Margin="0,16,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource TemplatedParent}}"
+                                        ItemsSource="{TemplateBinding Categories}"
+                                        SelectedItem="{Binding Model.Category, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                        <ComboBox.Text>
+                                            <Binding
+                                                Mode="OneWay"
+                                                Path="Model.Category.Name"
+                                                RelativeSource="{RelativeSource TemplatedParent}"
+                                                UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </ComboBox.Text>
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type models:Category}">
+                                                <TextBlock Text="{Binding Name}" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+
+                                    <TextBox
+                                        Margin="0,16,0,0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Top"
+                                        materialDesign:HintAssist.Hint="{Binding Strings.Explanation, RelativeSource={RelativeSource TemplatedParent}}"
+                                        AcceptsReturn="True"
+                                        SpellCheck.IsEnabled="True"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                        Text="{Binding Model.Explanation, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                                        TextWrapping="Wrap"
+                                        VerticalScrollBarVisibility="Auto" />
+                                </StackPanel>
+                            </Grid>
+                        </materialDesign:Card>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

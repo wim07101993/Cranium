@@ -9,7 +9,6 @@
         True
     </system:Boolean>
 
-
     <converters:TestConverter x:Key="TestConverter" />
 
     <Style TargetType="{x:Type controls:CategoryEditingControl}">
@@ -26,7 +25,7 @@
                                     <controls:ColorPicker
                                         Width="200"
                                         Height="200"
-                                        SelectedColor="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                        SelectedColor="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
                                     <Button
                                         Margin="0,8,8,0"
                                         HorizontalAlignment="Center"
@@ -62,7 +61,7 @@
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                         <Button.Background>
-                                            <SolidColorBrush Color="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TestConverter}}" />
+                                            <SolidColorBrush Color="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TestConverter}}" />
                                         </Button.Background>
                                         <materialDesign:PackIcon Kind="ColorLens" />
                                     </Button>
@@ -92,7 +91,7 @@
                                         Margin="0,12,0,0"
                                         materialDesign:HintAssist.Hint="{Binding Strings.Name, RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                        Text="{Binding Category.Name, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Model.Name, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBox
                                         Margin="0,12,0,0"
                                         HorizontalAlignment="Stretch"
@@ -101,7 +100,7 @@
                                         AcceptsReturn="True"
                                         SpellCheck.IsEnabled="True"
                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                        Text="{Binding Category.Description, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Text="{Binding Model.Description, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         TextWrapping="Wrap"
                                         VerticalScrollBarVisibility="Auto" />
                                 </StackPanel>

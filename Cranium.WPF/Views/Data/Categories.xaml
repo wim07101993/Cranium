@@ -22,10 +22,10 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type viewModels:ICategoryViewModel}">
                     <controls:CategoryEditingControl
-                        Category="{Binding Model}"
                         ChangeImageCommand="{Binding ChangeImageCommand}"
                         DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:Categories}}}"
                         Image="{Binding Image}"
+                        Model="{Binding Model}"
                         Strings="{Binding Strings}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
