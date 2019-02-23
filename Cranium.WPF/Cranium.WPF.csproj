@@ -130,6 +130,8 @@
     <Compile Include="Converters\MinusConverter.cs" />
     <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
     <Compile Include="Converters\TestConverter.cs" />
+    <Compile Include="Events\CategoryChangedEvent.cs" />
+    <Compile Include="Events\QuestionTypeChanged.cs" />
     <Compile Include="Exceptions\DatabaseException.cs" />
     <Compile Include="Exceptions\EDatabaseMethod.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />

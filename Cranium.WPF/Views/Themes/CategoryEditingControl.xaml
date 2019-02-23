@@ -46,7 +46,7 @@
 
                                 <Image
                                     Grid.Row="0"
-                                    Source="{TemplateBinding Image}"
+                                    Source="{Binding Image, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
                                     Stretch="UniformToFill" />
 
                                 <StackPanel
@@ -61,7 +61,7 @@
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                         <Button.Background>
-                                            <SolidColorBrush Color="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TestConverter}}" />
+                                            <SolidColorBrush Color="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TestConverter}}" />
                                         </Button.Background>
                                         <materialDesign:PackIcon Kind="ColorLens" />
                                     </Button>

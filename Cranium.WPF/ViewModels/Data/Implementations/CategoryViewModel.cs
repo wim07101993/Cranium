@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Cranium.WPF.Events;
 using Cranium.WPF.Extensions;
 using Cranium.WPF.Models;
 using Cranium.WPF.Services.Mongo;
@@ -11,6 +12,7 @@ using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels.Implementations;
 using Microsoft.Win32;
 using Prism.Commands;
+using Prism.Events;
 
 namespace Cranium.WPF.ViewModels.Data.Implementations
 {
@@ -20,6 +22,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         private readonly IFileService _fileService;
         private readonly ICategoryService _categoryService;
+        private readonly IEventAggregator _eventAggregator;
 
         private Category _model;
         private BitmapImage _image;
@@ -30,12 +33,15 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
         #region CONSTRUCTOR
 
         public CategoryViewModel(
-            IStringsProvider stringsProvider, IFileService fileService, ICategoryService categoryService)
+            IStringsProvider stringsProvider, IFileService fileService, ICategoryService categoryService, IEventAggregator eventAggregator)
             : base(stringsProvider)
         {
             _fileService = fileService;
             _categoryService = categoryService;
+            _eventAggregator = eventAggregator;
+
             ChangeImageCommand = new DelegateCommand(async () => await ChangeImageAsync());
+
             GetImageFromDb();
         }
 
@@ -111,9 +117,16 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             if (string.IsNullOrWhiteSpace(dialog.FileName))
                 return;
 
-            if (Model.Image != default)
-                await _fileService.RemoveAsync(Model.Image);
-
+            try
+            {
+                if (Model.Image != default)
+                    await _fileService.RemoveAsync(Model.Image);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
+            
             var stream = File.OpenRead(dialog.FileName);
             var fileName = Path.GetFileName(dialog.FileName);
 
@@ -141,19 +154,24 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                     break;
                 case nameof(Model.Image):
                     await _categoryService.UpdatePropertyAsync(item.Id, x => x.Image, item.Image);
+                    await GetImageFromDb();
                     UpdateColor(item);
                     break;
                 case nameof(Model.Name):
                     await _categoryService.UpdatePropertyAsync(item.Id, x => x.Name, item.Name);
                     break;
             }
+
+            _eventAggregator.GetEvent<CategoryChangedEvent>().Publish(item);
         }
 
         private void UpdateColor(Category category)
         {
-            if (category.Color.A == 255 && category.Color.R == 255 && category.Color.G == 255 &&
-                category.Color.B == 255 ||
-                category.Color.A == 255 && category.Color.R == 0 && category.Color.G == 0 && category.Color.B == 0 ||
+            if (category.Color.A == 0 ||
+                category.Color.A == 255 && category.Color.R == 255 &&
+                category.Color.G == 255 && category.Color.B == 255 ||
+                category.Color.A == 255 && category.Color.R == 0 &&
+                category.Color.G == 0 && category.Color.B == 0 ||
                 category.Color == default)
                 category.Color = new Color {BaseColor = Image?.GetAverageColorAsync().ToMediaColor() ?? default};
         }

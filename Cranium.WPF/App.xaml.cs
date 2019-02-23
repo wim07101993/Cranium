@@ -8,6 +8,7 @@ using Cranium.WPF.ViewModels.Data;
 using Cranium.WPF.ViewModels.Data.Implementations;
 using Cranium.WPF.ViewModels.Implementations;
 using Cranium.WPF.Views;
+using Prism.Events;
 using Unity;
 
 namespace Cranium.WPF
@@ -51,6 +52,7 @@ namespace Cranium.WPF
                 .RegisterType<IDataService<Question>, QuestionService>()
                 .RegisterType<IFileService, FileService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
+                .RegisterSingleton<IEventAggregator, EventAggregator>()
                 // view-models
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
                 .RegisterType<IDataViewModel, DataViewModel>()

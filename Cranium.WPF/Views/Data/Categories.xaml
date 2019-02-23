@@ -24,7 +24,7 @@
                     <controls:CategoryEditingControl
                         ChangeImageCommand="{Binding ChangeImageCommand}"
                         DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:Categories}}}"
-                        Image="{Binding Image}"
+                        Image="{Binding Image, UpdateSourceTrigger=PropertyChanged}"
                         Model="{Binding Model}"
                         Strings="{Binding Strings}" />
                 </DataTemplate>
