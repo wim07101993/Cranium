@@ -32,7 +32,6 @@
         </ItemsControl>
 
 
-
         <Button
             Margin="32"
             HorizontalAlignment="Right"

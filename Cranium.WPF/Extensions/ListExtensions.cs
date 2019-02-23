@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Media.Imaging;
 
@@ -32,6 +33,14 @@ namespace Cranium.WPF.Extensions
             foreach (var item in itemsToAdd)
                 list.Add(item);
             return list;
+        }
+
+        public static int FindFirstIndex<T>(this IList<T> list, Func<T, bool> predicate)
+        {
+            for (var i = 0; i < list.Count; i++)
+                if (predicate(list[i]))
+                    return i;
+            return -1;
         }
     }
 }
