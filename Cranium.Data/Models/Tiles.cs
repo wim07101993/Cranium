@@ -54,69 +54,63 @@ namespace Cranium.Data.Models
 
         public bool Remove(Tile tile) => _tiles.Remove(tile);
 
-        public IEnumerator<Tile> GetEnumerator()
-        {
-            throw new System.NotImplementedException();
-        }
+        public IEnumerator<Tile> GetEnumerator() => _tiles.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
 
-        #endregion METHODS
-
-
-        #region NESTED CLASSES
-
-        public struct TileEnumerator : IEnumerator<Tile>
+        public Tile GetNext(Tile tile)
         {
-            private readonly IList<Tile> _tiles;
-            private Tile _current;
+            if (tile.IsEnd)
+                return null;
 
-            private List<Tile> _splits;
+            return this.Single(x => x.Id == tile.NextTiles[0]);
+        }
 
-
-
-            internal TileEnumerator(IList<Tile> tiles)
+        public IEnumerable<Tile> GetNextUntilSplitOrConvergence(Tile tile)
+        {   
+            while (true)
             {
-                _tiles = tiles;
-                _current = null;
+                // if it is the last, there are no next
+                if (tile.IsEnd)
+                    yield break;
 
-                _splits = new List<Tile>();
-            }
+                tile = GetNext(tile);
 
+                if (tile.IsSplit || IsConvergent(tile))
+                    yield break;
 
-            public Tile Current => _current;
-
-            object IEnumerator.Current => Current;
-
-
-            public void Dispose()
-            {
-            }
-
-            public bool MoveNext()
-            {
-                if (_current == null)
-                {
-                    _current = _tiles.Single(x => x.IsStart);
-                    return true;
-                }
-
-                if (_current.IsEnd)
-                {
-                    _current = null;
-                    return false;
-                }
-
-                return true;
-            }
-
-            public void Reset()
-            {
-                throw new System.NotImplementedException();
+                yield return tile;
             }
         }
 
-        #endregion NESTED CLASSES
+        public Tile GetPrevious(Tile tile)
+        {
+            if (tile.IsStart)
+                return null;
+
+            return this.Single(t => t.NextTiles.Any(id => id == tile.Id));
+        }
+
+        public IEnumerable<Tile> GetPreviousUntilSplitOrConvergence(Tile tile)
+        {
+            while (true)
+            {
+                // if it is the start, there are no previous
+                if (tile.IsStart)
+                    yield break;
+
+                tile = GetPrevious(tile);
+
+                if (tile.IsSplit || IsConvergent(tile))
+                    yield break;
+
+                yield return tile;
+            }
+        }
+
+        private bool IsConvergent(Tile tile) => this.Any(t => !t.IsEnd && t.NextTiles.Count(id => id == tile.Id) > 1);
+
+        #endregion METHODS
     }
 }

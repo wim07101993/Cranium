@@ -9,9 +9,12 @@ namespace Cranium.Data.Models
         public Guid CategoryId { get; set; }
         public bool IsShortCut { get; set; }
 
-        public ICollection<Guid> NextTiles { get; set; }
+        public IList<Guid> NextTiles { get; set; }
 
-        public bool IsEnd { get; set; }
+        public bool IsEnd => NextTiles == null || NextTiles.Count == 0;
+
         public bool IsStart { get; set; }
+
+        public bool IsSplit => NextTiles?.Count > 1;
     }
 }
