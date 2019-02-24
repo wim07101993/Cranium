@@ -12,8 +12,6 @@ namespace Cranium.WPF.ViewModels
         ICommand DeleteCommand { get; }
         ICommand UpdateCollectionCommand { get; }
 
-        Task UpdateTask { get; }
-
 
         Task CreateAsync();
         Task DeleteAsync(T viewModel);

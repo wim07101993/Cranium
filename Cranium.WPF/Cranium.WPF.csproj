@@ -163,9 +163,13 @@
     <Compile Include="Services\Mongo\IQuestionService.cs" />
     <Compile Include="Services\Mongo\IQuestionTypeService.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="ViewModels\Data\IAnswersViewModel.cs" />
+    <Compile Include="ViewModels\Data\IAnswerViewModel.cs" />
     <Compile Include="ViewModels\Data\ICategoriesViewModel.cs" />
     <Compile Include="ViewModels\Data\ICategoryViewModel.cs" />
     <Compile Include="ViewModels\Data\IDataService.cs" />
+    <Compile Include="ViewModels\Data\Implementations\AnswersViewModel.cs" />
+    <Compile Include="ViewModels\Data\Implementations\AnswerViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\DataService.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionViewModel.cs" />
@@ -195,6 +199,9 @@
     <Compile Include="Views\Controls\HsvColor.cs" />
     <Compile Include="Views\Controls\QuestionEditingControl.cs" />
     <Compile Include="Views\Controls\QuestionTypeEditingControl.cs" />
+    <Compile Include="Views\Data\Answers.xaml.cs">
+      <DependentUpon>Answers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Data\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
@@ -214,6 +221,10 @@
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Data\Answers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

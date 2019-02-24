@@ -9,6 +9,9 @@ namespace Cranium.WPF.ViewModels.Data
         byte[] Attachment { get; }
         ICommand ChangeAttachmentCommand { get; }
 
+        IAnswersViewModel AnswersViewModel { get; }
+
+
         Task ChangeAttachmentAsync();
     }
 }

@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Cranium.WPF.Models;
+using Cranium.WPF.ViewModels.Data;
 
 namespace Cranium.WPF.Views.Controls
 {
@@ -24,6 +25,12 @@ namespace Cranium.WPF.Views.Controls
             typeof(IList<QuestionType>),
             typeof(QuestionEditingControl),
             new PropertyMetadata(default(IList<QuestionType>), OnCategoriesChanged));
+
+        public static readonly DependencyProperty AnswersViewModelProperty = DependencyProperty.Register(
+            nameof(AnswersViewModel),
+            typeof(IAnswersViewModel),
+            typeof(QuestionEditingControl),
+            new PropertyMetadata(default(IAnswersViewModel)));
 
         #endregion DEPENDENCY PROPERTIES
 
@@ -61,6 +68,12 @@ namespace Cranium.WPF.Views.Controls
         {
             get => (IList<QuestionType>) GetValue(QuestionTypesProperty);
             set => SetValue(QuestionTypesProperty, value);
+        }
+
+        public IAnswersViewModel AnswersViewModel
+        {
+            get => (IAnswersViewModel) GetValue(AnswersViewModelProperty);
+            set => SetValue(AnswersViewModelProperty, value);
         }
 
         #endregion PROPERTIES
@@ -102,19 +115,14 @@ namespace Cranium.WPF.Views.Controls
 
         private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (!(sender is QuestionType c))
+            if (!(sender is Question q))
                 return;
 
             switch (e.PropertyName)
             {
                 case null:
                 case nameof(Question.QuestionType):
-                    if (_updatingQuestionType || _comboBox == null)
-                        break;
-
-                    _updatingQuestionType = true;
-                    _comboBox.SelectedItem = QuestionTypes?.FirstOrDefault(x => x.Id == c.Id);
-                    _updatingQuestionType = false;
+                    SetSelectedQuestionType();
                     break;
             }
         }
@@ -124,11 +132,19 @@ namespace Cranium.WPF.Views.Controls
             if (!(d is QuestionEditingControl q))
                 return;
 
-            q._updatingQuestionType = true;
-            q._comboBox.SelectedItem = q.QuestionTypes?.FirstOrDefault(x => x.Id == q.Model.QuestionType.Id);
-            q._updatingQuestionType = false;
+            q.SetSelectedQuestionType();
         }
 
+        private void SetSelectedQuestionType()
+        {
+            if (_updatingQuestionType || _comboBox == null)
+                return;
+
+            _updatingQuestionType = true;
+            _comboBox.SelectedItem = QuestionTypes?.FirstOrDefault(x => x.Id == Model.QuestionType.Id);
+            _updatingQuestionType = false;
+        }
+        
         #endregion METHODS
     }
 }

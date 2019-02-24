@@ -8,12 +8,13 @@ using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels.Implementations;
 using Microsoft.Win32;
 using Prism.Commands;
+using Unity;
 
 namespace Cranium.WPF.ViewModels.Data.Implementations
 {
     public class QuestionViewModel : AViewModelBase, IQuestionViewModel
     {
-        #region FIELDS
+       #region FIELDS
 
         private readonly IFileService _fileService;
         private readonly IQuestionService _questionService;
@@ -26,12 +27,15 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         #region CONSTRUCTOR
 
-        public QuestionViewModel(IStringsProvider stringsProvider, IFileService fileService, IQuestionService questionService)
-            : base(stringsProvider)
+        public QuestionViewModel(IUnityContainer unityContainer)
+            : base(unityContainer.Resolve<IStringsProvider>())
         {
-            _fileService = fileService;
-            _questionService = questionService;
+            _fileService = unityContainer.Resolve<IFileService>();
+            _questionService = unityContainer.Resolve<IQuestionService>();
+            AnswersViewModel = unityContainer.Resolve<IAnswersViewModel>();
+
             ChangeAttachmentCommand = new DelegateCommand(async () => await ChangeAttachmentAsync());
+
             GetAttachmentFromDb();
         }
 
@@ -54,6 +58,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 SetProperty(ref _model, value);
 
                 GetAttachmentFromDb();
+                AnswersViewModel.Models = value.Answers;
 
                 if (value != null)
                     value.PropertyChanged += OnQuestionPropertyChanged;
@@ -67,6 +72,8 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
         }
 
         public ICommand ChangeAttachmentCommand { get; }
+
+        public IAnswersViewModel AnswersViewModel { get; }
 
         #endregion PROPERTIES
 

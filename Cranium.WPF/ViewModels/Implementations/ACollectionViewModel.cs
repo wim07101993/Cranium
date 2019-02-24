@@ -49,8 +49,6 @@ namespace Cranium.WPF.ViewModels.Implementations
         public ICommand DeleteCommand { get; }
         public ICommand UpdateCollectionCommand { get; }
 
-        public Task UpdateTask { get; protected set; }
-
         #endregion PROPERTIES
 
 
