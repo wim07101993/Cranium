@@ -16,6 +16,8 @@ namespace Cranium.WPF.Converters
                     return dw.ToSolidColorBrush();
                 case Color mc:
                     return mc.ToSolidColorBrush();
+                case Models.Color c:
+                    return new SolidColorBrush(c.BaseColor);
                 default:
                     return null;
             }
@@ -30,6 +32,8 @@ namespace Cranium.WPF.Converters
                 return brush.ToDrawingColor();
             if (targetType == typeof(Color))
                 return brush.ToMediaColor();
+            if (targetType == typeof(Models.Color))
+                return new Models.Color {BaseColor = brush.Color};
 
             return Activator.CreateInstance(targetType);
         }

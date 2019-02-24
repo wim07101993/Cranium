@@ -37,7 +37,8 @@
                                 <Rectangle
                                     Height="30"
                                     VerticalAlignment="Top"
-                                    Fill="{Binding Model.Category.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                    Fill="{Binding Model.Category.Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+
                                 <StackPanel Margin="16,24,16,16" VerticalAlignment="Center">
 
                                     <TextBox
