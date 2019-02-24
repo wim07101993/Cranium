@@ -16,12 +16,12 @@ namespace Cranium.WPF.Services.Mongo.Implementations
     /// An abstract class to preform the basic CRUD operations on a Mongo Database.
     /// </summary>
     /// <typeparam name="T">Type of the entities to preform the CRUD operations on</typeparam>
-    public abstract class AMongoDataService<T> : IDataService<T>
+    public abstract class AMongoModelService<T> : IModelService<T>
         where T : IWithId
     {
         #region CONSTRUCTORS
 
-        protected AMongoDataService(IMongoDataServiceSettings settings, string collectionName)
+        protected AMongoModelService(IMongoDataServiceSettings settings, string collectionName)
         {
             MongoCollection = new MongoClient(settings.ConnectionString)
                 .GetDatabase(settings.DatabaseName)
@@ -102,7 +102,7 @@ namespace Cranium.WPF.Services.Mongo.Implementations
         #region read
 
         /// <inheritdoc />
-        public virtual async Task<IEnumerable<T>> GetAsync(
+        public virtual async Task<IList<T>> GetAsync(
             IEnumerable<Expression<Func<T, object>>> propertiesToInclude = null)
             => await MongoCollection
                 .Find(FilterDefinition<T>.Empty)

@@ -11,7 +11,7 @@ namespace Cranium.WPF.Services.Mongo
     /// Interface that describes a class that provides basic CRUD operations for a database.
     /// </summary>
     /// <typeparam name="T">Type of the item to preform the CRUD operation on.</typeparam>
-    public interface IDataService<T>
+    public interface IModelService<T>
         where T : IWithId
     {
         /// <summary>
@@ -57,7 +57,7 @@ namespace Cranium.WPF.Services.Mongo
         /// The properties to include in the query (if it is null, all properties are passed).
         /// </param>
         /// <returns>All <see cref="T"/>s in the database</returns>
-        Task<IEnumerable<T>> GetAsync(IEnumerable<Expression<Func<T, object>>> propertiesToInclude = null);
+        Task<IList<T>> GetAsync(IEnumerable<Expression<Func<T, object>>> propertiesToInclude = null);
 
 
         /// <summary>

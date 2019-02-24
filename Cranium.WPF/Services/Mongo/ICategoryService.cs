@@ -2,7 +2,7 @@
 
 namespace Cranium.WPF.Services.Mongo
 {
-    public interface ICategoryService : IDataService<Category>
+    public interface ICategoryService : IModelService<Category>
     {
     }
 }

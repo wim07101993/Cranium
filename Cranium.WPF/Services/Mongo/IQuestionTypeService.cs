@@ -2,7 +2,7 @@
 
 namespace Cranium.WPF.Services.Mongo
 {
-    public interface IQuestionTypeService : IDataService<QuestionType>
+    public interface IQuestionTypeService : IModelService<QuestionType>
     {
     }
 }

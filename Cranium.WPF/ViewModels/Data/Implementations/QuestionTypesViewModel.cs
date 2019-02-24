@@ -10,7 +10,7 @@ using Unity;
 
 namespace Cranium.WPF.ViewModels.Data.Implementations
 {
-    public class QuestionTypesViewModel : ACollectionViewModel<QuestionType, IQuestionTypeViewModel>, IQuestionTypesViewModel
+    public sealed class QuestionTypesViewModel : ACollectionViewModel<QuestionType, IQuestionTypeViewModel>, IQuestionTypesViewModel
     {
         private readonly ICategoryService _categoryService;
 
@@ -20,7 +20,9 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             _categoryService = unityContainer.Resolve<ICategoryService>();
             unityContainer.Resolve<IEventAggregator>()
                 .GetEvent<CategoryChangedEvent>()
-                .Subscribe(async x => await UpdateCategoryAsync(x));
+                .Subscribe(UpdateCategory);
+
+            UpdateCollectionAsync();
         }
 
 
@@ -29,16 +31,19 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         public override async Task UpdateCollectionAsync()
         {
-            await base.UpdateCollectionAsync();
-
             var categories = await _categoryService.GetAsync();
             Categories.Clear();
             Categories.Add(categories);
+
+            await base.UpdateCollectionAsync();
         }
 
-        private async Task UpdateCategoryAsync(Category category)
+        private void UpdateCategory(Category category)
         {
             var i = Categories.FindFirstIndex(x => category.Id == x.Id);
+            if (i < 0)
+                return;
+
             Categories[i].Color = category.Color;
             Categories[i].Description = category.Description;
             Categories[i].Image = category.Image;

@@ -1,14 +1,16 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Cranium.WPF.Events;
 using Cranium.WPF.Extensions;
 using Cranium.WPF.Models;
 using Cranium.WPF.Services.Mongo;
 using Cranium.WPF.ViewModels.Implementations;
+using Prism.Events;
 using Unity;
 
 namespace Cranium.WPF.ViewModels.Data.Implementations
 {
-    public class QuestionsViewModel : ACollectionViewModel<Question, IQuestionViewModel>, IQuestionsViewModel
+    public sealed class QuestionsViewModel : ACollectionViewModel<Question, IQuestionViewModel>, IQuestionsViewModel
     {
         private readonly IQuestionTypeService _questionTypeService;
 
@@ -16,6 +18,11 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
         public QuestionsViewModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             _questionTypeService = unityContainer.Resolve<IQuestionTypeService>();
+            unityContainer.Resolve<IEventAggregator>()
+                .GetEvent<QuestionTypeChangedEvent>()
+                .Subscribe(UpdateQuestionTypes);
+
+            UpdateCollectionAsync();
         }
 
 
@@ -29,6 +36,17 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             var questionTypes = await _questionTypeService.GetAsync();
             QuestionTypes.Clear();
             QuestionTypes.Add(questionTypes);
+        }
+
+        private void UpdateQuestionTypes(QuestionType questionType)
+        {
+            var i = QuestionTypes.FindFirstIndex(x => questionType.Id == x.Id);
+            if (i < 0)
+                return;
+
+            QuestionTypes[i].Category = questionType.Category;
+            QuestionTypes[i].Explanation = questionType.Explanation;
+            QuestionTypes[i].Name = questionType.Name;
         }
     }
 }

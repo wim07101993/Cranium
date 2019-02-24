@@ -31,5 +31,7 @@ namespace Cranium.WPF.Models
             get => _category;
             set => SetProperty( ref _category , value);
         }
+
+        public override string ToString() => Name;
     }
 }

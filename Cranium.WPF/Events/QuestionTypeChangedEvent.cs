@@ -3,7 +3,7 @@ using Prism.Events;
 
 namespace Cranium.WPF.Events
 {
-    public class QuestionTypeChanged : PubSubEvent<QuestionType>
+    public class QuestionTypeChangedEvent : PubSubEvent<QuestionType>
     {
     }
 }

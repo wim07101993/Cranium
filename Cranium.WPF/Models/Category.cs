@@ -64,7 +64,10 @@ namespace Cranium.WPF.Models
             }
         }
 
+
         private void OnColorPropertyChanged(object sender, PropertyChangedEventArgs e) 
             => RaisePropertyChanged(nameof(Color));
+
+        public override string ToString() => Name;
     }
 }

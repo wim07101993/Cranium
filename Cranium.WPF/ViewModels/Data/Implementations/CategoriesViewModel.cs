@@ -4,10 +4,11 @@ using Unity;
 
 namespace Cranium.WPF.ViewModels.Data.Implementations
 {
-    public class CategoriesViewModel : ACollectionViewModel<Category, ICategoryViewModel>, ICategoriesViewModel
+    public sealed class CategoriesViewModel : ACollectionViewModel<Category, ICategoryViewModel>, ICategoriesViewModel
     {
         public CategoriesViewModel(IUnityContainer unityContainer) : base(unityContainer)
         {
+            UpdateCollectionAsync();
         }
     }
 }

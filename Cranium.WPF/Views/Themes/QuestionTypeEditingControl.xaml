@@ -57,30 +57,13 @@
                                     </TextBox>
 
                                     <ComboBox
+                                        x:Name="PartComboBox"
                                         MinWidth="72"
                                         Margin="0,16,0,0"
                                         HorizontalAlignment="Stretch"
                                         materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource TemplatedParent}}"
                                         ItemsSource="{TemplateBinding Categories}"
-                                        SelectedItem="{Binding Model.Category, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                                        <ComboBox.Text>
-                                            <Binding
-                                                Mode="OneWay"
-                                                Path="Model.Category.Name"
-                                                RelativeSource="{RelativeSource TemplatedParent}"
-                                                UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.ValidationRules>
-                                                    <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                                </Binding.ValidationRules>
-                                            </Binding>
-                                        </ComboBox.Text>
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate DataType="{x:Type models:Category}">
-                                                <TextBlock Text="{Binding Name}" />
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
+                                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
 
                                     <TextBox
                                         Margin="0,16,0,0"

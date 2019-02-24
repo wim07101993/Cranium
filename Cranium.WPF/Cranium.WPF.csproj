@@ -131,7 +131,7 @@
     <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
     <Compile Include="Converters\TestConverter.cs" />
     <Compile Include="Events\CategoryChangedEvent.cs" />
-    <Compile Include="Events\QuestionTypeChanged.cs" />
+    <Compile Include="Events\QuestionTypeChangedEvent.cs" />
     <Compile Include="Exceptions\DatabaseException.cs" />
     <Compile Include="Exceptions\EDatabaseMethod.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
@@ -151,10 +151,10 @@
     <Compile Include="Models\Tile.cs" />
     <Compile Include="Models\Tiles.cs" />
     <Compile Include="Services\Mongo\ICategoryService.cs" />
-    <Compile Include="Services\Mongo\IDataService.cs" />
+    <Compile Include="Services\Mongo\IModelService.cs" />
     <Compile Include="Services\Mongo\IFileService.cs" />
     <Compile Include="Services\Mongo\IMongoDataServiceSettings.cs" />
-    <Compile Include="Services\Mongo\Implementations\AMongoDataService.cs" />
+    <Compile Include="Services\Mongo\Implementations\AMongoModelService.cs" />
     <Compile Include="Services\Mongo\Implementations\CategoryService.cs" />
     <Compile Include="Services\Mongo\Implementations\FileService.cs" />
     <Compile Include="Services\Mongo\Implementations\MongoDataServiceSettings.cs" />
@@ -165,6 +165,8 @@
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="ViewModels\Data\ICategoriesViewModel.cs" />
     <Compile Include="ViewModels\Data\ICategoryViewModel.cs" />
+    <Compile Include="ViewModels\Data\IDataService.cs" />
+    <Compile Include="ViewModels\Data\Implementations\DataService.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionTypeViewModel.cs" />
@@ -191,6 +193,7 @@
     <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
     <Compile Include="Views\Controls\ColorUtilities.cs" />
     <Compile Include="Views\Controls\HsvColor.cs" />
+    <Compile Include="Views\Controls\QuestionEditingControl.cs" />
     <Compile Include="Views\Controls\QuestionTypeEditingControl.cs" />
     <Compile Include="Views\Data\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
@@ -282,6 +285,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Themes\ColorSpectrumSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\QuestionEditingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

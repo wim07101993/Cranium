@@ -9,7 +9,6 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:Cranium.WPF.Models"
-    xmlns:validationRules="clr-namespace:Cranium.WPF.ValidationRules"
     xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels.Data"
     d:DataContext="{d:DesignInstance viewModels:IQuestionsViewModel}"
     mc:Ignorable="d">
@@ -107,96 +106,12 @@
                 </ItemsControl.ItemsPanel>
 
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type models:Question}">
-                        <Grid>
-                            <Button
-                                Margin="0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Top"
-                                Panel.ZIndex="5"
-                                Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                                CommandParameter="{Binding}"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
-                                <Button.Background>
-                                    <SolidColorBrush Color="{StaticResource RedPrimary800}" />
-                                </Button.Background>
-                                <materialDesign:PackIcon Kind="Delete" />
-                            </Button>
-
-                            <materialDesign:Card
-                                Height="Auto"
-                                MinWidth="200"
-                                Margin="12,16,16,12"
-                                Background="{DynamicResource MaterialDesignPaper}">
-                                <StackPanel>
-
-                                    <Border VerticalAlignment="Top" Background="{Binding QuestionType.Category.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-                                        <TextBlock
-                                            Margin="12"
-                                            HorizontalAlignment="Center"
-                                            Foreground="{DynamicResource MaterialDesignBackground}"
-                                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                                            Text="{Binding QuestionType.Name}" />
-                                    </Border>
-
-                                    <StackPanel Margin="16,0,16,16" VerticalAlignment="Center">
-                                        <TextBox
-                                            Margin="0,16,0,0"
-                                            materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Task, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                                            FontSize="16"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            TextWrapping="Wrap">
-                                            <TextBox.Text>
-                                                <Binding Path="Task" UpdateSourceTrigger="PropertyChanged">
-                                                    <Binding.ValidationRules>
-                                                        <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                                    </Binding.ValidationRules>
-                                                </Binding>
-                                            </TextBox.Text>
-                                        </TextBox>
-
-                                        <TextBox
-                                            Margin="0,16,0,0"
-                                            materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Tip, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            Text="{Binding Tip, UpdateSourceTrigger=PropertyChanged}"
-                                            TextWrapping="Wrap" />
-
-                                        <ComboBox
-                                            MinWidth="72"
-                                            Margin="0,16,0,0"
-                                            HorizontalAlignment="Stretch"
-                                            materialDesign:HintAssist.Hint="{Binding DataContext.Strings.Category, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                                            ItemsSource="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}, UpdateSourceTrigger=PropertyChanged}"
-                                            SelectedItem="{Binding QuestionType}"
-                                            Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                                            <ComboBox.Text>
-                                                <Binding
-                                                    Mode="TwoWay"
-                                                    Path="QuestionType"
-                                                    UpdateSourceTrigger="PropertyChanged">
-                                                    <Binding.ValidationRules>
-                                                        <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
-                                                    </Binding.ValidationRules>
-                                                </Binding>
-                                            </ComboBox.Text>
-                                            <ComboBox.ItemTemplate>
-                                                <DataTemplate DataType="{x:Type models:Category}">
-                                                    <TextBlock Text="{Binding Name}" />
-                                                </DataTemplate>
-                                            </ComboBox.ItemTemplate>
-                                        </ComboBox>
-
-                                        <Button
-                                            Margin="0,24,0,0"
-                                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                                            CommandParameter="{Binding Answers}"
-                                            Content="{Binding DataContext.Strings.Answers, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type data:Questions}}}"
-                                            Style="{StaticResource MaterialDesignFlatButton}" />
-                                    </StackPanel>
-                                </StackPanel>
-                            </materialDesign:Card>
-                        </Grid>
+                    <DataTemplate DataType="{x:Type viewModels:IQuestionViewModel}">
+                        <controls:QuestionEditingControl
+                            ChangeAttachmentCommand="{Binding ChangeAttachmentCommand}"
+                            Model="{Binding Model}"
+                            QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:Questions}}}"
+                            Strings="{Binding Strings}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

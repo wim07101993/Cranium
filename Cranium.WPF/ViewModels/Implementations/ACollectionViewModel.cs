@@ -27,15 +27,13 @@ namespace Cranium.WPF.ViewModels.Implementations
             : base(unityContainer.Resolve<IStringsProvider>())
         {
             _unityContainer = unityContainer;
-            DataService = unityContainer.Resolve<IDataService<TModel>>();
+            ModelService = unityContainer.Resolve<IModelService<TModel>>();
 
             ItemsSource = new ObservableCollection<TViewModel>();
 
             CreateCommand = new DelegateCommand(async () => await CreateAsync());
             DeleteCommand = new DelegateCommand<TViewModel>(async x => await DeleteAsync(x));
             UpdateCollectionCommand = new DelegateCommand(async () => await UpdateCollectionAsync());
-
-            UpdateCollectionAsync();
         }
 
         #endregion CONSTRUCTOR
@@ -43,7 +41,7 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         #region PROPERTIES
 
-        protected IDataService<TModel> DataService { get; }
+        protected IModelService<TModel> ModelService { get; }
 
         public ObservableCollection<TViewModel> ItemsSource { get; }
 
@@ -62,7 +60,7 @@ namespace Cranium.WPF.ViewModels.Implementations
         {
             try
             {
-                var newItems = await DataService.GetAsync();
+                var newItems = await ModelService.GetAsync();
 
                 ItemsSource.Clear();
                 foreach (var model in newItems)
@@ -74,9 +72,9 @@ namespace Cranium.WPF.ViewModels.Implementations
             }
         }
 
-        public async Task CreateAsync()
+        public virtual async Task CreateAsync()
         {
-            var model = await DataService.CreateAsync(ConstructElement());
+            var model = await ModelService.CreateAsync(ConstructElement());
             AddModelToCollection(model);
         }
 
@@ -84,7 +82,7 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         public async Task DeleteAsync(TViewModel viewModel)
         {
-            await DataService.RemoveAsync(viewModel.Model.Id);
+            await ModelService.RemoveAsync(viewModel.Model.Id);
             ItemsSource.Remove(viewModel);
         }
 

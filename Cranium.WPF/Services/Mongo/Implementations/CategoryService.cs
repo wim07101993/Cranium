@@ -2,7 +2,7 @@
 
 namespace Cranium.WPF.Services.Mongo.Implementations
 {
-    public class CategoryService : AMongoDataService<Category>, ICategoryService
+    public class CategoryService : AMongoModelService<Category>, ICategoryService
     {
         public CategoryService(IMongoDataServiceSettings settings) : base(settings,  "categories")
         {
