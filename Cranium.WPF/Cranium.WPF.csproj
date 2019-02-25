@@ -148,10 +148,12 @@
     <Compile Include="Models\EAttachmentType.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
-    <Compile Include="Models\Tile.cs" />
-    <Compile Include="Models\Tiles.cs" />
-    <Compile Include="Services\GameBoard\GameBoardService.cs" />
-    <Compile Include="Services\GameBoard\IGameBoardService.cs" />
+    <Compile Include="Services\Game\Game.cs" />
+    <Compile Include="Services\Game\Tile.cs" />
+    <Compile Include="Services\Game\GameBoard.cs" />
+    <Compile Include="Services\Game\GameService.cs" />
+    <Compile Include="Services\Game\IGameService.cs" />
+    <Compile Include="Services\Game\Player.cs" />
     <Compile Include="Services\Mongo\ICategoryService.cs" />
     <Compile Include="Services\Mongo\IModelService.cs" />
     <Compile Include="Services\Mongo\IFileService.cs" />
