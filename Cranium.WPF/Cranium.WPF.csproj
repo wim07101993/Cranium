@@ -150,6 +150,8 @@
     <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Models\Tile.cs" />
     <Compile Include="Models\Tiles.cs" />
+    <Compile Include="Services\GameBoard\GameBoardService.cs" />
+    <Compile Include="Services\GameBoard\IGameBoardService.cs" />
     <Compile Include="Services\Mongo\ICategoryService.cs" />
     <Compile Include="Services\Mongo\IModelService.cs" />
     <Compile Include="Services\Mongo\IFileService.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Services\Mongo\Implementations\QuestionTypeService.cs" />
     <Compile Include="Services\Mongo\IQuestionService.cs" />
     <Compile Include="Services\Mongo\IQuestionTypeService.cs" />
+    <Compile Include="Services\Mongo\Mocks\MockService.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="ViewModels\Data\IAnswersViewModel.cs" />
     <Compile Include="ViewModels\Data\IAnswerViewModel.cs" />
