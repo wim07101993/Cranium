@@ -12,6 +12,7 @@ namespace Cranium.WPF.Models
         private string _description;
         private ObjectId _image;
         private Color _color = new Color{ BaseColor = Colors.Transparent };
+        private bool _isSpecial;
 
 
         public Category()
@@ -19,7 +20,7 @@ namespace Cranium.WPF.Models
             Color.PropertyChanged += OnColorPropertyChanged;
         }
 
-        
+
         [BsonRequired]
         [BsonElement("name")]
         public string Name
@@ -62,6 +63,13 @@ namespace Cranium.WPF.Models
 
                 RaisePropertyChanged(nameof(Color));
             }
+        }
+
+        [BsonElement("isSpecial")]
+        public bool IsSpecial
+        {
+            get => _isSpecial;
+            set => SetProperty(ref _isSpecial, value);
         }
 
 

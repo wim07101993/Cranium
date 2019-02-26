@@ -134,6 +134,9 @@
     <Compile Include="Events\QuestionTypeChangedEvent.cs" />
     <Compile Include="Exceptions\DatabaseException.cs" />
     <Compile Include="Exceptions\EDatabaseMethod.cs" />
+    <Compile Include="Exceptions\GameException.cs" />
+    <Compile Include="Exceptions\NoCategoriesException.cs" />
+    <Compile Include="Exceptions\NoSpecialCategoryException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
