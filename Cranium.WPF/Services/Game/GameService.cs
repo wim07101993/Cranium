@@ -11,7 +11,7 @@ using Cranium.WPF.Services.Mongo.Implementations;
 
 namespace Cranium.WPF.Services.Game
 {
-    public class GameService : AMongoModelService<Game>
+    public class GameService : AMongoModelService<Game>, IGameService
     {
         #region FIELDS
 
@@ -46,13 +46,18 @@ namespace Cranium.WPF.Services.Game
 
         #region METHODS
 
-        public async Task CreateGameAsync(TimeSpan gameTime, IEnumerable<Player> players)
+        public async Task SaveGameAsync() => await CreateAsync(Game);
+
+        public async Task<Game> LoadGameAsync(ObjectId gameId) => await GetOneAsync(gameId);
+
+        public async Task<Game> CreateAsync(TimeSpan gameTime, IEnumerable<Player> players)
         {
             var cycleCount = gameTime.Seconds / timePerCycle.Seconds;
-            await CreateGameAsync(cycleCount, players);
+            await CreateAsync(cycleCount, players);
+            return Game;
         }
 
-        public async Task CreateGameAsync(int cycleCount, IEnumerable<Player> players)
+        public async Task<Game> CreateAsync(int cycleCount, IEnumerable<Player> players)
         {
             var categories = await _categoryService.GetAsync();
             var tiles = CreateTiles(cycleCount, categories);
@@ -61,9 +66,10 @@ namespace Cranium.WPF.Services.Game
             var questions = await _questionService.GetAsync();
 
             Game = new Game(board, players, questions);
+            return Game;
         }
 
-        public async Task MovePlayerTo(ObjectId playerId, Color color)
+        public async Task<Game> MovePlayerTo(ObjectId playerId, ObjectId categoryId)
         {
             Player player = null;
             foreach(var tile in Game.GameBoard)
@@ -79,17 +85,26 @@ namespace Cranium.WPF.Services.Game
                 }
                 else
                 {
-                    var tileColor = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Color);
-                    if (tileColor == color)
+                    var dbCtegoryId = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Id);
+                    if (dbCtegoryId == categoryId)
                     {
                         tile.Players.Add(player);
-                        return;
+                        return Game;
                     }
                 }
             }
+
+            if (player == null)
+                throw new PlayerNotFoundException();
+            throw new TileNotFoundException();
         }
 
-        public Task<Question> GetQuestionForAsync(ObjectId playerId)
+        public Task<bool> IsAtEnd(ObjectId playerId)
+        {
+            return Task.FromResult(Game.GameBoard.Last().Players.Any(x => x.Id == playerId));
+        }
+
+        public Task<Question> GetQuestionAsync(ObjectId playerId)
         {
             foreach (var tile in Game.GameBoard)
                 if (tile.Players.Any(x => x.Id == playerId))
@@ -102,11 +117,6 @@ namespace Cranium.WPF.Services.Game
         {
             var question = await _questionService.GetOneAsync(questionId);
             return question.Answers;
-        }
-
-        public Task<bool> IsAtEnd(ObjectId playerId)
-        {
-            return Task.FromResult(Game.GameBoard.Last().Players.Any(x => x.Id == playerId));
         }
 
         private IEnumerable<Tile> CreateTiles(int cycleCount, IList<Category> categories)
