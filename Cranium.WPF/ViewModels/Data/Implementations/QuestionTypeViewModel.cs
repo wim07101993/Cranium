@@ -62,7 +62,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         private void OnQuestionPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            OnQuestionPropertyChangedAsync(sender as QuestionType, e.PropertyName);
+            var _ = OnQuestionPropertyChangedAsync(sender as QuestionType, e.PropertyName);
         }
 
         private async Task OnQuestionPropertyChangedAsync(QuestionType item, string propertyName)

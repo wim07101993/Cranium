@@ -22,7 +22,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 .GetEvent<QuestionTypeChangedEvent>()
                 .Subscribe(UpdateQuestionTypes);
 
-            UpdateCollectionAsync();
+            var _ = UpdateCollectionAsync();
         }
 
 

@@ -42,7 +42,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
             ChangeImageCommand = new DelegateCommand(async () => await ChangeImageAsync());
 
-            GetImageFromDb();
+            var _ = GetImageFromDbAsync();
         }
 
         #endregion CONSTRUCTOR
@@ -63,7 +63,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
                 SetProperty(ref _model, value);
 
-                GetImageFromDb();
+                var _ = GetImageFromDbAsync();
 
                 if (value != null)
                     value.PropertyChanged += OnCategoryPropertyChanged;
@@ -83,7 +83,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         #region METHODS
 
-        public async Task GetImageFromDb()
+        public async Task GetImageFromDbAsync()
         {
             if (Model == null || Model.Image == default)
             {
@@ -102,6 +102,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             catch (Exception e)
             {
                 // TODO
+                throw e;
             }
         }
 
@@ -125,6 +126,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             catch (Exception e)
             {
                 // TODO
+                throw e;
             }
             
             var stream = File.OpenRead(dialog.FileName);
@@ -136,7 +138,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         private void OnCategoryPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            OnCategoryPropertyChangedAsync(sender as Category, e.PropertyName);
+            var _ = OnCategoryPropertyChangedAsync(sender as Category, e.PropertyName);
         }
 
         private async Task OnCategoryPropertyChangedAsync(Category item, string propertyName)
@@ -154,7 +156,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                     break;
                 case nameof(Model.Image):
                     await _categoryService.UpdatePropertyAsync(item.Id, x => x.Image, item.Image);
-                    await GetImageFromDb();
+                    await GetImageFromDbAsync();
                     UpdateColor(item);
                     break;
                 case nameof(Model.Name):

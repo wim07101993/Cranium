@@ -1,4 +1,4 @@
-﻿namespace Cranium.WPF.ViewModels
+﻿namespace Cranium.WPF.ViewModels.Game
 {
     public interface IGameViewModel : IViewModelBase
     {

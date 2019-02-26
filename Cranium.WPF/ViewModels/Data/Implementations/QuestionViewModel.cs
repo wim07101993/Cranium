@@ -36,7 +36,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
             ChangeAttachmentCommand = new DelegateCommand(async () => await ChangeAttachmentAsync());
 
-            GetAttachmentFromDb();
+            var _ = GetAttachmentFromDbAsync();
         }
 
         #endregion CONSTRUCTOR
@@ -57,7 +57,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
                 SetProperty(ref _model, value);
 
-                GetAttachmentFromDb();
+                var _ = GetAttachmentFromDbAsync();
                 AnswersViewModel.Models = value.Answers;
 
                 if (value != null)
@@ -80,7 +80,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         #region METHODS
 
-        public async Task GetAttachmentFromDb()
+        public async Task GetAttachmentFromDbAsync()
         {
             if (Model == null)
             {
@@ -121,7 +121,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         private void OnQuestionPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            OnQuestionPropertyChangedAsync(sender as Question, e.PropertyName);
+            var _ = OnQuestionPropertyChangedAsync(sender as Question, e.PropertyName);
         }
 
         private async Task OnQuestionPropertyChangedAsync(Question item, string propertyName)

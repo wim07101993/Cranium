@@ -1,5 +1,6 @@
 ﻿using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels.Data;
+using Cranium.WPF.ViewModels.Game;
 
 namespace Cranium.WPF.ViewModels.Implementations
 {

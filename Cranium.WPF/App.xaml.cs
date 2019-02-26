@@ -7,6 +7,8 @@ using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels;
 using Cranium.WPF.ViewModels.Data;
 using Cranium.WPF.ViewModels.Data.Implementations;
+using Cranium.WPF.ViewModels.Game;
+using Cranium.WPF.ViewModels.Game.Implementations;
 using Cranium.WPF.ViewModels.Implementations;
 using Cranium.WPF.Views;
 using Prism.Events;

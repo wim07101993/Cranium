@@ -22,7 +22,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 .GetEvent<CategoryChangedEvent>()
                 .Subscribe(UpdateCategory);
 
-            UpdateCollectionAsync();
+            var _ = UpdateCollectionAsync();
         }
 
 

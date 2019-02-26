@@ -8,7 +8,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
     {
         public CategoriesViewModel(IUnityContainer unityContainer) : base(unityContainer)
         {
-            UpdateCollectionAsync();
+            var _ = UpdateCollectionAsync();
         }
     }
 }

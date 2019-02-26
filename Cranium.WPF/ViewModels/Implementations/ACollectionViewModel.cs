@@ -67,6 +67,7 @@ namespace Cranium.WPF.ViewModels.Implementations
             catch (Exception e)
             {
                 // todo
+                throw e;
             }
         }
 

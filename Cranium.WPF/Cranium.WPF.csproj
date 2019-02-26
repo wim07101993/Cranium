@@ -145,6 +145,7 @@
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\MongoExtensions.cs" />
     <Compile Include="Extensions\SteamExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Bases\AWithId.cs" />
     <Compile Include="Models\Bases\IWithId.cs" />
@@ -184,13 +185,13 @@
     <Compile Include="ViewModels\Data\IQuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionViewModel.cs" />
     <Compile Include="ViewModels\ICollectionViewModel.cs" />
-    <Compile Include="ViewModels\IGameViewModel.cs" />
+    <Compile Include="ViewModels\Game\IGameViewModel.cs" />
     <Compile Include="ViewModels\IHamburgerMenuViewModel.cs" />
     <Compile Include="ViewModels\IModelContainer.cs" />
     <Compile Include="ViewModels\Data\Implementations\CategoriesViewModel.cs" />
     <Compile Include="ViewModels\Implementations\ACollectionViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\GameViewModel.cs" />
+    <Compile Include="ViewModels\Game\Implementations\GameViewModel.cs" />
     <Compile Include="ViewModels\Implementations\HamburgerMenuViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionsViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionTypesViewModel.cs" />
