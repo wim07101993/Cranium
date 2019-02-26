@@ -1,4 +1,6 @@
-﻿namespace Cranium.WPF.ViewModels
+﻿using Cranium.WPF.ViewModels.Data;
+
+namespace Cranium.WPF.ViewModels
 {
     public interface IMainWindowViewModel : IViewModelBase
     {

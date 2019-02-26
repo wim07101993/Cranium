@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Cranium.WPF.Models;
+using Cranium.WPF.Services.Game;
 using Cranium.WPF.Services.Mongo;
 using Cranium.WPF.Services.Mongo.Implementations;
 using Cranium.WPF.Services.Strings;
@@ -43,7 +44,7 @@ namespace Cranium.WPF
         {
             UnityContainer
                 // services
-                .RegisterInstance<IMongoDataServiceSettings>(new MongoDataServiceSettings{ConnectionString = "mongodb://localhost:27017", DatabaseName = "cranium"})
+                .RegisterInstance<IMongoDataServiceSettings>(new MongoDataServiceSettings { ConnectionString = "mongodb://localhost:27017", DatabaseName = "cranium" })
                 .RegisterType<ICategoryService, CategoryService>()
                 .RegisterType<IModelService<Category>, CategoryService>()
                 .RegisterType<IQuestionTypeService, QuestionTypeService>()
@@ -53,6 +54,7 @@ namespace Cranium.WPF
                 .RegisterType<IFileService, FileService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 .RegisterSingleton<IEventAggregator, EventAggregator>()
+                .RegisterType<IGameService, GameService>()
                 // view-models
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
                 .RegisterType<IDataViewModel, DataViewModel>()

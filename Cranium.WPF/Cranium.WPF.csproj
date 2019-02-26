@@ -177,10 +177,8 @@
     <Compile Include="ViewModels\Data\IAnswerViewModel.cs" />
     <Compile Include="ViewModels\Data\ICategoriesViewModel.cs" />
     <Compile Include="ViewModels\Data\ICategoryViewModel.cs" />
-    <Compile Include="ViewModels\Data\IDataService.cs" />
     <Compile Include="ViewModels\Data\Implementations\AnswersViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\AnswerViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\DataService.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\Data\Implementations\QuestionViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionTypeViewModel.cs" />
@@ -273,7 +271,7 @@
     <Compile Include="Services\Strings\IStringsProvider.cs" />
     <Compile Include="Services\Strings\Strings.cs" />
     <Compile Include="Services\Strings\StringsProvider.cs" />
-    <Compile Include="ViewModels\IDataViewModel.cs" />
+    <Compile Include="ViewModels\Data\IDataViewModel.cs" />
     <Compile Include="ViewModels\IMainWindowViewModel.cs" />
     <Compile Include="ViewModels\Implementations\AViewModelBase.cs" />
     <Compile Include="ViewModels\Data\Implementations\DataViewModel.cs" />

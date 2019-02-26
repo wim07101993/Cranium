@@ -1,4 +1,5 @@
 ﻿using Cranium.WPF.Services.Strings;
+using Cranium.WPF.ViewModels.Data;
 
 namespace Cranium.WPF.ViewModels.Implementations
 {

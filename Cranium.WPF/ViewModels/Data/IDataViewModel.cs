@@ -1,6 +1,4 @@
-﻿using Cranium.WPF.ViewModels.Data;
-
-namespace Cranium.WPF.ViewModels
+﻿namespace Cranium.WPF.ViewModels.Data
 {
     public interface IDataViewModel : IViewModelBase
     {
