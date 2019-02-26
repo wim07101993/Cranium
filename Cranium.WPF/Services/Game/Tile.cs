@@ -14,6 +14,6 @@ namespace Cranium.WPF.Services.Game
 
         public ObjectId CategoryId { get; }
 
-        public ICollection<Player> Players { get; } = new List<Player>();
+        public IList<Player> Players { get; } = new List<Player>();
     }
 }

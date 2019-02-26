@@ -1,38 +1,24 @@
-﻿using Cranium.WPF.Models.Bases;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Cranium.WPF.Models;
+using Cranium.WPF.Models.Bases;
 
 namespace Cranium.WPF.Services.Game
 {
-    public class Player : AWithId, IEnumerator<Tile>
+    public class Player : AWithId
     {
-        private readonly IGameService _gameService;
+        private string _name;
+        private Color _color;
 
 
-        public Player(IGameService gameService)
+        public string Name
         {
-            _gameService = gameService;
+            get => _name;
+            set => SetProperty(ref _name, value);
         }
 
-
-        public Tile Current { get; }
-
-        object IEnumerator.Current => Current;
-
-
-        public void Dispose()
+        public Color Color
         {
-            
-        }
-
-        public bool MoveNext()
-        {
-            return true;
-        }
-
-        public void Reset()
-        {
-            
+            get => _color;
+            set => SetProperty(ref _color, value);
         }
     }
 }

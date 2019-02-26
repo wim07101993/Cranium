@@ -138,6 +138,7 @@
     <Compile Include="Exceptions\NoCategoriesException.cs" />
     <Compile Include="Exceptions\NoSpecialCategoryException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Exceptions\PlayerNotFoundException.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />

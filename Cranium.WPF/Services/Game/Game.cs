@@ -1,4 +1,5 @@
-﻿using Cranium.WPF.Models.Bases;
+﻿using Cranium.WPF.Models;
+using Cranium.WPF.Models.Bases;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,16 +10,17 @@ namespace Cranium.WPF.Services.Game
     {
         #region FIELDS
 
-
         #endregion FIELDS
 
 
         #region CONSTRUCTOR
 
-        public Game(GameBoard gameBoard, IEnumerable<Player> players)
+        public Game(GameBoard gameBoard, IEnumerable<Player> players, IEnumerable<Question> questions)
         {
+            Questions = questions;
             GameBoard = gameBoard;
             Players = new ReadOnlyCollection<Player>(players.ToList());
+
         }
 
         #endregion CONSTRUCTOR
@@ -29,6 +31,8 @@ namespace Cranium.WPF.Services.Game
         public GameBoard GameBoard { get; }
 
         public IReadOnlyCollection<Player> Players { get; }
+
+        public IEnumerable<Question> Questions { get; }
 
         #endregion PROPERTIES
     }
