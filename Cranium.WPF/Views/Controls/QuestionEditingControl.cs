@@ -141,7 +141,7 @@ namespace Cranium.WPF.Views.Controls
                 return;
 
             _updatingQuestionType = true;
-            _comboBox.SelectedItem = QuestionTypes?.FirstOrDefault(x => x.Id == Model.QuestionType.Id);
+            _comboBox.SelectedItem = QuestionTypes?.FirstOrDefault(x => x.Id == Model?.QuestionType?.Id);
             _updatingQuestionType = false;
         }
         

@@ -81,15 +81,29 @@ namespace Cranium.WPF.ViewModels.Implementations
 
         public async Task DeleteAsync(TViewModel viewModel)
         {
-            await ModelService.RemoveAsync(viewModel.Model.Id);
-            ItemsSource.Remove(viewModel);
+            try
+            {
+                await ModelService.RemoveAsync(viewModel.Model.Id);
+                ItemsSource.Remove(viewModel);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
         }
 
         protected virtual void AddModelToCollection(TModel model)
         {
-            var viewModel = _unityContainer.Resolve<TViewModel>();
-            viewModel.Model = model;
-            ItemsSource.Add(viewModel);
+            try
+            {
+                var viewModel = _unityContainer.Resolve<TViewModel>();
+                viewModel.Model = model;
+                ItemsSource.Add(viewModel);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
         }
 
         #endregion METHODS

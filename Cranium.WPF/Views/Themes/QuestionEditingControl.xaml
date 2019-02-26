@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
     xmlns:converters="clr-namespace:Cranium.WPF.Converters"
+    xmlns:data="clr-namespace:Cranium.WPF.Views.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
@@ -70,9 +71,12 @@
                                     <Button
                                         Margin="0,24,0,0"
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                                        CommandParameter="{Binding AnswersViewModel, RelativeSource={RelativeSource TemplatedParent}}"
                                         Content="{Binding Strings.Answers, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Style="{StaticResource MaterialDesignFlatButton}" />
+                                        Style="{StaticResource MaterialDesignFlatButton}">
+                                        <Button.CommandParameter>
+                                            <data:Answers Margin="12" DataContext="{Binding AnswersViewModel, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        </Button.CommandParameter>
+                                    </Button>
                                 </StackPanel>
                             </StackPanel>
                         </materialDesign:Card>

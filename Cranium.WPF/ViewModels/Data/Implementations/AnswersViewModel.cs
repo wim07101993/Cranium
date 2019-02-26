@@ -91,7 +91,8 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                     return;
 
                 _models.Clear();
-                _models.Add(value);
+                if (value != null && value.Count > 0)
+                    _models.Add(value);
             }
         }
 

@@ -64,6 +64,8 @@ namespace Cranium.WPF
                 .RegisterType<IQuestionViewModel, QuestionViewModel>()
                 .RegisterType<IQuestionTypesViewModel, QuestionTypesViewModel>()
                 .RegisterType<IQuestionTypeViewModel, QuestionTypeViewModel>()
+                .RegisterType<IAnswersViewModel, AnswersViewModel>()
+                .RegisterType<IAnswerViewModel, AnswerViewModel>()
                 .RegisterType<ICategoriesViewModel, CategoriesViewModel>()
                 .RegisterType<ICategoryViewModel, CategoryViewModel>()
                 .RegisterType<IGameViewModel, GameViewModel>()

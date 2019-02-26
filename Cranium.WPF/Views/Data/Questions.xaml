@@ -11,11 +11,7 @@
     d:DataContext="{d:DesignInstance viewModels:IQuestionsViewModel}"
     mc:Ignorable="d">
 
-    <materialDesign:DialogHost>
-
-        <materialDesign:DialogHost.DialogContent>
-            <data:Answers DataContext="{Binding}" />
-        </materialDesign:DialogHost.DialogContent>
+    <materialDesign:DialogHost CloseOnClickAway="True">
 
         <Grid>
             <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
@@ -30,6 +26,7 @@
                         <controls:QuestionEditingControl
                             AnswersViewModel="{Binding AnswersViewModel}"
                             ChangeAttachmentCommand="{Binding ChangeAttachmentCommand}"
+                            DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:Questions}}}"
                             Model="{Binding Model}"
                             QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:Questions}}}"
                             Strings="{Binding Strings}" />
