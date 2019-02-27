@@ -30,7 +30,9 @@
             x:Name="ListBox"
             Grid.Row="0"
             Grid.Column="0"
-            Margin="0,0,6,12"
+            MaxWidth="400"
+            MaxHeight="300"
+            Margin="0,0,0,12"
             ItemsSource="{Binding ItemsSource}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type data:IAnswerViewModel}">
@@ -40,7 +42,10 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <CheckBox Grid.Column="0" IsChecked="{Binding Model.IsCorrect}" />
+                        <CheckBox
+                            Grid.Column="0"
+                            Margin="0,0,6,0"
+                            IsChecked="{Binding Model.IsCorrect}" />
                         <TextBlock Grid.Column="1" Text="{Binding Model.Value}" />
                     </Grid>
                 </DataTemplate>
@@ -50,8 +55,9 @@
         <controls:AnswerEditingControl
             Grid.Row="0"
             Grid.Column="1"
-            Margin="6,0,0,12"
-            Answer="{Binding ElementName=ListBox, Path=SelectedItem}"
+            MaxWidth="400"
+            Margin="12,0,0,12"
+            Answer="{Binding ElementName=ListBox, Path=SelectedItem.Model}"
             Visibility="{Binding ElementName=ListBox, Path=SelectedItem, Converter={StaticResource ObjectToVisibilityConverter}}" />
 
         <Button
