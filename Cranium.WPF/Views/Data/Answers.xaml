@@ -30,6 +30,7 @@
             x:Name="ListBox"
             Grid.Row="0"
             Grid.Column="0"
+            MinWidth="200"
             MaxWidth="400"
             MaxHeight="300"
             Margin="0,0,0,12"
@@ -55,6 +56,7 @@
         <controls:AnswerEditingControl
             Grid.Row="0"
             Grid.Column="1"
+            MinWidth="200"
             MaxWidth="400"
             Margin="12,0,0,12"
             Answer="{Binding ElementName=ListBox, Path=SelectedItem.Model}"

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -8,6 +9,7 @@ using Cranium.WPF.Extensions;
 using Cranium.WPF.Models;
 using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels.Implementations;
+using MongoDB.Bson;
 using Prism.Commands;
 using Shared.Extensions;
 using Unity;
@@ -50,6 +52,27 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
         public ICommand DeleteCommand { get; }
         public ICommand UpdateCollectionCommand { get; }
 
+        public ObservableCollection<Answer> Models
+        {
+            get => _models;
+            set
+            {
+                if (Equals(_models, value))
+                    return;
+
+                foreach (var answer in _models)
+                    answer.PropertyChanged -= OnAnswerPropertyChanged;
+                _models.Clear();
+
+                if (value != null && value.Count > 0)
+                {
+                    _models.Add(value);
+                    foreach (var answer in _models)
+                        answer.PropertyChanged += OnAnswerPropertyChanged;
+                }
+            }
+        }
+
         #endregion PROPERTIES
 
 
@@ -57,7 +80,12 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
         public Task CreateAsync()
         {
-            Models.Add(new Answer {Value = "Answer"});
+            Models.Add(new Answer
+            {
+                Id = ObjectId.GenerateNewId(),
+                Value = "Answer"
+            });
+
             return Task.CompletedTask;
         }
 
@@ -82,25 +110,17 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             return Task.CompletedTask;
         }
 
-        public ObservableCollection<Answer> Models
-        {
-            get => _models;
-            set
-            {
-                if (Equals(_models, value))
-                    return;
-
-                _models.Clear();
-                if (value != null && value.Count > 0)
-                    _models.Add(value);
-            }
-        }
-
-
         private void OnModelsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             var addedItems = e.NewItems?.Cast<Answer>().ToList();
             var removedItems = e.OldItems?.Cast<Answer>().ToList();
+
+            if (addedItems != null)
+                foreach (var addedItem in addedItems)
+                    addedItem.PropertyChanged += OnAnswerPropertyChanged;
+            if (removedItems != null)
+                foreach (var removedItem in removedItems)
+                    removedItem.PropertyChanged -= OnAnswerPropertyChanged;
 
             switch (e.Action)
             {
@@ -147,8 +167,20 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            AnyAnswerChanged?.Invoke(this, EventArgs.Empty);
         }
 
+        private void OnAnswerPropertyChanged(object sender, PropertyChangedEventArgs e)
+            => AnyAnswerChanged?.Invoke(this, EventArgs.Empty);
+
         #endregion METHODS
+
+
+        #region EVENTS
+
+        public event EventHandler AnyAnswerChanged;
+
+        #endregion EVENTS
     }
 }

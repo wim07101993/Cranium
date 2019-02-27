@@ -1,20 +1,26 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Cranium.WPF.Extensions;
 using Cranium.WPF.Models;
 using Cranium.WPF.Services.Mongo;
 using Cranium.WPF.Services.Strings;
 using Cranium.WPF.ViewModels.Implementations;
 using Microsoft.Win32;
 using Prism.Commands;
+using Shared.Extensions;
 using Unity;
 
 namespace Cranium.WPF.ViewModels.Data.Implementations
 {
     public class QuestionViewModel : AViewModelBase, IQuestionViewModel
     {
-       #region FIELDS
+        #region FIELDS
 
         private readonly IFileService _fileService;
         private readonly IQuestionService _questionService;
@@ -37,6 +43,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             ChangeAttachmentCommand = new DelegateCommand(async () => await ChangeAttachmentAsync());
 
             var _ = GetAttachmentFromDbAsync();
+            AnswersViewModel.AnyAnswerChanged += OnAnyAnswerChanged;
         }
 
         #endregion CONSTRUCTOR
@@ -58,10 +65,18 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 SetProperty(ref _model, value);
 
                 var _ = GetAttachmentFromDbAsync();
-                AnswersViewModel.Models = value.Answers;
+                
+                
+                if (value == null)
+                    AnswersViewModel.Models = null;
+                else
+                {
+                    if (value.Answers == null)
+                        value.Answers = new ObservableCollection<Answer>();
 
-                if (value != null)
+                    AnswersViewModel.Models = value.Answers;
                     value.PropertyChanged += OnQuestionPropertyChanged;
+                }
             }
         }
 
@@ -123,6 +138,11 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
         {
             var _ = OnQuestionPropertyChangedAsync(sender as Question, e.PropertyName);
         }
+        
+        private void OnAnyAnswerChanged(object sender, EventArgs e)
+        {
+            var _ = OnQuestionPropertyChangedAsync(Model, nameof(Question.Answers));
+        }
 
         private async Task OnQuestionPropertyChangedAsync(Question item, string propertyName)
         {
@@ -138,13 +158,12 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                     await _questionService.UpdatePropertyAsync(item.Id, x => x.QuestionType, item.QuestionType);
                     break;
                 case nameof(Question.Answers):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Answers, item.Answers);
+                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Answers, AnswersViewModel.Models);
                     break;
                 case nameof(Question.Tip):
                     await _questionService.UpdatePropertyAsync(item.Id, x => x.Tip, item.Tip);
                     break;
             }
-
         }
 
         #endregion METHODS
