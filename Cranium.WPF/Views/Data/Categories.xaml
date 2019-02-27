@@ -11,25 +11,28 @@
     d:DataContext="{d:DesignInstance viewModels:ICategoriesViewModel}"
     mc:Ignorable="d">
 
-    <Grid>
-        <ItemsControl ItemsSource="{Binding ItemsSource}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type viewModels:ICategoryViewModel}">
-                    <controls:CategoryEditingControl
-                        ChangeImageCommand="{Binding ChangeImageCommand}"
-                        DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:Categories}}}"
-                        Image="{Binding Image, UpdateSourceTrigger=PropertyChanged}"
-                        Model="{Binding Model}"
-                        Strings="{Binding Strings}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+    <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding ItemsSource}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type viewModels:ICategoryViewModel}">
+                        <controls:CategoryEditingControl
+                            ChangeImageCommand="{Binding ChangeImageCommand}"
+                            DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:Categories}}}"
+                            Image="{Binding Image, UpdateSourceTrigger=PropertyChanged}"
+                            Model="{Binding Model}"
+                            Strings="{Binding Strings}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
 
 
         <Button

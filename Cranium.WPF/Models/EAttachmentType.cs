@@ -2,8 +2,9 @@
 {
     public enum EAttachmentType
     {
-        Image,
-        Music,
-        Video
+        None = 0,
+        Image = 1,
+        Music = 2,
+        Video = 3
     }
 }

@@ -112,7 +112,7 @@ namespace Cranium.WPF.Views.Controls
                 return;
 
             q._updatingCategory = true;
-            q._comboBox.SelectedItem = q.Categories?.FirstOrDefault(x => x.Id == q.Model.Category.Id);
+            q._comboBox.SelectedItem = q.Categories?.FirstOrDefault(x => x.Id == q.Model?.Category?.Id);
             q._updatingCategory = false;
         }
 

@@ -163,6 +163,10 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 case nameof(Question.Tip):
                     await _questionService.UpdatePropertyAsync(item.Id, x => x.Tip, item.Tip);
                     break;
+                case nameof(Question.Attachment):
+                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Attachment, item.Attachment);
+                    await _questionService.UpdatePropertyAsync(item.Id, x => x.AttachmentType, item.AttachmentType);
+                    break;
             }
         }
 

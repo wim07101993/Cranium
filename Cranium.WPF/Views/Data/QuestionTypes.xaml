@@ -12,24 +12,25 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type viewModels:IQuestionTypeViewModel}">
-                    <controls:QuestionTypeEditingControl
-                        Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:QuestionTypes}}}"
-                        DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:QuestionTypes}}}"
-                        Model="{Binding Model}"
-                        Strings="{Binding Strings}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type viewModels:IQuestionTypeViewModel}">
+                        <controls:QuestionTypeEditingControl
+                            Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:QuestionTypes}}}"
+                            DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type data:QuestionTypes}}}"
+                            Model="{Binding Model}"
+                            Strings="{Binding Strings}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
 
         <Button
             Margin="32"
