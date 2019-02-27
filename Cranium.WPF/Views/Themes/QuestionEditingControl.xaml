@@ -70,6 +70,12 @@
 
                                     <Button
                                         Margin="0,24,0,0"
+                                        HorizontalAlignment="Right"
+                                        Command="{TemplateBinding ChangeAttachmentCommand}"
+                                        Content="{Binding Strings.File, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                                    <Button
+                                        Margin="0,24,0,0"
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Content="{Binding Strings.Answers, RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource MaterialDesignFlatButton}">
