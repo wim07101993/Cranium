@@ -208,6 +208,7 @@
     <Compile Include="Views\Controls\HsvColor.cs" />
     <Compile Include="Views\Controls\QuestionEditingControl.cs" />
     <Compile Include="Views\Controls\QuestionTypeEditingControl.cs" />
+    <Compile Include="Views\Controls\Tile.cs" />
     <Compile Include="Views\Data\Answers.xaml.cs">
       <DependentUpon>Answers.xaml</DependentUpon>
     </Compile>
@@ -313,6 +314,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Themes\QuestionTypeEditingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Themes\Tile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

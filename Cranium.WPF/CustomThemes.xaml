@@ -6,5 +6,6 @@
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/CategoryEditingControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/QuestionTypeEditingControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/QuestionEditingControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/Tile.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
