@@ -18,6 +18,7 @@
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <ItemsControl
                             x:Name="PartPlayers"
+                            Margin="8"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             ItemsSource="{TemplateBinding Players}">
@@ -26,7 +27,7 @@
                                     <Ellipse
                                         Width="{Binding PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:Tile}}, Mode=OneWay}"
                                         Height="{Binding PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:Tile}}, Mode=OneWay}"
-                                        Margin="8"
+                                        Margin="{Binding PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:Tile}}, Mode=OneWay}"
                                         Fill="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         StrokeThickness="0" />
                                 </DataTemplate>

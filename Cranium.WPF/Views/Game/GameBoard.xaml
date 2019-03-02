@@ -11,21 +11,19 @@
     <ItemsControl ItemsSource="{Binding Tiles}">
         <ItemsControl.ItemTemplate>
             <DataTemplate DataType="{x:Type viewModels:ITileViewModel}">
-                <StackPanel>
-                    <game:Tile
-                        Width="260"
-                        Height="150"
-                        Margin="10"
-                        Category="{Binding Category}"
-                        CornerRadius="50"
-                        Players="{Binding Model.Players}" />
-                </StackPanel>
+                <game:Tile
+                    Width="180"
+                    Height="120"
+                    Margin="10"
+                    Category="{Binding Category}"
+                    CornerRadius="30"
+                    Players="{Binding Model.Players}" />
             </DataTemplate>
         </ItemsControl.ItemTemplate>
 
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <WrapPanel Orientation="Horizontal" />
+                <game:GameBoardPanel />
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
     </ItemsControl>

@@ -21,7 +21,8 @@ namespace Cranium.WPF.ViewModels.Game.Implementations
         #region CONSTRUCTOR
 
         public GameViewModel(
-            IStringsProvider stringsProvider, IHamburgerMenuViewModel hamburgerMenuViewModel, IGameBoardViewModel gameBoardViewModel, IGameService gameService)
+            IStringsProvider stringsProvider, IHamburgerMenuViewModel hamburgerMenuViewModel,
+            IGameBoardViewModel gameBoardViewModel, IGameService gameService)
             : base(stringsProvider)
         {
             _gameService = gameService;
@@ -34,24 +35,18 @@ namespace Cranium.WPF.ViewModels.Game.Implementations
 
         public async Task InitAsync()
         {
-            var players = new List<Player>()
+            var players = new List<Player>
             {
-                new Player
-                {
-                    Color = new Color {BaseColor = Colors.Red}
-                },
-                new Player
-                {
-                    Color = new Color {BaseColor = Colors.Blue}
-                },
-                new Player
-                {
-                    Color = new Color {BaseColor = Colors.Green}
-                },
-                new Player
-                {
-                    Color = new Color {BaseColor = Colors.Yellow}
-                }
+                new Player{Color = new Color {BaseColor = Colors.Red}},
+                new Player{Color = new Color {BaseColor = Colors.Blue}},
+                new Player{Color = new Color {BaseColor = Colors.Green}},
+                new Player{Color = new Color {BaseColor = Colors.Yellow}},
+//                new Player {Color = new Color {BaseColor = Colors.Purple}},
+//                new Player {Color = new Color {BaseColor = Colors.LightBlue}},
+//                new Player {Color = new Color {BaseColor = Colors.LightGreen}},
+//                new Player {Color = new Color {BaseColor = Colors.Pink}},
+//                new Player {Color = new Color {BaseColor = Colors.Orange}},
+//                new Player {Color = new Color {BaseColor = Colors.Violet}},
             };
 
             await _gameService.CreateAsync(5, players);
@@ -64,7 +59,7 @@ namespace Cranium.WPF.ViewModels.Game.Implementations
 
         public IHamburgerMenuViewModel HamburgerMenuViewModel { get; }
         public IGameBoardViewModel GameBoardViewModel { get; }
-        
+
         public Services.Game.Game Game => _gameService.Game;
 
         #endregion PROPERTIES

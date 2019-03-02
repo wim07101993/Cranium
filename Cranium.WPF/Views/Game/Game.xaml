@@ -29,7 +29,7 @@
             </DockPanel>
         </materialDesign:ColorZone>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
             <game:GameBoard
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
