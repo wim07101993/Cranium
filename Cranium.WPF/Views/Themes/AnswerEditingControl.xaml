@@ -2,12 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
+    xmlns:data="clr-namespace:Cranium.WPF.Views.Controls.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
-    <Style TargetType="{x:Type controls:AnswerEditingControl}">
+    <Style TargetType="{x:Type data:AnswerEditingControl}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:AnswerEditingControl}">
+                <ControlTemplate TargetType="{x:Type data:AnswerEditingControl}">
                     <StackPanel>
                         <TextBox
                             MaxWidth="{TemplateBinding MaxWidth}"

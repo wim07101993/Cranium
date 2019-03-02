@@ -3,7 +3,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Cranium.WPF.Models;
 
-namespace Cranium.WPF.Views.Controls
+namespace Cranium.WPF.Views.Controls.Data
 {
     public class CategoryEditingControl : AModelEditingControl<Category>
     {

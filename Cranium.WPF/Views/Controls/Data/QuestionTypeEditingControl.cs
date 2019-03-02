@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Cranium.WPF.Models;
 
-namespace Cranium.WPF.Views.Controls
+namespace Cranium.WPF.Views.Controls.Data
 {
     public class QuestionTypeEditingControl : AModelEditingControl<QuestionType>
     {

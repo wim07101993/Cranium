@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using Cranium.WPF.Models;
 using Cranium.WPF.ViewModels.Data;
 
-namespace Cranium.WPF.Views.Controls
+namespace Cranium.WPF.Views.Controls.Data
 {
     public class QuestionEditingControl : AModelEditingControl<Question>
     {

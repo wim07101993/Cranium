@@ -199,16 +199,16 @@
     <Compile Include="ViewModels\Data\IQuestionsViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionTypesViewModel.cs" />
     <Compile Include="ViewModels\ISettingsViewModel.cs" />
-    <Compile Include="Views\Controls\AnswerEditingControl.cs" />
+    <Compile Include="Views\Controls\Data\AnswerEditingControl.cs" />
     <Compile Include="Views\Controls\AModelEditingControl.cs" />
-    <Compile Include="Views\Controls\CategoryEditingControl.cs" />
+    <Compile Include="Views\Controls\Data\CategoryEditingControl.cs" />
     <Compile Include="Views\Controls\ColorPicker.cs" />
     <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
     <Compile Include="Views\Controls\ColorUtilities.cs" />
     <Compile Include="Views\Controls\HsvColor.cs" />
-    <Compile Include="Views\Controls\QuestionEditingControl.cs" />
-    <Compile Include="Views\Controls\QuestionTypeEditingControl.cs" />
-    <Compile Include="Views\Controls\Tile.cs" />
+    <Compile Include="Views\Controls\Data\QuestionEditingControl.cs" />
+    <Compile Include="Views\Controls\Data\QuestionTypeEditingControl.cs" />
+    <Compile Include="Views\Controls\Game\Tile.cs" />
     <Compile Include="Views\Data\Answers.xaml.cs">
       <DependentUpon>Answers.xaml</DependentUpon>
     </Compile>

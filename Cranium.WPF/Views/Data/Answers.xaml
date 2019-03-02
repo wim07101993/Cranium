@@ -2,7 +2,7 @@
     x:Class="Cranium.WPF.Views.Data.Answers"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
+    xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls.Data"
     xmlns:converters="clr-namespace:Cranium.WPF.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="clr-namespace:Cranium.WPF.ViewModels.Data"

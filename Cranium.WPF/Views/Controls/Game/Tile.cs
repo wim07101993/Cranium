@@ -1,11 +1,11 @@
-﻿using Cranium.WPF.Models;
-using Cranium.WPF.Services.Game;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Cranium.WPF.Models;
+using Cranium.WPF.Services.Game;
 
-namespace Cranium.WPF.Views.Controls
+namespace Cranium.WPF.Views.Controls.Game
 {
     public class Tile : Control
     {

@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
     xmlns:converters="clr-namespace:Cranium.WPF.Converters"
+    xmlns:data="clr-namespace:Cranium.WPF.Views.Controls.Data"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib" x:Key="True">
@@ -11,10 +12,10 @@
 
     <converters:TestConverter x:Key="TestConverter" />
 
-    <Style TargetType="{x:Type controls:CategoryEditingControl}">
+    <Style TargetType="{x:Type data:CategoryEditingControl}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:CategoryEditingControl}">
+                <ControlTemplate TargetType="{x:Type data:CategoryEditingControl}">
                     <materialDesign:Card
                         Width="200"
                         Height="Auto"

@@ -4,7 +4,7 @@ using System.Windows.Input;
 using Cranium.WPF.Models;
 using Cranium.WPF.Services.Strings;
 
-namespace Cranium.WPF.Views.Controls
+namespace Cranium.WPF.Views.Controls.Data
 {
     public class AnswerEditingControl : Control
     {
