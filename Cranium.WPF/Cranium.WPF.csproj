@@ -209,6 +209,7 @@
     <Compile Include="Views\Controls\ColorPicker.cs" />
     <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
     <Compile Include="Views\Controls\ColorUtilities.cs" />
+    <Compile Include="Views\Controls\Game\GameBoardPanel.cs" />
     <Compile Include="Views\Controls\HsvColor.cs" />
     <Compile Include="Views\Controls\Data\QuestionEditingControl.cs" />
     <Compile Include="Views\Controls\Data\QuestionTypeEditingControl.cs" />
