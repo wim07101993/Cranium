@@ -20,7 +20,6 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
     {
         #region FIELDS
 
-        private readonly IFileService _fileService;
         private readonly ICategoryService _categoryService;
         private readonly IEventAggregator _eventAggregator;
 
@@ -33,10 +32,9 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
         #region CONSTRUCTOR
 
         public CategoryViewModel(
-            IStringsProvider stringsProvider, IFileService fileService, ICategoryService categoryService, IEventAggregator eventAggregator)
+            IStringsProvider stringsProvider, ICategoryService categoryService, IEventAggregator eventAggregator)
             : base(stringsProvider)
         {
-            _fileService = fileService;
             _categoryService = categoryService;
             _eventAggregator = eventAggregator;
 
@@ -93,16 +91,11 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
 
             try
             {
-                using (var stream = new MemoryStream())
-                {
-                    await _fileService.GetOneAsync(_model.Image, stream);
-                    Image = stream.ToImage();
-                }
+                Image = await _categoryService.GetImageAsync(Model.Id);
             }
             catch (Exception e)
             {
                 // TODO
-                throw e;
             }
         }
 
@@ -118,22 +111,18 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             if (string.IsNullOrWhiteSpace(dialog.FileName))
                 return;
 
+            var stream = File.OpenRead(dialog.FileName);
+            var fileName = Path.GetFileName(dialog.FileName);
+
             try
             {
-                if (Model.Image != default)
-                    await _fileService.RemoveAsync(Model.Image);
+                var imgId = await _categoryService.UpdateImageAsync(Model.Id, stream, fileName);
+                Model.Image = imgId;
             }
             catch (Exception e)
             {
                 // TODO
-                throw e;
             }
-            
-            var stream = File.OpenRead(dialog.FileName);
-            var fileName = Path.GetFileName(dialog.FileName);
-
-            var imgId = await _fileService.CreateAsync(stream, fileName);
-            Model.Image = imgId;
         }
 
         private void OnCategoryPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -155,7 +144,6 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                     await _categoryService.UpdatePropertyAsync(item.Id, x => x.Description, item.Description);
                     break;
                 case nameof(Model.Image):
-                    await _categoryService.UpdatePropertyAsync(item.Id, x => x.Image, item.Image);
                     await GetImageFromDbAsync();
                     UpdateColor(item);
                     break;

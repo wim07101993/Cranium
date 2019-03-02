@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
+using Cranium.WPF.Extensions;
 using Cranium.WPF.Models;
 using Cranium.WPF.Services.Mongo;
 using Cranium.WPF.Services.Strings;
@@ -21,9 +23,9 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
     {
         #region FIELDS
 
-        private static readonly IReadOnlyList<string> ImageExtensions = new[] { ".bmp", ".jpg", ".gif", ".png" };
-        private static readonly IReadOnlyList<string> MusicExtensions = new[] { ".mp3", ".m4a", ".wma" };
-        private static readonly IReadOnlyList<string> VideoExtensions = new[] { ".mp4", ".wmv", ".webm" };
+        private static readonly IReadOnlyList<string> ImageExtensions = new[] {".bmp", ".jpg", ".gif", ".png"};
+        private static readonly IReadOnlyList<string> MusicExtensions = new[] {".mp3", ".m4a", ".wma"};
+        private static readonly IReadOnlyList<string> VideoExtensions = new[] {".mp4", ".wmv", ".webm"};
 
         private readonly IFileService _fileService;
         private readonly IQuestionService _questionService;
@@ -68,8 +70,8 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 SetProperty(ref _model, value);
 
                 var _ = GetAttachmentFromDbAsync();
-                
-                
+
+
                 if (value == null)
                     AnswersViewModel.Models = null;
                 else
@@ -86,8 +88,17 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
         public byte[] Attachment
         {
             get => _attachment;
-            private set => SetProperty(ref _attachment, value);
+            private set
+            {
+                SetProperty(ref _attachment, value);
+                RaisePropertyChanged(nameof(ImageSource));
+            }
         }
+
+        public ImageSource ImageSource
+            => Model?.AttachmentType == EAttachmentType.Image 
+            ? Attachment?.ToImage() 
+            : null;
 
         public ICommand ChangeAttachmentCommand { get; }
 
@@ -106,12 +117,13 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                 return;
             }
 
-            using (var stream = new MemoryStream())
+            try
             {
-                await _fileService.GetOneAsync(_model.Attachment, stream);
-
-                Attachment = new byte[stream.Length];
-                stream.Read(Attachment, 0, Attachment.Length);
+                Attachment = await _questionService.GetAttachmentAsync(Model.Id);
+            }
+            catch (Exception e)
+            {
+                // TODO
             }
         }
 
@@ -130,36 +142,34 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             if (string.IsNullOrWhiteSpace(dialog.FileName))
                 return;
 
+            var stream = File.OpenRead(dialog.FileName);
+            var fileName = Path.GetFileName(dialog.FileName);
+
+            var attachmentType = EAttachmentType.None;
+            var extension = Path.GetExtension(fileName);
+            if (ImageExtensions.Any(x => x == extension))
+                attachmentType = EAttachmentType.Image;
+            else if (MusicExtensions.Any(x => x == extension))
+                attachmentType = EAttachmentType.Music;
+            else if (VideoExtensions.Any(x => x == extension))
+                attachmentType = EAttachmentType.Video;
+
             try
             {
-                if (Model.Attachment != default)
-                    await _fileService.RemoveAsync(Model.Attachment);
+                Model.Attachment = await _questionService.UpdateAttachment(Model.Id, stream, fileName, attachmentType);
+                Model.AttachmentType = attachmentType;
             }
             catch (Exception e)
             {
                 // TODO
             }
-
-            var stream = File.OpenRead(dialog.FileName);
-            var fileName = Path.GetFileName(dialog.FileName);
-
-            var fileId = await _fileService.CreateAsync(stream, fileName);
-            Model.Attachment = fileId;
-
-            var extension = Path.GetExtension(fileName);
-            if (ImageExtensions.Any(x => x == extension))
-                Model.AttachmentType = EAttachmentType.Image;
-            else if (MusicExtensions.Any(x => x == extension))
-                Model.AttachmentType = EAttachmentType.Music;
-            else if (VideoExtensions.Any(x => x == extension))
-                Model.AttachmentType = EAttachmentType.Video;
         }
 
         private void OnQuestionPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var _ = OnQuestionPropertyChangedAsync(sender as Question, e.PropertyName);
         }
-        
+
         private void OnAnyAnswerChanged(object sender, EventArgs e)
         {
             var _ = OnQuestionPropertyChangedAsync(Model, nameof(Question.Answers));
@@ -185,13 +195,12 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
                     await _questionService.UpdatePropertyAsync(item.Id, x => x.Tip, item.Tip);
                     break;
                 case nameof(Question.Attachment):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Attachment, item.Attachment);
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.AttachmentType, item.AttachmentType);
+                    await GetAttachmentFromDbAsync();
                     break;
             }
         }
 
-        private string GenerateImageFilter()
+        private static string GenerateImageFilter()
         {
             var imageExtensions = new StringBuilder("Image files (");
 
@@ -206,7 +215,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             return imageExtensions.ToString();
         }
 
-        private string GenerateMusicFilter()
+        private static string GenerateMusicFilter()
         {
             var musicExtensions = new StringBuilder("Music files (");
 
@@ -221,7 +230,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             return musicExtensions.ToString();
         }
 
-        private string GenerateVideoFilter()
+        private static string GenerateVideoFilter()
         {
             var videoExtensions = new StringBuilder("Video files (");
 

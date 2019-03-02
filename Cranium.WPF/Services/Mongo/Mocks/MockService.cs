@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Cranium.WPF.Models;
 using MongoDB.Bson;
 using Shared.Extensions;
@@ -93,6 +95,16 @@ namespace Cranium.WPF.Services.Mongo.Mocks
         public Task UpdatePropertyAsync<TValue>(ObjectId id, Expression<Func<Category, TValue>> propertyToUpdate, TValue value)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<BitmapImage> GetImageAsync(ObjectId categoryId)
+        {
+            return null;
+        }
+
+        public Task<ObjectId> UpdateImageAsync(ObjectId categoryId, Stream fileStream, string fileName)
+        {
+            return Task.FromResult(ObjectId.GenerateNewId());
         }
     }
 }

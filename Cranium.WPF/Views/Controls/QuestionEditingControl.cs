@@ -5,6 +5,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Cranium.WPF.Models;
 using Cranium.WPF.ViewModels.Data;
 
@@ -31,6 +33,12 @@ namespace Cranium.WPF.Views.Controls
             typeof(IAnswersViewModel),
             typeof(QuestionEditingControl),
             new PropertyMetadata(default(IAnswersViewModel)));
+
+        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(
+            nameof(ImageSource), 
+            typeof(BitmapImage), 
+            typeof(QuestionEditingControl), 
+            new PropertyMetadata(default(ImageSource)));
 
         #endregion DEPENDENCY PROPERTIES
 
@@ -74,6 +82,12 @@ namespace Cranium.WPF.Views.Controls
         {
             get => (IAnswersViewModel) GetValue(AnswersViewModelProperty);
             set => SetValue(AnswersViewModelProperty, value);
+        }
+
+        public BitmapImage ImageSource
+        {
+            get => (BitmapImage)GetValue(ImageSourceProperty);
+            set => SetValue(ImageSourceProperty, value);
         }
 
         #endregion PROPERTIES

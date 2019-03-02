@@ -9,6 +9,7 @@ namespace Cranium.WPF.Services.Mongo
         Task<ObjectId> CreateAsync(Stream fileToAdd, string title);
 
         Task GetOneAsync(ObjectId id, Stream outStream);
+        Task<byte[]> GetOneAsync(ObjectId id);
 
         Task RemoveAsync(ObjectId fileId);
     }

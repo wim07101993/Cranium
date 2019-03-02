@@ -7,6 +7,8 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+    <converters:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter" />
+
 
     <Style TargetType="{x:Type controls:QuestionEditingControl}">
         <Setter Property="Template">
@@ -68,14 +70,26 @@
                                         ItemsSource="{TemplateBinding QuestionTypes}"
                                         Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
 
-                                    <Button
-                                        Margin="0,24,0,0"
+                                    <StackPanel
+                                        Margin="0,16,0,0"
                                         HorizontalAlignment="Right"
-                                        Command="{TemplateBinding ChangeAttachmentCommand}"
-                                        Content="{Binding Strings.File, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        Orientation="Horizontal">
+                                        <Image
+                                            Width="50"
+                                            Height="Auto"
+                                            VerticalAlignment="Center"
+                                            Source="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                                            Stretch="Uniform"
+                                            Visibility="{Binding ImageSource, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                                        <Button
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Command="{TemplateBinding ChangeAttachmentCommand}"
+                                            Content="{Binding Strings.File, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </StackPanel>
 
                                     <Button
-                                        Margin="0,24,0,0"
+                                        Margin="0,16,0,0"
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Content="{Binding Strings.Answers, RelativeSource={RelativeSource TemplatedParent}}"
                                         Style="{StaticResource MaterialDesignFlatButton}">

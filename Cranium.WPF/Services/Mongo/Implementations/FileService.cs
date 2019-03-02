@@ -33,6 +33,9 @@ namespace Cranium.WPF.Services.Mongo.Implementations
         public async Task GetOneAsync(ObjectId id, Stream outStream)
             => await _mediaBucket.DownloadToStreamAsync(id, outStream);
 
+        public async Task<byte[]> GetOneAsync(ObjectId id) 
+            => await _mediaBucket.DownloadAsBytesAsync(id);
+
         public async Task RemoveAsync(ObjectId objectId)
             => await _mediaBucket.DeleteAsync(objectId);
     }
