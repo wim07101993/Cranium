@@ -26,6 +26,7 @@
                                     <Ellipse
                                         Width="{Binding PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:Tile}}, Mode=OneWay}"
                                         Height="{Binding PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:Tile}}, Mode=OneWay}"
+                                        Margin="8"
                                         Fill="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         StrokeThickness="0" />
                                 </DataTemplate>

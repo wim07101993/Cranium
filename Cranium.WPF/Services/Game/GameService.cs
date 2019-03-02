@@ -96,8 +96,8 @@ namespace Cranium.WPF.Services.Game
                 }
                 else
                 {
-                    var dbCtegoryId = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Id);
-                    if (dbCtegoryId == categoryId)
+                    var dbCategoryId = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Id);
+                    if (dbCategoryId == categoryId)
                     {
                         tile.Players.Add(player);
                         return Game;
@@ -141,7 +141,7 @@ namespace Cranium.WPF.Services.Game
 
             categories.RemoveWhere(x => x.IsSpecial);
 
-            for (int i = 0; i < cycleCount; i++)
+            for (var i = 0; i < cycleCount; i++)
             {
                 yield return new Tile(ObjectId.GenerateNewId(),  specialCategory.Id);
 

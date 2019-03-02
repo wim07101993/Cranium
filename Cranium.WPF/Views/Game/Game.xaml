@@ -29,8 +29,11 @@
             </DockPanel>
         </materialDesign:ColorZone>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-            <game:GameBoard DataContext="{Binding GameBoardViewModel}" />
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+            <game:GameBoard
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                DataContext="{Binding GameBoardViewModel}" />
         </ScrollViewer>
     </DockPanel>
 </UserControl>

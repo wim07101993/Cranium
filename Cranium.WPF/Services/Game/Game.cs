@@ -3,6 +3,7 @@ using Cranium.WPF.Models.Bases;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Cranium.WPF.Extensions;
 
 namespace Cranium.WPF.Services.Game
 {
@@ -20,7 +21,7 @@ namespace Cranium.WPF.Services.Game
             Questions = questions;
             GameBoard = gameBoard;
             Players = new ReadOnlyCollection<Player>(players.ToList());
-
+            GameBoard[0].Players.Add(Players);
         }
 
         #endregion CONSTRUCTOR
