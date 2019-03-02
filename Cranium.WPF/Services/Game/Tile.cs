@@ -6,8 +6,9 @@ namespace Cranium.WPF.Services.Game
 {
     public class Tile : AWithId
     {
-        public Tile(ObjectId categoryId)
+        public Tile(ObjectId id, ObjectId categoryId)
         {
+            Id = id;
             CategoryId = categoryId;
         }
 

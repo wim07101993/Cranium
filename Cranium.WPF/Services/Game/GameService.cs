@@ -17,17 +17,20 @@ namespace Cranium.WPF.Services.Game
 
         private const string CollectionName = "games";
 
-        private static readonly TimeSpan timePerCycle = TimeSpan.FromMinutes(10);
+        private static readonly TimeSpan TimePerCycle = TimeSpan.FromMinutes(12);
 
         private readonly ICategoryService _categoryService;
         private readonly IQuestionService _questionService;
+
+        private Game _game;
 
         #endregion FIELDS
 
 
         #region CONSTRUCTORS
 
-        public GameService(IMongoDataServiceSettings settings, ICategoryService categoryService, IQuestionService questionService) 
+        public GameService(
+            IMongoDataServiceSettings settings, ICategoryService categoryService, IQuestionService questionService)
             : base(settings, CollectionName)
         {
             _categoryService = categoryService;
@@ -39,7 +42,15 @@ namespace Cranium.WPF.Services.Game
 
         #region PROPERTIES
 
-        public Game Game { get; private set; }
+        public Game Game
+        {
+            get => _game;
+            private set
+            {
+                _game = value;
+                GameChangedEvent?.Invoke(this, EventArgs.Empty);
+            }
+        }
 
         #endregion PROPERTIES
 
@@ -52,7 +63,7 @@ namespace Cranium.WPF.Services.Game
 
         public async Task<Game> CreateAsync(TimeSpan gameTime, IEnumerable<Player> players)
         {
-            var cycleCount = gameTime.Seconds / timePerCycle.Seconds;
+            var cycleCount = gameTime.Seconds / TimePerCycle.Seconds;
             await CreateAsync(cycleCount, players);
             return Game;
         }
@@ -72,7 +83,7 @@ namespace Cranium.WPF.Services.Game
         public async Task<Game> MovePlayerTo(ObjectId playerId, ObjectId categoryId)
         {
             Player player = null;
-            foreach(var tile in Game.GameBoard)
+            foreach (var tile in Game.GameBoard)
             {
                 if (player == null)
                 {
@@ -119,7 +130,7 @@ namespace Cranium.WPF.Services.Game
             return question.Answers;
         }
 
-        private IEnumerable<Tile> CreateTiles(int cycleCount, IList<Category> categories)
+        private static IEnumerable<Tile> CreateTiles(int cycleCount, IList<Category> categories)
         {
             if (categories == null || categories.Count == 0)
                 throw new NoCategoriesException();
@@ -132,15 +143,22 @@ namespace Cranium.WPF.Services.Game
 
             for (int i = 0; i < cycleCount; i++)
             {
-                yield return new Tile(specialCategory.Id);
+                yield return new Tile(ObjectId.GenerateNewId(),  specialCategory.Id);
 
                 foreach (var category in categories)
-                    yield return new Tile(category.Id);
+                    yield return new Tile(ObjectId.GenerateNewId(), category.Id);
             }
 
-            yield return new Tile(specialCategory.Id);
+            yield return new Tile(ObjectId.GenerateNewId(), specialCategory.Id);
         }
-        
+
         #endregion METHODS
+
+
+        #region EVENTS
+
+        public event EventHandler GameChangedEvent;
+
+        #endregion EVENTS
     }
 }

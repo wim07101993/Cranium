@@ -2,9 +2,8 @@
     x:Class="Cranium.WPF.Views.Game.Game"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:Cranium.WPF.Views.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:game="clr-namespace:Cranium.WPF.Services.Game"
+    xmlns:game="clr-namespace:Cranium.WPF.Views.Game"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="clr-namespace:Cranium.WPF.ViewModels.Game"
@@ -30,6 +29,8 @@
             </DockPanel>
         </materialDesign:ColorZone>
 
-        <Grid />
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <game:GameBoard DataContext="{Binding GameBoardViewModel}" />
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

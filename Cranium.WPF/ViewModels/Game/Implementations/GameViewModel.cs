@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using Cranium.WPF.Services.Game;
@@ -14,27 +15,26 @@ namespace Cranium.WPF.ViewModels.Game.Implementations
 
         private readonly IGameService _gameService;
 
-        private Services.Game.Game _game;
-        private List<Player> _players;
-
         #endregion FIELDS
 
 
         #region CONSTRUCTOR
 
         public GameViewModel(
-            IStringsProvider stringsProvider, IHamburgerMenuViewModel hamburgerMenuViewModel, IGameService gameService)
+            IStringsProvider stringsProvider, IHamburgerMenuViewModel hamburgerMenuViewModel, IGameBoardViewModel gameBoardViewModel, IGameService gameService)
             : base(stringsProvider)
         {
             _gameService = gameService;
+            _gameService.GameChangedEvent += OnGameChanged;
             HamburgerMenuViewModel = hamburgerMenuViewModel;
+            GameBoardViewModel = gameBoardViewModel;
 
             var _ = InitAsync();
         }
 
         public async Task InitAsync()
         {
-            Players = new List<Player>()
+            var players = new List<Player>()
             {
                 new Player
                 {
@@ -54,7 +54,7 @@ namespace Cranium.WPF.ViewModels.Game.Implementations
                 }
             };
 
-            Game = await _gameService.CreateAsync(4, Players);
+            await _gameService.CreateAsync(5, players);
         }
 
         #endregion CONSTRUCTOR
@@ -63,23 +63,19 @@ namespace Cranium.WPF.ViewModels.Game.Implementations
         #region PROPERTIES
 
         public IHamburgerMenuViewModel HamburgerMenuViewModel { get; }
-
-        public List<Player> Players
-        {
-            get => _players;
-            set => SetProperty(ref _players, value);
-        }
-
-        public Services.Game.Game Game
-        {
-            get => _game;
-            set => SetProperty(ref _game, value);
-        }
+        public IGameBoardViewModel GameBoardViewModel { get; }
+        
+        public Services.Game.Game Game => _gameService.Game;
 
         #endregion PROPERTIES
 
 
         #region METHODS
+
+        private void OnGameChanged(object sender, EventArgs e)
+        {
+            RaisePropertyChanged(nameof(Game));
+        }
 
         #endregion METHODS
     }

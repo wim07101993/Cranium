@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Cranium.WPF.Models;
 
 namespace Cranium.WPF.ViewModels.Data
@@ -8,7 +8,7 @@ namespace Cranium.WPF.ViewModels.Data
     public interface IQuestionViewModel : IModelContainer<Question>
     {
         byte[] Attachment { get; }
-        ImageSource ImageSource { get; }
+        BitmapImage ImageSource { get; }
 
         ICommand ChangeAttachmentCommand { get; }
 

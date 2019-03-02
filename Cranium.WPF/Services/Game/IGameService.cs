@@ -8,6 +8,9 @@ namespace Cranium.WPF.Services.Game
 {
     public interface IGameService
     {
+        Game Game { get; }
+
+
         Task SaveGameAsync();
         Task<Game> LoadGameAsync(ObjectId gameId);
 
@@ -19,5 +22,8 @@ namespace Cranium.WPF.Services.Game
 
         Task<Question> GetQuestionAsync(ObjectId playerId);
         Task<IEnumerable<Answer>> GetAnswers(ObjectId questionId);
+
+
+        event EventHandler GameChangedEvent;
     }
 }

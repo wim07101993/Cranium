@@ -1,0 +1,32 @@
+﻿<UserControl
+    x:Class="Cranium.WPF.Views.Game.GameBoard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:game="clr-namespace:Cranium.WPF.Views.Controls.Game"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Cranium.WPF.ViewModels.Game"
+    d:DataContext="{d:DesignInstance viewModels:IGameBoardViewModel}"
+    mc:Ignorable="d">
+    <ItemsControl ItemsSource="{Binding Tiles}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ITileViewModel}">
+                <StackPanel>
+                    <game:Tile
+                        Width="260"
+                        Height="150"
+                        Margin="10"
+                        Category="{Binding Category}"
+                        CornerRadius="50"
+                        Players="{Binding Model.Players}" />
+                </StackPanel>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
+</UserControl>

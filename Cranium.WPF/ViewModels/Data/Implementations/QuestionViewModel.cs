@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Cranium.WPF.Extensions;
 using Cranium.WPF.Models;
 using Cranium.WPF.Services.Mongo;
@@ -95,7 +96,7 @@ namespace Cranium.WPF.ViewModels.Data.Implementations
             }
         }
 
-        public ImageSource ImageSource
+        public BitmapImage ImageSource
             => Model?.AttachmentType == EAttachmentType.Image 
             ? Attachment?.ToImage() 
             : null;

@@ -45,7 +45,7 @@ namespace Cranium.WPF
         private static void RegisterTypes()
         {
             UnityContainer
-                // services
+                // SERVICES
                 .RegisterInstance<IMongoDataServiceSettings>(new MongoDataServiceSettings { ConnectionString = "mongodb://localhost:27017", DatabaseName = "cranium" })
                 .RegisterType<ICategoryService, CategoryService>()
                 .RegisterType<IModelService<Category>, CategoryService>()
@@ -56,9 +56,10 @@ namespace Cranium.WPF
                 .RegisterType<IFileService, FileService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 .RegisterSingleton<IEventAggregator, EventAggregator>()
-                .RegisterType<IGameService, GameService>()
-                // view-models
+                .RegisterSingleton<IGameService, GameService>()
+                // VIEW-MODELS
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
+                // data
                 .RegisterType<IDataViewModel, DataViewModel>()
                 .RegisterType<IQuestionsViewModel, QuestionsViewModel>()
                 .RegisterType<IQuestionViewModel, QuestionViewModel>()
@@ -68,7 +69,11 @@ namespace Cranium.WPF
                 .RegisterType<IAnswerViewModel, AnswerViewModel>()
                 .RegisterType<ICategoriesViewModel, CategoriesViewModel>()
                 .RegisterType<ICategoryViewModel, CategoryViewModel>()
+                // game
                 .RegisterType<IGameViewModel, GameViewModel>()
+                .RegisterType<IGameBoardViewModel, GameBoardViewModel>()
+                .RegisterType<ITileViewModel, TileViewModel>()
+                // settings
                 .RegisterType<ISettingsViewModel, SettingsViewModel>()
                 .RegisterSingleton<IHamburgerMenuViewModel, HamburgerMenuViewModel>()
                 // extensions

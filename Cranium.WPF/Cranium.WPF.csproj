@@ -184,6 +184,10 @@
     <Compile Include="ViewModels\Data\Implementations\QuestionViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionViewModel.cs" />
+    <Compile Include="ViewModels\Game\IGameBoardViewModel.cs" />
+    <Compile Include="ViewModels\Game\Implementations\GameBoardViewModel.cs" />
+    <Compile Include="ViewModels\Game\Implementations\TileViewModel.cs" />
+    <Compile Include="ViewModels\Game\ITileViewModel.cs" />
     <Compile Include="ViewModels\ICollectionViewModel.cs" />
     <Compile Include="ViewModels\Game\IGameViewModel.cs" />
     <Compile Include="ViewModels\IHamburgerMenuViewModel.cs" />
@@ -217,6 +221,9 @@
     </Compile>
     <Compile Include="Views\Data\AUserControlWithDataGrid.cs" />
     <Compile Include="Views\Data\ColumnHeader.cs" />
+    <Compile Include="Views\Game\GameBoard.xaml.cs">
+      <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControlWithStrings.cs" />
     <Compile Include="Views\Data\Questions.xaml.cs">
       <DependentUpon>Questions.xaml</DependentUpon>
@@ -255,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Game\Game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Game\GameBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

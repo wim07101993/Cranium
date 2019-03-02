@@ -14,7 +14,7 @@
                     <Border
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}"
-                        Background="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource TemplateParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                        Background="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                         CornerRadius="{TemplateBinding CornerRadius}">
                         <ItemsControl
                             x:Name="PartPlayers"
