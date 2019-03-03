@@ -1,0 +1,47 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Cranium.WPF.Game.Tile"
+    xmlns:converters="clr-namespace:Cranium.WPF.Helpers.Converters"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:player="clr-namespace:Cranium.WPF.Game.Player">
+
+    <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+
+    <Style TargetType="{x:Type controls:TileControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TileControl}">
+                    <materialDesign:Card
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        Background="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                        <ItemsControl
+                            x:Name="PartPlayers"
+                            Margin="8"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            ItemsSource="{TemplateBinding Players}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type player:Player}">
+                                    <materialDesign:Card
+                                        Width="{Binding PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TileControl}}, Mode=OneWay}"
+                                        Height="{Binding PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TileControl}}, Mode=OneWay}"
+                                        Margin="{Binding PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TileControl}}, Mode=OneWay}"
+                                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                        Background="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </materialDesign:Card>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

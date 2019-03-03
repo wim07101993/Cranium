@@ -24,6 +24,7 @@
                 </ResourceDictionary>
 
                 <ResourceDictionary Source="pack://application:,,,/Cranium;component/CustomThemes.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Cranium;component/Converters.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

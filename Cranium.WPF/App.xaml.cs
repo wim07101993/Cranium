@@ -1,20 +1,22 @@
 ﻿using System.Windows;
-using Cranium.WPF.Models;
-using Cranium.WPF.Services;
-using Cranium.WPF.Services.Game;
-using Cranium.WPF.Services.Mongo;
-using Cranium.WPF.Services.Mongo.Implementations;
-using Cranium.WPF.Services.Strings;
-using Cranium.WPF.ViewModels;
-using Cranium.WPF.ViewModels.Data;
-using Cranium.WPF.ViewModels.Data.Implementations;
-using Cranium.WPF.ViewModels.Game;
-using Cranium.WPF.ViewModels.Game.Implementations;
-using Cranium.WPF.ViewModels.Implementations;
-using Cranium.WPF.Views;
-using Cranium.WPF.Views.Game;
+using Cranium.WPF.Data;
+using Cranium.WPF.Data.Answer;
+using Cranium.WPF.Data.Category;
+using Cranium.WPF.Data.Files;
+using Cranium.WPF.Data.Question;
+using Cranium.WPF.Data.QuestionType;
+using Cranium.WPF.Game;
+using Cranium.WPF.Game.Control;
+using Cranium.WPF.Game.GameBoard;
+using Cranium.WPF.Game.Player;
+using Cranium.WPF.Game.Tile;
+using Cranium.WPF.HamburgerMenu;
+using Cranium.WPF.Helpers.Mongo;
+using Cranium.WPF.Settings;
+using Cranium.WPF.Strings;
 using Prism.Events;
 using Unity;
+using QuestionViewModel = Cranium.WPF.Data.Question.QuestionViewModel;
 
 namespace Cranium.WPF
 {
@@ -30,7 +32,7 @@ namespace Cranium.WPF
 
         public static IUnityContainer UnityContainer { get; }
 
-        public static Strings Strings => UnityContainer.Resolve<IStringsProvider>().Strings;
+        public static Strings.Strings Strings => UnityContainer.Resolve<IStringsProvider>().Strings;
 
         public ControlWindow ControlWindow { get; set; }
 
@@ -74,28 +76,28 @@ namespace Cranium.WPF
                 .RegisterType<IModelService<Player>, PlayerService>()
                 .RegisterType<IPlayerService, PlayerService>()
                 // VIEW-MODELS
-                .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
+                .RegisterType< MainWindowViewModel>()
                 // data
-                .RegisterType<IDataViewModel, DataViewModel>()
-                .RegisterType<IQuestionsViewModel, QuestionsViewModel>()
-                .RegisterType<ViewModels.Data.IQuestionViewModel, ViewModels.Data.Implementations.QuestionViewModel>()
-                .RegisterType<IQuestionTypesViewModel, QuestionTypesViewModel>()
-                .RegisterType<IQuestionTypeViewModel, QuestionTypeViewModel>()
-                .RegisterType<IAnswersViewModel, AnswersViewModel>()
-                .RegisterType<IAnswerViewModel, AnswerViewModel>()
-                .RegisterType<ICategoriesViewModel, CategoriesViewModel>()
-                .RegisterType<ICategoryViewModel, CategoryViewModel>()
+                .RegisterType<DataViewModel>()
+                .RegisterType<QuestionsViewModel>()
+                .RegisterType<QuestionViewModel>()
+                .RegisterType<QuestionTypesViewModel>()
+                .RegisterType<QuestionTypeViewModel>()
+                .RegisterType<AnswersViewModel>()
+                .RegisterType<AnswerViewModel>()
+                .RegisterType<CategoriesViewModel>()
+                .RegisterType<CategoryViewModel>()
                 // game
-                .RegisterType<IGameViewModel, GameViewModel>()
-                .RegisterType<IGameBoardViewModel, GameBoardViewModel>()
-                .RegisterType<ITileViewModel, TileViewModel>()
-                .RegisterType<ViewModels.Game.IQuestionViewModel, ViewModels.Game.Implementations.QuestionViewModel>()
-                .RegisterType<IControlWindowViewModel, ControlWindowViewModel>()
-                .RegisterType<IModelContainer<Player>, PlayerViewModel>()
-                .RegisterType<IPlayerViewModel, PlayerViewModel>()
+                .RegisterType< GameViewModel>()
+                .RegisterType< GameBoardViewModel>()
+                .RegisterType< TileViewModel>()
+                .RegisterType< Game.Question.QuestionViewModel>()
+                .RegisterType< ControlWindowViewModel>()
+                .RegisterType< PlayerViewModel>()
+                .RegisterType< PlayerViewModel>()
                 // settings
-                .RegisterType<ISettingsViewModel, SettingsViewModel>()
-                .RegisterSingleton<IHamburgerMenuViewModel, HamburgerMenuViewModel>()
+                .RegisterType< SettingsViewModel>()
+                .RegisterSingleton< HamburgerMenuViewModel>()
                 // extensions
                 .AddExtension(new Diagnostic());
         }

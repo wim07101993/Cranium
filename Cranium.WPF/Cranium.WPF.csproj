@@ -124,181 +124,161 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BindingProxy.cs" />
-    <Compile Include="Converters\BytesToImageConverter.cs" />
-    <Compile Include="Converters\ColorToSolidColorBrushConverter.cs" />
-    <Compile Include="Converters\InvertedBooleanToVisibilityConverter.cs" />
-    <Compile Include="Converters\MinusConverter.cs" />
-    <Compile Include="Converters\MultiBooleanAndToVisibilityConverter.cs" />
-    <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
-    <Compile Include="Converters\TestConverter.cs" />
-    <Compile Include="Events\CategoryChangedEvent.cs" />
-    <Compile Include="Events\QuestionTypeChangedEvent.cs" />
-    <Compile Include="Exceptions\DatabaseException.cs" />
-    <Compile Include="Exceptions\EDatabaseMethod.cs" />
-    <Compile Include="Exceptions\GameException.cs" />
-    <Compile Include="Exceptions\NoCategoriesException.cs" />
-    <Compile Include="Exceptions\NoSpecialCategoryException.cs" />
-    <Compile Include="Exceptions\NotFoundException.cs" />
-    <Compile Include="Exceptions\PlayerNotFoundException.cs" />
-    <Compile Include="Exceptions\TileNotFoundException.cs" />
-    <Compile Include="Extensions\ColorExtensions.cs" />
-    <Compile Include="Extensions\ImageExtensions.cs" />
-    <Compile Include="Extensions\ListExtensions.cs" />
-    <Compile Include="Extensions\MongoExtensions.cs" />
-    <Compile Include="Extensions\SteamExtensions.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Models\Answer.cs" />
-    <Compile Include="Models\Bases\AWithId.cs" />
-    <Compile Include="Models\Bases\IWithId.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Color.cs" />
-    <Compile Include="Models\EAttachmentType.cs" />
-    <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\QuestionType.cs" />
-    <Compile Include="Services\Game\Game.cs" />
-    <Compile Include="Services\Game\IPlayerService.cs" />
-    <Compile Include="Services\Game\PlayerService.cs" />
-    <Compile Include="Services\Game\Tile.cs" />
-    <Compile Include="Services\Game\GameBoard.cs" />
-    <Compile Include="Services\Game\GameService.cs" />
-    <Compile Include="Services\Game\IGameService.cs" />
-    <Compile Include="Services\Game\Player.cs" />
-    <Compile Include="Services\Mongo\ICategoryService.cs" />
-    <Compile Include="Services\IModelService.cs" />
-    <Compile Include="Services\Mongo\IFileService.cs" />
-    <Compile Include="Services\Mongo\IMongoDataServiceSettings.cs" />
-    <Compile Include="Services\Mongo\Implementations\AMongoModelService.cs" />
-    <Compile Include="Services\Mongo\Implementations\CategoryService.cs" />
-    <Compile Include="Services\Mongo\Implementations\FileService.cs" />
-    <Compile Include="Services\Mongo\Implementations\MongoDataServiceSettings.cs" />
-    <Compile Include="Services\Mongo\Implementations\QuestionService.cs" />
-    <Compile Include="Services\Mongo\Implementations\QuestionTypeService.cs" />
-    <Compile Include="Services\Mongo\IQuestionService.cs" />
-    <Compile Include="Services\Mongo\IQuestionTypeService.cs" />
-    <Compile Include="Services\Mongo\Mocks\MockService.cs" />
-    <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
-    <Compile Include="ViewModels\Data\IAnswersViewModel.cs" />
-    <Compile Include="ViewModels\Data\IAnswerViewModel.cs" />
-    <Compile Include="ViewModels\Data\ICategoriesViewModel.cs" />
-    <Compile Include="ViewModels\Data\ICategoryViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\AnswersViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\AnswerViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\QuestionTypeViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\QuestionViewModel.cs" />
-    <Compile Include="ViewModels\Data\IQuestionTypeViewModel.cs" />
-    <Compile Include="ViewModels\Data\IQuestionViewModel.cs" />
-    <Compile Include="ViewModels\Game\IControlWindowViewModel.cs" />
-    <Compile Include="ViewModels\Game\IGameBoardViewModel.cs" />
-    <Compile Include="ViewModels\Game\Implementations\ControlWindowViewModel.cs" />
-    <Compile Include="ViewModels\Game\Implementations\GameBoardViewModel.cs" />
-    <Compile Include="ViewModels\Game\Implementations\PlayerViewModel.cs" />
-    <Compile Include="ViewModels\Game\Implementations\QuestionViewModel.cs" />
-    <Compile Include="ViewModels\Game\Implementations\TileViewModel.cs" />
-    <Compile Include="ViewModels\Game\IPlayerViewModel.cs" />
-    <Compile Include="ViewModels\Game\IQuestionViewModel.cs" />
-    <Compile Include="ViewModels\Game\ITileViewModel.cs" />
-    <Compile Include="ViewModels\ICollectionViewModel.cs" />
-    <Compile Include="ViewModels\Game\IGameViewModel.cs" />
-    <Compile Include="ViewModels\IHamburgerMenuViewModel.cs" />
-    <Compile Include="ViewModels\IModelContainer.cs" />
-    <Compile Include="ViewModels\Data\Implementations\CategoriesViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\ACollectionViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\Game\Implementations\GameViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\HamburgerMenuViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\QuestionsViewModel.cs" />
-    <Compile Include="ViewModels\Data\Implementations\QuestionTypesViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\Data\IQuestionsViewModel.cs" />
-    <Compile Include="ViewModels\Data\IQuestionTypesViewModel.cs" />
-    <Compile Include="ViewModels\ISettingsViewModel.cs" />
-    <Compile Include="Views\Controls\Data\AnswerEditingControl.cs" />
-    <Compile Include="Views\Controls\AModelEditingControl.cs" />
-    <Compile Include="Views\Controls\Data\CategoryEditingControl.cs" />
-    <Compile Include="Views\Controls\ColorPicker.cs" />
-    <Compile Include="Views\Controls\ColorSpectrumSlider.cs" />
-    <Compile Include="Views\Controls\ColorUtilities.cs" />
-    <Compile Include="Views\Controls\Game\GameBoardPanel.cs" />
-    <Compile Include="Views\Controls\HsvColor.cs" />
-    <Compile Include="Views\Controls\Data\QuestionEditingControl.cs" />
-    <Compile Include="Views\Controls\Data\QuestionTypeEditingControl.cs" />
-    <Compile Include="Views\Controls\Game\Tile.cs" />
-    <Compile Include="Views\Data\Answers.xaml.cs">
-      <DependentUpon>Answers.xaml</DependentUpon>
+    <Compile Include="Helpers\Converters\BytesToImageConverter.cs" />
+    <Compile Include="Helpers\Converters\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Helpers\Converters\InvertedBooleanToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\MinusConverter.cs" />
+    <Compile Include="Helpers\Converters\MultiBooleanAndToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\ObjectToVisibilityConverter.cs" />
+    <Compile Include="Data\Category\CategoryChangedEvent.cs" />
+    <Compile Include="Data\QuestionType\QuestionTypeChangedEvent.cs" />
+    <Compile Include="Helpers\Mongo\DatabaseException.cs" />
+    <Compile Include="Helpers\Mongo\EDatabaseMethod.cs" />
+    <Compile Include="Game\GameException.cs" />
+    <Compile Include="Game\NoCategoriesException.cs" />
+    <Compile Include="Game\NoSpecialCategoryException.cs" />
+    <Compile Include="Helpers\Exceptions\NotFoundException.cs" />
+    <Compile Include="Game\Player\PlayerNotFoundException.cs" />
+    <Compile Include="Game\Tile\TileNotFoundException.cs" />
+    <Compile Include="Helpers\Extensions\ColorExtensions.cs" />
+    <Compile Include="Helpers\Extensions\ImageExtensions.cs" />
+    <Compile Include="Helpers\Extensions\ListExtensions.cs" />
+    <Compile Include="Helpers\Mongo\MongoExtensions.cs" />
+    <Compile Include="Helpers\Extensions\StreamExtensions.cs" />
+    <Compile Include="Data\Answer\Answer.cs" />
+    <Compile Include="Helpers\AWithId.cs" />
+    <Compile Include="Helpers\IWithId.cs" />
+    <Compile Include="Data\Category\Category.cs" />
+    <Compile Include="Helpers\Color.cs" />
+    <Compile Include="Data\Files\EAttachmentType.cs" />
+    <Compile Include="Data\Question\Question.cs" />
+    <Compile Include="Data\QuestionType\QuestionType.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\Player\IPlayerService.cs" />
+    <Compile Include="Game\Player\PlayerService.cs" />
+    <Compile Include="Game\Tile\Tile.cs" />
+    <Compile Include="Game\GameBoard\GameBoard.cs" />
+    <Compile Include="Game\GameService.cs" />
+    <Compile Include="Game\IGameService.cs" />
+    <Compile Include="Game\Player\Player.cs" />
+    <Compile Include="Data\Category\ICategoryService.cs" />
+    <Compile Include="Helpers\Mongo\IModelService.cs" />
+    <Compile Include="Data\Files\IFileService.cs" />
+    <Compile Include="Helpers\Mongo\IMongoDataServiceSettings.cs" />
+    <Compile Include="Helpers\Mongo\AMongoModelService.cs" />
+    <Compile Include="Data\Category\CategoryService.cs" />
+    <Compile Include="Data\Files\FileService.cs" />
+    <Compile Include="Helpers\Mongo\MongoDataServiceSettings.cs" />
+    <Compile Include="Data\Question\QuestionService.cs" />
+    <Compile Include="Data\QuestionType\QuestionTypeService.cs" />
+    <Compile Include="Data\Question\IQuestionService.cs" />
+    <Compile Include="Data\QuestionType\IQuestionTypeService.cs" />
+    <Compile Include="Helpers\ValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="Data\Answer\AnswersViewModel.cs" />
+    <Compile Include="Data\Answer\AnswerViewModel.cs" />
+    <Compile Include="Data\QuestionType\QuestionTypeViewModel.cs" />
+    <Compile Include="Data\Question\QuestionViewModel.cs" />
+    <Compile Include="Helpers\ViewModels\AModelContainerViewModel.cs" />
+    <Compile Include="Game\Control\ControlWindowViewModel.cs" />
+    <Compile Include="Game\GameBoard\GameBoardViewModel.cs" />
+    <Compile Include="Game\Player\PlayerViewModel.cs" />
+    <Compile Include="Game\Question\QuestionViewModel.cs" />
+    <Compile Include="Game\Tile\TileViewModel.cs" />
+    <Compile Include="Data\Category\CategoriesViewModel.cs" />
+    <Compile Include="Helpers\ViewModels\ACollectionViewModel.cs" />
+    <Compile Include="Data\Category\CategoryViewModel.cs" />
+    <Compile Include="Game\GameViewModel.cs" />
+    <Compile Include="HamburgerMenu\HamburgerMenuViewModel.cs" />
+    <Compile Include="Data\Question\QuestionsViewModel.cs" />
+    <Compile Include="Data\QuestionType\QuestionTypesViewModel.cs" />
+    <Compile Include="Settings\SettingsViewModel.cs" />
+    <Compile Include="Data\Answer\AnswerEditingControl.cs" />
+    <Compile Include="Helpers\Controls\AModelEditingControl.cs" />
+    <Compile Include="Data\Category\CategoryEditingControl.cs" />
+    <Compile Include="Helpers\Controls\ColorPicker.cs" />
+    <Compile Include="Helpers\Controls\ColorSpectrumSlider.cs" />
+    <Compile Include="Helpers\Controls\ColorUtilities.cs" />
+    <Compile Include="Game\GameBoard\GameBoardPanel.cs" />
+    <Compile Include="Helpers\Controls\HsvColor.cs" />
+    <Compile Include="Data\Question\QuestionEditingControl.cs" />
+    <Compile Include="Data\QuestionType\QuestionTypeEditingControl.cs" />
+    <Compile Include="Game\Tile\TileControl.cs" />
+    <Compile Include="Data\Answer\AnswersView.xaml.cs">
+      <DependentUpon>AnswersView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Data\Categories.xaml.cs">
-      <DependentUpon>Categories.xaml</DependentUpon>
+    <Compile Include="Data\Category\CategoriesView.xaml.cs">
+      <DependentUpon>CategoriesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Data\AUserControlWithDataGrid.cs" />
-    <Compile Include="Views\Data\ColumnHeader.cs" />
-    <Compile Include="Views\Game\ControlWindow.xaml.cs">
+    <Compile Include="Game\Control\ControlWindow.xaml.cs">
       <DependentUpon>ControlWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Game\GameBoard.xaml.cs">
-      <DependentUpon>GameBoard.xaml</DependentUpon>
+    <Compile Include="Game\GameBoard\GameBoardView.xaml.cs">
+      <DependentUpon>GameBoardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Game\QuestionDialog.xaml.cs">
+    <Compile Include="Game\Question\QuestionDialog.xaml.cs">
       <DependentUpon>QuestionDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControlWithStrings.cs" />
-    <Compile Include="Views\Data\Questions.xaml.cs">
-      <DependentUpon>Questions.xaml</DependentUpon>
+    <Compile Include="Data\Question\QuestionsView.xaml.cs">
+      <DependentUpon>QuestionsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Data\QuestionTypes.xaml.cs">
-      <DependentUpon>QuestionTypes.xaml</DependentUpon>
+    <Compile Include="Data\QuestionType\QuestionTypesView.xaml.cs">
+      <DependentUpon>QuestionTypesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HamburgerMenu\HamburgerMenu.xaml.cs">
-      <DependentUpon>HamburgerMenu.xaml</DependentUpon>
+    <Compile Include="HamburgerMenu\HamburgerMenuView.xaml.cs">
+      <DependentUpon>HamburgerMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="Settings\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomThemes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Data\Answers.xaml">
+    <Page Include="Data\Answer\AnswersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Data\Categories.xaml">
+    <Page Include="Data\Category\CategoriesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Data\Data.xaml">
+    <Page Include="Data\DataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Data\Questions.xaml">
+    <Page Include="Data\Question\QuestionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Data\QuestionTypes.xaml">
+    <Page Include="Data\QuestionType\QuestionTypesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Game\ControlWindow.xaml">
+    <Page Include="Game\Control\ControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Game\Game.xaml">
+    <Page Include="Game\GameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Game\GameBoard.xaml">
+    <Page Include="Game\GameBoard\GameBoardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Game\QuestionDialog.xaml">
+    <Page Include="Game\Question\QuestionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HamburgerMenu\HamburgerMenu.xaml">
+    <Page Include="HamburgerMenu\HamburgerMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -306,54 +286,51 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Services\Strings\IStringsProvider.cs" />
-    <Compile Include="Services\Strings\Strings.cs" />
-    <Compile Include="Services\Strings\StringsProvider.cs" />
-    <Compile Include="ViewModels\Data\IDataViewModel.cs" />
-    <Compile Include="ViewModels\IMainWindowViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\AViewModelBase.cs" />
-    <Compile Include="ViewModels\Data\Implementations\DataViewModel.cs" />
-    <Compile Include="ViewModels\Implementations\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\IViewModelBase.cs" />
-    <Compile Include="Views\Data\Data.xaml.cs">
-      <DependentUpon>Data.xaml</DependentUpon>
+    <Compile Include="Strings\IStringsProvider.cs" />
+    <Compile Include="Strings\Strings.cs" />
+    <Compile Include="Strings\StringsProvider.cs" />
+    <Compile Include="Helpers\ViewModels\AViewModelBase.cs" />
+    <Compile Include="Data\DataViewModel.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Data\DataView.xaml.cs">
+      <DependentUpon>DataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Game\Game.xaml.cs">
-      <DependentUpon>Game.xaml</DependentUpon>
+    <Compile Include="Game\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainWindow.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Settings\Settings.xaml">
+    <Page Include="Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Themes\AnswerEditingControl.xaml">
+    <Page Include="Data\Answer\AnswerEditingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Themes\CategoryEditingControl.xaml">
+    <Page Include="Data\Category\CategoryEditingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Themes\ColorPicker.xaml">
+    <Page Include="Helpers\Controls\ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Themes\ColorSpectrumSlider.xaml">
+    <Page Include="Helpers\Controls\ColorSpectrumSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Themes\QuestionEditingControl.xaml">
+    <Page Include="Data\Question\QuestionEditingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Themes\QuestionTypeEditingControl.xaml">
+    <Page Include="Data\QuestionType\QuestionTypeEditingControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Themes\Tile.xaml">
+    <Page Include="Game\Tile\TileControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -403,5 +380,6 @@
   <ItemGroup>
     <Resource Include="Icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

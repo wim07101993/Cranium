@@ -1,0 +1,55 @@
+﻿<UserControl
+    x:Class="Cranium.WPF.Data.Question.QuestionsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:question="clr-namespace:Cranium.WPF.Data.Question"
+    d:DataContext="{d:DesignInstance question:QuestionsViewModel}"
+    mc:Ignorable="d">
+
+    <materialDesign:DialogHost CloseOnClickAway="True">
+        <Grid>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type question:QuestionViewModel}">
+                            <StackPanel>
+                                <question:QuestionEditingControl
+                                    MaxWidth="300"
+                                    AnswersViewModel="{Binding AnswersViewModel}"
+                                    ChangeAttachmentCommand="{Binding ChangeAttachmentCommand}"
+                                    DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                    ImageSource="{Binding ImageSource, UpdateSourceTrigger=PropertyChanged}"
+                                    Model="{Binding Model}"
+                                    QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                    Strings="{Binding Strings}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+
+            <Button
+                Margin="32"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Command="{Binding CreateCommand}"
+                Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="Add" />
+            </Button>
+        </Grid>
+    </materialDesign:DialogHost>
+
+</UserControl>

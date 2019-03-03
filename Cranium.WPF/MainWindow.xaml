@@ -1,0 +1,31 @@
+﻿<Window
+    x:Class="Cranium.WPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="clr-namespace:Cranium.WPF.Data"
+    xmlns:game="clr-namespace:Cranium.WPF.Game"
+    xmlns:hamburgerMenu="clr-namespace:Cranium.WPF.HamburgerMenu"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settings="clr-namespace:Cranium.WPF.Settings"
+    xmlns:wpf="clr-namespace:Cranium.WPF"
+    Title="{Binding Strings.Cranium}"
+    d:DataContext="{d:DesignInstance wpf:MainWindowViewModel}"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+    <Grid>
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding HamburgerMenuViewModel.IsOpen}">
+
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <hamburgerMenu:HamburgerMenuView x:Name="HamburgerMenu" DataContext="{Binding HamburgerMenuViewModel}" />
+            </materialDesign:DrawerHost.LeftDrawerContent>
+
+            <Grid>
+                <game:GameView x:Name="Game" DataContext="{Binding GameViewModel}" />
+                <data:DataView x:Name="Data" DataContext="{Binding DataViewModel}" />
+                <settings:SettingsView x:Name="Settings" DataContext="{Binding SettingsViewModel}" />
+            </Grid>
+        </materialDesign:DrawerHost>
+    </Grid>
+</Window>

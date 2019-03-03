@@ -1,0 +1,71 @@
+﻿<UserControl
+    x:Class="Cranium.WPF.Game.GameView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:game="clr-namespace:Cranium.WPF.Game"
+    xmlns:gameBoard="clr-namespace:Cranium.WPF.Game.GameBoard"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:question="clr-namespace:Cranium.WPF.Game.Question"
+    d:DataContext="{d:DesignInstance game:GameViewModel}"
+    mc:Ignorable="d">
+
+    <DockPanel>
+        <materialDesign:ColorZone
+            Padding="16"
+            materialDesign:ShadowAssist.ShadowDepth="Depth2"
+            Background="{Binding CurrentPlayer.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+            DockPanel.Dock="Top"
+            Mode="PrimaryMid">
+            <DockPanel>
+                <ToggleButton
+                    x:Name="MenuToggleButton"
+                    IsChecked="{Binding HamburgerMenuViewModel.IsOpen}"
+                    Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                    Text="{Binding CurrentPlayer.Name}" />
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <materialDesign:DialogHost>
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="900" Height="600">
+                    <question:QuestionDialog
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        DataContext="{Binding QuestionViewModel}" />
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <Button
+                        Margin="16"
+                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        Content="{Binding Strings.Task}" />
+                </StackPanel>
+
+                <ScrollViewer
+                    Grid.Column="1"
+                    HorizontalScrollBarVisibility="Visible"
+                    VerticalScrollBarVisibility="Visible">
+                    <gameBoard:GameBoardView
+                        Margin="16"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        DataContext="{Binding GameBoardViewModel}" />
+                </ScrollViewer>
+            </Grid>
+        </materialDesign:DialogHost>
+    </DockPanel>
+</UserControl>

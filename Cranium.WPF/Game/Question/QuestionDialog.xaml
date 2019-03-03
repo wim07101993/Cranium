@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="Cranium.WPF.Game.Question.QuestionDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:answer="clr-namespace:Cranium.WPF.Data.Answer"
+    xmlns:category="clr-namespace:Cranium.WPF.Data.Category"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:question="clr-namespace:Cranium.WPF.Game.Question"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:views="clr-namespace:Cranium.WPF.Game"
+    d:DataContext="{d:DesignInstance question:QuestionViewModel}"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <StackPanel Visibility="{Binding HasAnswered, Converter={StaticResource InvertedBooleanToVisibilityConverter}}">
+            <TextBlock
+                Style="{StaticResource MaterialDesignDisplay3TextBlock}"
+                Text="{Binding Question.Task}"
+                Visibility="{Binding Question.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
+
+            <TextBlock
+                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                Text="{Binding Question.Tip}"
+                Visibility="{Binding Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+
+            <Image Source="{Binding ImageAttachment}" />
+
+            <StackPanel Margin="16" Orientation="Horizontal">
+                <Button
+                    Margin="8"
+                    Command="{Binding AnswerCommand}"
+                    Content="{Binding Strings.Correct}"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <system:Boolean>True</system:Boolean>
+                    </Button.CommandParameter>
+                </Button>
+                <Button
+                    Margin="8"
+                    Command="{Binding AnswerCommand}"
+                    Content="{Binding Strings.InCorrect}"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <system:Boolean>False</system:Boolean>
+                    </Button.CommandParameter>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Visibility="{Binding HasAnswered, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock
+                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                Text="{Binding Strings.Correct}"
+                Visibility="{Binding IsAnswerCorrect, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBlock
+                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                Text="{Binding Strings.Correct}"
+                Visibility="{Binding IsAnswerCorrect, Converter={StaticResource InvertedBooleanToVisibilityConverter}}" />
+
+            <ItemsControl ItemsSource="{Binding CorrectAnswers}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type answer:Answer}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource MaterialDesignDisplay2TextBlock}" Text="{Binding Value}" />
+                            <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" Text="{Binding Info}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ItemsControl ItemsSource="{Binding Categories}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type category:Category}">
+                        <Button
+                            Background="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                            Command="{Binding DataContext.SelectCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionDialog}}}"
+                            CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</UserControl>

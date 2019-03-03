@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/ColorPicker.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/ColorSpectrumSlider.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/AnswerEditingControl.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/CategoryEditingControl.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/QuestionTypeEditingControl.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/QuestionEditingControl.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Views/Themes/Tile.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/ColorPicker.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/ColorSpectrumSlider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/Answer/AnswerEditingControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/Category/CategoryEditingControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/QuestionType/QuestionTypeEditingControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/Question/QuestionEditingControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Game/Tile/TileControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
