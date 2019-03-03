@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using Cranium.WPF.Game.Control;
 using Cranium.WPF.HamburgerMenu;
@@ -33,7 +34,7 @@ namespace Cranium.WPF
 
             ViewModel.PropertyChanged += OnViewModelPropertyChanged;
             if (ViewModel.HamburgerMenuViewModel != null)
-                ViewModel.HamburgerMenuViewModel.PropertyChanged += OnHamburgerMenuViewModelProprtyChanged;
+                ViewModel.HamburgerMenuViewModel.PropertyChanged += OnHamburgerMenuViewModelPropertyChanged;
 
             UpdateVisibilities();
         }
@@ -43,13 +44,13 @@ namespace Cranium.WPF
             switch (e.PropertyName)
             {
                 case nameof(MainWindowViewModel.HamburgerMenuViewModel):
-                    ViewModel.HamburgerMenuViewModel.PropertyChanged += OnHamburgerMenuViewModelProprtyChanged;
+                    ViewModel.HamburgerMenuViewModel.PropertyChanged += OnHamburgerMenuViewModelPropertyChanged;
                     UpdateVisibilities();
                     break;
             }
         }
         
-        private void OnHamburgerMenuViewModelProprtyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnHamburgerMenuViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
             {
@@ -89,10 +90,14 @@ namespace Cranium.WPF
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            if (_controlWindow == null)
-                return;
-
-            _controlWindow.Close();
+            try
+            {
+                _controlWindow.Close();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

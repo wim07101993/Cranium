@@ -124,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Game\GameFinishedEventHandler.cs" />
+    <Compile Include="Game\IMongoGameService.cs" />
+    <Compile Include="Game\MongoGameService.cs" />
+    <Compile Include="Helpers\AsyncEventHandler.cs" />
     <Compile Include="Helpers\Converters\BytesToImageConverter.cs" />
     <Compile Include="Helpers\Converters\ColorToSolidColorBrushConverter.cs" />
     <Compile Include="Helpers\Converters\InvertedBooleanToVisibilityConverter.cs" />

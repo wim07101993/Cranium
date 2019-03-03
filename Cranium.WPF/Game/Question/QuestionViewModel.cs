@@ -40,8 +40,8 @@ namespace Cranium.WPF.Game.Question
             _questionService = questionService;
             _gameService = gameService;
 
-            _gameService.GameChangedEvent += OnGameChanged;
-            _gameService.PlayerChangedEvent += OnPlayerChanged;
+            _gameService.GameChanged += OnGameChanged;
+            _gameService.PlayerChanged += OnPlayerChanged;
 
             AnswerCommand = new DelegateCommand<bool?>(async x => await Answer(x == true));
             SelectCategoryCommand = new DelegateCommand<Category>(async x => await GetNewQuestionAsync(x));

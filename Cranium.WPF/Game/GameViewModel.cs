@@ -30,7 +30,7 @@ namespace Cranium.WPF.Game
             : base(stringsProvider)
         {
             _gameService = gameService;
-            _gameService.GameChangedEvent += OnGameChanged;
+            _gameService.GameChanged += OnGameChanged;
 
             HamburgerMenuViewModel = hamburgerMenuViewModel;
             GameBoardViewModel = gameBoardViewModel;

@@ -19,7 +19,7 @@ namespace Cranium.WPF.Game.GameBoard
         {
             _gameService = gameService;
             _unityContainer = unityContainer;
-            _gameService.GameChangedEvent += OnGameChanged;
+            _gameService.GameChanged += OnGameChanged;
         }
 
 

@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.Category;
-using Cranium.WPF.Game.Player;
 using Cranium.WPF.Helpers.ViewModels;
+using Cranium.WPF.Strings;
 using Unity;
 
 namespace Cranium.WPF.Game.Control
 {
-    public class ControlWindowViewModel : ACollectionViewModel<Player.Player, PlayerViewModel>
+    public class ControlWindowViewModel : AViewModelBase
     {
         #region FIELDS
 
@@ -23,11 +23,11 @@ namespace Cranium.WPF.Game.Control
         #region CONSTRUCTOR
 
         public ControlWindowViewModel(IUnityContainer unityContainer)
-            : base(unityContainer)
+            : base(unityContainer.Resolve<IStringsProvider>())
         {
             _gameService = unityContainer.Resolve<IGameService>();
             _categoryService = unityContainer.Resolve<ICategoryService>();
-            _gameService.GameChangedEvent += OnGameChanged;
+            _gameService.GameChanged += OnGameChanged;
         }
 
         #endregion CONSTRUCTOR

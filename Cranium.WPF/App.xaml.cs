@@ -11,6 +11,7 @@ using Cranium.WPF.Game.GameBoard;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Tile;
 using Cranium.WPF.HamburgerMenu;
+using Cranium.WPF.Helpers;
 using Cranium.WPF.Helpers.Mongo;
 using Cranium.WPF.Settings;
 using Cranium.WPF.Strings;
