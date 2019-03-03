@@ -34,8 +34,6 @@ namespace Cranium.WPF
 
         public static Strings.Strings Strings => UnityContainer.Resolve<IStringsProvider>().Strings;
 
-        public ControlWindow ControlWindow { get; set; }
-
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -48,10 +46,7 @@ namespace Cranium.WPF
                 return;
             }
 
-            ControlWindow = UnityContainer.Resolve<ControlWindow>();
-
             MainWindow.Show();
-            ControlWindow.Show();
         }
 
         private static void RegisterTypes()

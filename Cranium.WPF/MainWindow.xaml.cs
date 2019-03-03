@@ -1,20 +1,27 @@
 ﻿using System.ComponentModel;
 using System.Windows;
+using Cranium.WPF.Game.Control;
 using Cranium.WPF.HamburgerMenu;
 
 namespace Cranium.WPF
 {
     public partial class MainWindow
     {
-        public MainWindow(MainWindowViewModel viewModel)
+        private readonly ControlWindow _controlWindow;
+
+
+        public MainWindow(MainWindowViewModel viewModel, ControlWindow controlWindow)
         {
+            _controlWindow = controlWindow;
             InitializeComponent();
 
             DataContextChanged += OnDataContextChagned;
 
             DataContext = viewModel;
-        }
 
+            _controlWindow.Show();
+            _controlWindow.Closing += OnControlWindowClosing;
+        }
 
         public MainWindowViewModel ViewModel => DataContext as MainWindowViewModel;
 
@@ -74,6 +81,18 @@ namespace Cranium.WPF
                 case null:
                     break;
             }
+        }
+
+
+        private void OnControlWindowClosing(object sender, CancelEventArgs e) => Close();
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            if (_controlWindow == null)
+                return;
+
+            _controlWindow.Close();
         }
     }
 }
