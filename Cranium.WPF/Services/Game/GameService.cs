@@ -17,6 +17,8 @@ namespace Cranium.WPF.Services.Game
 
         private const string CollectionName = "games";
 
+
+        private static readonly Random Random = new Random();
         private static readonly TimeSpan TimePerCycle = TimeSpan.FromMinutes(12);
 
         private readonly ICategoryService _categoryService;
@@ -61,26 +63,32 @@ namespace Cranium.WPF.Services.Game
 
         public async Task<Game> LoadGameAsync(ObjectId gameId) => await GetOneAsync(gameId);
 
-        public async Task<Game> CreateAsync(TimeSpan gameTime, IEnumerable<Player> players)
+        public async Task<Game> CreateAsync(TimeSpan gameTime, IReadOnlyList<Player> players)
         {
             var cycleCount = gameTime.Seconds / TimePerCycle.Seconds;
             await CreateAsync(cycleCount, players);
             return Game;
         }
 
-        public async Task<Game> CreateAsync(int cycleCount, IEnumerable<Player> players)
+        public async Task<Game> CreateAsync(int cycleCount, IReadOnlyList<Player> players)
         {
-            var categories = await _categoryService.GetAsync();
+            var questions = await _questionService.GetAsync();
+            var categories = questions
+                .Select(x => x.QuestionType.Category)
+                .Distinct(new CategoryIdComparer())
+                .ToList();
+
+            var specialCategory = await _categoryService.GetByAsync(x => x.IsSpecial);
+            categories.Add(specialCategory);
+
             var tiles = CreateTiles(cycleCount, categories);
             var board = new GameBoard(tiles);
 
-            var questions = await _questionService.GetAsync();
-
-            Game = new Game(board, players, questions);
+            Game = new Game(board, players, questions) {CurrentPlayerIndex = Random.Next(players.Count)};
             return Game;
         }
 
-        public async Task<Game> MovePlayerTo(ObjectId playerId, ObjectId categoryId)
+        public async Task<Game> MovePlayerToAsync(ObjectId playerId, ObjectId categoryId)
         {
             Player player = null;
             foreach (var tile in Game.GameBoard)
@@ -110,24 +118,71 @@ namespace Cranium.WPF.Services.Game
             throw new TileNotFoundException();
         }
 
+        public async Task<Game> MovePlayerBackwardsToAsync(ObjectId playerId, ObjectId categoryId)
+        {
+            Player player = null;
+
+            var i = 0;
+            for (; i < Game.GameBoard.Count; i++)
+            {
+                var tile = Game.GameBoard[i];
+                var playerIndex = tile.Players.IndexOfFirst(x => x.Id == playerId);
+                if (playerIndex < 0)
+                    continue;
+
+                player = tile.Players[playerIndex];
+                tile.Players.RemoveAt(playerIndex);
+            }
+
+            if (player == null)
+                throw new PlayerNotFoundException();
+
+            for (; i >= 0; i--)
+            {
+                var tile = Game.GameBoard[i];
+                var dbCategoryId = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Id);
+                if (dbCategoryId == categoryId)
+                {
+                    tile.Players.Add(player);
+                    return Game;
+                }
+            }
+            
+            throw new TileNotFoundException();
+        }
+
         public Task<bool> IsAtEnd(ObjectId playerId)
         {
             return Task.FromResult(Game.GameBoard.Last().Players.Any(x => x.Id == playerId));
         }
 
-        public Task<Question> GetQuestionAsync(ObjectId playerId)
-        {
-            foreach (var tile in Game.GameBoard)
-                if (tile.Players.Any(x => x.Id == playerId))
-                    return Task.FromResult(Game.Questions.First(x => x.QuestionType.Category.Id == tile.CategoryId));
+        public async Task<Question> GetQuestionAsync()
+            => await GetQuestionAsync(Game.TileOfCurrentPlayer.CategoryId);
 
-            throw new PlayerNotFoundException();
+        public async Task<Question> GetQuestionAsync(ObjectId categoryId)
+        {
+            var isSpecialCategory = await _categoryService.GetPropertyAsync(categoryId, x => x.IsSpecial);
+            if (isSpecialCategory)
+                return null;
+
+            var question = Game.Questions.First(x => x.QuestionType.Category.Id == categoryId);
+            Game.Questions.RemoveFirst(x => x.Id == question.Id);
+            return question;
         }
 
         public async Task<IEnumerable<Answer>> GetAnswers(ObjectId questionId)
         {
             var question = await _questionService.GetOneAsync(questionId);
             return question.Answers;
+        }
+
+        public Task NextTurnAsync()
+        {
+            Game.CurrentPlayerIndex =
+                Game.CurrentPlayerIndex + 1 > Game.Players.Count
+                    ? 0
+                    : Game.CurrentPlayerIndex + 1;
+            return Task.CompletedTask;
         }
 
         private static IEnumerable<Tile> CreateTiles(int cycleCount, IList<Category> categories)
@@ -143,7 +198,7 @@ namespace Cranium.WPF.Services.Game
 
             for (var i = 0; i < cycleCount; i++)
             {
-                yield return new Tile(ObjectId.GenerateNewId(),  specialCategory.Id);
+                yield return new Tile(ObjectId.GenerateNewId(), specialCategory.Id);
 
                 foreach (var category in categories)
                     yield return new Tile(ObjectId.GenerateNewId(), category.Id);
@@ -158,7 +213,20 @@ namespace Cranium.WPF.Services.Game
         #region EVENTS
 
         public event EventHandler GameChangedEvent;
+        public event EventHandler PlayerChangedEvent;
 
         #endregion EVENTS
+
+
+        #region CLASSES
+
+        private class CategoryIdComparer : IEqualityComparer<Category>
+        {
+            public bool Equals(Category x, Category y) => x != null && x.Id == y?.Id;
+
+            public int GetHashCode(Category category) => category.Id.GetHashCode();
+        }
+
+        #endregion CLASSES
     }
 }

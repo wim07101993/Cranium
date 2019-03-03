@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Cranium.WPF.Models.Bases;
+using Cranium.WPF.Services;
 using Cranium.WPF.Services.Mongo;
 using Cranium.WPF.Services.Strings;
 using Prism.Commands;

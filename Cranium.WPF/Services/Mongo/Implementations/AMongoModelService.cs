@@ -119,19 +119,8 @@ namespace Cranium.WPF.Services.Mongo.Implementations
         public virtual async Task<TOut> GetPropertyAsync<TOut>(ObjectId id, Expression<Func<T, TOut>> propertyToSelect)
             => await GetPropertyByAsync(x => x.Id == id, propertyToSelect);
 
-        /// <summary>
-        /// Gets a <see cref="T"/> from the database if a condition is met.
-        /// </summary>
-        /// <param name="condition">The condition that needs to be fulfilled to return the <see cref="T"/></param>
-        /// <param name="propertiesToInclude">
-        /// The properties to include in the query (if it is null, all properties are passed).
-        /// </param>
-        /// <returns>The item for which the condition returns true</returns>
-        /// <exception cref="NotFoundException{T}">
-        /// Throws if there is no <see cref="T"/> for which the condition returns true.
-        /// </exception>
-        /// <exception cref="DatabaseException">Throws when the database throws an exception.</exception>
-        protected async Task<T> GetByAsync(
+        /// <inheritdoc />
+        public async Task<T> GetByAsync(
             Expression<Func<T, bool>> condition,
             IEnumerable<Expression<Func<T, object>>> propertiesToInclude = null)
         {
@@ -156,19 +145,8 @@ namespace Cranium.WPF.Services.Mongo.Implementations
             }
         }
 
-        /// <summary>
-        /// Gets a property of a <see cref="T"/> from the database if a condition is met.
-        /// </summary>
-        /// <param name="condition">The condition that needs to be fulfilled to return the <see cref="T"/></param>
-        /// <param name="propertyToSelect">The property to get the value of</param>
-        /// <typeparam name="TOut">Type of the value to get.</typeparam>
-        /// <returns>The property of the item for which the condition returns true.</returns>
-        /// <exception cref="ArgumentNullException">If the propertyToSelect is null, nothing can't be returned.</exception>
-        /// <exception cref="NotFoundException{T}">
-        /// Throws if there is no <see cref="T"/> for which the condition returns true.
-        /// </exception>
-        /// <exception cref="DatabaseException">Throws when the database throws an exception.</exception>
-        protected async Task<TOut> GetPropertyByAsync<TOut>(
+        /// <inheritdoc />
+        public async Task<TOut> GetPropertyByAsync<TOut>(
             Expression<Func<T, bool>> condition,
             Expression<Func<T, TOut>> propertyToSelect)
         {

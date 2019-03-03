@@ -12,11 +12,11 @@
         <ItemsControl.ItemTemplate>
             <DataTemplate DataType="{x:Type viewModels:ITileViewModel}">
                 <game:Tile
-                    Width="180"
-                    Height="120"
+                    Width="120"
+                    Height="80"
                     Margin="10"
                     Category="{Binding Category}"
-                    CornerRadius="30"
+                    CornerRadius="15"
                     Players="{Binding Model.Players}" />
             </DataTemplate>
         </ItemsControl.ItemTemplate>

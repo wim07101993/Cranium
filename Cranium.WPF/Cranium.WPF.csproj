@@ -127,7 +127,9 @@
     <Compile Include="BindingProxy.cs" />
     <Compile Include="Converters\BytesToImageConverter.cs" />
     <Compile Include="Converters\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Converters\InvertedBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\MinusConverter.cs" />
+    <Compile Include="Converters\MultiBooleanAndToVisibilityConverter.cs" />
     <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
     <Compile Include="Converters\TestConverter.cs" />
     <Compile Include="Events\CategoryChangedEvent.cs" />
@@ -155,13 +157,15 @@
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Services\Game\Game.cs" />
+    <Compile Include="Services\Game\IPlayerService.cs" />
+    <Compile Include="Services\Game\PlayerService.cs" />
     <Compile Include="Services\Game\Tile.cs" />
     <Compile Include="Services\Game\GameBoard.cs" />
     <Compile Include="Services\Game\GameService.cs" />
     <Compile Include="Services\Game\IGameService.cs" />
     <Compile Include="Services\Game\Player.cs" />
     <Compile Include="Services\Mongo\ICategoryService.cs" />
-    <Compile Include="Services\Mongo\IModelService.cs" />
+    <Compile Include="Services\IModelService.cs" />
     <Compile Include="Services\Mongo\IFileService.cs" />
     <Compile Include="Services\Mongo\IMongoDataServiceSettings.cs" />
     <Compile Include="Services\Mongo\Implementations\AMongoModelService.cs" />
@@ -184,9 +188,15 @@
     <Compile Include="ViewModels\Data\Implementations\QuestionViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\Data\IQuestionViewModel.cs" />
+    <Compile Include="ViewModels\Game\IControlWindowViewModel.cs" />
     <Compile Include="ViewModels\Game\IGameBoardViewModel.cs" />
+    <Compile Include="ViewModels\Game\Implementations\ControlWindowViewModel.cs" />
     <Compile Include="ViewModels\Game\Implementations\GameBoardViewModel.cs" />
+    <Compile Include="ViewModels\Game\Implementations\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\Game\Implementations\QuestionViewModel.cs" />
     <Compile Include="ViewModels\Game\Implementations\TileViewModel.cs" />
+    <Compile Include="ViewModels\Game\IPlayerViewModel.cs" />
+    <Compile Include="ViewModels\Game\IQuestionViewModel.cs" />
     <Compile Include="ViewModels\Game\ITileViewModel.cs" />
     <Compile Include="ViewModels\ICollectionViewModel.cs" />
     <Compile Include="ViewModels\Game\IGameViewModel.cs" />
@@ -222,8 +232,14 @@
     </Compile>
     <Compile Include="Views\Data\AUserControlWithDataGrid.cs" />
     <Compile Include="Views\Data\ColumnHeader.cs" />
+    <Compile Include="Views\Game\ControlWindow.xaml.cs">
+      <DependentUpon>ControlWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Game\GameBoard.xaml.cs">
       <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Game\QuestionDialog.xaml.cs">
+      <DependentUpon>QuestionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControlWithStrings.cs" />
     <Compile Include="Views\Data\Questions.xaml.cs">
@@ -262,11 +278,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Game\ControlWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Game\Game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Game\GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Game\QuestionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Cranium.WPF.Extensions;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Cranium.WPF.Services.Game
 {
@@ -11,16 +12,18 @@ namespace Cranium.WPF.Services.Game
     {
         #region FIELDS
 
+        private int _currentPlayerIndex;
+
         #endregion FIELDS
 
 
         #region CONSTRUCTOR
 
-        public Game(GameBoard gameBoard, IEnumerable<Player> players, IEnumerable<Question> questions)
+        public Game(GameBoard gameBoard, IEnumerable<Player> players, IList<Question> questions)
         {
             Questions = questions;
             GameBoard = gameBoard;
-            Players = new ReadOnlyCollection<Player>(players.ToList());
+            Players = new ObservableCollection<Player>(players);
             GameBoard[0].Players.Add(Players);
         }
 
@@ -29,11 +32,33 @@ namespace Cranium.WPF.Services.Game
 
         #region PROPERTIES
 
+        [BsonElement("gameBoard")]
         public GameBoard GameBoard { get; }
 
-        public IReadOnlyCollection<Player> Players { get; }
+        [BsonElement("players")]
+        public ObservableCollection<Player> Players { get; }
 
-        public IEnumerable<Question> Questions { get; }
+        [BsonElement("questions")]
+        public IList<Question> Questions { get; }
+
+        [BsonElement("currentPlayerIndex")]
+        public int CurrentPlayerIndex
+        {
+            get => _currentPlayerIndex;
+            set
+            {
+                if (!SetProperty(ref _currentPlayerIndex, value))
+                    return;
+                RaisePropertyChanged(nameof(CurrentPlayer));
+            }
+        }
+
+        [BsonIgnore]
+        public Player CurrentPlayer => Players[CurrentPlayerIndex];
+
+        [BsonIgnore]
+        public Tile TileOfCurrentPlayer
+            => GameBoard.First(tile => tile.Players.Any(player => player.Id == CurrentPlayer.Id));
 
         #endregion PROPERTIES
     }

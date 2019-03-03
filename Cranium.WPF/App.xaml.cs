@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Cranium.WPF.Models;
+using Cranium.WPF.Services;
 using Cranium.WPF.Services.Game;
 using Cranium.WPF.Services.Mongo;
 using Cranium.WPF.Services.Mongo.Implementations;
@@ -11,6 +12,7 @@ using Cranium.WPF.ViewModels.Game;
 using Cranium.WPF.ViewModels.Game.Implementations;
 using Cranium.WPF.ViewModels.Implementations;
 using Cranium.WPF.Views;
+using Cranium.WPF.Views.Game;
 using Prism.Events;
 using Unity;
 
@@ -30,6 +32,8 @@ namespace Cranium.WPF
 
         public static Strings Strings => UnityContainer.Resolve<IStringsProvider>().Strings;
 
+        public ControlWindow ControlWindow { get; set; }
+
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -37,16 +41,26 @@ namespace Cranium.WPF
 
             MainWindow = UnityContainer.Resolve<MainWindow>();
             if (MainWindow == null)
+            {
                 MessageBox.Show("No window to show");
-            else
-                MainWindow.Show();
+                return;
+            }
+
+            ControlWindow = UnityContainer.Resolve<ControlWindow>();
+
+            MainWindow.Show();
+            ControlWindow.Show();
         }
 
         private static void RegisterTypes()
         {
             UnityContainer
                 // SERVICES
-                .RegisterInstance<IMongoDataServiceSettings>(new MongoDataServiceSettings { ConnectionString = "mongodb://localhost:27017", DatabaseName = "cranium" })
+                .RegisterInstance<IMongoDataServiceSettings>(new MongoDataServiceSettings
+                {
+                    ConnectionString = "mongodb://localhost:27017",
+                    DatabaseName = "cranium"
+                })
                 .RegisterType<ICategoryService, CategoryService>()
                 .RegisterType<IModelService<Category>, CategoryService>()
                 .RegisterType<IQuestionTypeService, QuestionTypeService>()
@@ -57,12 +71,14 @@ namespace Cranium.WPF
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 .RegisterSingleton<IEventAggregator, EventAggregator>()
                 .RegisterSingleton<IGameService, GameService>()
+                .RegisterType<IModelService<Player>, PlayerService>()
+                .RegisterType<IPlayerService, PlayerService>()
                 // VIEW-MODELS
                 .RegisterType<IMainWindowViewModel, MainWindowViewModel>()
                 // data
                 .RegisterType<IDataViewModel, DataViewModel>()
                 .RegisterType<IQuestionsViewModel, QuestionsViewModel>()
-                .RegisterType<IQuestionViewModel, QuestionViewModel>()
+                .RegisterType<ViewModels.Data.IQuestionViewModel, ViewModels.Data.Implementations.QuestionViewModel>()
                 .RegisterType<IQuestionTypesViewModel, QuestionTypesViewModel>()
                 .RegisterType<IQuestionTypeViewModel, QuestionTypeViewModel>()
                 .RegisterType<IAnswersViewModel, AnswersViewModel>()
@@ -73,6 +89,10 @@ namespace Cranium.WPF
                 .RegisterType<IGameViewModel, GameViewModel>()
                 .RegisterType<IGameBoardViewModel, GameBoardViewModel>()
                 .RegisterType<ITileViewModel, TileViewModel>()
+                .RegisterType<ViewModels.Game.IQuestionViewModel, ViewModels.Game.Implementations.QuestionViewModel>()
+                .RegisterType<IControlWindowViewModel, ControlWindowViewModel>()
+                .RegisterType<IModelContainer<Player>, PlayerViewModel>()
+                .RegisterType<IPlayerViewModel, PlayerViewModel>()
                 // settings
                 .RegisterType<ISettingsViewModel, SettingsViewModel>()
                 .RegisterSingleton<IHamburgerMenuViewModel, HamburgerMenuViewModel>()

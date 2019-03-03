@@ -4,7 +4,7 @@ namespace Cranium.WPF.Services.Strings
 {
     public class Strings : BindableBase
     {
-        #region fields
+        #region FIELDS
 
         private string _questions = "Vragen";
         private string _questionTypes = "Vraag types";
@@ -40,7 +40,17 @@ namespace Cranium.WPF.Services.Strings
 
         #endregion data
 
-        #endregion fields
+        #region game
+
+        private string _correct = "Juist";
+        private string _inCorrect = "Fout";
+
+        #endregion game
+
+        #endregion FIELDS
+
+
+        #region PROPERTIES
 
         public string Questions
         {
@@ -209,9 +219,27 @@ namespace Cranium.WPF.Services.Strings
         public string SelectAnAttachment
         {
             get => _selectAnAttachment;
-            set => SetProperty( ref  _selectAnAttachment, value);
+            set => SetProperty(ref _selectAnAttachment, value);
         }
 
         #endregion data
+
+        #region game
+
+        public string Correct
+        {
+            get => _correct;
+            set => SetProperty(ref _correct, value);
+        }
+
+        public string InCorrect
+        {
+            get => _inCorrect;
+            set => SetProperty(ref _inCorrect, value);
+        }
+
+        #endregion game
+
+        #endregion PROPERTIES
     }
 }

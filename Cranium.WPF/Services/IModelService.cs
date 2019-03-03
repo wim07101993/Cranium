@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Cranium.WPF.Exceptions;
 using Cranium.WPF.Models.Bases;
 using MongoDB.Bson;
 
-namespace Cranium.WPF.Services.Mongo
+namespace Cranium.WPF.Services
 {
     /// <summary>
     /// Interface that describes a class that provides basic CRUD operations for a database.
@@ -59,6 +60,37 @@ namespace Cranium.WPF.Services.Mongo
         /// <returns>All <see cref="T"/>s in the database</returns>
         Task<IList<T>> GetAsync(IEnumerable<Expression<Func<T, object>>> propertiesToInclude = null);
 
+        /// <summary>
+        /// Gets a <see cref="T"/> from the database if a condition is met.
+        /// </summary>
+        /// <param name="condition">The condition that needs to be fulfilled to return the <see cref="T"/></param>
+        /// <param name="propertiesToInclude">
+        /// The properties to include in the query (if it is null, all properties are passed).
+        /// </param>
+        /// <returns>The item for which the condition returns true</returns>
+        /// <exception cref="NotFoundException{T}">
+        /// Throws if there is no <see cref="T"/> for which the condition returns true.
+        /// </exception>
+        /// <exception cref="DatabaseException">Throws when the database throws an exception.</exception>
+        Task<T> GetByAsync(
+            Expression<Func<T, bool>> condition,
+            IEnumerable<Expression<Func<T, object>>> propertiesToInclude = null);
+
+        /// <summary>
+        /// Gets a property of a <see cref="T"/> from the database if a condition is met.
+        /// </summary>
+        /// <param name="condition">The condition that needs to be fulfilled to return the <see cref="T"/></param>
+        /// <param name="propertyToSelect">The property to get the value of</param>
+        /// <typeparam name="TOut">Type of the value to get.</typeparam>
+        /// <returns>The property of the item for which the condition returns true.</returns>
+        /// <exception cref="ArgumentNullException">If the propertyToSelect is null, nothing can't be returned.</exception>
+        /// <exception cref="NotFoundException{T}">
+        /// Throws if there is no <see cref="T"/> for which the condition returns true.
+        /// </exception>
+        /// <exception cref="DatabaseException">Throws when the database throws an exception.</exception>
+        Task<TOut> GetPropertyByAsync<TOut>(
+            Expression<Func<T, bool>> condition,
+            Expression<Func<T, TOut>> propertyToSelect);
 
         /// <summary>
         /// Updates a <see cref="T"/> by selecting the properties passed in <see cref="propertiesToUpdate"/>

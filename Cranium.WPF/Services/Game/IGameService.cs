@@ -14,16 +14,21 @@ namespace Cranium.WPF.Services.Game
         Task SaveGameAsync();
         Task<Game> LoadGameAsync(ObjectId gameId);
 
-        Task<Game> CreateAsync(TimeSpan gameTime, IEnumerable<Player> players);
-        Task<Game> CreateAsync(int cycleCount, IEnumerable<Player> players);
+        Task<Game> CreateAsync(TimeSpan gameTime, IReadOnlyList<Player> players);
+        Task<Game> CreateAsync(int cycleCount, IReadOnlyList<Player> players);
 
-        Task<Game> MovePlayerTo(ObjectId playerId, ObjectId categoryId);
+        Task<Game> MovePlayerToAsync(ObjectId playerId, ObjectId categoryId);
+        Task<Game> MovePlayerBackwardsToAsync(ObjectId playerId, ObjectId categoryId);
         Task<bool> IsAtEnd(ObjectId playerId);
 
-        Task<Question> GetQuestionAsync(ObjectId playerId);
+        Task<Question> GetQuestionAsync();
+        Task<Question> GetQuestionAsync(ObjectId categoryId);
         Task<IEnumerable<Answer>> GetAnswers(ObjectId questionId);
+
+        Task NextTurnAsync();
 
 
         event EventHandler GameChangedEvent;
+        event EventHandler PlayerChangedEvent;
     }
 }
