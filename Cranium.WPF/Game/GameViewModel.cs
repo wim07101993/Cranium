@@ -30,7 +30,7 @@ namespace Cranium.WPF.Game
             : base(stringsProvider)
         {
             _gameService = gameService;
-            _gameService.GameChanged += OnGameChanged;
+            _gameService.PlayerChanged += OnPlayerChangedAsync;
 
             HamburgerMenuViewModel = hamburgerMenuViewModel;
             GameBoardViewModel = gameBoardViewModel;
@@ -74,29 +74,17 @@ namespace Cranium.WPF.Game
         public GameBoardViewModel GameBoardViewModel { get; }
         public QuestionViewModel QuestionViewModel { get; }
 
-        public WPF.Game.Game Game => _gameService.Game;
-        public Player.Player CurrentPlayer => _gameService.Game?.CurrentPlayer;
+        public Player.Player CurrentPlayer => _gameService.CurrentPlayer;
 
         #endregion PROPERTIES
 
 
         #region METHODS
 
-        private void OnGameChanged(object sender, EventArgs e)
+        private Task OnPlayerChangedAsync(object sender)
         {
-            Game.PropertyChanged += OnGamePropertyChanged;
-            RaisePropertyChanged(nameof(Game));
             RaisePropertyChanged(nameof(CurrentPlayer));
-        }
-
-        private void OnGamePropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case nameof(WPF.Game.Game.CurrentPlayer):
-                    RaisePropertyChanged(nameof(CurrentPlayer));
-                    break;
-            }
+            return Task.CompletedTask;
         }
 
         #endregion METHODS
