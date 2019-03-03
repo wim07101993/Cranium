@@ -77,8 +77,7 @@ namespace Cranium.WPF.Helpers.Extensions
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                ;
-            }
+            };
         }
     }
+}
