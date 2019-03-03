@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Cranium.WPF.Game.Tile;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
@@ -25,9 +26,8 @@ namespace Cranium.WPF.Game.GameBoard
 
         public IReadOnlyList<TileViewModel> Tiles
             => _gameService
-                ?.Game
-                ?.GameBoard
-                .Select(tile =>
+                .GameBoard
+                ?.Select(tile =>
                 {
                     var tileViewModel = _unityContainer.Resolve<TileViewModel>();
                     tileViewModel.Model = tile;
@@ -36,9 +36,10 @@ namespace Cranium.WPF.Game.GameBoard
                 .ToList();
 
 
-        private void OnGameChanged(object sender, System.EventArgs e)
+        private Task OnGameChanged(object sender)
         {
             RaisePropertyChanged(nameof(Tiles));
+            return Task.CompletedTask;
         }
     }
 }

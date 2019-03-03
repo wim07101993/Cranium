@@ -13,7 +13,6 @@ namespace Cranium.WPF.Game.Player
         private readonly IGameService _gameService;
         private readonly ICategoryService _categoryService;
 
-        private Player _model;
         private Category _category;
         private bool _isUpdatingCategory;
         private bool _isUpdatingModel;
@@ -36,18 +35,7 @@ namespace Cranium.WPF.Game.Player
 
 
         #region PROPERTIES
-
-        public Player Model
-        {
-            get => _model;
-            set
-            {
-                if (!SetProperty(ref _model, value))
-                    return;
-                var _ = UpdateCategoryAsync();
-            }
-        }
-
+        
         public Category Category
         {
             get => _category;
@@ -69,6 +57,11 @@ namespace Cranium.WPF.Game.Player
 
 
         #region METHODS
+
+        protected override async Task OnModelChangedAsync()
+        {
+            await UpdateCategoryAsync();
+        }
 
         private async Task UpdateCategoryAsync()
         {

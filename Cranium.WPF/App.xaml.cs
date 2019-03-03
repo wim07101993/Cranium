@@ -11,7 +11,6 @@ using Cranium.WPF.Game.GameBoard;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Tile;
 using Cranium.WPF.HamburgerMenu;
-using Cranium.WPF.Helpers;
 using Cranium.WPF.Helpers.Mongo;
 using Cranium.WPF.Settings;
 using Cranium.WPF.Strings;
@@ -90,7 +89,7 @@ namespace Cranium.WPF
                 .RegisterType< Game.Question.QuestionViewModel>()
                 .RegisterType< ControlWindowViewModel>()
                 .RegisterType< PlayerViewModel>()
-                .RegisterType< PlayerViewModel>()
+                .RegisterType< PlayersViewModel>()
                 // settings
                 .RegisterType< SettingsViewModel>()
                 .RegisterSingleton< HamburgerMenuViewModel>()

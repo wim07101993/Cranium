@@ -127,6 +127,7 @@
     <Compile Include="Game\GameFinishedEventHandler.cs" />
     <Compile Include="Game\IMongoGameService.cs" />
     <Compile Include="Game\MongoGameService.cs" />
+    <Compile Include="Game\Player\PlayersViewModel.cs" />
     <Compile Include="Helpers\AsyncEventHandler.cs" />
     <Compile Include="Helpers\Converters\BytesToImageConverter.cs" />
     <Compile Include="Helpers\Converters\ColorToSolidColorBrushConverter.cs" />

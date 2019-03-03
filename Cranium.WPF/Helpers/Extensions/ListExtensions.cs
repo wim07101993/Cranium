@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
 using System.Windows.Media.Imaging;
+using Cranium.WPF.Game.Player;
+using Shared.Extensions;
 
 namespace Cranium.WPF.Helpers.Extensions
 {
@@ -42,5 +46,39 @@ namespace Cranium.WPF.Helpers.Extensions
                     return i;
             return -1;
         }
+
+        public static void AutoUpdateCollection<TCollection, TCollectionToUpdate>(
+            this INotifyCollectionChanged collection,
+            IList<TCollectionToUpdate> collectionToUpdate,
+            Func<TCollection, TCollectionToUpdate> itemConversion,
+            Func<TCollection, TCollectionToUpdate, bool> comparer)
+        {
+            collection.CollectionChanged += (sender, e) =>
+            {
+                var addedPlayers = e.NewItems.Cast<TCollection>().ToList();
+                var removedPlayers = e.OldItems.Cast<TCollection>().ToList();
+
+                switch (e.Action)
+                {
+                    case NotifyCollectionChangedAction.Add:
+                        collectionToUpdate.Add(addedPlayers.Select(itemConversion));
+                        break;
+                    case NotifyCollectionChangedAction.Remove:
+                        collectionToUpdate.RemoveWhere(tToUpdate => removedPlayers.Any(t => comparer(t, tToUpdate)));
+                        break;
+                    case NotifyCollectionChangedAction.Replace:
+                    case NotifyCollectionChangedAction.Move:
+                        collectionToUpdate.RemoveWhere(tToUpdate => removedPlayers.Any(t => comparer(t, tToUpdate)));
+                        collectionToUpdate.Add(addedPlayers.Select(itemConversion));
+                        break;
+                    case NotifyCollectionChangedAction.Reset:
+                        collectionToUpdate.Clear();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                ;
+            }
+        }
     }
-}
