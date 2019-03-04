@@ -134,6 +134,10 @@
     </Compile>
     <Compile Include="Game\Player\PlayersViewModel.cs" />
     <Compile Include="Helpers\AsyncEventHandler.cs" />
+    <Compile Include="Helpers\Controls\EButtonsAlignment.cs" />
+    <Compile Include="Helpers\Controls\NumericTextBox.cs" />
+    <Compile Include="Helpers\Controls\NumericTextBoxChangedRoutedEventArgs.cs" />
+    <Compile Include="Helpers\Controls\NumericTextBoxChangedRoutedEventHandler.cs" />
     <Compile Include="Helpers\Converters\BytesToImageConverter.cs" />
     <Compile Include="Helpers\Converters\ColorToSolidColorBrushConverter.cs" />
     <Compile Include="Helpers\Converters\InvertedBooleanToVisibilityConverter.cs" />
@@ -238,6 +242,7 @@
     <Compile Include="Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Converters\ThicknessToDoubleConverter.cs" />
     <Page Include="Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -294,6 +299,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Helpers\Controls\Themes\ChromelessButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Helpers\Controls\Themes\NumericTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -330,11 +343,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Helpers\Controls\ColorPicker.xaml">
+    <Page Include="Helpers\Controls\Themes\ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Helpers\Controls\ColorSpectrumSlider.xaml">
+    <Page Include="Helpers\Controls\Themes\ColorSpectrumSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

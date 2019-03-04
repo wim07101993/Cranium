@@ -11,11 +11,12 @@ using Cranium.WPF.Game.Tile;
 using Cranium.WPF.Helpers;
 using Cranium.WPF.Helpers.Extensions;
 using MongoDB.Bson;
+using Prism.Mvvm;
 using Shared.Extensions;
 
 namespace Cranium.WPF.Game
 {
-    public class GameService : IGameService
+    public class GameService : BindableBase, IGameService
     {
         #region FIELDS
 
@@ -39,6 +40,7 @@ namespace Cranium.WPF.Game
             new ObservableCollection<Category>();
 
         private int _currentPlayer;
+        private GameBoard.GameBoard _gameBoard;
 
         #endregion FIELDS
 
@@ -58,7 +60,11 @@ namespace Cranium.WPF.Game
 
         #region PROPERTIES
 
-        public GameBoard.GameBoard GameBoard { get; private set; }
+        public GameBoard.GameBoard GameBoard
+        {
+            get => _gameBoard;
+            private set => SetProperty(ref _gameBoard, value);
+        }
 
         public ReadOnlyObservableCollection<Player.Player> Players
             => new ReadOnlyObservableCollection<Player.Player>(_players);
@@ -117,7 +123,7 @@ namespace Cranium.WPF.Game
 
         public async Task CreateAsync(TimeSpan gameTime)
         {
-            var cycleCount = gameTime.Seconds / TimePerCycle.Seconds;
+            var cycleCount = (int) Math.Round(gameTime.TotalSeconds / TimePerCycle.TotalSeconds);
             await CreateAsync(cycleCount);
         }
 
@@ -365,6 +371,9 @@ namespace Cranium.WPF.Game
 
             if (PlayerChanged != null)
                 await PlayerChanged.Invoke(this);
+
+            RaisePropertyChanged(nameof(CurrentPlayer));
+            RaisePropertyChanged(nameof(TileOfCurrentPlayer));
         }
 
         #endregion turns

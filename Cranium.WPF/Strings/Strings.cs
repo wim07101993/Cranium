@@ -47,6 +47,8 @@ namespace Cranium.WPF.Strings
         private string _newPlayer = "Nieuw team";
         private string _players = "Teams";
         private string _question = "Opdracht";
+        private string _createGame = "Create game";
+        private string _gameTimeInMinutes = "Game-time (min)";
 
         #endregion game
 
@@ -257,6 +259,18 @@ namespace Cranium.WPF.Strings
         {
             get => _question;
             set => SetProperty(ref _question, value);
+        }
+
+        public string CreateGame
+        {
+            get => _createGame;
+            set => SetProperty(ref _createGame, value);
+        }
+
+        public string GameTimeInMinutes
+        {
+            get => _gameTimeInMinutes;
+            set => SetProperty(ref _gameTimeInMinutes, value);
         }
 
         #endregion game

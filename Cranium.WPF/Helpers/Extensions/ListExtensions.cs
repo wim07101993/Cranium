@@ -55,21 +55,25 @@ namespace Cranium.WPF.Helpers.Extensions
         {
             collection.CollectionChanged += (sender, e) =>
             {
-                var addedPlayers = e.NewItems.Cast<TCollection>().ToList();
-                var removedPlayers = e.OldItems.Cast<TCollection>().ToList();
+                var addedItems = e.NewItems?.Cast<TCollection>().ToList();
+                var removedItems = e.OldItems?.Cast<TCollection>().ToList();
 
                 switch (e.Action)
                 {
                     case NotifyCollectionChangedAction.Add:
-                        collectionToUpdate.Add(addedPlayers.Select(itemConversion));
+                        if (addedItems != null)
+                        collectionToUpdate.Add(addedItems.Select(itemConversion));
                         break;
                     case NotifyCollectionChangedAction.Remove:
-                        collectionToUpdate.RemoveWhere(tToUpdate => removedPlayers.Any(t => comparer(t, tToUpdate)));
+                        if (removedItems != null)
+                            collectionToUpdate.RemoveWhere(tToUpdate => removedItems.Any(t => comparer(t, tToUpdate)));
                         break;
                     case NotifyCollectionChangedAction.Replace:
                     case NotifyCollectionChangedAction.Move:
-                        collectionToUpdate.RemoveWhere(tToUpdate => removedPlayers.Any(t => comparer(t, tToUpdate)));
-                        collectionToUpdate.Add(addedPlayers.Select(itemConversion));
+                        if (removedItems != null)
+                            collectionToUpdate.RemoveWhere(tToUpdate => removedItems.Any(t => comparer(t, tToUpdate)));
+                        if (addedItems != null)
+                            collectionToUpdate.Add(addedItems.Select(itemConversion));
                         break;
                     case NotifyCollectionChangedAction.Reset:
                         collectionToUpdate.Clear();

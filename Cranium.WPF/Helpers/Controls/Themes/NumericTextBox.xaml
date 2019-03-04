@@ -1,0 +1,143 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Cranium.WPF.Helpers.Controls"
+    xmlns:converters="clr-namespace:Cranium.WPF.Helpers.Converters"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/Themes/ChromelessButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter" />
+
+    <Style TargetType="{x:Type controls:NumericTextBox}">
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="MinHeight" Value="20" />
+        <Setter Property="MinWidth" Value="50" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:NumericTextBox}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="PartTextBoxColumn" Width="*" />
+                                <ColumnDefinition x:Name="PartNumericUpColumn" Width="Auto" />
+                                <ColumnDefinition x:Name="PartNumericDownColumn" Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox
+                                x:Name="PartTextBox"
+                                Grid.Column="0"
+                                MinWidth="20"
+                                MinHeight="{TemplateBinding MinHeight}"
+                                Margin="0,0,-2,0"
+                                materialDesign:HintAssist.Hint="{TemplateBinding Hint}"
+                                FocusVisualStyle="{x:Null}"
+                                Focusable="{TemplateBinding Focusable}"
+                                IsReadOnly="{TemplateBinding IsReadOnly}"
+                                IsTabStop="{TemplateBinding IsTabStop}"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                TabIndex="{TemplateBinding TabIndex}" />
+                            <RepeatButton
+                                x:Name="PartNumericUp"
+                                Grid.Column="1"
+                                Width="{TemplateBinding UpDownButtonsWidth}"
+                                Margin="0,2,0,2"
+                                Delay="{TemplateBinding Delay}"
+                                Foreground="{TemplateBinding Foreground}"
+                                IsTabStop="False"
+                                Style="{DynamicResource ChromelessButtonStyle}">
+                                <Path
+                                    x:Name="PolygonUp"
+                                    Width="14"
+                                    Height="14"
+                                    Data="F1 M 35,19L 41,19L 41,35L 57,35L 57,41L 41,41L 41,57L 35,57L 35,41L 19,41L 19,35L 35,35L 35,19 Z "
+                                    Fill="LightSlateGray"
+                                    Stretch="Fill" />
+                            </RepeatButton>
+                            <RepeatButton
+                                x:Name="PartNumericDown"
+                                Grid.Column="2"
+                                Width="{TemplateBinding UpDownButtonsWidth}"
+                                Margin="0,2,2,2"
+                                Delay="{TemplateBinding Delay}"
+                                Foreground="{TemplateBinding Foreground}"
+                                IsTabStop="False"
+                                Style="{StaticResource ChromelessButtonStyle}">
+                                <Path
+                                    x:Name="PolygonDown"
+                                    Width="14"
+                                    Height="3"
+                                    Data="F1 M 19,38L 57,38L 57,44L 19,44L 19,38 Z "
+                                    Fill="LightSlateGray"
+                                    Stretch="Fill" />
+                            </RepeatButton>
+                        </Grid>
+                        <Border
+                            x:Name="DisabledVisualElement"
+                            Background="{DynamicResource ControlsDisabledBrush}"
+                            BorderBrush="{DynamicResource ControlsDisabledBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            IsHitTestVisible="False"
+                            Opacity="0"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ButtonsAlignment" Value="Left">
+                            <Setter TargetName="PartNumericDown" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="PartNumericDown" Property="Margin" Value="0,2,0,2" />
+                            <Setter TargetName="PartNumericDownColumn" Property="Width" Value="*" />
+                            <Setter TargetName="PartNumericUp" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="PartNumericUp" Property="Margin" Value="2,2,0,2" />
+                            <Setter TargetName="PartNumericUpColumn" Property="Width" Value="Auto" />
+                            <Setter TargetName="PartTextBox" Property="Grid.Column" Value="2" />
+                            <Setter TargetName="PartTextBox" Property="Margin" Value="-2,0,0,0" />
+                            <Setter TargetName="PartTextBoxColumn" Property="Width" Value="Auto" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="DisabledVisualElement" Property="Opacity" Value="0.6" />
+                        </Trigger>
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter Property="InterceptArrowKeys" Value="False" />
+                            <Setter Property="InterceptManualEnter" Value="False" />
+                            <Setter Property="InterceptMouseWheel" Value="False" />
+                            <Setter TargetName="PartNumericDown" Property="IsEnabled" Value="False" />
+                            <Setter TargetName="PartNumericUp" Property="IsEnabled" Value="False" />
+                        </Trigger>
+                        <Trigger SourceName="PartNumericUp" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PartNumericUp" Property="Background" Value="{DynamicResource GrayBrush8}" />
+                            <Setter TargetName="PolygonUp" Property="Fill" Value="{DynamicResource AccentColorBrush}" />
+                        </Trigger>
+                        <Trigger SourceName="PartNumericUp" Property="IsPressed" Value="True">
+                            <Setter TargetName="PartNumericUp" Property="Background" Value="{DynamicResource BlackBrush}" />
+                            <Setter TargetName="PolygonUp" Property="Fill" Value="{DynamicResource WhiteBrush}" />
+                        </Trigger>
+                        <Trigger SourceName="PartNumericDown" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PartNumericDown" Property="Background" Value="{DynamicResource GrayBrush8}" />
+                            <Setter TargetName="PolygonDown" Property="Fill" Value="{DynamicResource AccentColorBrush}" />
+                        </Trigger>
+                        <Trigger SourceName="PartNumericDown" Property="IsPressed" Value="True">
+                            <Setter TargetName="PartNumericDown" Property="Background" Value="{DynamicResource BlackBrush}" />
+                            <Setter TargetName="PolygonDown" Property="Fill" Value="{DynamicResource WhiteBrush}" />
+                        </Trigger>
+
+                        <Trigger Property="HideUpDownButtons" Value="True">
+                            <Setter TargetName="PartNumericDown" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PartNumericDownColumn" Property="Width" Value="0" />
+                            <Setter TargetName="PartNumericUp" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PartNumericUpColumn" Property="Width" Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="UpDownButtonsWidth" Value="22" />
+        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource ValidationErrorTemplate}" />
+    </Style>
+</ResourceDictionary>

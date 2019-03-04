@@ -4,6 +4,10 @@
     xmlns:controls="clr-namespace:Cranium.WPF.Helpers.Controls"
     xmlns:converters="clr-namespace:Cranium.WPF.Helpers.Converters">
 
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/Themes/ColorSpectrumSlider.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
     <converters:MinusConverter x:Key="MinusConverter" />
     <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
 

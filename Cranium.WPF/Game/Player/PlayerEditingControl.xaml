@@ -15,13 +15,13 @@
                                     <controls:ColorPicker
                                         Width="200"
                                         Height="200"
-                                        SelectedColor="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                        SelectedColor="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
                                     <Button
                                         Margin="0,8,8,0"
                                         HorizontalAlignment="Center"
                                         Command="materialDesign:DialogHost.CloseDialogCommand"
                                         CommandParameter="{StaticResource True}"
-                                        Content="{Binding Strings.Accept, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="{Binding Strings.Accept, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                         IsDefault="True"
                                         Style="{StaticResource MaterialDesignFlatButton}" />
                                 </StackPanel>
@@ -36,9 +36,9 @@
                                     MinWidth="72"
                                     Margin="0,16,0,0"
                                     HorizontalAlignment="Stretch"
-                                    materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource TemplatedParent}}"
+                                    materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                     ItemsSource="{TemplateBinding Categories}"
-                                    SelectedItem="{Binding Category, RelativeSource={RelativeSource TemplateParent}, Mode=TwoWay}"
+                                    SelectedItem="{Binding Category, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
                                     Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
                             </StackPanel>
 

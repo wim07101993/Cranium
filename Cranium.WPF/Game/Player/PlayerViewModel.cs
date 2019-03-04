@@ -16,7 +16,7 @@ namespace Cranium.WPF.Game.Player
         private Category _category;
         private bool _isUpdatingCategory;
         private bool _isUpdatingModel;
-        private bool _moveBackwards;
+        private bool _moveBackward;
 
         #endregion FIELDS
 
@@ -47,10 +47,10 @@ namespace Cranium.WPF.Game.Player
             }
         }
 
-        public bool MoveBackwards
+        public bool MoveBackward
         {
-            get => _moveBackwards;
-            set => SetProperty(ref _moveBackwards, value);
+            get => _moveBackward;
+            set => SetProperty(ref _moveBackward, value);
         }
 
         #endregion PROPERTIES
@@ -91,7 +91,7 @@ namespace Cranium.WPF.Game.Player
 
             _isUpdatingModel = true;
 
-            if (MoveBackwards)
+            if (MoveBackward)
                 await _gameService.MovePlayerBackwardsToAsync(Model.Id, Category.Id);
             else
                 await _gameService.MovePlayerToAsync(Model.Id, Category.Id);

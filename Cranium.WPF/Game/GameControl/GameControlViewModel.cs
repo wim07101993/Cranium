@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Cranium.WPF.Game.GameBoard;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Question;
 using Cranium.WPF.HamburgerMenu;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
+using Prism.Commands;
 
 namespace Cranium.WPF.Game.GameControl
 {
     public class GameControlViewModel : AViewModelBase
     {
         #region FIELDS
-
-        private readonly IGameService _gameService;
 
         #endregion FIELDS
 
@@ -22,30 +22,25 @@ namespace Cranium.WPF.Game.GameControl
 
         public GameControlViewModel(
             IStringsProvider stringsProvider, HamburgerMenuViewModel hamburgerMenuViewModel,
-            GameBoardViewModel gameBoardViewModel, QuestionViewModel questionViewModel, IGameService gameService, PlayersViewModel playersViewModel)
+            GameBoardViewModel gameBoardViewModel, QuestionViewModel questionViewModel, IGameService gameService,
+            PlayersViewModel playersViewModel)
             : base(stringsProvider)
         {
-            _gameService = gameService;
+            GameService = gameService;
             PlayersViewModel = playersViewModel;
-            _gameService.PlayerChanged += OnPlayerChangedAsync;
 
             HamburgerMenuViewModel = hamburgerMenuViewModel;
             GameBoardViewModel = gameBoardViewModel;
             QuestionViewModel = questionViewModel;
 
-            var _ = InitAsync();
-        }
-
-        public async Task InitAsync()
-        {
-            try
+            CreateGameCommand = new DelegateCommand<double?>(async x =>
             {
-                await _gameService.CreateAsync(5);
-            }
-            catch (Exception e)
-            {
-                // TODO
-            }
+                var gameTime = x != null
+                    ? (int) x
+                    : 0;
+                if (gameTime > 0)
+                    await CreateGameAsync(gameTime);
+            });
         }
 
         #endregion CONSTRUCTOR
@@ -53,23 +48,22 @@ namespace Cranium.WPF.Game.GameControl
 
         #region PROPERTIES
 
+        public IGameService GameService { get; }
+
         public HamburgerMenuViewModel HamburgerMenuViewModel { get; }
         public GameBoardViewModel GameBoardViewModel { get; }
         public QuestionViewModel QuestionViewModel { get; }
         public PlayersViewModel PlayersViewModel { get; }
 
-        public Player.Player CurrentPlayer => _gameService.CurrentPlayer;
+        public ICommand CreateGameCommand { get; }
 
         #endregion PROPERTIES
 
 
         #region METHODS
 
-        private Task OnPlayerChangedAsync(object sender)
-        {
-            RaisePropertyChanged(nameof(CurrentPlayer));
-            return Task.CompletedTask;
-        }
+        private async Task CreateGameAsync(int gameTime)
+            => await GameService.CreateAsync(TimeSpan.FromMinutes(gameTime));
 
         #endregion METHODS
     }
