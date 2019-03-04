@@ -118,7 +118,7 @@ namespace Cranium.WPF.Game
             await RefreshCategoriesAsync();
 
             if (GameChanged != null)
-                await GameChanged(this);
+                await GameChanged.Invoke(this);
         }
 
         public async Task CreateAsync(TimeSpan gameTime)

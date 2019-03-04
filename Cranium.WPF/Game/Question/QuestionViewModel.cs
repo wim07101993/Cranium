@@ -40,7 +40,7 @@ namespace Cranium.WPF.Game.Question
             _questionService = questionService;
             _gameService = gameService;
 
-            _gameService.GameChanged += OnGameChanged;
+            _gameService.GameChanged += GameChangedAsync;
             _gameService.PlayerChanged += OnPlayerChanged;
 
             AnswerCommand = new DelegateCommand<bool?>(async x => await Answer(x == true));
@@ -143,22 +143,15 @@ namespace Cranium.WPF.Game.Question
                 // TODO
             }
         }
-
-        private async Task GameChangedAsync()
+        
+        private async Task OnPlayerChanged(object sender)
         {
-            RaisePropertyChanged(nameof(Categories));
             await GetNewQuestionAsync();
         }
-        
-        private Task OnPlayerChanged(object sender)
-        {
-            var _ = GetNewQuestionAsync();
-            return Task.CompletedTask;
-        }
 
-        private Task OnGameChanged(object sender)
+        private Task GameChangedAsync(object sender)
         {
-            var _ = GameChangedAsync();
+            RaisePropertyChanged(nameof(Categories));
             return Task.CompletedTask;
         }
 

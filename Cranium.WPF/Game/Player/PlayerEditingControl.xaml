@@ -3,7 +3,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Cranium.WPF.Helpers.Controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:player="clr-namespace:Cranium.WPF.Game.Player">
+    xmlns:player="clr-namespace:Cranium.WPF.Game.Player"
+    xmlns:converters="clr-namespace:Cranium.WPF.Helpers.Converters">
+
+    <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+
+    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib" x:Key="True">
+        True
+    </system:Boolean>
+
     <Style TargetType="{x:Type player:PlayerEditingControl}">
         <Setter Property="Template">
             <Setter.Value>
@@ -15,7 +23,7 @@
                                     <controls:ColorPicker
                                         Width="200"
                                         Height="200"
-                                        SelectedColor="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
+                                        SelectedColor="{Binding Model.Color, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
                                     <Button
                                         Margin="0,8,8,0"
                                         HorizontalAlignment="Center"
@@ -28,13 +36,19 @@
                             </materialDesign:DialogHost.DialogContent>
 
 
-                            <StackPanel>
-                                <TextBox Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
-                                <Button Content="{Binding Strings.Color, RelativeSource={RelativeSource Mode=TemplatedParent}}" Style="{StaticResource MaterialDesignFlatButton}" />
+                            <StackPanel Margin="16">
+                                <TextBox Margin="8" Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                                <Button
+                                    Margin="8"
+                                    Background="{Binding Model.Color, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                    <materialDesign:PackIcon Kind="ColorLens" />
+                                </Button>
                                 <ComboBox
                                     x:Name="PartComboBox"
                                     MinWidth="72"
-                                    Margin="0,16,0,0"
+                                    Margin="8"
                                     HorizontalAlignment="Stretch"
                                     materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                     ItemsSource="{TemplateBinding Categories}"

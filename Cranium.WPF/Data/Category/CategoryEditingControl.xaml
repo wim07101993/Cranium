@@ -23,13 +23,13 @@
                                     <controls:ColorPicker
                                         Width="200"
                                         Height="200"
-                                        SelectedColor="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                                        SelectedColor="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
                                     <Button
                                         Margin="0,8,8,0"
                                         HorizontalAlignment="Center"
                                         Command="materialDesign:DialogHost.CloseDialogCommand"
                                         CommandParameter="{StaticResource True}"
-                                        Content="{Binding Strings.Accept, RelativeSource={RelativeSource TemplatedParent}}"
+                                        Content="{Binding Strings.Accept, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                         IsDefault="True"
                                         Style="{StaticResource MaterialDesignFlatButton}" />
                                 </StackPanel>
@@ -44,7 +44,7 @@
 
                                 <Image
                                     Grid.Row="0"
-                                    Source="{Binding Image, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
+                                    Source="{Binding Image, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}"
                                     Stretch="UniformToFill" />
 
                                 <StackPanel
@@ -59,7 +59,7 @@
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                         <Button.Background>
-                                            <SolidColorBrush Color="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TestConverter}}" />
+                                            <SolidColorBrush Color="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />
                                         </Button.Background>
                                         <materialDesign:PackIcon Kind="ColorLens" />
                                     </Button>
@@ -87,18 +87,18 @@
                                     VerticalAlignment="Center">
                                     <TextBox
                                         Margin="0,12,0,0"
-                                        materialDesign:HintAssist.Hint="{Binding Strings.Name, RelativeSource={RelativeSource TemplatedParent}}"
+                                        materialDesign:HintAssist.Hint="{Binding Strings.Name, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                        Text="{Binding Model.Name, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <TextBox
                                         Margin="0,12,0,0"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Top"
-                                        materialDesign:HintAssist.Hint="{Binding Strings.Description, RelativeSource={RelativeSource TemplatedParent}}"
+                                        materialDesign:HintAssist.Hint="{Binding Strings.Description, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                         AcceptsReturn="True"
                                         SpellCheck.IsEnabled="True"
                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                        Text="{Binding Model.Description, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Text="{Binding Model.Description, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         TextWrapping="Wrap"
                                         VerticalScrollBarVisibility="Auto" />
                                 </StackPanel>

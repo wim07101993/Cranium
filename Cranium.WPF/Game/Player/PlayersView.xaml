@@ -9,10 +9,12 @@
     d:DataContext="{d:DesignInstance player:PlayersViewModel}"
     mc:Ignorable="d">
     <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
         <ItemsControl ItemsSource="{Binding ItemsSource}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type player:PlayerViewModel}">
                     <player:PlayerEditingControl
+                        Margin="16"
                         Categories="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"
                         Category="{Binding Category}"
                         Model="{Binding Model}"
@@ -20,6 +22,25 @@
                         Strings="{Binding Strings}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
+
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
         </ItemsControl>
+        </ScrollViewer>
+
+        <Button
+            Margin="32"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Command="{Binding CreateCommand}"
+            Style="{StaticResource MaterialDesignFloatingActionButton}">
+            <materialDesign:PackIcon
+                Width="24"
+                Height="24"
+                Kind="Add" />
+        </Button>
     </Grid>
 </UserControl>
