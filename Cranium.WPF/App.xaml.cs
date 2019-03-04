@@ -68,8 +68,6 @@ namespace Cranium.WPF
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 .RegisterSingleton<IEventAggregator, EventAggregator>()
                 .RegisterSingleton<IGameService, GameService>()
-                .RegisterType<IModelService<Player>, PlayerService>()
-                .RegisterType<IPlayerService, PlayerService>()
                 // VIEW-MODELS
                 .RegisterType< MainWindowViewModel>()
                 // data

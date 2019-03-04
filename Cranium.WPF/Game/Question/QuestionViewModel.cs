@@ -86,9 +86,8 @@ namespace Cranium.WPF.Game.Question
 
         public IEnumerable<Category> Categories
             => _gameService
-                .Game?
-                .Questions?
-                .Select(x => x.QuestionType.Category)
+                .Questions
+                ?.Select(x => x.QuestionType.Category)
                 .Distinct();
 
         public bool HasAnswered
@@ -151,14 +150,16 @@ namespace Cranium.WPF.Game.Question
             await GetNewQuestionAsync();
         }
         
-        private void OnPlayerChanged(object sender, EventArgs e)
+        private Task OnPlayerChanged(object sender)
         {
             var _ = GetNewQuestionAsync();
+            return Task.CompletedTask;
         }
 
-        private void OnGameChanged(object sender, EventArgs e)
+        private Task OnGameChanged(object sender)
         {
             var _ = GameChangedAsync();
+            return Task.CompletedTask;
         }
 
         #endregion METHODS

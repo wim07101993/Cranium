@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,7 +11,6 @@ using MongoDB.Bson;
 using Prism.Commands;
 using Unity;
 using Color = Cranium.WPF.Helpers.Color;
-using Exception = System.Exception;
 
 namespace Cranium.WPF.Game.Player
 {

@@ -17,7 +17,7 @@
                         Width="200"
                         Height="Auto"
                         Margin="12">
-                        <materialDesign:DialogHost>
+                        <materialDesign:DialogHost CloseOnClickAway="True">
                             <materialDesign:DialogHost.DialogContent>
                                 <StackPanel Margin="16">
                                     <controls:ColorPicker

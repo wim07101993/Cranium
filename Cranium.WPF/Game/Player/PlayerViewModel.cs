@@ -70,13 +70,16 @@ namespace Cranium.WPF.Game.Player
 
             _isUpdatingCategory = true;
 
-            var categoryId = _gameService
-                .Game
-                .GameBoard
-                .First(tile => tile.Players.Any(player => player.Id == Model.Id))
-                .CategoryId;
-
-            Category = await _categoryService.GetOneAsync(categoryId);
+            var gameBoard = _gameService.GameBoard;
+            if (gameBoard != null)
+            { 
+                var categoryId = _gameService
+                    .GameBoard
+                    .First(tile => tile.Players.Any(player => player.Id == Model.Id))
+                    .CategoryId;
+            
+                Category = await _categoryService.GetOneAsync(categoryId);
+            }
 
             _isUpdatingCategory = false;
         }

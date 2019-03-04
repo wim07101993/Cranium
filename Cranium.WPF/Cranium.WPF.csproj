@@ -127,6 +127,10 @@
     <Compile Include="Game\GameFinishedEventHandler.cs" />
     <Compile Include="Game\IMongoGameService.cs" />
     <Compile Include="Game\MongoGameService.cs" />
+    <Compile Include="Game\Player\PlayerEditingControl.cs" />
+    <Compile Include="Game\Player\PlayersView.xaml.cs">
+      <DependentUpon>PlayersView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game\Player\PlayersViewModel.cs" />
     <Compile Include="Helpers\AsyncEventHandler.cs" />
     <Compile Include="Helpers\Converters\BytesToImageConverter.cs" />
@@ -159,8 +163,6 @@
     <Compile Include="Data\Question\Question.cs" />
     <Compile Include="Data\QuestionType\QuestionType.cs" />
     <Compile Include="Game\Game.cs" />
-    <Compile Include="Game\Player\IPlayerService.cs" />
-    <Compile Include="Game\Player\PlayerService.cs" />
     <Compile Include="Game\Tile\Tile.cs" />
     <Compile Include="Game\GameBoard\GameBoard.cs" />
     <Compile Include="Game\GameService.cs" />
@@ -272,6 +274,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Game\GameBoard\GameBoardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Player\PlayerEditingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Player\PlayersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
