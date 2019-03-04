@@ -7,5 +7,6 @@
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/QuestionType/QuestionTypeEditingControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/Question/QuestionEditingControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Game/Tile/TileControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Game/Player/PlayerEditingControl.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

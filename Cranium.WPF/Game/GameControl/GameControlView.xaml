@@ -1,0 +1,89 @@
+﻿<UserControl
+    x:Class="Cranium.WPF.Game.GameControl.GameControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:gameControl="clr-namespace:Cranium.WPF.Game.GameControl"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:player="clr-namespace:Cranium.WPF.Game.Player"
+    d:DataContext="{d:DesignInstance gameControl:GameControlViewModel}"
+    mc:Ignorable="d">
+
+    <DockPanel>
+        <materialDesign:ColorZone
+            Padding="16"
+            materialDesign:ShadowAssist.ShadowDepth="Depth2"
+            Background="{Binding CurrentPlayer.Color, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+            DockPanel.Dock="Top"
+            Mode="PrimaryMid">
+            <DockPanel>
+                <ToggleButton
+                    x:Name="MenuToggleButton"
+                    IsChecked="{Binding HamburgerMenuViewModel.IsOpen}"
+                    Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                    Text="{Binding CurrentPlayer.Name}" />
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox
+                Grid.Column="0"
+                Margin="16"
+                Header="{Binding Strings.Players}"
+                Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Kind="People" />
+                            <TextBlock
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <player:PlayersView DataContext="{Binding PlayersViewModel}" />
+            </GroupBox>
+
+            <GroupBox
+                Grid.Column="1"
+                Margin="16"
+                Header="{Binding Strings.Question}"
+                Style="{DynamicResource MaterialDesignCardGroupBox}">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="32"
+                                Height="32"
+                                VerticalAlignment="Center"
+                                Kind="QuestionAnswer" />
+                            <TextBlock
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                                Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</UserControl>

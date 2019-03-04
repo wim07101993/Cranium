@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="clr-namespace:Cranium.WPF.Data"
-    xmlns:game="clr-namespace:Cranium.WPF.Game"
+    xmlns:gameControl="clr-namespace:Cranium.WPF.Game.GameControl"
     xmlns:hamburgerMenu="clr-namespace:Cranium.WPF.HamburgerMenu"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -22,7 +22,7 @@
             </materialDesign:DrawerHost.LeftDrawerContent>
 
             <Grid>
-                <game:GameView x:Name="Game" DataContext="{Binding GameViewModel}" />
+                <gameControl:GameControlView x:Name="Game" DataContext="{Binding GameControlViewModel}" />
                 <data:DataView x:Name="Data" DataContext="{Binding DataViewModel}" />
                 <settings:SettingsView x:Name="Settings" DataContext="{Binding SettingsViewModel}" />
             </Grid>

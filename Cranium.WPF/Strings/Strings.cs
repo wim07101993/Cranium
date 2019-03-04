@@ -45,6 +45,8 @@ namespace Cranium.WPF.Strings
         private string _correct = "Juist";
         private string _inCorrect = "Fout";
         private string _newPlayer = "Nieuw team";
+        private string _players = "Teams";
+        private string _question = "Opdracht";
 
         #endregion game
 
@@ -243,6 +245,18 @@ namespace Cranium.WPF.Strings
         {
             get => _newPlayer;
             set => SetProperty(ref _newPlayer, value);
+        }
+
+        public string Players
+        {
+            get => _players;
+            set => SetProperty(ref _players, value);
+        }
+
+        public string Question
+        {
+            get => _question;
+            set => SetProperty(ref _question, value);
         }
 
         #endregion game

@@ -72,7 +72,7 @@ namespace Cranium.WPF.Game
         public ReadOnlyObservableCollection<Data.Question.Question> AnsweredQuestions
             => new ReadOnlyObservableCollection<Data.Question.Question>(_answeredQuestions);
 
-        public Player.Player CurrentPlayer => Players[_currentPlayer];
+        public Player.Player CurrentPlayer => Players.Count > 0 ? Players[_currentPlayer] : null;
 
         public Tile.Tile TileOfCurrentPlayer
             => GameBoard?.First(tile => tile.Players.Any(player => player.Id == CurrentPlayer.Id));
@@ -115,16 +115,13 @@ namespace Cranium.WPF.Game
                 await GameChanged(this);
         }
 
-        public async Task CreateAsync(TimeSpan gameTime, IReadOnlyList<Player.Player> players)
+        public async Task CreateAsync(TimeSpan gameTime)
         {
             var cycleCount = gameTime.Seconds / TimePerCycle.Seconds;
-            await CreateAsync(cycleCount, players);
-
-            if (GameChanged != null)
-                await GameChanged(this);
+            await CreateAsync(cycleCount);
         }
 
-        public async Task CreateAsync(int cycleCount, IReadOnlyList<Player.Player> players)
+        public async Task CreateAsync(int cycleCount)
         {
             // remove old questions
             _questions.Clear();
@@ -139,11 +136,6 @@ namespace Cranium.WPF.Game
             // generate game-board
             var tiles = CreateTiles(cycleCount, Categories);
             GameBoard = new GameBoard.GameBoard(tiles);
-
-            // add players
-            GameBoard[0].Players.Add(players);
-            _players.Add(players);
-            _currentPlayer = Random.Next(Players.Count);
 
             if (GameChanged != null)
                 await GameChanged.Invoke(this);
@@ -242,7 +234,7 @@ namespace Cranium.WPF.Game
 
             throw new PlayerNotFoundException("Could not remove all players since some do not play in this game.");
         }
-        
+
         public async Task MovePlayerToAsync(ObjectId playerId, ObjectId categoryId)
         {
             Player.Player player = null;

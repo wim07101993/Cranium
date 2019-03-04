@@ -29,7 +29,7 @@
 
 
                             <StackPanel>
-                                <TextBox Text="{Binding Name}" />
+                                <TextBox Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                                 <Button Content="{Binding Strings.Color, RelativeSource={RelativeSource Mode=TemplatedParent}}" Style="{StaticResource MaterialDesignFlatButton}" />
                                 <ComboBox
                                     x:Name="PartComboBox"
@@ -38,7 +38,7 @@
                                     HorizontalAlignment="Stretch"
                                     materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource TemplatedParent}}"
                                     ItemsSource="{TemplateBinding Categories}"
-                                    SelectedItem="{Binding Category, RelativeSource{RelativeSource TemplateParent}, Mode=TwoWay}"
+                                    SelectedItem="{Binding Category, RelativeSource={RelativeSource TemplateParent}, Mode=TwoWay}"
                                     Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
                             </StackPanel>
 

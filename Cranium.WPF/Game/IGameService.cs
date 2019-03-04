@@ -33,8 +33,8 @@ namespace Cranium.WPF.Game
         Task SaveGameAsync();
         Task LoadGameAsync(ObjectId gameId);
 
-        Task CreateAsync(TimeSpan gameTime, IReadOnlyList<Player.Player> players);
-        Task CreateAsync(int cycleCount, IReadOnlyList<Player.Player> players);
+        Task CreateAsync(TimeSpan gameTime);
+        Task CreateAsync(int cycleCount);
 
         #endregion game creation
 

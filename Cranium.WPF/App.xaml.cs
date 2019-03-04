@@ -6,8 +6,8 @@ using Cranium.WPF.Data.Files;
 using Cranium.WPF.Data.Question;
 using Cranium.WPF.Data.QuestionType;
 using Cranium.WPF.Game;
-using Cranium.WPF.Game.Control;
 using Cranium.WPF.Game.GameBoard;
+using Cranium.WPF.Game.GameControl;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Tile;
 using Cranium.WPF.HamburgerMenu;
@@ -68,6 +68,7 @@ namespace Cranium.WPF
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 .RegisterSingleton<IEventAggregator, EventAggregator>()
                 .RegisterSingleton<IGameService, GameService>()
+                .RegisterType<IMongoGameService, MongoGameService>()
                 // VIEW-MODELS
                 .RegisterType< MainWindowViewModel>()
                 // data
@@ -81,11 +82,11 @@ namespace Cranium.WPF
                 .RegisterType<CategoriesViewModel>()
                 .RegisterType<CategoryViewModel>()
                 // game
-                .RegisterType< GameViewModel>()
+                .RegisterType< GameControlViewModel>()
                 .RegisterType< GameBoardViewModel>()
                 .RegisterType< TileViewModel>()
                 .RegisterType< Game.Question.QuestionViewModel>()
-                .RegisterType< ControlWindowViewModel>()
+                .RegisterType< GameWindowViewModel>()
                 .RegisterType< PlayerViewModel>()
                 .RegisterType< PlayersViewModel>()
                 // settings

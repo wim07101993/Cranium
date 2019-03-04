@@ -1,33 +1,45 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows;
-using Cranium.WPF.Game.Control;
 using Cranium.WPF.HamburgerMenu;
+using Prism.Events;
 
 namespace Cranium.WPF
 {
     public partial class MainWindow
     {
-        private readonly ControlWindow _controlWindow;
+        #region FIELDS
+
+        private readonly IEventAggregator _eventAggregator;
+
+        #endregion FIELDS
 
 
-        public MainWindow(MainWindowViewModel viewModel, ControlWindow controlWindow)
+        #region CONSTRUCTOR
+
+        public MainWindow(MainWindowViewModel viewModel, IEventAggregator eventAggregator)
         {
-            _controlWindow = controlWindow;
+            _eventAggregator = eventAggregator;
             InitializeComponent();
 
-            DataContextChanged += OnDataContextChagned;
+            DataContextChanged += OnDataContextChanged;
 
             DataContext = viewModel;
-
-            _controlWindow.Show();
-            _controlWindow.Closing += OnControlWindowClosing;
         }
+
+        #endregion CONSTRUCTOR
+
+
+        #region PROPERTIES
 
         public MainWindowViewModel ViewModel => DataContext as MainWindowViewModel;
 
+        #endregion PROPERTIES
 
-        private void OnDataContextChagned(object sender, DependencyPropertyChangedEventArgs e)
+
+        #region METHODS
+
+        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (ViewModel == null)
                 return;
@@ -49,7 +61,7 @@ namespace Cranium.WPF
                     break;
             }
         }
-        
+
         private void OnHamburgerMenuViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
@@ -84,20 +96,19 @@ namespace Cranium.WPF
             }
         }
 
-
-        private void OnControlWindowClosing(object sender, CancelEventArgs e) => Close();
-
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
             try
             {
-                _controlWindow.Close();
+                _eventAggregator.GetEvent<CloseAllWindowsEvent>().Publish();
             }
             catch (Exception)
             {
                 // ignored
             }
         }
+
+        #endregion METHODS
     }
 }

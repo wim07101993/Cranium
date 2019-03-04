@@ -1,5 +1,6 @@
 ﻿using Cranium.WPF.Data;
 using Cranium.WPF.Game;
+using Cranium.WPF.Game.GameControl;
 using Cranium.WPF.HamburgerMenu;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Settings;
@@ -11,18 +12,18 @@ namespace Cranium.WPF
     {
         public MainWindowViewModel(
             IStringsProvider stringsProvider,
-            HamburgerMenuViewModel hamburgerMenuViewModel, GameViewModel gameViewModel, DataViewModel dataViewModel,
+            HamburgerMenuViewModel hamburgerMenuViewModel, GameControlViewModel gameControlViewModel, DataViewModel dataViewModel,
             SettingsViewModel settingsViewModel)
             : base(stringsProvider)
         {
             HamburgerMenuViewModel = hamburgerMenuViewModel;
-            GameViewModel = gameViewModel;
+            GameControlViewModel = gameControlViewModel;
             DataViewModel = dataViewModel;
             SettingsViewModel = settingsViewModel;
         }
 
         public HamburgerMenuViewModel HamburgerMenuViewModel { get; }
-        public GameViewModel GameViewModel { get; }
+        public GameControlViewModel GameControlViewModel { get; }
         public DataViewModel DataViewModel { get; }
         public SettingsViewModel SettingsViewModel { get; }
     }

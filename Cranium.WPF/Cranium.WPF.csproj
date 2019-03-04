@@ -124,6 +124,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CloseAllWindowsEvent.cs" />
     <Compile Include="Game\GameFinishedEventHandler.cs" />
     <Compile Include="Game\IMongoGameService.cs" />
     <Compile Include="Game\MongoGameService.cs" />
@@ -186,7 +187,7 @@
     <Compile Include="Data\QuestionType\QuestionTypeViewModel.cs" />
     <Compile Include="Data\Question\QuestionViewModel.cs" />
     <Compile Include="Helpers\ViewModels\AModelContainerViewModel.cs" />
-    <Compile Include="Game\Control\ControlWindowViewModel.cs" />
+    <Compile Include="Game\GameWindowViewModel.cs" />
     <Compile Include="Game\GameBoard\GameBoardViewModel.cs" />
     <Compile Include="Game\Player\PlayerViewModel.cs" />
     <Compile Include="Game\Question\QuestionViewModel.cs" />
@@ -194,7 +195,7 @@
     <Compile Include="Data\Category\CategoriesViewModel.cs" />
     <Compile Include="Helpers\ViewModels\ACollectionViewModel.cs" />
     <Compile Include="Data\Category\CategoryViewModel.cs" />
-    <Compile Include="Game\GameViewModel.cs" />
+    <Compile Include="Game\GameControl\GameControlViewModel.cs" />
     <Compile Include="HamburgerMenu\HamburgerMenuViewModel.cs" />
     <Compile Include="Data\Question\QuestionsViewModel.cs" />
     <Compile Include="Data\QuestionType\QuestionTypesViewModel.cs" />
@@ -216,8 +217,8 @@
     <Compile Include="Data\Category\CategoriesView.xaml.cs">
       <DependentUpon>CategoriesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game\Control\ControlWindow.xaml.cs">
-      <DependentUpon>ControlWindow.xaml</DependentUpon>
+    <Compile Include="Game\GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\GameBoard\GameBoardView.xaml.cs">
       <DependentUpon>GameBoardView.xaml</DependentUpon>
@@ -265,11 +266,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Game\Control\ControlWindow.xaml">
+    <Page Include="Game\GameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Game\GameView.xaml">
+    <Page Include="Game\GameControl\GameControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -310,8 +311,8 @@
     <Compile Include="Data\DataView.xaml.cs">
       <DependentUpon>DataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game\GameView.xaml.cs">
-      <DependentUpon>GameView.xaml</DependentUpon>
+    <Compile Include="Game\GameControl\GameControlView.xaml.cs">
+      <DependentUpon>GameControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
