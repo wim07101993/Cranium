@@ -1,8 +1,8 @@
 ﻿namespace Cranium.WPF.Game.Question
 {
-    public partial class QuestionDialog 
+    public partial class QuestionView 
     {
-        public QuestionDialog()
+        public QuestionView()
         {
             InitializeComponent();
         }

@@ -21,22 +21,24 @@ namespace Cranium.WPF.Game.Question
 
         private readonly IQuestionService _questionService;
         private readonly IGameService _gameService;
+        private readonly ICategoryService _categoryService;
 
         private Data.Question.Question _question;
         private BitmapImage _imageAttachment;
 
         private bool _isAnswerCorrect;
         private bool _hasAnswered;
-
+        
         #endregion FIELDS
 
 
         #region CONSTRUCTOR
 
         public QuestionViewModel(
-            IStringsProvider stringsProvider, IQuestionService questionService, IGameService gameService)
+            IStringsProvider stringsProvider, IQuestionService questionService, ICategoryService categoryService, IGameService gameService)
             : base(stringsProvider)
         {
+            _categoryService = categoryService;
             _questionService = questionService;
             _gameService = gameService;
 
@@ -62,6 +64,8 @@ namespace Cranium.WPF.Game.Question
 
                 var _ = UpdateAttachmentAsync();
                 RaisePropertyChanged(nameof(CorrectAnswers));
+                RaisePropertyChanged(nameof(NeedsToChooseCategory));
+                RaisePropertyChanged(nameof(Category));
             }
         }
 
@@ -71,7 +75,29 @@ namespace Cranium.WPF.Game.Question
             private set => SetProperty(ref _imageAttachment, value);
         }
 
+        #region category
+
+        public IEnumerable<Category> Categories
+            => _gameService
+                .Questions
+                ?.Select(x => x.QuestionType.Category)
+                .Distinct();
+
+        public bool NeedsToChooseCategory
+            => Category?.IsSpecial == true;
+
+        public Category Category
+            => Question?.QuestionType?.Category;
+
+        public ICommand SelectCategoryCommand { get; }
+
+        #endregion category
+
+        #region answer
+
         public ICommand AnswerCommand { get; }
+
+        public ICommand GetNewQuestionCommand { get; }
 
         public bool IsAnswerCorrect
         {
@@ -82,20 +108,14 @@ namespace Cranium.WPF.Game.Question
         public IEnumerable<Answer> CorrectAnswers
             => _question?.Answers.Where(x => x.IsCorrect);
 
-        public ICommand SelectCategoryCommand { get; }
-
-        public IEnumerable<Category> Categories
-            => _gameService
-                .Questions
-                ?.Select(x => x.QuestionType.Category)
-                .Distinct();
-
         public bool HasAnswered
         {
             get => _hasAnswered;
             set => SetProperty(ref _hasAnswered, value);
         }
-        
+
+        #endregion answer
+
         #endregion PROPERTIES
 
 
@@ -119,7 +139,7 @@ namespace Cranium.WPF.Game.Question
                     break;
             }
         }
-
+        
         private async Task GetNewQuestionAsync()
         {
             try
