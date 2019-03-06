@@ -140,6 +140,7 @@
     <Compile Include="Helpers\Controls\NumericTextBoxChangedRoutedEventHandler.cs" />
     <Compile Include="Helpers\Converters\BytesToImageConverter.cs" />
     <Compile Include="Helpers\Converters\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Helpers\Converters\DoubleToThicknessConverter.cs" />
     <Compile Include="Helpers\Converters\InvertedBooleanToVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\MinusConverter.cs" />
     <Compile Include="Helpers\Converters\MultiBooleanAndToVisibilityConverter.cs" />

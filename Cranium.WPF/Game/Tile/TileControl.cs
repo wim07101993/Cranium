@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using Cranium.WPF.Data.Category;
@@ -22,7 +20,7 @@ namespace Cranium.WPF.Game.Tile
             nameof(Players),
             typeof(IList<Player.Player>),
             typeof(TileControl),
-            new PropertyMetadata(default(IList<Player.Player>), OnPlayersChanged));
+            new PropertyMetadata(default(IList<Player.Player>)));
 
         public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register(
             nameof(CornerRadius),
@@ -85,9 +83,17 @@ namespace Cranium.WPF.Game.Tile
             set => SetValue(CornerRadiusProperty, value);
         }
 
-        public double PlayerSize => (double) GetValue(PlayerSizeProperty);
+        public double PlayerSize
+        {
+            get => (double)GetValue(PlayerSizeProperty);
+            set => SetValue(PlayerSizeProperty, value);
+        }
 
-        public Thickness PlayerMargin => (Thickness) GetValue(PlayerMarginProperty);
+        public Thickness PlayerMargin
+        {
+            get => (Thickness)GetValue(PlayerMarginProperty);
+            set => SetValue(PlayerMarginProperty, value);
+        }
 
         #endregion PROPERTIES
 
@@ -102,55 +108,8 @@ namespace Cranium.WPF.Game.Tile
 
             if (_itemsControl == null)
                 throw new InvalidOperationException($"You have missed to specify {ElementPlayers} in your template");
-
-            _itemsControl.SizeChanged += OnSizeChanged;
         }
-
-        private static void OnPlayersChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (!(d is TileControl tile))
-                return;
-
-            if (e.OldValue is ObservableCollection<Player.Player> oldPlayers)
-                oldPlayers.CollectionChanged -= tile.OnPlayersCollectionChanged;
-            if (tile.Players is ObservableCollection<Player.Player> newPlayers)
-                newPlayers.CollectionChanged += tile.OnPlayersCollectionChanged;
-
-            tile.RecalculatePlayerSize();
-        }
-
-        private void OnSizeChanged(object sender, SizeChangedEventArgs e) => RecalculatePlayerSize();
-
-        private void OnPlayersCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-            => RecalculatePlayerSize();
-
-        private void RecalculatePlayerSize()
-        {
-            if (Math.Abs(ActualHeight) < 0.1 || Math.Abs(ActualWidth) < 0.1 || Players.Count == 0)
-                return;
-
-            var width = Math.Max(_itemsControl.ActualWidth, _itemsControl.ActualHeight);
-            var height = Math.Min(_itemsControl.ActualWidth, _itemsControl.ActualHeight);
-            var columns = Players.Count;
-            var rows = 1;
-
-            while (true)
-            {
-                if (width / columns >= height / rows)
-                    break;
-
-                rows++;
-                columns = (int) Math.Ceiling((double) Players.Count / rows);
-            }
-
-            var playerContainerSize = Math.Min(width / columns, height / rows);
-            var playerMargin = playerContainerSize / 10;
-            var playerSize = playerContainerSize - playerMargin * 2;
-
-            SetValue(PlayerSizeProperty, playerSize);
-            SetValue(PlayerMarginProperty, new Thickness(playerMargin));
-        }
-
+        
         #endregion METHODS
     }
 }
