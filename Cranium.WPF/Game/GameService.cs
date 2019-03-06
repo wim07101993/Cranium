@@ -203,8 +203,13 @@ namespace Cranium.WPF.Game
             if (GameBoard.Count < 1)
                 throw new GameException("The game has no tiles, cannot add players");
 
-            GameBoard[0].Players.Add(players);
-            _players.Add(players);
+            foreach (var player in players)
+            {
+                player.Id = ObjectId.GenerateNewId();
+                GameBoard[0].Players.Add(player);
+                _players.Add(player);
+            }
+            
             return Task.CompletedTask;
         }
 

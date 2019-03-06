@@ -23,29 +23,13 @@
             </Grid>
         </materialDesign:DialogHost.DialogContent>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
-                <Button
-                    Margin="16"
-                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                    Content="{Binding Strings.Task}" />
-            </StackPanel>
-
-            <ScrollViewer
-                Grid.Column="1"
-                HorizontalScrollBarVisibility="Visible"
-                VerticalScrollBarVisibility="Visible">
-                <gameBoard:GameBoardView
-                    Margin="16"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    DataContext="{Binding GameBoardViewModel}" />
-            </ScrollViewer>
-        </Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+            <gameBoard:GameBoardView
+                Margin="16"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                DataContext="{Binding GameBoardViewModel}" />
+        </ScrollViewer>
     </materialDesign:DialogHost>
 </Window>

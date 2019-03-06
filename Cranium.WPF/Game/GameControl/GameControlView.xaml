@@ -110,6 +110,7 @@
                 <Button
                     Margin="8"
                     Command="{Binding CreateGameCommand}"
+                    IsDefault="True"
                     CommandParameter="{Binding ElementName=NumericTextBox, Path=Value}"
                     Content="{Binding Strings.CreateGame}" />
             </StackPanel>

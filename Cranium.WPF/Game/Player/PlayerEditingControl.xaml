@@ -37,7 +37,7 @@
 
 
                             <StackPanel Margin="16">
-                                <TextBox Margin="8" Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                                <TextBox Margin="8" Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />
                                 <Button
                                     Margin="8"
                                     Background="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
@@ -52,7 +52,7 @@
                                     HorizontalAlignment="Stretch"
                                     materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                     ItemsSource="{TemplateBinding Categories}"
-                                    SelectedItem="{Binding Category, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
+                                    SelectedItem="{Binding Category, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
                             </StackPanel>
 
