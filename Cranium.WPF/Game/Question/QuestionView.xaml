@@ -1,0 +1,81 @@
+﻿<UserControl
+    x:Class="Cranium.WPF.Game.Question.QuestionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:category="clr-namespace:Cranium.WPF.Data.Category"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:question="clr-namespace:Cranium.WPF.Game.Question"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    d:DataContext="{d:DesignInstance question:QuestionViewModel}"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <StackPanel Visibility="{Binding NeedsToChooseCategory, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock
+                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                Text="{Binding Strings.SelectACategory}"
+                Visibility="{Binding Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+            <ItemsControl ItemsSource="{Binding Categories}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type category:Category}">
+                        <Button
+                            Width="80"
+                            Height="120"
+                            Margin="8"
+                            Background="{Binding Color}"
+                            Command="{Binding DataContext.SelectCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionView}}}"
+                            CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <StackPanel Visibility="{Binding Question, Converter={StaticResource ObjectToVisibilityConverter}}">
+
+            <TextBlock
+                Style="{StaticResource MaterialDesignDisplay3TextBlock}"
+                Text="{Binding Question.Task}"
+                Visibility="{Binding Question.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
+
+            <TextBlock
+                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                Text="{Binding Question.Tip}"
+                Visibility="{Binding Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+
+            <Image Source="{Binding ImageAttachment}" />
+
+            <StackPanel Margin="16" Orientation="Horizontal">
+                <Button
+                    Margin="8"
+                    Command="{Binding AnswerCommand}"
+                    Content="{Binding Strings.Correct}"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <system:Boolean>True</system:Boolean>
+                    </Button.CommandParameter>
+                </Button>
+                <Button
+                    Margin="8"
+                    Command="{Binding AnswerCommand}"
+                    Content="{Binding Strings.InCorrect}"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <Button.CommandParameter>
+                        <system:Boolean>False</system:Boolean>
+                    </Button.CommandParameter>
+                </Button>
+                <Button Margin="8" Command="{Binding GetNewQuestionCommand}">
+                    <materialDesign:PackIcon Kind="Refresh" />
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

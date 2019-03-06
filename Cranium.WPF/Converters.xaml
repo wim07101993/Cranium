@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:Cranium.WPF.Helpers.Converters">
 
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     <converters:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter" />
     <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
     <converters:MultiBooleanAndToVisibilityConverter x:Key="MultiBooleanAndToVisibilityConverter" />
@@ -12,4 +13,5 @@
     <converters:BytesToImageConverter x:Key="BytesToImageConverter" />
 
     <converters:MinusConverter x:Key="MinusConverter" />
+    <converters:DoubleToThicknessConverter x:Key="DoubleToThicknessConverter" />
 </ResourceDictionary>

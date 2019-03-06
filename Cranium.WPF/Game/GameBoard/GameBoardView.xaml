@@ -12,11 +12,13 @@
         <ItemsControl.ItemTemplate>
             <DataTemplate DataType="{x:Type tile:TileViewModel}">
                 <tile:TileControl
-                    Width="120"
-                    Height="80"
+                    Width="{Binding DataContext.TileWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
+                    Height="{Binding DataContext.TileHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
                     Margin="10"
                     Category="{Binding Category}"
                     CornerRadius="15"
+                    PlayerMargin="{Binding DataContext.PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, Converter={StaticResource DoubleToThicknessConverter}}"
+                    PlayerSize="{Binding DataContext.PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
                     Players="{Binding Model.Players}" />
             </DataTemplate>
         </ItemsControl.ItemTemplate>

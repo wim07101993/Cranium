@@ -16,7 +16,7 @@
     <materialDesign:DialogHost>
         <materialDesign:DialogHost.DialogContent>
             <Grid Width="900" Height="600">
-                <question:QuestionDialog
+                <question:QuestionView
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     DataContext="{Binding QuestionViewModel}" />

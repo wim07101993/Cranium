@@ -140,6 +140,7 @@
     <Compile Include="Helpers\Controls\NumericTextBoxChangedRoutedEventHandler.cs" />
     <Compile Include="Helpers\Converters\BytesToImageConverter.cs" />
     <Compile Include="Helpers\Converters\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Helpers\Converters\DoubleToThicknessConverter.cs" />
     <Compile Include="Helpers\Converters\InvertedBooleanToVisibilityConverter.cs" />
     <Compile Include="Helpers\Converters\MinusConverter.cs" />
     <Compile Include="Helpers\Converters\MultiBooleanAndToVisibilityConverter.cs" />
@@ -227,8 +228,8 @@
     <Compile Include="Game\GameBoard\GameBoardView.xaml.cs">
       <DependentUpon>GameBoardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game\Question\QuestionDialog.xaml.cs">
-      <DependentUpon>QuestionDialog.xaml</DependentUpon>
+    <Compile Include="Game\Question\QuestionView.xaml.cs">
+      <DependentUpon>QuestionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Question\QuestionsView.xaml.cs">
       <DependentUpon>QuestionsView.xaml</DependentUpon>
@@ -291,7 +292,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Game\Question\QuestionDialog.xaml">
+    <Page Include="Game\Question\QuestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
