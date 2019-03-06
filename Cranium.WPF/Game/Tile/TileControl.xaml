@@ -19,7 +19,6 @@
                         Background="{Binding Category.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}">
                         <ItemsControl
                             x:Name="PartPlayers"
-                            Margin="8"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             ItemsSource="{TemplateBinding Players}">

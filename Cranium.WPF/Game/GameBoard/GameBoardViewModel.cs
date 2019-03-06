@@ -104,13 +104,16 @@ namespace Cranium.WPF.Game.GameBoard
 
         private void RecalculatePlayerSize()
         {
+            var playerCount = _gameService.Players.Count;
+            if (playerCount < 1)
+                return;
+
             var width = Math.Max(TileWidth, TileHeight);
             var height = Math.Min(TileHeight, TileWidth);
-            var playerCount = _gameService.Players.Count;
             var columns = playerCount;
             var rows = 1;
 
-            while (width /columns >= height/rows)
+            while (width /columns < height/rows)
             {
                 rows++;
                 columns = (int)Math.Ceiling((double)playerCount / rows);

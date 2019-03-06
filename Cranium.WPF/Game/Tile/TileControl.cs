@@ -6,7 +6,7 @@ using Cranium.WPF.Data.Category;
 
 namespace Cranium.WPF.Game.Tile
 {
-    public class TileControl : System.Windows.Controls.Control
+    public class TileControl : Control
     {
         #region DEPENDENCY PROPERTIES
 
