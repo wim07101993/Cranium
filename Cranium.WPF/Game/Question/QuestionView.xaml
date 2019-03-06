@@ -15,10 +15,11 @@
 
         <StackPanel Visibility="{Binding NeedsToChooseCategory, Converter={StaticResource BooleanToVisibilityConverter}}">
             <TextBlock
+                HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                 Text="{Binding Strings.SelectACategory}"
                 Visibility="{Binding Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
-            <ItemsControl ItemsSource="{Binding Categories}">
+            <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Categories}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -31,7 +32,7 @@
                             Width="80"
                             Height="120"
                             Margin="8"
-                            Background="{Binding Color}"
+                            Background="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                             Command="{Binding DataContext.SelectCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionView}}}"
                             CommandParameter="{Binding}" />
                     </DataTemplate>
@@ -42,8 +43,10 @@
         <StackPanel Visibility="{Binding Question, Converter={StaticResource ObjectToVisibilityConverter}}">
 
             <TextBlock
+                Foreground="{DynamicResource MaterialDesignLightForeground}"
                 Style="{StaticResource MaterialDesignDisplay3TextBlock}"
-                Text="{Binding Question.Task}"
+                Text="{Binding Question.Task}" TextAlignment="Center" Margin="8"
+                TextWrapping="Wrap"
                 Visibility="{Binding Question.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
 
             <TextBlock
@@ -51,9 +54,15 @@
                 Text="{Binding Question.Tip}"
                 Visibility="{Binding Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
 
-            <Image Source="{Binding ImageAttachment}" />
+            <Image
+                Width="200"
+                Height="200" Visibility="{Binding ImageAttachment, Converter={StaticResource ObjectToVisibilityConverter}}"
+                Source="{Binding ImageAttachment}" />
 
-            <StackPanel Margin="16" Orientation="Horizontal">
+            <StackPanel
+                Margin="16"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
                 <Button
                     Margin="8"
                     Command="{Binding AnswerCommand}"

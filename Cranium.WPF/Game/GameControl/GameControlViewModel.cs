@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Cranium.WPF.Game.GameBoard;
@@ -41,6 +42,10 @@ namespace Cranium.WPF.Game.GameControl
                 if (gameTime > 0)
                     await CreateGameAsync(gameTime);
             });
+
+            StartCommand = new DelegateCommand(async () => await StartAsync());
+            StopCommand = new DelegateCommand(async () => await StopAsync());
+            RestartCommand = new DelegateCommand(async () => await RestartAsync());
         }
 
         #endregion CONSTRUCTOR
@@ -57,6 +62,12 @@ namespace Cranium.WPF.Game.GameControl
 
         public ICommand CreateGameCommand { get; }
 
+        public ICommand StartCommand { get; }
+
+        public ICommand StopCommand { get; }
+
+        public ICommand RestartCommand { get; }
+
         #endregion PROPERTIES
 
 
@@ -64,6 +75,15 @@ namespace Cranium.WPF.Game.GameControl
 
         private async Task CreateGameAsync(int gameTime)
             => await GameService.CreateAsync(TimeSpan.FromMinutes(gameTime));
+
+        private async Task StartAsync()
+            => await GameService.StartGameAsync();
+
+        private async Task StopAsync()
+            => await GameService.StopGameAsync();
+
+        private async Task RestartAsync()
+            => await GameService.CreateAsync(GameService.GameBoard.Count);
 
         #endregion METHODS
     }

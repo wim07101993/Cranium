@@ -21,7 +21,7 @@ namespace Cranium.WPF.Game
         #region FIELDS
 
         private static readonly Random Random = new Random();
-        private static readonly TimeSpan TimePerCycle = TimeSpan.FromMinutes(12);
+        private static readonly TimeSpan TimePerTile = TimeSpan.FromMinutes(2.4);
 
         private readonly ICategoryService _categoryService;
         private readonly IQuestionService _questionService;
@@ -39,7 +39,7 @@ namespace Cranium.WPF.Game
         private readonly ObservableCollection<Category> _categories =
             new ObservableCollection<Category>();
 
-        private int _currentPlayer;
+        private int _currentPlayer = -1;
         private GameBoard.GameBoard _gameBoard;
 
         #endregion FIELDS
@@ -78,10 +78,15 @@ namespace Cranium.WPF.Game
         public ReadOnlyObservableCollection<Data.Question.Question> AnsweredQuestions
             => new ReadOnlyObservableCollection<Data.Question.Question>(_answeredQuestions);
 
-        public Player.Player CurrentPlayer => Players.Count > 0 ? Players[_currentPlayer] : null;
+        public Player.Player CurrentPlayer
+            => Players.Count > 0 && _currentPlayer >= 0 
+                ? Players[_currentPlayer]
+                : null;
 
         public Tile.Tile TileOfCurrentPlayer
-            => GameBoard?.First(tile => tile.Players.Any(player => player.Id == CurrentPlayer.Id));
+            => CurrentPlayer != null
+                ? GameBoard?.First(tile => tile.Players.Any(player => player.Id == CurrentPlayer.Id))
+                : null;
 
         #endregion PROPERTIES
 
@@ -123,8 +128,24 @@ namespace Cranium.WPF.Game
 
         public async Task CreateAsync(TimeSpan gameTime)
         {
-            var cycleCount = (int) Math.Round(gameTime.TotalSeconds / TimePerCycle.TotalSeconds);
-            await CreateAsync(cycleCount);
+            // remove old questions
+            _questions.Clear();
+            _answeredQuestions.Clear();
+
+            // add new questions
+            _questions.Add(await _questionService.GetAsync());
+
+            // refresh categories
+            await RefreshCategoriesAsync();
+
+            var tileCount = (int) Math.Round(gameTime.TotalSeconds / TimePerTile.TotalSeconds);
+            var cycleCount = tileCount / Categories.Count;
+
+            var tiles = CreateTiles(cycleCount, Categories);
+            GameBoard = new GameBoard.GameBoard(tiles);
+
+            if (GameChanged != null)
+                await GameChanged.Invoke(this);
         }
 
         public async Task CreateAsync(int cycleCount)
@@ -372,6 +393,16 @@ namespace Cranium.WPF.Game
 
         #region turns
 
+        public async Task StartGameAsync()
+        {
+            _currentPlayer = Random.Next(0, Players.Count);
+            if (PlayerChanged != null)
+                await PlayerChanged.Invoke(this);
+
+            RaisePropertyChanged(nameof(CurrentPlayer));
+            RaisePropertyChanged(nameof(TileOfCurrentPlayer));
+        }
+
         public async Task NextTurnAsync()
         {
             _currentPlayer =
@@ -384,6 +415,21 @@ namespace Cranium.WPF.Game
 
             RaisePropertyChanged(nameof(CurrentPlayer));
             RaisePropertyChanged(nameof(TileOfCurrentPlayer));
+        }
+
+        public Task StopGameAsync()
+        {
+            GameBoard = null;
+            _players.Clear();
+            _categories.Clear();
+            _questions.Clear();
+            _answeredQuestions.Clear();
+
+            _currentPlayer = -1;
+            RaisePropertyChanged(nameof(CurrentPlayer));
+            RaisePropertyChanged(nameof(TileOfCurrentPlayer));
+
+            return Task.CompletedTask;
         }
 
         #endregion turns

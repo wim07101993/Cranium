@@ -21,24 +21,23 @@ namespace Cranium.WPF.Game.Question
 
         private readonly IQuestionService _questionService;
         private readonly IGameService _gameService;
-        private readonly ICategoryService _categoryService;
 
         private Data.Question.Question _question;
         private BitmapImage _imageAttachment;
 
         private bool _isAnswerCorrect;
         private bool _hasAnswered;
-        
+
         #endregion FIELDS
 
 
         #region CONSTRUCTOR
 
         public QuestionViewModel(
-            IStringsProvider stringsProvider, IQuestionService questionService, ICategoryService categoryService, IGameService gameService)
+            IStringsProvider stringsProvider, IQuestionService questionService,
+            IGameService gameService)
             : base(stringsProvider)
         {
-            _categoryService = categoryService;
             _questionService = questionService;
             _gameService = gameService;
 
@@ -64,8 +63,6 @@ namespace Cranium.WPF.Game.Question
 
                 var _ = UpdateAttachmentAsync();
                 RaisePropertyChanged(nameof(CorrectAnswers));
-                RaisePropertyChanged(nameof(NeedsToChooseCategory));
-                RaisePropertyChanged(nameof(Category));
             }
         }
 
@@ -78,16 +75,15 @@ namespace Cranium.WPF.Game.Question
         #region category
 
         public IEnumerable<Category> Categories
-            => _gameService
-                .Questions
-                ?.Select(x => x.QuestionType.Category)
-                .Distinct();
+            => _gameService.Categories.Where(x => !x.IsSpecial);
 
         public bool NeedsToChooseCategory
-            => Category?.IsSpecial == true;
+            => Category?.IsSpecial == true && Question == null;
 
         public Category Category
-            => Question?.QuestionType?.Category;
+            => _gameService.TileOfCurrentPlayer != null
+                ? _gameService.Categories.FirstOrDefault(x => x.Id == _gameService.TileOfCurrentPlayer.CategoryId)
+                : null;
 
         public ICommand SelectCategoryCommand { get; }
 
@@ -139,7 +135,7 @@ namespace Cranium.WPF.Game.Question
                     break;
             }
         }
-        
+
         private async Task GetNewQuestionAsync()
         {
             try
@@ -157,16 +153,18 @@ namespace Cranium.WPF.Game.Question
             try
             {
                 Question = await _gameService.GetQuestionAsync(category.Id);
+                RaisePropertyChanged(nameof(NeedsToChooseCategory));
             }
             catch (Exception e)
             {
                 // TODO
             }
         }
-        
+
         private async Task OnPlayerChanged(object sender)
         {
-            await GetNewQuestionAsync();
+            RaisePropertyChanged(nameof(NeedsToChooseCategory));
+            RaisePropertyChanged(nameof(Category));
         }
 
         private Task GameChangedAsync(object sender)

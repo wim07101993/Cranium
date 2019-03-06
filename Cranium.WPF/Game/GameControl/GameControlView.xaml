@@ -8,6 +8,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:player="clr-namespace:Cranium.WPF.Game.Player"
+    xmlns:question="clr-namespace:Cranium.WPF.Game.Question"
     d:DataContext="{d:DesignInstance gameControl:GameControlViewModel}"
     FocusManager.FocusedElement="{x:Reference NumericTextBox}"
     mc:Ignorable="d">
@@ -31,11 +32,48 @@
                     Style="{StaticResource MaterialDesignHeadlineTextBlock}"
                     Text="{Binding Strings.Cranium}" />
 
-                <Button
-                    HorizontalAlignment="Right"
-                    Click="OnOpenGameWindowClicked"
-                    Content="{materialDesign:PackIcon Games}"
-                    ToolTip="Icon" />
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button
+                        Margin="8,0,0,0"
+                        Command="{Binding StartCommand}"
+                        Style="{DynamicResource MaterialDesignToolForegroundButton}">
+                        <materialDesign:PackIcon
+                            Width="26"
+                            Height="26"
+                            Kind="Play" />
+                    </Button>
+
+                    <Button
+                        Margin="8,0,0,0"
+                        Command="{Binding StopCommand}"
+                        Style="{DynamicResource MaterialDesignToolForegroundButton}">
+                        <materialDesign:PackIcon
+                            Width="26"
+                            Height="26"
+                            Kind="Stop" />
+                    </Button>
+
+                    <Button
+                        Margin="8,0,0,0"
+                        Command="{Binding RestartCommand}"
+                        Style="{DynamicResource MaterialDesignToolForegroundButton}">
+                        <materialDesign:PackIcon
+                            Width="26"
+                            Height="26"
+                            Kind="Restart" />
+                    </Button>
+
+                    <Button
+                        Margin="8,0,0,0"
+                        Click="OnOpenGameWindowClicked"
+                        Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                        ToolTip="Icon">
+                        <materialDesign:PackIcon
+                            Width="26"
+                            Height="26"
+                            Kind="Games" />
+                    </Button>
+                </StackPanel>
             </Grid>
         </materialDesign:ColorZone>
 
@@ -91,7 +129,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </GroupBox.HeaderTemplate>
-
+                    <question:QuestionView DataContext="{Binding QuestionViewModel}" />
                 </GroupBox>
             </Grid>
 
