@@ -50,6 +50,7 @@ namespace Cranium.WPF.Strings
         private string _createGame = "Create game";
         private string _gameTimeInMinutes = "Game-time (min)";
         private string _selectACategory = "Selecteer een categorie";
+        private string _moveBackwards = "Achteruit gaan";
 
         #endregion game
 
@@ -278,6 +279,12 @@ namespace Cranium.WPF.Strings
         {
             get => _selectACategory;
             set => SetProperty(ref _selectACategory, value);
+        }
+
+        public string MoveBackwards
+        {
+            get => _moveBackwards;
+            set => SetProperty(ref _moveBackwards, value);
         }
 
         #endregion game

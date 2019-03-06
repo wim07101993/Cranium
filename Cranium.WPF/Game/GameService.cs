@@ -289,11 +289,12 @@ namespace Cranium.WPF.Game
             {
                 var tile = GameBoard[i];
                 var playerIndex = tile.Players.IndexOfFirst(x => x.Id == playerId);
-                if (playerIndex < 0)
-                    continue;
-
-                player = tile.Players[playerIndex];
-                tile.Players.RemoveAt(playerIndex);
+                if (playerIndex >= 0)
+                {
+                    player = tile.Players[playerIndex];
+                    tile.Players.RemoveAt(playerIndex);
+                    break;
+                }
             }
 
             if (player == null)

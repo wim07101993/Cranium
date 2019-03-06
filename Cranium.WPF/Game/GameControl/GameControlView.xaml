@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:player="clr-namespace:Cranium.WPF.Game.Player"
     d:DataContext="{d:DesignInstance gameControl:GameControlViewModel}"
+    FocusManager.FocusedElement="{x:Reference NumericTextBox}"
     mc:Ignorable="d">
 
     <DockPanel>
@@ -106,13 +107,14 @@
                     Hint="{Binding Strings.GameTimeInMinutes}"
                     Interval="10"
                     Maximum="600"
-                    Minimum="0" />
+                    Minimum="0"
+                    TabIndex="0" />
                 <Button
                     Margin="8"
                     Command="{Binding CreateGameCommand}"
-                    IsDefault="True"
                     CommandParameter="{Binding ElementName=NumericTextBox, Path=Value}"
-                    Content="{Binding Strings.CreateGame}" />
+                    Content="{Binding Strings.CreateGame}"
+                    IsDefault="True" />
             </StackPanel>
         </Grid>
     </DockPanel>

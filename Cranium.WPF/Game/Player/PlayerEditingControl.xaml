@@ -45,6 +45,10 @@
                                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                     <materialDesign:PackIcon Kind="ColorLens" />
                                 </Button>
+                                <CheckBox
+                                    Margin="8"
+                                    Content="{Binding Strings.MoveBackwards, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    IsChecked="{Binding MoveBackwards, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                                 <ComboBox
                                     x:Name="PartComboBox"
                                     MinWidth="72"

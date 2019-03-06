@@ -10,25 +10,25 @@
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <ItemsControl ItemsSource="{Binding ItemsSource}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type player:PlayerViewModel}">
-                    <player:PlayerEditingControl
-                        Margin="16"
-                        Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"
-                        Category="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Model="{Binding Model}"
-                        MoveBackwards="{Binding MoveBackward}"
-                        Strings="{Binding Strings}" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
+            <ItemsControl ItemsSource="{Binding ItemsSource}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type player:PlayerViewModel}">
+                        <player:PlayerEditingControl
+                            Margin="16"
+                            Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"
+                            Category="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Model="{Binding Model}"
+                            MoveBackwards="{Binding MoveBackward, Mode=TwoWay}"
+                            Strings="{Binding Strings}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
 
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ItemsControl>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </ScrollViewer>
 
         <Button
