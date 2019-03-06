@@ -37,7 +37,7 @@ namespace Cranium.WPF.Game.GameBoard
             foreach (UIElement child in InternalChildren)
             {
                 child.Measure(availableSize);
-                if (i < countUntilFirstCorner)
+                if (i < countUntilFirstCorner + 1)
                     panelDesiredSize.Width += child.DesiredSize.Width;
                 else if (i < countUntilSecondCorner)
                     panelDesiredSize.Height += child.DesiredSize.Height;
@@ -71,7 +71,7 @@ namespace Cranium.WPF.Game.GameBoard
             {
                 child.Arrange(new Rect(new Point(x, y), child.DesiredSize));
 
-                if (i < countUntilFirstCorner - 1)
+                if (i < countUntilFirstCorner)
                     x += child.DesiredSize.Width;
                 else if (i < countUntilSecondCorner - 2)
                     y += child.DesiredSize.Height;

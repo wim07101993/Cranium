@@ -18,8 +18,7 @@ namespace Cranium.WPF.Game.GameControl
         {
             try
             {
-                if (_gameWindow == null)
-                    _gameWindow = App.UnityContainer.Resolve<GameWindow>();
+                _gameWindow = App.UnityContainer.Resolve<GameWindow>();
                 _gameWindow.Show();
             }
             catch (Exception e)
