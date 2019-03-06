@@ -209,7 +209,7 @@ namespace Cranium.WPF.Game
                 GameBoard[0].Players.Add(player);
                 _players.Add(player);
             }
-            
+
             return Task.CompletedTask;
         }
 
@@ -273,7 +273,11 @@ namespace Cranium.WPF.Game
 
             if (player == null)
                 throw new PlayerNotFoundException();
-            throw new TileNotFoundException();
+
+            if (Categories.All(x => x.Id != categoryId))
+                throw new TileNotFoundException();
+
+            GameBoard.Last().Players.Add(player);
         }
 
         public async Task MovePlayerBackwardsToAsync(ObjectId playerId, ObjectId categoryId)
