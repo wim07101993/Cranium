@@ -96,6 +96,8 @@ namespace Cranium.WPF.Game.Player
             else
                 await _gameService.MovePlayerToAsync(Model.Id, Category.Id);
 
+            Category = null;
+
             _isUpdatingModel = false;
         }
 

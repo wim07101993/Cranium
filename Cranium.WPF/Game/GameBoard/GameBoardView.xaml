@@ -17,8 +17,8 @@
                     Margin="10"
                     Category="{Binding Category}"
                     CornerRadius="15"
-                    PlayerMargin="{Binding DataContext.PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, Converter={StaticResource DoubleToThicknessConverter}}"
-                    PlayerSize="{Binding DataContext.PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
+                    PlayerMargin="{Binding DataContext.PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, Converter={StaticResource DoubleToThicknessConverter}, UpdateSourceTrigger=PropertyChanged}"
+                    PlayerSize="{Binding DataContext.PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, UpdateSourceTrigger=PropertyChanged}"
                     Players="{Binding Model.Players}" />
             </DataTemplate>
         </ItemsControl.ItemTemplate>
