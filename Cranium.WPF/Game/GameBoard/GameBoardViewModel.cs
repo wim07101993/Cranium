@@ -37,6 +37,7 @@ namespace Cranium.WPF.Game.GameBoard
             _unityContainer = unityContainer;
             _gameService.GameChanged += OnGameChanged;
             ((INotifyCollectionChanged)_gameService.Players).CollectionChanged += (s, e) => RecalculatePlayerSize();
+            RecalculatePlayerSize();
         }
 
         #endregion CONSTRUCTOR
