@@ -17,6 +17,7 @@
                             Margin="16"
                             Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"
                             Category="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"
                             Model="{Binding Model}"
                             MoveBackwards="{Binding MoveBackward, Mode=TwoWay}"
                             Strings="{Binding Strings}" />
