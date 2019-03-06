@@ -23,7 +23,7 @@
                                     <controls:ColorPicker
                                         Width="200"
                                         Height="200"
-                                        SelectedColor="{Binding Model.Color, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                        SelectedColor="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}" />
                                     <Button
                                         Margin="0,8,8,0"
                                         HorizontalAlignment="Center"
@@ -40,7 +40,7 @@
                                 <TextBox Margin="8" Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
                                 <Button
                                     Margin="8"
-                                    Background="{Binding Model.Color, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                                    Background="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                     Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                     Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                     <materialDesign:PackIcon Kind="ColorLens" />

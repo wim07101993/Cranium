@@ -29,7 +29,7 @@
                                         Height="{Binding PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TileControl}}, Mode=OneWay}"
                                         Margin="{Binding PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TileControl}}, Mode=OneWay}"
                                         materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                                        Background="{Binding Color, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                                        Background="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                             <ItemsControl.ItemsPanel>
