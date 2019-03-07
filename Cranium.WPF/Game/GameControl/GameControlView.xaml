@@ -129,7 +129,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </GroupBox.HeaderTemplate>
-                    <question:QuestionView DataContext="{Binding QuestionViewModel}" />
+                    <question:QuestionView DataContext="{Binding QuestionViewModel}" Margin="-8" />
                 </GroupBox>
             </Grid>
 

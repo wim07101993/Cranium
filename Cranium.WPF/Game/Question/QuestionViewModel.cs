@@ -46,7 +46,8 @@ namespace Cranium.WPF.Game.Question
 
             _gameService.GameChanged += GameChangedAsync;
             _gameService.PlayerChanged += OnPlayerChanged;
-            ((INotifyCollectionChanged)_gameService.Categories).CollectionChanged += (s,e) => RaisePropertyChanged(nameof(Categories));
+            ((INotifyCollectionChanged) _gameService.Categories).CollectionChanged +=
+                (s, e) => RaisePropertyChanged(nameof(Categories));
 
             SelectCategoryCommand = new DelegateCommand<Category>(x => Category = x);
 
@@ -86,7 +87,16 @@ namespace Cranium.WPF.Game.Question
         public Category Category
         {
             get => _category;
-            set => SetProperty(ref _category, value);
+            set
+            {
+                if (!SetProperty(ref _category, value))
+                    return;
+
+                if (value != null)
+                {
+                    var _ = GetNewQuestionAsync(value);
+                }
+            }
         }
 
         public ICommand SelectCategoryCommand { get; }
@@ -106,7 +116,7 @@ namespace Cranium.WPF.Game.Question
         }
 
         public IEnumerable<AnswerViewModel> Answers
-            => _question?.Answers.Select(x => 
+            => _question?.Answers.Select(x =>
             {
                 var vm = _unityContainer.Resolve<AnswerViewModel>();
                 vm.Model = x;
@@ -130,12 +140,20 @@ namespace Cranium.WPF.Game.Question
         {
             HasAnswered = true;
             IsAnswerCorrect = correct;
+            Category = null;
+            Question = null;
 
             return Task.CompletedTask;
         }
 
         private async Task UpdateAttachmentAsync()
         {
+            if (Question == null)
+            {
+                ImageAttachment = null;
+                return;
+            }
+
             try
             {
                 var attachment = await _questionService.GetAttachmentAsync(Question.Id);
@@ -146,18 +164,6 @@ namespace Cranium.WPF.Game.Question
                         ImageAttachment = attachment.ToImage();
                         break;
                 }
-            }
-            catch (Exception e)
-            {
-                // TODO
-            }
-        }
-
-        private async Task GetNewQuestionAsync()
-        {
-            try
-            {
-                Question = await _gameService.GetQuestionAsync();
             }
             catch (Exception e)
             {
@@ -182,7 +188,7 @@ namespace Cranium.WPF.Game.Question
             ResetQuestion();
 
             var tile = _gameService.TileOfCurrentPlayer;
-                
+
             Category = tile != null
                 ? _gameService.Categories.FirstOrDefault(x => x.Id == tile.CategoryId)
                 : null;
@@ -203,7 +209,7 @@ namespace Cranium.WPF.Game.Question
             IsAnswerCorrect = false;
             HasAnswered = false;
         }
-        
+
         #endregion METHODS
     }
 }

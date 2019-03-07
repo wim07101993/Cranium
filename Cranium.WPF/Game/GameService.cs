@@ -79,7 +79,7 @@ namespace Cranium.WPF.Game
             => new ReadOnlyObservableCollection<Data.Question.Question>(_answeredQuestions);
 
         public Player.Player CurrentPlayer
-            => Players.Count > 0 && _currentPlayer >= 0 
+            => Players.Count > 0 && _currentPlayer >= 0
                 ? Players[_currentPlayer]
                 : null;
 
@@ -128,7 +128,6 @@ namespace Cranium.WPF.Game
 
         public async Task CreateAsync(TimeSpan gameTime)
         {
-            
             // remove old questions
             _questions.Clear();
             _answeredQuestions.Clear();
@@ -378,7 +377,18 @@ namespace Cranium.WPF.Game
             if (isSpecialCategory)
                 return null;
 
-            var question = _questions.First(x => x.QuestionType.Category.Id == categoryId);
+            var question = _questions.FirstOrDefault(x => x.QuestionType.Category.Id == categoryId);
+            if (question == null)
+            {
+                if (_answeredQuestions.Any(x => x.QuestionType.Category.Id == categoryId))
+                {
+                    _questions.Add(_answeredQuestions.Where(x => x.QuestionType.Category.Id == categoryId));
+                    return await GetQuestionAsync(categoryId);
+                }
+
+                return null;
+            }
+
             _questions.RemoveFirst(x => x.Id == question.Id);
             _answeredQuestions.Add(question);
             return question;
