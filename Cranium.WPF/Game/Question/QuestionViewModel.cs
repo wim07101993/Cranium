@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using Cranium.WPF.Data.Answer;
 using Cranium.WPF.Data.Category;
 using Cranium.WPF.Data.Files;
 using Cranium.WPF.Data.Question;
@@ -12,6 +12,7 @@ using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
 using Prism.Commands;
+using Unity;
 
 namespace Cranium.WPF.Game.Question
 {
@@ -21,6 +22,7 @@ namespace Cranium.WPF.Game.Question
 
         private readonly IQuestionService _questionService;
         private readonly IGameService _gameService;
+        private readonly IUnityContainer _unityContainer;
 
         private Data.Question.Question _question;
         private BitmapImage _imageAttachment;
@@ -28,24 +30,28 @@ namespace Cranium.WPF.Game.Question
         private bool _isAnswerCorrect;
         private bool _hasAnswered;
 
+        private Category _category;
+
         #endregion FIELDS
 
 
         #region CONSTRUCTOR
 
-        public QuestionViewModel(
-            IStringsProvider stringsProvider, IQuestionService questionService,
-            IGameService gameService)
-            : base(stringsProvider)
+        public QuestionViewModel(IUnityContainer unityContainer)
+            : base(unityContainer.Resolve<IStringsProvider>())
         {
-            _questionService = questionService;
-            _gameService = gameService;
+            _unityContainer = unityContainer;
+            _questionService = _unityContainer.Resolve<IQuestionService>();
+            _gameService = _unityContainer.Resolve<IGameService>();
 
             _gameService.GameChanged += GameChangedAsync;
             _gameService.PlayerChanged += OnPlayerChanged;
+            ((INotifyCollectionChanged)_gameService.Categories).CollectionChanged += (s,e) => RaisePropertyChanged(nameof(Categories));
+
+            SelectCategoryCommand = new DelegateCommand<Category>(x => Category = x);
 
             AnswerCommand = new DelegateCommand<bool?>(async x => await Answer(x == true));
-            SelectCategoryCommand = new DelegateCommand<Category>(async x => await GetNewQuestionAsync(x));
+            GetNewQuestionCommand = new DelegateCommand(async () => await GetNewQuestionAsync(Category));
         }
 
         #endregion CONSTRUCTOR
@@ -62,7 +68,7 @@ namespace Cranium.WPF.Game.Question
                     return;
 
                 var _ = UpdateAttachmentAsync();
-                RaisePropertyChanged(nameof(CorrectAnswers));
+                RaisePropertyChanged(nameof(Answers));
             }
         }
 
@@ -77,13 +83,11 @@ namespace Cranium.WPF.Game.Question
         public IEnumerable<Category> Categories
             => _gameService.Categories.Where(x => !x.IsSpecial);
 
-        public bool NeedsToChooseCategory
-            => Category?.IsSpecial == true && Question == null;
-
         public Category Category
-            => _gameService.TileOfCurrentPlayer != null
-                ? _gameService.Categories.FirstOrDefault(x => x.Id == _gameService.TileOfCurrentPlayer.CategoryId)
-                : null;
+        {
+            get => _category;
+            set => SetProperty(ref _category, value);
+        }
 
         public ICommand SelectCategoryCommand { get; }
 
@@ -101,8 +105,13 @@ namespace Cranium.WPF.Game.Question
             set => SetProperty(ref _isAnswerCorrect, value);
         }
 
-        public IEnumerable<Answer> CorrectAnswers
-            => _question?.Answers.Where(x => x.IsCorrect);
+        public IEnumerable<AnswerViewModel> Answers
+            => _question?.Answers.Select(x => 
+            {
+                var vm = _unityContainer.Resolve<AnswerViewModel>();
+                vm.Model = x;
+                return vm;
+            });
 
         public bool HasAnswered
         {
@@ -121,18 +130,26 @@ namespace Cranium.WPF.Game.Question
         {
             HasAnswered = true;
             IsAnswerCorrect = correct;
+
             return Task.CompletedTask;
         }
 
         private async Task UpdateAttachmentAsync()
         {
-            var attachment = await _questionService.GetAttachmentAsync(Question.Id);
-
-            switch (Question.AttachmentType)
+            try
             {
-                case EAttachmentType.Image:
-                    ImageAttachment = attachment.ToImage();
-                    break;
+                var attachment = await _questionService.GetAttachmentAsync(Question.Id);
+
+                switch (Question.AttachmentType)
+                {
+                    case EAttachmentType.Image:
+                        ImageAttachment = attachment.ToImage();
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                // TODO
             }
         }
 
@@ -153,7 +170,6 @@ namespace Cranium.WPF.Game.Question
             try
             {
                 Question = await _gameService.GetQuestionAsync(category.Id);
-                RaisePropertyChanged(nameof(NeedsToChooseCategory));
             }
             catch (Exception e)
             {
@@ -161,18 +177,33 @@ namespace Cranium.WPF.Game.Question
             }
         }
 
-        private async Task OnPlayerChanged(object sender)
+        private Task OnPlayerChanged(object sender)
         {
-            RaisePropertyChanged(nameof(NeedsToChooseCategory));
-            RaisePropertyChanged(nameof(Category));
+            ReseQuestion();
+
+            var tile = _gameService.TileOfCurrentPlayer;
+                
+            Category = tile != null
+                ? _gameService.Categories.FirstOrDefault(x => x.Id == tile.CategoryId)
+                : null;
+
+            return Task.CompletedTask;
         }
 
         private Task GameChangedAsync(object sender)
         {
-            RaisePropertyChanged(nameof(Categories));
+            ReseQuestion();
             return Task.CompletedTask;
         }
 
+        private void ReseQuestion()
+        {
+            Category = null;
+            Question = null;
+            IsAnswerCorrect = false;
+            HasAnswered = false;
+        }
+        
         #endregion METHODS
     }
 }

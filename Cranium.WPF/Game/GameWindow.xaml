@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:question="clr-namespace:Cranium.WPF.Game.Question"
     d:DataContext="{d:DesignInstance game:GameWindowViewModel}"
+    Foreground="{DynamicResource MaterialDesignLightForeground}"
     WindowStartupLocation="Manual"
     WindowStyle="None"
     mc:Ignorable="d">

@@ -5,6 +5,7 @@
 
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     <converters:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter" />
+    <converters:InvertedObjectToVisibilityConverter x:Key="InvertedObjectToVisibilityConverter" />
     <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
     <converters:MultiBooleanAndToVisibilityConverter x:Key="MultiBooleanAndToVisibilityConverter" />
 

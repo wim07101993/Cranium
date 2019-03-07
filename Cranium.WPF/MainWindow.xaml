@@ -12,6 +12,7 @@
     xmlns:wpf="clr-namespace:Cranium.WPF"
     Title="{Binding Strings.Cranium}"
     d:DataContext="{d:DesignInstance wpf:MainWindowViewModel}"
+    Foreground="{DynamicResource MaterialDesignLightForeground}"
     WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
