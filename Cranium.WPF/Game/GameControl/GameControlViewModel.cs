@@ -83,7 +83,7 @@ namespace Cranium.WPF.Game.GameControl
             => await GameService.StopGameAsync();
 
         private async Task RestartAsync()
-            => await GameService.CreateAsync(GameService.GameBoard.Count);
+            => await GameService.CreateAsync(GameService.GameBoard.Count / GameService.Categories.Count);
 
         #endregion METHODS
     }

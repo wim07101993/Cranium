@@ -179,7 +179,7 @@ namespace Cranium.WPF.Game.Question
 
         private Task OnPlayerChanged(object sender)
         {
-            ReseQuestion();
+            ResetQuestion();
 
             var tile = _gameService.TileOfCurrentPlayer;
                 
@@ -192,11 +192,11 @@ namespace Cranium.WPF.Game.Question
 
         private Task GameChangedAsync(object sender)
         {
-            ReseQuestion();
+            ResetQuestion();
             return Task.CompletedTask;
         }
 
-        private void ReseQuestion()
+        private void ResetQuestion()
         {
             Category = null;
             Question = null;

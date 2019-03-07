@@ -128,6 +128,7 @@ namespace Cranium.WPF.Game
 
         public async Task CreateAsync(TimeSpan gameTime)
         {
+            
             // remove old questions
             _questions.Clear();
             _answeredQuestions.Clear();
