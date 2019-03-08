@@ -321,7 +321,7 @@ namespace Cranium.WPF.Game
             if (player == null)
                 throw new PlayerNotFoundException();
 
-            for (; i >= 0; i--)
+            for (i--; i >= 0; i--)
             {
                 var tile = GameBoard[i];
                 var dbCategoryId = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Id);
@@ -417,7 +417,7 @@ namespace Cranium.WPF.Game
         public async Task NextTurnAsync()
         {
             _currentPlayer =
-                _currentPlayer + 1 > Players.Count
+                _currentPlayer + 1 >= Players.Count
                     ? 0
                     : _currentPlayer + 1;
 
