@@ -4,29 +4,30 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:gameBoard="clr-namespace:Cranium.WPF.Game.GameBoard"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tile="clr-namespace:Cranium.WPF.Game.Tile"
     d:DataContext="{d:DesignInstance gameBoard:GameBoardViewModel}"
     mc:Ignorable="d">
-    <ItemsControl ItemsSource="{Binding Tiles}">
-        <ItemsControl.ItemTemplate>
-            <DataTemplate DataType="{x:Type tile:TileViewModel}">
-                <tile:TileControl
-                    Width="{Binding DataContext.TileWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
-                    Height="{Binding DataContext.TileHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
-                    Margin="10"
-                    Category="{Binding Category}"
-                    CornerRadius="15"
-                    PlayerMargin="{Binding DataContext.PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, Converter={StaticResource DoubleToThicknessConverter}, UpdateSourceTrigger=PropertyChanged}"
-                    PlayerSize="{Binding DataContext.PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, UpdateSourceTrigger=PropertyChanged}"
-                    Players="{Binding Model.Players}" />
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
+        <ItemsControl ItemsSource="{Binding Tiles}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type tile:TileViewModel}">
+                    <tile:TileControl
+                        Width="{Binding DataContext.TileWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
+                        Height="{Binding DataContext.TileHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}}"
+                        Margin="10"
+                        Category="{Binding Category}"
+                        CornerRadius="15"
+                        PlayerMargin="{Binding DataContext.PlayerMargin, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, Converter={StaticResource DoubleToThicknessConverter}, UpdateSourceTrigger=PropertyChanged}"
+                        PlayerSize="{Binding DataContext.PlayerSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=gameBoard:GameBoardView}, UpdateSourceTrigger=PropertyChanged}"
+                        Players="{Binding Model.Players}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
 
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <gameBoard:GameBoardPanel />
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-    </ItemsControl>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <gameBoard:GameBoardPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
 </UserControl>

@@ -9,6 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:question="clr-namespace:Cranium.WPF.Game.Question"
     d:DataContext="{d:DesignInstance game:GameWindowViewModel}"
+    AllowsTransparency="True"
+    Background="Transparent"
     Foreground="{DynamicResource MaterialDesignLightForeground}"
     WindowStartupLocation="Manual"
     WindowStyle="None"
@@ -25,12 +27,42 @@
         </materialDesign:DialogHost.DialogContent>
 
 
-        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-            <gameBoard:GameBoardView
-                Margin="16"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                DataContext="{Binding GameBoardViewModel}" />
-        </ScrollViewer>
+        <Grid
+            Margin="0,8,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+
+            <Rectangle Fill="{DynamicResource MaterialDesignBackground}" Opacity="0.5" />
+
+            <materialDesign:ColorZone
+                Padding="8"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                Background="{Binding GameService.CurrentPlayer.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border
+                        Background="{DynamicResource MaterialDesignBackground}"
+                        CornerRadius="5"
+                        Opacity="0.3" />
+                    <TextBlock
+                        Margin="16,4,16,6"
+                        Foreground="{DynamicResource MaterialDesignLightForeground}"
+                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                        Text="{Binding GameService.CurrentPlayer.Name}" />
+                </Grid>
+            </materialDesign:ColorZone>
+
+            <ScrollViewer
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                HorizontalScrollBarVisibility="Auto"
+                VerticalScrollBarVisibility="Auto">
+                <gameBoard:GameBoardView
+                    Margin="16"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    DataContext="{Binding GameBoardViewModel}" />
+            </ScrollViewer>
+        </Grid>
     </materialDesign:DialogHost>
 </Window>

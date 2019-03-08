@@ -17,11 +17,12 @@ namespace Cranium.WPF.Game
         #region CONSTRUCTOR
 
         public GameWindowViewModel(
-            IUnityContainer unityContainer, QuestionViewModel questionViewModel, GameBoardViewModel gameBoardViewModel)
+            IUnityContainer unityContainer, QuestionViewModel questionViewModel, GameBoardViewModel gameBoardViewModel, IGameService gameService)
             : base(unityContainer.Resolve<IStringsProvider>())
         {
             QuestionViewModel = questionViewModel;
             GameBoardViewModel = gameBoardViewModel;
+            GameService = gameService;
             PlayersViewModel = unityContainer.Resolve<PlayersViewModel>();
         }
 
@@ -35,6 +36,8 @@ namespace Cranium.WPF.Game
         public QuestionViewModel QuestionViewModel { get; }
 
         public GameBoardViewModel GameBoardViewModel { get; }
+
+        public IGameService GameService { get; }
 
         #endregion PROPERTIES
 
