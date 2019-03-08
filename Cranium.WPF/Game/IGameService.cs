@@ -72,8 +72,8 @@ namespace Cranium.WPF.Game
 
         #region EVENTS
 
-        event AsyncEventHandler GameChanged;
-        event AsyncEventHandler PlayerChanged;
+        event AsyncEventHandler<IGameService> GameChanged;
+        event AsyncEventHandler<IGameService> PlayerChanged;
         event AsyncGameFinishedEventHandler GameFinished;
 
         #endregion EVENTS

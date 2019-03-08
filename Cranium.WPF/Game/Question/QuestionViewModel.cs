@@ -8,6 +8,7 @@ using System.Windows.Media.Imaging;
 using Cranium.WPF.Data.Category;
 using Cranium.WPF.Data.Files;
 using Cranium.WPF.Data.Question;
+using Cranium.WPF.Helpers;
 using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
@@ -51,8 +52,8 @@ namespace Cranium.WPF.Game.Question
 
             SelectCategoryCommand = new DelegateCommand<Category>(x => Category = x);
 
-            AnswerCommand = new DelegateCommand<bool?>(async x => await Answer(x == true));
-            GetNewQuestionCommand = new DelegateCommand(async () => await GetNewQuestionAsync(Category));
+            AnswerCommand = new DelegateCommand<bool?>(x => { var _ = Answer(x == true); });
+            GetNewQuestionCommand = new DelegateCommand(() => { var _ = GetNewQuestionAsync(Category); });
         }
 
         #endregion CONSTRUCTOR
@@ -126,7 +127,15 @@ namespace Cranium.WPF.Game.Question
         public bool HasAnswered
         {
             get => _hasAnswered;
-            set => SetProperty(ref _hasAnswered, value);
+            set
+            {
+                if (!SetProperty(ref _hasAnswered, value))
+                    return;
+
+                if (_hasAnswered && QuestionAnswered != null)
+                    QuestionAnswered.Invoke(this);
+
+            }
         }
 
         #endregion answer
@@ -138,11 +147,11 @@ namespace Cranium.WPF.Game.Question
 
         public Task Answer(bool correct)
         {
-            HasAnswered = true;
-            IsAnswerCorrect = correct;
             Category = null;
             Question = null;
-
+            IsAnswerCorrect = correct;
+            HasAnswered = true;
+          
             return Task.CompletedTask;
         }
 
@@ -183,7 +192,7 @@ namespace Cranium.WPF.Game.Question
             }
         }
 
-        private Task OnPlayerChanged(object sender)
+        private Task OnPlayerChanged(IGameService sender)
         {
             ResetQuestion();
 
@@ -196,7 +205,7 @@ namespace Cranium.WPF.Game.Question
             return Task.CompletedTask;
         }
 
-        private Task GameChangedAsync(object sender)
+        private Task GameChangedAsync(IGameService sender)
         {
             ResetQuestion();
             return Task.CompletedTask;
@@ -211,5 +220,12 @@ namespace Cranium.WPF.Game.Question
         }
 
         #endregion METHODS
+
+
+        #region EVENTS
+
+        public event AsyncEventHandler<QuestionViewModel> QuestionAnswered;
+
+        #endregion EVENTS
     }
 }

@@ -42,8 +42,8 @@ namespace Cranium.WPF.Game.Player
                 x => x,
                 (x, y) => x.Id == y.Id);
 
-            CreateCommand = new DelegateCommand(async () => await CreateAsync());
-            DeleteCommand = new DelegateCommand<Player>(async player => await DeleteAsync(player.Id));
+            CreateCommand = new DelegateCommand(() => { var _ = CreateAsync(); });
+            DeleteCommand = new DelegateCommand<Player>(player => { var _ = DeleteAsync(player.Id); });
         }
 
         #endregion CONSTRUCTOR

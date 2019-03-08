@@ -33,18 +33,20 @@ namespace Cranium.WPF.Game.GameControl
             GameBoardViewModel = gameBoardViewModel;
             QuestionViewModel = questionViewModel;
 
-            CreateGameCommand = new DelegateCommand<double?>(async x =>
+            CreateGameCommand = new DelegateCommand<double?>(x =>
             {
                 var gameTime = x != null
-                    ? (int) x
+                    ? (int)x
                     : 0;
                 if (gameTime > 0)
-                    await CreateGameAsync(gameTime);
+                {
+                    var _ = CreateGameAsync(gameTime);
+                }
             });
 
-            StartCommand = new DelegateCommand(async () => await StartAsync());
-            StopCommand = new DelegateCommand(async () => await StopAsync());
-            RestartCommand = new DelegateCommand(async () => await RestartAsync());
+            StartCommand = new DelegateCommand(() => { var _ = StartAsync(); });
+            StopCommand = new DelegateCommand(() => { var _ = StopAsync(); });
+            RestartCommand = new DelegateCommand(() => { var _ = RestartAsync(); });
         }
 
         #endregion CONSTRUCTOR

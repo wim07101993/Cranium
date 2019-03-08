@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using Cranium.WPF.Game.Tile;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
@@ -97,7 +96,7 @@ namespace Cranium.WPF.Game.GameBoard
         
         #region METHODS
 
-        private Task OnGameChanged(object sender)
+        private Task OnGameChanged(IGameService sender)
         {
             RaisePropertyChanged(nameof(Tiles));
             return Task.CompletedTask;
