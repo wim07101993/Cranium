@@ -14,7 +14,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type player:PlayerViewModel}">
                         <player:PlayerEditingControl
-                            Margin="16"
+                            Margin="16" MaxWidth="200"
                             Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"
                             Category="{Binding Category, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"

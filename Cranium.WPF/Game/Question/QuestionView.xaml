@@ -18,7 +18,7 @@
                 HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                 Text="{Binding Strings.SelectACategory}"
-                Visibility="{Binding Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                Visibility="{Binding Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
             <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Categories}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -41,7 +41,7 @@
             </ItemsControl>
         </StackPanel>
 
-        <StackPanel Visibility="{Binding Question, Converter={StaticResource ObjectToVisibilityConverter}}">
+        <StackPanel Visibility="{Binding Model, Converter={StaticResource ObjectToVisibilityConverter}}">
 
             <Expander>
                 <Expander.Header>
@@ -54,13 +54,13 @@
                         <TextBlock
                             VerticalAlignment="Center"
                             Style="{StaticResource MaterialDesignHeadlineTextBlock}"
-                            Text="{Binding Question.QuestionType.Name}" />
+                            Text="{Binding Model.QuestionType.Name}" />
                         <materialDesign:Card
                             Grid.Column="1"
                             Width="40"
                             Height="40"
-                            Background="{Binding Question.QuestionType.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
-                            BorderBrush="{Binding Question.QuestionType.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
+                            Background="{Binding Model.QuestionType.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                            BorderBrush="{Binding Model.QuestionType.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
                     </Grid>
                 </Expander.Header>
 
@@ -84,10 +84,10 @@
                     <TextBlock
                         Margin="8"
                         Style="{StaticResource MaterialDesignDisplay3TextBlock}"
-                        Text="{Binding Question.Task}"
+                        Text="{Binding Model.Task}"
                         TextAlignment="Center"
                         TextWrapping="Wrap"
-                        Visibility="{Binding Question.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                        Visibility="{Binding Model.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
 
                     <TextBlock
                         Margin="8"
@@ -95,7 +95,7 @@
                         Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                         Text="{Binding Question.Tip}"
                         TextAlignment="Center"
-                        Visibility="{Binding Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                        Visibility="{Binding Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
                 </StackPanel>
 
                 <Image

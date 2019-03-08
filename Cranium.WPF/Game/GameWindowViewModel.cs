@@ -11,7 +11,6 @@ namespace Cranium.WPF.Game
     public class GameWindowViewModel : AViewModelBase
     {
         private QuestionViewModel _questionViewModel;
-        private bool _showQuestion;
 
         #region FIELDS
 

@@ -66,7 +66,7 @@ namespace Cranium.WPF.Game.Player
         public async Task CreateAsync()
         {
             var colors = Categories
-                .Select(x => x.Color)
+                .Select(x => new Color{BaseColor = x.Color.BaseColor})
                 .ToList();
             
             var player = new Player

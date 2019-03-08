@@ -73,10 +73,10 @@
                             Margin="8"
                             VerticalAlignment="Center"
                             Style="{StaticResource MaterialDesignDisplay2TextBlock}"
-                            Text="{Binding QuestionViewModel.Question.Task}"
+                            Text="{Binding QuestionViewModel.Model.Task}"
                             TextAlignment="Center"
                             TextWrapping="Wrap"
-                            Visibility="{Binding QuestionViewModel.Question.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                            Visibility="{Binding QuestionViewModel.Model.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
 
                         <TextBlock
                             Grid.Row="1"
@@ -84,14 +84,14 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                            Text="{Binding QuestionViewModel.Question.Tip}"
+                            Text="{Binding QuestionViewModel.Model.Tip}"
                             TextAlignment="Center"
-                            Visibility="{Binding QuestionViewModel.Question.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                            Visibility="{Binding QuestionViewModel.Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
 
                         <ItemsControl
                             Grid.Row="2"
-                            ItemsSource="{Binding QuestionViewModel.Answers}"
-                            Visibility="{Binding QuestionViewModel.ShowAnswers, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            ItemsSource="{Binding QuestionViewModel.Model.Answers}"
+                            Visibility="{Binding QuestionViewModel.ShowAnswers, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type question:AnswerViewModel}">
                                     <materialDesign:Card Margin="8">
@@ -99,7 +99,7 @@
                                             Margin="8"
                                             HorizontalAlignment="Center"
                                             Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                                            Text="{Binding Model.Value}" />
+                                            Text="{Binding Value}" />
                                     </materialDesign:Card>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

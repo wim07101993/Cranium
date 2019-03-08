@@ -73,26 +73,7 @@ namespace Cranium.WPF.Game.Question
 
 
         #region PROPERTIES
-
-        public Data.Question.Question Question
-        {
-            get => _question;
-            set
-            {
-                if (!SetProperty(ref _question, value))
-                    return;
-
-                var _ = UpdateAttachmentsAsync();
-                RaisePropertyChanged(nameof(Answers));
-                RaisePropertyChanged(nameof(ShowAnswers));
-
-                if (value == null)
-                    _eventAggregator.GetEvent<HideQuestionEvent>().Publish();
-                else
-                    _eventAggregator.GetEvent<ShowQuestionEvent>().Publish(this);
-            }
-        }
-
+        
         public BitmapImage ImageAttachment
         {
             get => _imageAttachment;
@@ -178,7 +159,7 @@ namespace Cranium.WPF.Game.Question
         public Task Answer(bool correct)
         {
             Category = null;
-            Question = null;
+            Model = null;
             IsAnswerCorrect = correct;
             HasAnswered = true;
             return Task.CompletedTask;
@@ -186,7 +167,7 @@ namespace Cranium.WPF.Game.Question
 
         private async Task UpdateAttachmentsAsync()
         {
-            if (Question == null)
+            if (Model == null)
             {
                 ImageAttachment = null;
                 return;
@@ -194,9 +175,9 @@ namespace Cranium.WPF.Game.Question
 
             try
             {
-                var attachment = await _questionService.GetAttachmentAsync(Question.Id);
+                var attachment = await _questionService.GetAttachmentAsync(Model.Id);
 
-                switch (Question.AttachmentType)
+                switch (Model.AttachmentType)
                 {
                     case EAttachmentType.Image:
                         ImageAttachment = attachment.ToImage();
@@ -229,7 +210,7 @@ namespace Cranium.WPF.Game.Question
         {
             try
             {
-                Question = await _gameService.GetQuestionAsync(category.Id);
+                Model = await _gameService.GetQuestionAsync(category.Id);
             }
             catch (Exception e)
             {
@@ -259,9 +240,25 @@ namespace Cranium.WPF.Game.Question
         private void ResetQuestion()
         {
             Category = null;
-            Question = null;
+            Model = null;
             IsAnswerCorrect = false;
             HasAnswered = false;
+        }
+
+        protected override Task OnModelChangedAsync()
+        {
+            base.OnModelChangedAsync();
+
+            var _ = UpdateAttachmentsAsync();
+            RaisePropertyChanged(nameof(Answers));
+            RaisePropertyChanged(nameof(ShowAnswers));
+
+            if (Model == null)
+                _eventAggregator.GetEvent<HideQuestionEvent>().Publish();
+            else
+                _eventAggregator.GetEvent<ShowQuestionEvent>().Publish(this);
+
+            return Task.CompletedTask;
         }
 
         #endregion METHODS
