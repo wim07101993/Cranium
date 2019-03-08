@@ -269,6 +269,8 @@ namespace Cranium.WPF.Game
 
         public async Task MovePlayerToAsync(ObjectId playerId, ObjectId categoryId)
         {
+            await CheckGameFinished(playerId);
+
             Player.Player player = null;
             foreach (var tile in GameBoard)
             {
@@ -335,8 +337,10 @@ namespace Cranium.WPF.Game
             throw new TileNotFoundException();
         }
 
-        public Task MovePlayerToAsync(ObjectId playerId, int tileIndex)
+        public async Task MovePlayerToAsync(ObjectId playerId, int tileIndex)
         {
+            await CheckGameFinished(playerId);
+
             Player.Player player = null;
             foreach (var tile in GameBoard)
             {
@@ -356,12 +360,17 @@ namespace Cranium.WPF.Game
                 throw new TileNotFoundException();
 
             GameBoard[tileIndex].Players.Add(player);
-            return Task.CompletedTask;
         }
 
-        public Task<bool> IsAtEnd(ObjectId playerId)
+        public async Task<bool> CheckGameFinished(ObjectId playerId)
         {
-            return Task.FromResult(GameBoard.Last().Players.Any(x => x.Id == playerId));
+            if (TileOfCurrentPlayer.Id != GameBoard.Last().Id)
+                return false;
+
+            if (GameFinished != null)
+                await GameFinished.Invoke(this, CurrentPlayer);
+            return true;
+
         }
 
         #endregion players

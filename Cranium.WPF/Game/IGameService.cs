@@ -46,7 +46,7 @@ namespace Cranium.WPF.Game
         Task MovePlayerToAsync(ObjectId playerId, ObjectId categoryId);
         Task MovePlayerBackwardsToAsync(ObjectId playerId, ObjectId categoryId);
         Task MovePlayerToAsync(ObjectId playerId, int tileIndex);
-        Task<bool> IsAtEnd(ObjectId playerId);
+        Task<bool> CheckGameFinished(ObjectId playerId);
 
         #endregion players
 

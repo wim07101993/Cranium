@@ -128,6 +128,8 @@
     </ApplicationDefinition>
     <Compile Include="CloseAllWindowsEvent.cs" />
     <Compile Include="Game\CategoryIdComparer.cs" />
+    <Compile Include="Game\GameControl\HideWinnerEvent.cs" />
+    <Compile Include="Game\GameControl\ShowWinnerEvent.cs" />
     <Compile Include="Game\GameFinishedEventHandler.cs" />
     <Compile Include="Game\IMongoGameService.cs" />
     <Compile Include="Game\MongoGameService.cs" />

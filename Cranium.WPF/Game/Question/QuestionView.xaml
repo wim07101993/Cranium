@@ -67,7 +67,7 @@
                 <TextBlock
                     Margin="16"
                     FontSize="16"
-                    Text="{Binding Question.QuestionType.Explanation}"
+                    Text="{Binding Model.QuestionType.Explanation}"
                     TextWrapping="Wrap" />
             </Expander>
 
@@ -93,7 +93,7 @@
                         Margin="8"
                         HorizontalAlignment="Center"
                         Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                        Text="{Binding Question.Tip}"
+                        Text="{Binding Model.Tip}"
                         TextAlignment="Center"
                         Visibility="{Binding Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
                 </StackPanel>
@@ -111,7 +111,7 @@
                 AutoGenerateColumns="False"
                 HeadersVisibility="None"
                 IsReadOnly="True"
-                ItemsSource="{Binding Answers}">
+                ItemsSource="{Binding Model.Answers}">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
@@ -119,12 +119,12 @@
                                 <materialDesign:PackIcon
                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
                                     Kind="Check"
-                                    Visibility="{Binding Model.IsCorrect, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    Visibility="{Binding IsCorrect, Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Binding="{Binding Model.Value}" />
+                    <DataGridTextColumn Binding="{Binding Value}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -134,7 +134,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding Model.Info}" />
+                    <DataGridTextColumn Binding="{Binding Info}" />
                 </DataGrid.Columns>
             </DataGrid>
 

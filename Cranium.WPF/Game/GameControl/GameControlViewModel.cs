@@ -11,11 +11,14 @@ using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
 using Prism.Commands;
+using Prism.Events;
 
 namespace Cranium.WPF.Game.GameControl
 {
     public class GameControlViewModel : AViewModelBase
     {
+        private readonly IEventAggregator _eventAggregator;
+
         #region FIELDS
 
         private bool _showDice;
@@ -28,14 +31,17 @@ namespace Cranium.WPF.Game.GameControl
         public GameControlViewModel(
             IStringsProvider stringsProvider, HamburgerMenuViewModel hamburgerMenuViewModel,
             GameBoardViewModel gameBoardViewModel, QuestionViewModel questionViewModel, IGameService gameService,
-            PlayersViewModel playersViewModel)
+            PlayersViewModel playersViewModel, IEventAggregator eventAggregator)
             : base(stringsProvider)
         {
+            _eventAggregator = eventAggregator;
+
             GameService = gameService;
             GameService.Categories.Sync<Category, Category>(Categories, x => x, (x, y) => x.Id == y.Id);
+            GameService.GameFinished += OnGameFinishedAsync;
+            GameService.GameChanged += OnGameChanged;
 
             PlayersViewModel = playersViewModel;
-
             HamburgerMenuViewModel = hamburgerMenuViewModel;
             GameBoardViewModel = gameBoardViewModel;
             QuestionViewModel = questionViewModel;
@@ -174,6 +180,18 @@ namespace Cranium.WPF.Game.GameControl
             {
                 // TODO
             }
+        }
+
+        private Task OnGameFinishedAsync(IGameService gameService, Player.Player winner)
+        {
+            _eventAggregator.GetEvent<ShowWinnerEvent>().Publish(winner);
+            return Task.CompletedTask;
+        }
+
+        private Task OnGameChanged(IGameService sender)
+        {
+            _eventAggregator.GetEvent<HideWinnerEvent>().Publish();
+            return Task.CompletedTask;
         }
 
         #endregion METHODS

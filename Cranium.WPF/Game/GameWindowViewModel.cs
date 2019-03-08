@@ -1,4 +1,5 @@
 ﻿using Cranium.WPF.Game.GameBoard;
+using Cranium.WPF.Game.GameControl;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Question;
 using Cranium.WPF.Helpers.ViewModels;
@@ -11,6 +12,7 @@ namespace Cranium.WPF.Game
     public class GameWindowViewModel : AViewModelBase
     {
         private QuestionViewModel _questionViewModel;
+        private Player.Player _winner;
 
         #region FIELDS
 
@@ -29,6 +31,8 @@ namespace Cranium.WPF.Game
 
             eventAggregator.GetEvent<ShowQuestionEvent>().Subscribe(x => QuestionViewModel = x);
             eventAggregator.GetEvent<HideQuestionEvent>().Subscribe(() => QuestionViewModel = null);
+            eventAggregator.GetEvent<ShowWinnerEvent>().Subscribe(x => Winner = x);
+            eventAggregator.GetEvent<HideWinnerEvent>().Subscribe(() => Winner = null);
         }
 
         #endregion CONSTRUCTOR
@@ -48,11 +52,17 @@ namespace Cranium.WPF.Game
 
         public IGameService GameService { get; }
 
+        public Player.Player Winner
+        {
+            get => _winner;
+            set => SetProperty(ref _winner, value);
+        }
+
         #endregion PROPERTIES
 
 
         #region METHODS
-        
+
         #endregion METHODS
     }
 }
