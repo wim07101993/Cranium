@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Cranium.WPF.Data.Category;
 using Cranium.WPF.Game.GameBoard;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Question;
@@ -14,6 +15,8 @@ namespace Cranium.WPF.Game.GameControl
     public class GameControlViewModel : AViewModelBase
     {
         #region FIELDS
+
+        private bool _showDice;
 
         #endregion FIELDS
 
@@ -32,6 +35,7 @@ namespace Cranium.WPF.Game.GameControl
             HamburgerMenuViewModel = hamburgerMenuViewModel;
             GameBoardViewModel = gameBoardViewModel;
             QuestionViewModel = questionViewModel;
+            QuestionViewModel.QuestionAnswered += OnQuestionAnswered;
 
             CreateGameCommand = new DelegateCommand<double?>(x =>
             {
@@ -47,6 +51,8 @@ namespace Cranium.WPF.Game.GameControl
             StartCommand = new DelegateCommand(() => { var _ = StartAsync(); });
             StopCommand = new DelegateCommand(() => { var _ = StopAsync(); });
             RestartCommand = new DelegateCommand(() => { var _ = RestartAsync(); });
+
+            MovePlayerToCommand = new DelegateCommand<Category>(x => { var _ = MovePlayerToAsync(x); });
         }
 
         #endregion CONSTRUCTOR
@@ -69,6 +75,14 @@ namespace Cranium.WPF.Game.GameControl
 
         public ICommand RestartCommand { get; }
 
+        public ICommand MovePlayerToCommand { get; }
+
+        public bool ShowDice
+        {
+            get => _showDice;
+            set => SetProperty(ref _showDice, value);
+        }
+
         #endregion PROPERTIES
 
 
@@ -85,6 +99,19 @@ namespace Cranium.WPF.Game.GameControl
 
         private async Task RestartAsync()
             => await GameService.CreateAsync(GameService.GameBoard.Count / GameService.Categories.Count);
+
+        private Task OnQuestionAnswered(QuestionViewModel sender)
+        {
+            _showDice |= GameService.CurrentPlayer != null;
+            return Task.CompletedTask;
+        }
+
+        private async Task MovePlayerToAsync(Category category)
+        {
+            ShowDice = false;
+            await GameService.MovePlayerToAsync(GameService.CurrentPlayer.Id, category.Id);
+            await GameService.NextTurnAsync();
+        }
 
         #endregion METHODS
     }
