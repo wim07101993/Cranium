@@ -90,6 +90,9 @@ namespace Cranium.WPF.Game.Question
             get => _category;
             set
             {
+                if (value?.IsSpecial == true)
+                    value = null;
+                
                 if (!SetProperty(ref _category, value))
                     return;
 
@@ -132,8 +135,8 @@ namespace Cranium.WPF.Game.Question
                 if (!SetProperty(ref _hasAnswered, value))
                     return;
 
-                if (_hasAnswered && QuestionAnswered != null)
-                    QuestionAnswered.Invoke(this);
+                if (_hasAnswered)
+                    QuestionAnswered?.Invoke(this);
 
             }
         }
@@ -151,7 +154,7 @@ namespace Cranium.WPF.Game.Question
             Question = null;
             IsAnswerCorrect = correct;
             HasAnswered = true;
-          
+
             return Task.CompletedTask;
         }
 
@@ -201,7 +204,7 @@ namespace Cranium.WPF.Game.Question
             Category = tile != null
                 ? _gameService.Categories.FirstOrDefault(x => x.Id == tile.CategoryId)
                 : null;
-
+            
             return Task.CompletedTask;
         }
 

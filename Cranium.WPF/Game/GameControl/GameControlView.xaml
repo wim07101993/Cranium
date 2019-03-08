@@ -94,7 +94,7 @@
                                 Height="100"
                                 Margin="32"
                                 Background="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
-                                Command="{Binding MovePlayerToCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayerEditingControl}}}"
+                                Command="{Binding DataContext.MovePlayerToCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type gameControl:GameControlView}}}"
                                 CommandParameter="{Binding}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

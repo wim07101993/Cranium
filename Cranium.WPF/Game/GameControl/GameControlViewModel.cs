@@ -44,7 +44,7 @@ namespace Cranium.WPF.Game.GameControl
             CreateGameCommand = new DelegateCommand<double?>(x =>
             {
                 var gameTime = x != null
-                    ? (int)x
+                    ? (int) x
                     : 0;
                 if (gameTime > 0)
                 {
@@ -52,11 +52,23 @@ namespace Cranium.WPF.Game.GameControl
                 }
             });
 
-            StartCommand = new DelegateCommand(() => { var _ = StartAsync(); });
-            StopCommand = new DelegateCommand(() => { var _ = StopAsync(); });
-            RestartCommand = new DelegateCommand(() => { var _ = RestartAsync(); });
+            StartCommand = new DelegateCommand(() =>
+            {
+                var _ = StartAsync();
+            });
+            StopCommand = new DelegateCommand(() =>
+            {
+                var _ = StopAsync();
+            });
+            RestartCommand = new DelegateCommand(() =>
+            {
+                var _ = RestartAsync();
+            });
 
-            MovePlayerToCommand = new DelegateCommand<Category>(x => { var _ = MovePlayerToAsync(x); });
+            MovePlayerToCommand = new DelegateCommand<Category>(x =>
+            {
+                var _ = MovePlayerToAsync(x);
+            });
         }
 
         #endregion CONSTRUCTOR
@@ -142,10 +154,12 @@ namespace Cranium.WPF.Game.GameControl
             }
         }
 
-        private Task OnQuestionAnswered(QuestionViewModel sender)
+        private async Task OnQuestionAnswered(QuestionViewModel sender)
         {
-            _showDice |= GameService.CurrentPlayer != null;
-            return Task.CompletedTask;
+            if (sender.IsAnswerCorrect)
+                ShowDice |= GameService.CurrentPlayer != null;
+            else
+                await GameService.NextTurnAsync();
         }
 
         private async Task MovePlayerToAsync(Category category)
