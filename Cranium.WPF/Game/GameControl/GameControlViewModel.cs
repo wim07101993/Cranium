@@ -146,7 +146,7 @@ namespace Cranium.WPF.Game.GameControl
         {
             try
             {
-                await GameService.CreateAsync(GameService.GameBoard.Count / GameService.Categories.Count);
+                await GameService.RestartGameAsync();
             }
             catch (Exception e)
             {

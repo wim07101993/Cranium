@@ -30,7 +30,7 @@
                     <DataTemplate DataType="{x:Type category:Category}">
                         <Button
                             Width="80"
-                            Height="120"
+                            Height="80"
                             Margin="8"
                             BorderBrush="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                             Background="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"

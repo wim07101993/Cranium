@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -18,9 +19,11 @@ namespace Cranium.WPF.Game.Player
     {
         #region FIELDS
 
+        private static readonly Random _random = new Random();
+
         private readonly IUnityContainer _unityContainer;
         private readonly IGameService _gameService;
-
+        
         #endregion FIELDS
 
 
@@ -62,9 +65,13 @@ namespace Cranium.WPF.Game.Player
 
         public async Task CreateAsync()
         {
+            var colors = Categories
+                .Select(x => x.Color)
+                .ToList();
+            
             var player = new Player
             {
-                Color = new Color {BaseColor = Colors.MediumPurple},
+                Color = colors[_random.Next(colors.Count)],
                 Name = Strings.NewPlayer
             };
 

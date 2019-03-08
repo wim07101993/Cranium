@@ -64,6 +64,7 @@ namespace Cranium.WPF.Game
         Task NextTurnAsync();
 
         Task StopGameAsync();
+        Task RestartGameAsync();
 
         #endregion turns
 

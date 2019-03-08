@@ -443,6 +443,13 @@ namespace Cranium.WPF.Game
             return Task.CompletedTask;
         }
 
+        public async Task RestartGameAsync()
+        {
+            var players = Players.ToList();
+            foreach (var player in players)
+                await MovePlayerToAsync(player.Id, 0);
+        }
+
         #endregion turns
 
         #endregion METHODS
