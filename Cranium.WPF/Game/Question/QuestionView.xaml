@@ -32,6 +32,7 @@
                             Width="80"
                             Height="120"
                             Margin="8"
+                            BorderBrush="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                             Background="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                             Command="{Binding DataContext.SelectCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionView}}}"
                             CommandParameter="{Binding}" />
@@ -58,6 +59,7 @@
                             Grid.Column="1"
                             Width="40"
                             Height="40"
+                            BorderBrush="{Binding Question.QuestionType.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                             Background="{Binding Question.QuestionType.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}" />
                     </Grid>
                 </Expander.Header>

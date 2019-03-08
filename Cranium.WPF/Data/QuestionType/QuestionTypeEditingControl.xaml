@@ -24,6 +24,9 @@
                             <Button.Background>
                                 <SolidColorBrush Color="{StaticResource RedPrimary800}" />
                             </Button.Background>
+                            <Button.BorderBrush>
+                                <SolidColorBrush Color="{StaticResource RedPrimary800}" />
+                            </Button.BorderBrush>
                             <materialDesign:PackIcon Kind="Delete" />
                         </Button>
 

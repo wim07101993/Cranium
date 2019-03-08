@@ -33,6 +33,7 @@
                             Height="Auto"
                             MinWidth="200"
                             Margin="12,16,16,12"
+                            BorderBrush="{DynamicResource MaterialDesignPaper}"
                             Background="{DynamicResource MaterialDesignPaper}">
                             <StackPanel>
 
