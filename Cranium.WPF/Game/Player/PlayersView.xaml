@@ -20,6 +20,7 @@
                             DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayersView}}}"
                             Model="{Binding Model}"
                             MoveBackwards="{Binding MoveBackward, Mode=TwoWay}"
+                            SelectCategoryCommand="{Binding SelectCategoryCommand}"
                             Strings="{Binding Strings}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

@@ -1,8 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using Cranium.WPF.Data.Category;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
+using Prism.Commands;
 
 namespace Cranium.WPF.Game.Player
 {
@@ -11,11 +12,7 @@ namespace Cranium.WPF.Game.Player
         #region FIELDS
 
         private readonly IGameService _gameService;
-        private readonly ICategoryService _categoryService;
 
-        private Category _category;
-        private bool _isUpdatingCategory;
-        private bool _isUpdatingModel;
         private bool _moveBackward;
 
         #endregion FIELDS
@@ -24,11 +21,12 @@ namespace Cranium.WPF.Game.Player
         #region CONSTRUCTOR
 
         public PlayerViewModel(
-            IStringsProvider stringsProvider, IGameService gameService, ICategoryService categoryService)
+            IStringsProvider stringsProvider, IGameService gameService)
             : base(stringsProvider)
         {
             _gameService = gameService;
-            _categoryService = categoryService;
+
+            SelectCategoryCommand = new DelegateCommand<Category>(x => { var _ = MovePlayerAsync(x); });
         }
 
         #endregion CONSTRUCTOR
@@ -36,14 +34,15 @@ namespace Cranium.WPF.Game.Player
 
         #region PROPERTIES
         
+        public ICommand SelectCategoryCommand { get; }
+
         public Category Category
         {
-            get => _category;
+            get => null;
             set
             {
-                if (!SetProperty(ref _category, value))
-                    return;
-                var _ = UpdatePlayerTileAsync();
+                var _ = MovePlayerAsync(value);
+                RaisePropertyChanged();
             }
         }
 
@@ -57,48 +56,13 @@ namespace Cranium.WPF.Game.Player
 
 
         #region METHODS
-
-        protected override async Task OnModelChangedAsync()
+        
+        private async Task MovePlayerAsync(Category category)
         {
-            await UpdateCategoryAsync();
-        }
-
-        private async Task UpdateCategoryAsync()
-        {
-            if (_isUpdatingModel)
-                return;
-
-            _isUpdatingCategory = true;
-
-            var gameBoard = _gameService.GameBoard;
-            if (gameBoard != null)
-            { 
-                var categoryId = _gameService
-                    .GameBoard
-                    .First(tile => tile.Players.Any(player => player.Id == Model.Id))
-                    .CategoryId;
-            
-                Category = await _categoryService.GetOneAsync(categoryId);
-            }
-
-            _isUpdatingCategory = false;
-        }
-
-        private async Task UpdatePlayerTileAsync()
-        {
-            if (_isUpdatingCategory)
-                return;
-
-            _isUpdatingModel = true;
-
             if (MoveBackward)
-                await _gameService.MovePlayerBackwardsToAsync(Model.Id, Category.Id);
+                await _gameService.MovePlayerBackwardsToAsync(Model.Id, category.Id);
             else
-                await _gameService.MovePlayerToAsync(Model.Id, Category.Id);
-
-            Category = null;
-
-            _isUpdatingModel = false;
+                await _gameService.MovePlayerToAsync(Model.Id, category.Id);
         }
 
         #endregion METHODS

@@ -2,6 +2,7 @@
 using Cranium.WPF.Helpers.Controls;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Cranium.WPF.Game.Player
 {
@@ -26,6 +27,12 @@ namespace Cranium.WPF.Game.Player
            typeof(bool),
            typeof(PlayerEditingControl),
            new PropertyMetadata(default(bool)));
+
+        public static readonly DependencyProperty SelectCategoryCommandProperty = DependencyProperty.Register(
+           nameof(SelectCategoryCommand),
+           typeof(ICommand),
+           typeof(PlayerEditingControl),
+           new PropertyMetadata(default(ICommand)));
 
         #endregion DEPENDENCY PROPERTIES
 
@@ -64,6 +71,12 @@ namespace Cranium.WPF.Game.Player
         {
             get => (bool)GetValue(MoveBackwardsProperty);
             set => SetValue(MoveBackwardsProperty, value);
+        }
+
+        public ICommand SelectCategoryCommand
+        {
+            get => (ICommand)GetValue(SelectCategoryCommandProperty);
+            set => SetValue(SelectCategoryCommandProperty, value);
         }
 
         #endregion PROPERTIES
