@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Media;
 using Cranium.WPF.Data.Answer;
 using Cranium.WPF.Data.Files;
@@ -64,8 +65,15 @@ namespace Cranium.WPF.Game.Question
 
         private async Task UpdateAttachmentAsync()
         {
-            if (Model.Attachment != default)
-                Attachmnet = await _fileService.GetOneAsync(Model.Attachment);
+            try
+            {
+                if (Model.Attachment != default)
+                    Attachmnet = await _fileService.GetOneAsync(Model.Attachment);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
         }
 
         #endregion METHODS

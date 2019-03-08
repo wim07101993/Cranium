@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Cranium.WPF.Data.Category;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
@@ -52,7 +53,14 @@ namespace Cranium.WPF.Game.Tile
                 return;
             }
 
-            Category = await _categoryService.GetOneAsync(Model.CategoryId);
+            try
+            {
+                Category = await _categoryService.GetOneAsync(Model.CategoryId);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
         }
 
         #endregion METHODS

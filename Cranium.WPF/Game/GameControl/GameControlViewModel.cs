@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Cranium.WPF.Data.Category;
@@ -88,7 +87,7 @@ namespace Cranium.WPF.Game.GameControl
             set => SetProperty(ref _showDice, value);
         }
 
-        public ObservableCollection<Category> Categories { get; }
+        public ObservableCollection<Category> Categories { get; } = new ObservableCollection<Category>();
 
         #endregion PROPERTIES
 
@@ -96,16 +95,52 @@ namespace Cranium.WPF.Game.GameControl
         #region METHODS
 
         private async Task CreateGameAsync(int gameTime)
-            => await GameService.CreateAsync(TimeSpan.FromMinutes(gameTime));
+        {
+            try
+            {
+                await GameService.CreateAsync(TimeSpan.FromMinutes(gameTime));
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
+        }
 
         private async Task StartAsync()
-            => await GameService.StartGameAsync();
+        {
+            try
+            {
+                await GameService.StartGameAsync();
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
+        }
 
         private async Task StopAsync()
-            => await GameService.StopGameAsync();
+        {
+            try
+            {
+                await GameService.StopGameAsync();
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
+        }
 
         private async Task RestartAsync()
-            => await GameService.CreateAsync(GameService.GameBoard.Count / GameService.Categories.Count);
+        {
+            try
+            {
+                await GameService.CreateAsync(GameService.GameBoard.Count / GameService.Categories.Count);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
+        }
 
         private Task OnQuestionAnswered(QuestionViewModel sender)
         {
@@ -116,8 +151,15 @@ namespace Cranium.WPF.Game.GameControl
         private async Task MovePlayerToAsync(Category category)
         {
             ShowDice = false;
-            await GameService.MovePlayerToAsync(GameService.CurrentPlayer.Id, category.Id);
-            await GameService.NextTurnAsync();
+            try
+            {
+                await GameService.MovePlayerToAsync(GameService.CurrentPlayer.Id, category.Id);
+                await GameService.NextTurnAsync();
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
         }
 
         #endregion METHODS

@@ -55,6 +55,7 @@
                                     <TextBox Margin="8" Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />
                                     <Button
                                         Margin="8"
+                                        BorderBrush="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         Background="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
@@ -79,20 +80,12 @@
                                                     Height="32"
                                                     Margin="8"
                                                     Background="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                                                    BorderBrush="{Binding Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                                     Command="{Binding SelectCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type player:PlayerEditingControl}}}"
                                                     CommandParameter="{Binding}" />
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
-                                    <ComboBox
-                                        x:Name="PartComboBox"
-                                        MinWidth="72"
-                                        Margin="8"
-                                        HorizontalAlignment="Stretch"
-                                        materialDesign:HintAssist.Hint="{Binding Strings.Category, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                        ItemsSource="{TemplateBinding Categories}"
-                                        SelectedItem="{Binding Category, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
                                 </StackPanel>
                             </materialDesign:Card>
                         </Grid>
