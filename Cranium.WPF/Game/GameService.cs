@@ -134,6 +134,7 @@ namespace Cranium.WPF.Game
 
             // add new questions
             _questions.Add(await _questionService.GetAsync());
+            _questions.Shuffle();
 
             // refresh categories
             await RefreshCategoriesAsync();
@@ -156,6 +157,7 @@ namespace Cranium.WPF.Game
 
             // add new questions
             _questions.Add(await _questionService.GetAsync());
+            _questions.Shuffle();
 
             // refresh categories
             await RefreshCategoriesAsync();

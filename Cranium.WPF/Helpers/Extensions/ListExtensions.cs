@@ -4,13 +4,15 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows.Media.Imaging;
-using Cranium.WPF.Game.Player;
 using Shared.Extensions;
 
 namespace Cranium.WPF.Helpers.Extensions
 {
     public static class ListExtensions
     {
+        private static readonly Random Random = new Random();
+
+
         public static BitmapImage ToImage(this byte[] bs)
         {
             if (bs.Length == 0)
@@ -82,6 +84,19 @@ namespace Cranium.WPF.Helpers.Extensions
                         throw new ArgumentOutOfRangeException();
                 }
             };
+        }
+
+        public static void Shuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = Random.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
     }
 }
