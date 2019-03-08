@@ -455,17 +455,5 @@ namespace Cranium.WPF.Game
         public event AsyncGameFinishedEventHandler GameFinished;
 
         #endregion EVENTS
-
-
-        #region CLASSES
-
-        private class CategoryIdComparer : IEqualityComparer<Category>
-        {
-            public bool Equals(Category x, Category y) => x != null && x.Id == y?.Id;
-
-            public int GetHashCode(Category category) => category.Id.GetHashCode();
-        }
-
-        #endregion CLASSES
     }
 }

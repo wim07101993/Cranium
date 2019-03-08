@@ -47,7 +47,7 @@ namespace Cranium.WPF.Helpers.Extensions
             return -1;
         }
 
-        public static void AutoUpdateCollection<TCollection, TCollectionToUpdate>(
+        public static void Sync<TCollection, TCollectionToUpdate>(
             this INotifyCollectionChanged collection,
             IList<TCollectionToUpdate> collectionToUpdate,
             Func<TCollection, TCollectionToUpdate> itemConversion,

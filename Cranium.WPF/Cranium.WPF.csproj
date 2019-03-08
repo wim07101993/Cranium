@@ -125,6 +125,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CloseAllWindowsEvent.cs" />
+    <Compile Include="Game\CategoryIdComparer.cs" />
     <Compile Include="Game\GameFinishedEventHandler.cs" />
     <Compile Include="Game\IMongoGameService.cs" />
     <Compile Include="Game\MongoGameService.cs" />

@@ -32,15 +32,12 @@ namespace Cranium.WPF.Game.Player
             _unityContainer = unityContainer;
             _gameService = unityContainer.Resolve<IGameService>();
 
-            _gameService.Players.AutoUpdateCollection<Player, PlayerViewModel>(
-                ItemsSource,
-                NewPlayerViewModel,
-                (player, playerViewModel) => player?.Id == playerViewModel?.Model?.Id);
+            _gameService
+                .Players
+                .Sync<Player, PlayerViewModel>(ItemsSource, NewPlayerViewModel, 
+                    (player, playerViewModel) => player?.Id == playerViewModel?.Model?.Id);
 
-            _gameService.Categories.AutoUpdateCollection<Category, Category>(
-                Categories,
-                x => x,
-                (x, y) => x.Id == y.Id);
+            _gameService.Categories.Sync<Category, Category>(Categories, x => x, (x, y) => x.Id == y.Id);
 
             CreateCommand = new DelegateCommand(() => { var _ = CreateAsync(); });
             DeleteCommand = new DelegateCommand<Player>(player => { var _ = DeleteAsync(player.Id); });

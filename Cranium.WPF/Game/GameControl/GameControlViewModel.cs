@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Cranium.WPF.Data.Category;
@@ -6,6 +8,7 @@ using Cranium.WPF.Game.GameBoard;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Question;
 using Cranium.WPF.HamburgerMenu;
+using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
 using Prism.Commands;
@@ -30,6 +33,8 @@ namespace Cranium.WPF.Game.GameControl
             : base(stringsProvider)
         {
             GameService = gameService;
+            GameService.Categories.Sync<Category, Category>(Categories, x => x, (x, y) => x.Id == y.Id);
+
             PlayersViewModel = playersViewModel;
 
             HamburgerMenuViewModel = hamburgerMenuViewModel;
@@ -82,6 +87,8 @@ namespace Cranium.WPF.Game.GameControl
             get => _showDice;
             set => SetProperty(ref _showDice, value);
         }
+
+        public ObservableCollection<Category> Categories { get; }
 
         #endregion PROPERTIES
 
