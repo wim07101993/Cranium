@@ -10,8 +10,16 @@ namespace Cranium.WPF.Game
             eventAggregator.GetEvent<CloseAllWindowsEvent>().Subscribe(TryToClose);
 
             InitializeComponent();
-            DataContext = viewModel;
+            ViewModel = viewModel;
         }
+
+
+        public GameWindowViewModel ViewModel
+        {
+            get => DataContext as GameWindowViewModel;
+            set => DataContext = value;
+        }
+
 
         private void TryToClose()
         {

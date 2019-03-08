@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Cranium.WPF.Data.Category;
 using Cranium.WPF.Data.Files;
@@ -13,6 +14,7 @@ using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
 using Prism.Commands;
+using Prism.Events;
 using Unity;
 
 namespace Cranium.WPF.Game.Question
@@ -24,6 +26,8 @@ namespace Cranium.WPF.Game.Question
         private readonly IQuestionService _questionService;
         private readonly IGameService _gameService;
         private readonly IUnityContainer _unityContainer;
+        private readonly IEventAggregator _eventAggregator;
+        private readonly IFileService _fileService;
 
         private Data.Question.Question _question;
         private BitmapImage _imageAttachment;
@@ -32,6 +36,7 @@ namespace Cranium.WPF.Game.Question
         private bool _hasAnswered;
 
         private Category _category;
+        private BitmapImage _categoryImage;
 
         #endregion FIELDS
 
@@ -44,6 +49,8 @@ namespace Cranium.WPF.Game.Question
             _unityContainer = unityContainer;
             _questionService = _unityContainer.Resolve<IQuestionService>();
             _gameService = _unityContainer.Resolve<IGameService>();
+            _eventAggregator = _unityContainer.Resolve<IEventAggregator>();
+            _fileService = _unityContainer.Resolve<IFileService>();
 
             _gameService.GameChanged += GameChangedAsync;
             _gameService.PlayerChanged += OnPlayerChanged;
@@ -52,8 +59,14 @@ namespace Cranium.WPF.Game.Question
 
             SelectCategoryCommand = new DelegateCommand<Category>(x => Category = x);
 
-            AnswerCommand = new DelegateCommand<bool?>(x => { var _ = Answer(x == true); });
-            GetNewQuestionCommand = new DelegateCommand(() => { var _ = GetNewQuestionAsync(Category); });
+            AnswerCommand = new DelegateCommand<bool?>(x =>
+            {
+                var _ = Answer(x == true);
+            });
+            GetNewQuestionCommand = new DelegateCommand(() =>
+            {
+                var _ = GetNewQuestionAsync(Category);
+            });
         }
 
         #endregion CONSTRUCTOR
@@ -69,8 +82,14 @@ namespace Cranium.WPF.Game.Question
                 if (!SetProperty(ref _question, value))
                     return;
 
-                var _ = UpdateAttachmentAsync();
+                var _ = UpdateAttachmentsAsync();
                 RaisePropertyChanged(nameof(Answers));
+                RaisePropertyChanged(nameof(ShowAnswers));
+
+                if (value == null)
+                    _eventAggregator.GetEvent<HideQuestionEvent>().Publish();
+                else
+                    _eventAggregator.GetEvent<ShowQuestionEvent>().Publish(this);
             }
         }
 
@@ -92,7 +111,7 @@ namespace Cranium.WPF.Game.Question
             {
                 if (value?.IsSpecial == true)
                     value = null;
-                
+
                 if (!SetProperty(ref _category, value))
                     return;
 
@@ -137,9 +156,17 @@ namespace Cranium.WPF.Game.Question
 
                 if (_hasAnswered)
                     QuestionAnswered?.Invoke(this);
-
             }
         }
+
+        public BitmapImage CategoryImage
+        {
+            get => _categoryImage;
+            set => SetProperty(ref _categoryImage, value);
+        }
+
+        public bool ShowAnswers 
+            => Model?.Answers != null && Model.Answers.Count > 1;
 
         #endregion answer
 
@@ -154,11 +181,10 @@ namespace Cranium.WPF.Game.Question
             Question = null;
             IsAnswerCorrect = correct;
             HasAnswered = true;
-
             return Task.CompletedTask;
         }
 
-        private async Task UpdateAttachmentAsync()
+        private async Task UpdateAttachmentsAsync()
         {
             if (Question == null)
             {
@@ -176,6 +202,22 @@ namespace Cranium.WPF.Game.Question
                         ImageAttachment = attachment.ToImage();
                         break;
                 }
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
+
+            if (Category == null)
+            {
+                CategoryImage = null;
+                return;
+            }
+
+            try
+            {
+                var categoryImageBytes = await _fileService.GetOneAsync(Category.Image);
+                CategoryImage = categoryImageBytes.ToImage();
             }
             catch (Exception e)
             {
@@ -204,7 +246,7 @@ namespace Cranium.WPF.Game.Question
             Category = tile != null
                 ? _gameService.Categories.FirstOrDefault(x => x.Id == tile.CategoryId)
                 : null;
-            
+
             return Task.CompletedTask;
         }
 

@@ -3,12 +3,16 @@ using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Question;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
+using Prism.Events;
 using Unity;
 
 namespace Cranium.WPF.Game
 {
     public class GameWindowViewModel : AViewModelBase
     {
+        private QuestionViewModel _questionViewModel;
+        private bool _showQuestion;
+
         #region FIELDS
 
         #endregion FIELDS
@@ -16,14 +20,16 @@ namespace Cranium.WPF.Game
 
         #region CONSTRUCTOR
 
-        public GameWindowViewModel(
-            IUnityContainer unityContainer, QuestionViewModel questionViewModel, GameBoardViewModel gameBoardViewModel, IGameService gameService)
+        public GameWindowViewModel(IUnityContainer unityContainer)
             : base(unityContainer.Resolve<IStringsProvider>())
         {
-            QuestionViewModel = questionViewModel;
-            GameBoardViewModel = gameBoardViewModel;
-            GameService = gameService;
+            GameBoardViewModel = unityContainer.Resolve<GameBoardViewModel>();
+            GameService = unityContainer.Resolve<IGameService>();
             PlayersViewModel = unityContainer.Resolve<PlayersViewModel>();
+            var eventAggregator = unityContainer.Resolve<IEventAggregator>();
+
+            eventAggregator.GetEvent<ShowQuestionEvent>().Subscribe(x => QuestionViewModel = x);
+            eventAggregator.GetEvent<HideQuestionEvent>().Subscribe(() => QuestionViewModel = null);
         }
 
         #endregion CONSTRUCTOR
@@ -33,7 +39,11 @@ namespace Cranium.WPF.Game
 
         public PlayersViewModel PlayersViewModel { get; }
 
-        public QuestionViewModel QuestionViewModel { get; }
+        public QuestionViewModel QuestionViewModel
+        {
+            get => _questionViewModel;
+            set => SetProperty(ref _questionViewModel, value);
+        }
 
         public GameBoardViewModel GameBoardViewModel { get; }
 
@@ -43,7 +53,7 @@ namespace Cranium.WPF.Game
 
 
         #region METHODS
-
+        
         #endregion METHODS
     }
 }

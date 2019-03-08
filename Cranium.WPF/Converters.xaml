@@ -14,5 +14,8 @@
     <converters:BytesToImageConverter x:Key="BytesToImageConverter" />
 
     <converters:MinusConverter x:Key="MinusConverter" />
+
     <converters:DoubleToThicknessConverter x:Key="DoubleToThicknessConverter" />
+
+    <converters:ObjectToBooleanConverter x:Key="ObjectToBooleanConverter" />
 </ResourceDictionary>

@@ -448,6 +448,9 @@ namespace Cranium.WPF.Game
             var players = Players.ToList();
             foreach (var player in players)
                 await MovePlayerToAsync(player.Id, 0);
+
+            if (GameChanged != null)
+                await GameChanged.Invoke(this);
         }
 
         #endregion turns
