@@ -22,7 +22,7 @@ namespace Cranium.WPF.Game.Question
 
         #region CONSTRCUTOR
 
-        public AnswerViewModel(IStringsProvider stringsProvider, IFileService fileService) 
+        public AnswerViewModel(IStringsProvider stringsProvider, IFileService fileService)
             : base(stringsProvider)
         {
             _fileService = fileService;
@@ -41,7 +41,7 @@ namespace Cranium.WPF.Game.Question
             set
             {
                 if (SetProperty(ref _attachment, value))
-                    return ;
+                    return;
                 RaisePropertyChanged(nameof(ImageAttachment));
             }
         }
@@ -67,8 +67,9 @@ namespace Cranium.WPF.Game.Question
         {
             try
             {
-                if (Model.Attachment != default)
-                    Attachmnet = await _fileService.GetOneAsync(Model.Attachment);
+                Attachmnet = Model.Attachment == default
+                    ? null 
+                    : await _fileService.GetOneAsync(Model.Attachment);
             }
             catch (Exception e)
             {

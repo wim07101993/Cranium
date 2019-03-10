@@ -167,7 +167,7 @@ namespace Cranium.WPF.Game.Question
 
         private async Task UpdateAttachmentsAsync()
         {
-            if (Model == null)
+            if (Model == null || Model.AttachmentType != EAttachmentType.Image)
             {
                 ImageAttachment = null;
                 return;
@@ -188,7 +188,10 @@ namespace Cranium.WPF.Game.Question
             {
                 // TODO
             }
+        }
 
+        private async Task UpdateCategoryImageAsync()
+        {
             if (Category == null)
             {
                 CategoryImage = null;
@@ -245,11 +248,12 @@ namespace Cranium.WPF.Game.Question
             HasAnswered = false;
         }
 
-        protected override Task OnModelChangedAsync()
+        protected override async Task OnModelChangedAsync()
         {
-            base.OnModelChangedAsync();
+            await base.OnModelChangedAsync();
 
-            var _ = UpdateAttachmentsAsync();
+            await UpdateAttachmentsAsync();
+            await UpdateCategoryImageAsync();
             RaisePropertyChanged(nameof(Answers));
             RaisePropertyChanged(nameof(ShowAnswers));
 
@@ -257,8 +261,6 @@ namespace Cranium.WPF.Game.Question
                 _eventAggregator.GetEvent<HideQuestionEvent>().Publish();
             else
                 _eventAggregator.GetEvent<ShowQuestionEvent>().Publish(this);
-
-            return Task.CompletedTask;
         }
 
         #endregion METHODS
