@@ -25,7 +25,6 @@
             Grid.Row="0"
             Grid.Column="0"
             MinWidth="200"
-            MaxWidth="400"
             MaxHeight="300"
             Margin="0,0,0,12"
             ItemsSource="{Binding ItemsSource}">
@@ -41,7 +40,11 @@
                             Grid.Column="0"
                             Margin="0,0,6,0"
                             IsChecked="{Binding Model.IsCorrect}" />
-                        <TextBlock Grid.Column="1" Text="{Binding Model.Value}" />
+                        <TextBlock
+                            Grid.Column="1"
+                            MaxWidth="350"
+                            Text="{Binding Model.Value}"
+                            TextWrapping="Wrap" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
