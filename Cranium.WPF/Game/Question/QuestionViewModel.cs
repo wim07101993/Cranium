@@ -29,7 +29,6 @@ namespace Cranium.WPF.Game.Question
         private readonly IEventAggregator _eventAggregator;
         private readonly IFileService _fileService;
 
-        private Data.Question.Question _question;
         private BitmapImage _imageAttachment;
 
         private bool _isAnswerCorrect;
@@ -73,7 +72,7 @@ namespace Cranium.WPF.Game.Question
 
 
         #region PROPERTIES
-        
+
         public BitmapImage ImageAttachment
         {
             get => _imageAttachment;
@@ -120,7 +119,7 @@ namespace Cranium.WPF.Game.Question
         }
 
         public IEnumerable<AnswerViewModel> Answers
-            => _question?.Answers.Select(x =>
+            => Model?.Answers.Select(x =>
             {
                 var vm = _unityContainer.Resolve<AnswerViewModel>();
                 vm.Model = x;
@@ -146,8 +145,16 @@ namespace Cranium.WPF.Game.Question
             set => SetProperty(ref _categoryImage, value);
         }
 
-        public bool ShowAnswers 
-            => Model?.Answers != null && Model.Answers.Count > 1;
+        public bool ShowAnswers
+            => Model?.Answers?.Count > 1;
+
+        public bool HasContentToShow
+            => Model != null && (
+                   ShowAnswers ||
+                   !string.IsNullOrWhiteSpace(Model?.Task) ||
+                   !string.IsNullOrWhiteSpace(Model?.Tip) ||
+                   Model.AttachmentType == EAttachmentType.Image
+               );
 
         #endregion answer
 
@@ -256,6 +263,7 @@ namespace Cranium.WPF.Game.Question
             await UpdateCategoryImageAsync();
             RaisePropertyChanged(nameof(Answers));
             RaisePropertyChanged(nameof(ShowAnswers));
+            RaisePropertyChanged(nameof(HasContentToShow));
 
             if (Model == null)
                 _eventAggregator.GetEvent<HideQuestionEvent>().Publish();
