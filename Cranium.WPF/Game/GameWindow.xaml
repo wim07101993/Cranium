@@ -16,139 +16,151 @@
     WindowStyle="None"
     mc:Ignorable="d">
 
-    <materialDesign:DialogHost IsOpen="{Binding Winner, Converter={StaticResource ObjectToBooleanConverter}, Mode=OneWay}">
-        <materialDesign:DialogHost.DialogContent>
-            <Grid Background="{Binding Winner.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-            <StackPanel Margin="42">
-                <TextBlock
-                    Style="{StaticResource MaterialDesignDisplay4TextBlock}"
-                    Text="{Binding Winner.Name}" HorizontalAlignment="Center"
-                    TextWrapping="Wrap" />
-                <TextBlock Style="{StaticResource MaterialDesignDisplay3TextBlock}" HorizontalAlignment="Center" Text="{Binding Strings.WonTheGame}" />
-            </StackPanel>
-            </Grid>
-        </materialDesign:DialogHost.DialogContent>
 
-
-        <Grid
-            Margin="0,8,0,0"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch">
-
-            <Rectangle Fill="{DynamicResource MaterialDesignBackground}" Opacity="0.5" />
-
-            <materialDesign:ColorZone
-                Padding="8"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Top"
-                Background="{Binding GameService.CurrentPlayer.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Border
-                        Background="{DynamicResource MaterialDesignBackground}"
-                        CornerRadius="5"
-                        Opacity="0.3" />
-                    <TextBlock
-                        Margin="16,4,16,6"
-                        Foreground="{DynamicResource MaterialDesignLightForeground}"
-                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                        Text="{Binding GameService.CurrentPlayer.Name}" />
-                </Grid>
-            </materialDesign:ColorZone>
-
-            <materialDesign:DialogHost IsOpen="{Binding QuestionViewModel, Converter={StaticResource ObjectToBooleanConverter}, Mode=OneWay}">
-                <materialDesign:DialogHost.DialogContent>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0" Background="{Binding QuestionViewModel.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
-                            <Image
-                                MaxWidth="400"
-                                VerticalAlignment="Center"
-                                Source="{Binding QuestionViewModel.CategoryImage}" />
-                        </Grid>
-
-                        <Grid
-                            Grid.Column="1" Visibility="{Binding QuestionViewModel.HasContentToShow, Converter={StaticResource BooleanToVisibilityConverter}}"
-                            Margin="32"
-                            VerticalAlignment="Center">
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <TextBlock
-                                Grid.Row="0"
-                                Margin="8"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource MaterialDesignDisplay2TextBlock}"
-                                Text="{Binding QuestionViewModel.Model.Task}"
-                                TextAlignment="Center"
-                                TextWrapping="Wrap"
-                                Visibility="{Binding QuestionViewModel.Model.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
-
-                            <TextBlock
-                                Grid.Row="1"
-                                Margin="8"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                                Text="{Binding QuestionViewModel.Model.Tip}"
-                                TextAlignment="Center"
-                                Visibility="{Binding QuestionViewModel.Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
-
-                            <ItemsControl
-                                Grid.Row="2"
-                                ItemsSource="{Binding QuestionViewModel.Model.Answers}"
-                                Visibility="{Binding QuestionViewModel.ShowAnswers, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type question:AnswerViewModel}">
-                                        <materialDesign:Card Margin="8">
-                                            <TextBlock
-                                                Margin="8"
-                                                HorizontalAlignment="Center"
-                                                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                                                Text="{Binding Value}" />
-                                        </materialDesign:Card>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                            </ItemsControl>
-                        </Grid>
-
-                        <Image
-                            Grid.Column="2"
-                            MaxWidth="300"
-                            MaxHeight="300"
-                            Margin="8"
-                            Source="{Binding QuestionViewModel.ImageAttachment}"
-                            Visibility="{Binding QuestionViewModel.ImageAttachment, Converter={StaticResource ObjectToVisibilityConverter}}" />
-                    </Grid>
-                </materialDesign:DialogHost.DialogContent>
-
-
-                <ScrollViewer
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    HorizontalScrollBarVisibility="Auto"
-                    VerticalScrollBarVisibility="Auto">
-                    <gameBoard:GameBoardView
-                        Margin="16"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        DataContext="{Binding GameBoardViewModel}" />
-                </ScrollViewer>
-            </materialDesign:DialogHost>
+    <Grid>
+        <Grid>
+            <TextBlock Text="{Binding Time}" Visibility="{Binding ShowTime, Converter={StaticResource BooleanToVisibilityConverter}}" />
         </Grid>
-    </materialDesign:DialogHost>
+
+        <materialDesign:DialogHost IsOpen="{Binding Winner, Converter={StaticResource ObjectToBooleanConverter}, Mode=OneWay}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Background="{Binding Winner.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                    <StackPanel Margin="42">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignDisplay4TextBlock}"
+                            Text="{Binding Winner.Name}"
+                            TextWrapping="Wrap" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignDisplay3TextBlock}"
+                            Text="{Binding Strings.WonTheGame}" />
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+
+            <Grid
+                Margin="0,8,0,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+
+                <Rectangle Fill="{DynamicResource MaterialDesignBackground}" Opacity="0.5" />
+
+                <materialDesign:ColorZone
+                    Padding="8"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Background="{Binding GameService.CurrentPlayer.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Border
+                            Background="{DynamicResource MaterialDesignBackground}"
+                            CornerRadius="5"
+                            Opacity="0.3" />
+                        <TextBlock
+                            Margin="16,4,16,6"
+                            Foreground="{DynamicResource MaterialDesignLightForeground}"
+                            Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                            Text="{Binding GameService.CurrentPlayer.Name}" />
+                    </Grid>
+                </materialDesign:ColorZone>
+
+                <materialDesign:DialogHost IsOpen="{Binding QuestionViewModel, Converter={StaticResource ObjectToBooleanConverter}, Mode=OneWay}">
+                    <materialDesign:DialogHost.DialogContent>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" Background="{Binding QuestionViewModel.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                                <Image
+                                    MaxWidth="400"
+                                    VerticalAlignment="Center"
+                                    Source="{Binding QuestionViewModel.CategoryImage}" />
+                            </Grid>
+
+                            <Grid
+                                Grid.Column="1"
+                                Margin="32"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding QuestionViewModel.HasContentToShow, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Margin="8"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignDisplay2TextBlock}"
+                                    Text="{Binding QuestionViewModel.Model.Task}"
+                                    TextAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    Visibility="{Binding QuestionViewModel.Model.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
+
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Margin="8"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                    Text="{Binding QuestionViewModel.Model.Tip}"
+                                    TextAlignment="Center"
+                                    Visibility="{Binding QuestionViewModel.Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+
+                                <ItemsControl
+                                    Grid.Row="2"
+                                    ItemsSource="{Binding QuestionViewModel.Model.Answers}"
+                                    Visibility="{Binding QuestionViewModel.ShowAnswers, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate DataType="{x:Type question:AnswerViewModel}">
+                                            <materialDesign:Card Margin="8">
+                                                <TextBlock
+                                                    Margin="8"
+                                                    HorizontalAlignment="Center"
+                                                    Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                                    Text="{Binding Value}" />
+                                            </materialDesign:Card>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </Grid>
+
+                            <Image
+                                Grid.Column="2"
+                                MaxWidth="300"
+                                MaxHeight="300"
+                                Margin="8"
+                                Source="{Binding QuestionViewModel.ImageAttachment}"
+                                Visibility="{Binding QuestionViewModel.ImageAttachment, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                        </Grid>
+                    </materialDesign:DialogHost.DialogContent>
+
+
+                    <ScrollViewer
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Auto">
+                        <gameBoard:GameBoardView
+                            Margin="16"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            DataContext="{Binding GameBoardViewModel}" />
+                    </ScrollViewer>
+                </materialDesign:DialogHost>
+            </Grid>
+        </materialDesign:DialogHost>
+    </Grid>
 </Window>

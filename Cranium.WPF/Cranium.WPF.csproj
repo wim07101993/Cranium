@@ -141,6 +141,8 @@
     <Compile Include="Game\Question\AnswerViewModel.cs" />
     <Compile Include="Game\Question\HideQuestionEvent.cs" />
     <Compile Include="Game\Question\ShowQuestionEvent.cs" />
+    <Compile Include="Game\StartTimerEvent.cs" />
+    <Compile Include="Game\StopTimerEvent.cs" />
     <Compile Include="Helpers\AsyncEventHandler.cs" />
     <Compile Include="Helpers\Controls\EButtonsAlignment.cs" />
     <Compile Include="Helpers\Controls\NumericTextBox.cs" />

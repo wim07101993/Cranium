@@ -109,7 +109,13 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
                     <GroupBox
+                        Grid.Row="0"
                         Grid.Column="0"
                         Margin="16"
                         Header="{Binding Strings.Players}"
@@ -134,6 +140,24 @@
                     </GroupBox>
 
                     <GroupBox
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="16"
+                        Header="{Binding Strings.Timer}"
+                        Style="{DynamicResource MaterialDesignCardGroupBox}">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBox
+                                materialDesign:HintAssist.Hint="{Binding Strings.Time}"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                Text="{Binding Time}" />
+                            <Button Command="{Binding StartTimerCommand}" Content="{Binding Strings.StartTimer}" />
+                            <Button Command="{Binding StopTimerCommand}" Content="{Binding Strings.StopTimer}" />
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
                         Grid.Column="1"
                         Margin="16"
                         Header="{Binding Strings.Question}"

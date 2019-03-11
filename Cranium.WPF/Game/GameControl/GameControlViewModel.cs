@@ -17,11 +17,11 @@ namespace Cranium.WPF.Game.GameControl
 {
     public class GameControlViewModel : AViewModelBase
     {
-        private readonly IEventAggregator _eventAggregator;
-
         #region FIELDS
 
+        private readonly IEventAggregator _eventAggregator;
         private bool _showDice;
+        private TimeSpan _time;
 
         #endregion FIELDS
 
@@ -75,6 +75,9 @@ namespace Cranium.WPF.Game.GameControl
             {
                 var _ = MovePlayerToAsync(x);
             });
+
+            StartTimerCommand = new DelegateCommand(StartTimer);
+            StopTimerCommand = new DelegateCommand(StopTimer);
         }
 
         #endregion CONSTRUCTOR
@@ -92,9 +95,7 @@ namespace Cranium.WPF.Game.GameControl
         public ICommand CreateGameCommand { get; }
 
         public ICommand StartCommand { get; }
-
         public ICommand StopCommand { get; }
-
         public ICommand RestartCommand { get; }
 
         public ICommand MovePlayerToCommand { get; }
@@ -106,6 +107,15 @@ namespace Cranium.WPF.Game.GameControl
         }
 
         public ObservableCollection<Category> Categories { get; } = new ObservableCollection<Category>();
+
+        public ICommand StartTimerCommand { get; }
+        public ICommand StopTimerCommand { get; }
+
+        public TimeSpan Time
+        {
+            get => _time;
+            set => SetProperty(ref _time, value);
+        }
 
         #endregion PROPERTIES
 
@@ -192,6 +202,16 @@ namespace Cranium.WPF.Game.GameControl
         {
             _eventAggregator.GetEvent<HideWinnerEvent>().Publish();
             return Task.CompletedTask;
+        }
+
+        private void StartTimer()
+        {
+            _eventAggregator.GetEvent<StartTimerEvent>().Publish(Time);
+        }
+
+        private void StopTimer()
+        {
+            _eventAggregator.GetEvent<StopTimerEvent>().Publish();
         }
 
         #endregion METHODS

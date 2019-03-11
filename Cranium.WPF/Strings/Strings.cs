@@ -52,6 +52,10 @@ namespace Cranium.WPF.Strings
         private string _selectACategory = "Selecteer een categorie";
         private string _moveBackwards = "Achteruit gaan";
         private string _wonTheGame = "heeft gewonnen";
+        private string _timer = "Timer";
+        private string _startTimer = "Start timer";
+        private string _stopTimer = "Stop timer";
+        private string _time = "Time";
 
         #endregion game
 
@@ -292,6 +296,30 @@ namespace Cranium.WPF.Strings
         {
             get => _wonTheGame;
             set => SetProperty(ref _wonTheGame, value);
+        }
+
+        public string Timer
+        {
+            get => _timer;
+            set => SetProperty(ref _timer, value);
+        }
+
+        public string StartTiner
+        {
+            get => _startTimer;
+            set => SetProperty(ref _startTimer, value);
+        }
+
+        public string StopTimer
+        {
+            get => _stopTimer;
+            set => SetProperty(ref _stopTimer, value);
+        }
+
+        public string Time
+        {
+            get => _time;
+            set => SetProperty(ref _time, value);
         }
 
         #endregion game
