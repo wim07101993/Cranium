@@ -28,7 +28,8 @@
 
             <TextBlock
                 Grid.Row="1"
-                Margin="8" HorizontalAlignment="Center"
+                Margin="8"
+                HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                 Text="{Binding Model.QuestionType.Name}" />
         </Grid>
@@ -60,9 +61,11 @@
                 Margin="8"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                FontSize="32"
                 Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                 Text="{Binding Model.Tip}"
                 TextAlignment="Center"
+                TextWrapping="Wrap"
                 Visibility="{Binding Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
 
             <ItemsControl
@@ -75,8 +78,11 @@
                             <TextBlock
                                 Margin="8"
                                 HorizontalAlignment="Center"
+                                FontSize="32"
                                 Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                                Text="{Binding Value}" />
+                                Text="{Binding Value}"
+                                TextAlignment="Center"
+                                TextWrapping="Wrap" />
                         </materialDesign:Card>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
