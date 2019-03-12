@@ -1,4 +1,4 @@
-﻿namespace Cranium.WPF.Helpers.Mongo
+﻿namespace Cranium.WPF.Helpers.Data.Mongo
 {
     public class MongoDataServiceSettings : IMongoDataServiceSettings
     {

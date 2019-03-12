@@ -2,44 +2,13 @@
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Cranium.WPF.Helpers.Mongo;
 using MongoDB.Bson;
-using MongoDB.Driver;
-using MongoDB.Driver.GridFS;
 
 namespace Cranium.WPF.Data.Files
 {
-    public class FileService : IFileService
+    public abstract class AFileService : IFileService
     {
-        #region FIELDS
-
-        public const int ChunkSize = 1048576;
-        private const string BucketName = "Files";
-
-        private readonly GridFSBucket _mediaBucket;
-
-        #endregion FIELDS
-
-
-        #region CONSTRUCTOR
-
-        public FileService(IMongoDataServiceSettings config)
-        {
-            var database = new MongoClient(config.ConnectionString)
-                .GetDatabase(config.DatabaseName);
-
-            _mediaBucket = new GridFSBucket(
-                database, new GridFSBucketOptions
-                {
-                    BucketName = BucketName,
-                    ChunkSizeBytes = ChunkSize,
-                });
-        }
-
-        #endregion CONSTRUCTOR
-
-
-        #region PROPERTIES
+         #region PROPERTIES
 
         public IReadOnlyList<string> ImageExtensions => new[] { ".bmp", ".jpg", ".gif", ".png" };
         public IReadOnlyList<string> MusicExtensions => new[] { ".mp3", ".m4a", ".wma" };
@@ -50,17 +19,13 @@ namespace Cranium.WPF.Data.Files
 
         #region METHDOS
 
-        public async Task<ObjectId> CreateAsync(Stream fileToAdd, string title)
-            => await _mediaBucket.UploadFromStreamAsync(title, fileToAdd);
+        public abstract Task<ObjectId> CreateAsync(Stream fileToAdd, string title);
 
-        public async Task GetOneAsync(ObjectId id, Stream outStream)
-            => await _mediaBucket.DownloadToStreamAsync(id, outStream);
+        public abstract Task GetOneAsync(ObjectId id, Stream outStream);
 
-        public async Task<byte[]> GetOneAsync(ObjectId id)
-            => await _mediaBucket.DownloadAsBytesAsync(id);
+        public abstract Task<byte[]> GetOneAsync(ObjectId id);
 
-        public async Task RemoveAsync(ObjectId objectId)
-            => await _mediaBucket.DeleteAsync(objectId);
+        public abstract Task RemoveAsync(ObjectId objectId);
 
 
         public string GenerateImageFilter()

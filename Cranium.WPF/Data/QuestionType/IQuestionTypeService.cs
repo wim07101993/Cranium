@@ -1,4 +1,4 @@
-﻿using Cranium.WPF.Helpers.Mongo;
+﻿using Cranium.WPF.Helpers.Data;
 
 namespace Cranium.WPF.Data.QuestionType
 {

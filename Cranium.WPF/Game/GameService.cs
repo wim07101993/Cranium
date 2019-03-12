@@ -199,6 +199,7 @@ namespace Cranium.WPF.Game
         private async Task RefreshCategoriesAsync()
         {
             _categories.Clear();
+            var categories = await _categoryService.GetAsync();
             _categories.Add(new List<Category>
             {
                 _questions
@@ -209,7 +210,7 @@ namespace Cranium.WPF.Game
                     .Select(x => x.QuestionType.Category)
                     .Distinct(new CategoryIdComparer())
                     .ToList(),
-                await _categoryService.GetByAsync(x => x.IsSpecial),
+                categories.First(x => x.IsSpecial),
             });
         }
 
@@ -289,8 +290,8 @@ namespace Cranium.WPF.Game
                 }
                 else
                 {
-                    var dbCategoryId = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Id);
-                    if (dbCategoryId == categoryId)
+                    var dbCategory = await _categoryService.GetOneAsync(tile.CategoryId);
+                    if (dbCategory.Id == categoryId)
                     {
                         tile.Players.Add(player);
                         return;
@@ -330,8 +331,8 @@ namespace Cranium.WPF.Game
             for (i--; i >= 0; i--)
             {
                 var tile = GameBoard[i];
-                var dbCategoryId = await _categoryService.GetPropertyAsync(tile.CategoryId, x => x.Id);
-                if (dbCategoryId == categoryId)
+                var dbCategory = await _categoryService.GetOneAsync(tile.CategoryId);
+                if (dbCategory.Id == categoryId)
                 {
                     tile.Players.Add(player);
                     return;
@@ -386,8 +387,8 @@ namespace Cranium.WPF.Game
 
         public async Task<Data.Question.Question> GetQuestionAsync(ObjectId categoryId)
         {
-            var isSpecialCategory = await _categoryService.GetPropertyAsync(categoryId, x => x.IsSpecial);
-            if (isSpecialCategory)
+            var category = await _categoryService.GetOneAsync(categoryId);
+            if (category.IsSpecial)
                 return null;
 
             _questions.Shuffle();

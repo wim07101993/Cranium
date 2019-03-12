@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using MongoDB.Driver;
 
-namespace Cranium.WPF.Helpers.Mongo
+namespace Cranium.WPF.Helpers.Data.Mongo
 {
     public static class MongoExtensions
     {

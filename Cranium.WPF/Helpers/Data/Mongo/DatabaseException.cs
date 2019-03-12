@@ -1,7 +1,6 @@
 ﻿using System;
-using Cranium.WPF.Exceptions;
 
-namespace Cranium.WPF.Helpers.Mongo
+namespace Cranium.WPF.Helpers.Data.Mongo
 {
     public class DatabaseException : Exception
     {

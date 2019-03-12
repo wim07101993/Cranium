@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.Files;
-using Cranium.WPF.Helpers.Mongo;
+using Cranium.WPF.Helpers.Data.Mongo;
 using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Question
@@ -20,26 +20,26 @@ namespace Cranium.WPF.Data.Question
         }
 
 
-        public async Task<byte[]> GetAttachmentAsync(ObjectId questionId)
+        public async Task<byte[]> GetAttachmentAsync(Question question)
         {
-            var attachmentId = await GetPropertyAsync(questionId, x => x.Attachment);
-            if (attachmentId == default)
+            if (question.Attachment == default)
                 return null;
 
-            return await _fileService.GetOneAsync(attachmentId);
+            return await _fileService.GetOneAsync(question.Attachment);
         }
 
         public async Task<ObjectId> UpdateAttachment(
-            ObjectId categoryId, Stream fileStream, string fileName, EAttachmentType attachmentType)
+            Question question, Stream fileStream, string fileName, EAttachmentType attachmentType)
         {
-            var oldAttachmentId = await GetPropertyAsync(categoryId, x => x.Attachment);
-            if (oldAttachmentId != default)
-                await _fileService.RemoveAsync(oldAttachmentId);
+            var oldQuestion = await GetOneAsync(question.Id);
+            if (oldQuestion.Attachment != default)
+                await _fileService.RemoveAsync(oldQuestion.Attachment);
 
             var newAttachmentId = await _fileService.CreateAsync(fileStream, fileName);
+            question.Attachment = newAttachmentId;
+            question.AttachmentType = attachmentType;
 
-            await UpdatePropertyAsync(categoryId, x => x.Attachment, newAttachmentId);
-            await UpdatePropertyAsync(categoryId, x => x.AttachmentType, attachmentType);
+            await UpdateAsync(question);
 
             return newAttachmentId;
         }

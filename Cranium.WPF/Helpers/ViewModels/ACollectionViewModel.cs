@@ -3,7 +3,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Cranium.WPF.Helpers.Mongo;
+using Cranium.WPF.Helpers.Data;
+using Cranium.WPF.Helpers.Data.File;
 using Cranium.WPF.Strings;
 using Prism.Commands;
 using Unity;
@@ -17,6 +18,7 @@ namespace Cranium.WPF.Helpers.ViewModels
         #region FIELDS
 
         private readonly IUnityContainer _unityContainer;
+        private AFileModelService<TModel> _fileModelService;
 
         #endregion FIELDS
 
@@ -28,6 +30,7 @@ namespace Cranium.WPF.Helpers.ViewModels
         {
             _unityContainer = unityContainer;
             ModelService = unityContainer.Resolve<IModelService<TModel>>();
+            _fileModelService = unityContainer.Resolve<AFileModelService<TModel>>();
 
             ItemsSource = new ObservableCollection<TViewModel>();
 
@@ -56,19 +59,19 @@ namespace Cranium.WPF.Helpers.ViewModels
 
         public virtual async Task UpdateCollectionAsync()
         {
-            try
-            {
-                var newItems = await ModelService.GetAsync();
-
-                ItemsSource.Clear();
-                foreach (var model in newItems)
-                    AddModelToCollection(model);
-            }
-            catch (Exception e)
-            {
-                // todo
-                throw e;
-            }
+//            try
+//            {
+//                var newItems = await ModelService.GetAsync();
+//                
+//                ItemsSource.Clear();
+//                foreach (var model in newItems)
+//                    AddModelToCollection(model);
+//            }
+//            catch (Exception e)
+//            {
+//                // todo
+//                throw e;
+//            }
         }
 
         public virtual async Task CreateAsync()

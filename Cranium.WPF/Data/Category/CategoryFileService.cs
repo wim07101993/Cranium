@@ -2,21 +2,17 @@
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using Cranium.WPF.Data.Files;
-using Cranium.WPF.Helpers.Data.Mongo;
+using Cranium.WPF.Helpers.Data.File;
 using Cranium.WPF.Helpers.Extensions;
 using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Category
 {
-    public class CategoryService : AMongoModelService<Category>, ICategoryService
+    public class CategoryFileService : AFileModelService<Category>, ICategoryService
     {
-        private const string CollectionName = "categories";
+        private readonly MediaFileService _fileService;
 
-        private readonly IFileService _fileService;
-
-
-        public CategoryService(IMongoDataServiceSettings settings, IFileService fileService)
-            : base(settings, CollectionName)
+        public CategoryFileService(MediaFileService fileService)
         {
             _fileService = fileService;
         }
@@ -24,10 +20,7 @@ namespace Cranium.WPF.Data.Category
 
         public async Task<BitmapImage> GetImageAsync(Category category)
         {
-            if (category.Image == default)
-                return null;
-
-            var bytes = await _fileService.GetOneAsync(category.Image);
+            var bytes =  await _fileService.GetOneAsync(category.Image);
             return bytes.ToImage();
         }
 

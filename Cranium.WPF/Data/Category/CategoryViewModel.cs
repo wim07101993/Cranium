@@ -70,17 +70,17 @@ namespace Cranium.WPF.Data.Category
             switch (propertyName)
             {
                 case nameof(Model.Color):
-                    await _categoryService.UpdatePropertyAsync(category.Id, x => x.Color, category.Color);
+                    await _categoryService.UpdateAsync(category);
                     break;
                 case nameof(Model.Description):
-                    await _categoryService.UpdatePropertyAsync(category.Id, x => x.Description, category.Description);
+                    await _categoryService.UpdateAsync(category);
                     break;
                 case nameof(Model.Image):
                     await GetImageFromDbAsync();
                     UpdateColor(category);
                     break;
                 case nameof(Model.Name):
-                    await _categoryService.UpdatePropertyAsync(category.Id, x => x.Name, category.Name);
+                    await _categoryService.UpdateAsync(category);
                     break;
             }
 
@@ -97,7 +97,7 @@ namespace Cranium.WPF.Data.Category
 
             try
             {
-                Image = await _categoryService.GetImageAsync(Model.Id);
+                Image = await _categoryService.GetImageAsync(Model);
             }
             catch (Exception e)
             {
@@ -122,7 +122,7 @@ namespace Cranium.WPF.Data.Category
 
             try
             {
-                var imgId = await _categoryService.UpdateImageAsync(Model.Id, stream, fileName);
+                var imgId = await _categoryService.UpdateImageAsync(Model, stream, fileName);
                 Model.Image = imgId;
             }
             catch (Exception e)

@@ -1,16 +1,16 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.Files;
-using Cranium.WPF.Helpers.Mongo;
+using Cranium.WPF.Helpers.Data;
 using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Question
 {
     public interface IQuestionService : IModelService<Question>
     {
-        Task<byte[]> GetAttachmentAsync(ObjectId questionId);
+        Task<byte[]> GetAttachmentAsync(Question question);
 
         Task<ObjectId> UpdateAttachment(
-            ObjectId categoryId, Stream fileStream, string fileName, EAttachmentType attachmentType);
+            Question question, Stream fileStream, string fileName, EAttachmentType attachmentType);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Cranium.WPF.Exceptions
+﻿namespace Cranium.WPF.Helpers.Data.Mongo
 {
     public enum EDatabaseMethod
     {

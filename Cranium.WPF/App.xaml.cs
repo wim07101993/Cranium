@@ -11,7 +11,9 @@ using Cranium.WPF.Game.GameControl;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Tile;
 using Cranium.WPF.HamburgerMenu;
-using Cranium.WPF.Helpers.Mongo;
+using Cranium.WPF.Helpers.Data;
+using Cranium.WPF.Helpers.Data.File;
+using Cranium.WPF.Helpers.Data.Mongo;
 using Cranium.WPF.Settings;
 using Cranium.WPF.Strings;
 using Prism.Events;
@@ -64,11 +66,15 @@ namespace Cranium.WPF
                 .RegisterType<IModelService<QuestionType>, QuestionTypeService>()
                 .RegisterType<IQuestionService, QuestionService>()
                 .RegisterType<IModelService<Question>, QuestionService>()
-                .RegisterType<IFileService, FileService>()
+                .RegisterType<IFileService, MongoFileService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 .RegisterSingleton<IEventAggregator, EventAggregator>()
                 .RegisterSingleton<IGameService, GameService>()
                 .RegisterType<IMongoGameService, MongoGameService>()
+                .RegisterType<AFileModelService<Question>, QuestionFileService>()
+                .RegisterType<MediaFileService>()
+                .RegisterType<AFileModelService<Category>, CategoryFileService>()
+                .RegisterType<AFileModelService<QuestionType>, QuestionTypeFileService>()
                 // VIEW-MODELS
                 .RegisterType< MainWindowViewModel>()
                 // data

@@ -82,7 +82,7 @@ namespace Cranium.WPF.Data.Question
 
             try
             {
-                Attachment = await _questionService.GetAttachmentAsync(Model.Id);
+                Attachment = await _questionService.GetAttachmentAsync(Model);
             }
             catch (Exception e)
             {
@@ -119,7 +119,7 @@ namespace Cranium.WPF.Data.Question
 
             try
             {
-                Model.Attachment = await _questionService.UpdateAttachment(Model.Id, stream, fileName, attachmentType);
+                Model.Attachment = await _questionService.UpdateAttachment(Model, stream, fileName, attachmentType);
                 Model.AttachmentType = attachmentType;
             }
             catch (Exception e)
@@ -156,16 +156,16 @@ namespace Cranium.WPF.Data.Question
             switch (propertyName)
             {
                 case nameof(Question.Task):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Task, item.Task);
+                    await _questionService.UpdateAsync(item);
                     break;
                 case nameof(Question.QuestionType):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.QuestionType, item.QuestionType);
+                    await _questionService.UpdateAsync(item);
                     break;
                 case nameof(Question.Answers):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Answers, AnswersViewModel.Models);
+                    await _questionService.UpdateAsync(item);
                     break;
                 case nameof(Question.Tip):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Tip, item.Tip);
+                    await _questionService.UpdateAsync(item);
                     break;
                 case nameof(Question.Attachment):
                     await GetAttachmentFromDbAsync();

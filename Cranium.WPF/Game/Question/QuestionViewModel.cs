@@ -182,7 +182,7 @@ namespace Cranium.WPF.Game.Question
 
             try
             {
-                var attachment = await _questionService.GetAttachmentAsync(Model.Id);
+                var attachment = await _questionService.GetAttachmentAsync(Model);
 
                 switch (Model.AttachmentType)
                 {

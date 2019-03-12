@@ -44,13 +44,13 @@ namespace Cranium.WPF.Data.QuestionType
             switch (propertyName)
             {
                 case nameof(QuestionType.Category):
-                    await _questionTypeService.UpdatePropertyAsync(model.Id, x => x.Category, model.Category);
+                    await _questionTypeService.UpdateAsync(model);
                     break;
                 case nameof(QuestionType.Explanation):
-                    await _questionTypeService.UpdatePropertyAsync(model.Id, x => x.Explanation, model.Explanation);
+                    await _questionTypeService.UpdateAsync(model);
                     break;
                 case nameof(QuestionType.Name):
-                    await _questionTypeService.UpdatePropertyAsync(model.Id, x => x.Name, model.Name);
+                    await _questionTypeService.UpdateAsync(model);
                     break;
             }
 

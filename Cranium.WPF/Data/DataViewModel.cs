@@ -10,7 +10,7 @@ namespace Cranium.WPF.Data
     public class DataViewModel : AViewModelBase
     {
         #region FIELDS
-        
+
         #endregion FIELDS
 
 
@@ -22,7 +22,7 @@ namespace Cranium.WPF.Data
             QuestionTypesViewModel questionTypesViewModel, CategoriesViewModel categoriesViewModel)
             : base(stringsProvider)
         {
-           HamburgerMenuViewModel = hamburgerMenuViewModel;
+            HamburgerMenuViewModel = hamburgerMenuViewModel;
             QuestionsViewModel = questionsViewModel;
             QuestionTypesViewModel = questionTypesViewModel;
             CategoriesViewModel = categoriesViewModel;
@@ -32,7 +32,7 @@ namespace Cranium.WPF.Data
 
 
         #region PROPERTIES
-        
+
         public HamburgerMenuViewModel HamburgerMenuViewModel { get; }
         public QuestionsViewModel QuestionsViewModel { get; }
         public QuestionTypesViewModel QuestionTypesViewModel { get; }
@@ -42,7 +42,7 @@ namespace Cranium.WPF.Data
 
 
         #region METHODS
-        
+
         #endregion METHODS
     }
 }

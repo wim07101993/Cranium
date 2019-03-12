@@ -127,6 +127,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CloseAllWindowsEvent.cs" />
+    <Compile Include="Data\Category\CategoryFileService.cs" />
+    <Compile Include="Data\Files\AFileService.cs" />
+    <Compile Include="Data\Files\MediaFileService.cs" />
+    <Compile Include="Data\QuestionType\QuestionTypeFileService.cs" />
+    <Compile Include="Data\Question\QuestionFileService.cs" />
     <Compile Include="Game\CategoryIdComparer.cs" />
     <Compile Include="Game\GameControl\HideWinnerEvent.cs" />
     <Compile Include="Game\GameControl\ShowWinnerEvent.cs" />
@@ -163,8 +168,11 @@
     <Compile Include="Data\Category\CategoryChangedEvent.cs" />
     <Compile Include="Data\QuestionType\QuestionTypeChangedEvent.cs" />
     <Compile Include="Helpers\Converters\StringToVisibilityConverter.cs" />
-    <Compile Include="Helpers\Mongo\DatabaseException.cs" />
-    <Compile Include="Helpers\Mongo\EDatabaseMethod.cs" />
+    <Compile Include="Helpers\Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\Data\File\AFileModelService.cs" />
+    <Compile Include="Helpers\Data\IModelService.cs" />
+    <Compile Include="Helpers\Data\Mongo\DatabaseException.cs" />
+    <Compile Include="Helpers\Data\Mongo\EDatabaseMethod.cs" />
     <Compile Include="Game\GameException.cs" />
     <Compile Include="Game\NoCategoriesException.cs" />
     <Compile Include="Game\NoSpecialCategoryException.cs" />
@@ -174,7 +182,7 @@
     <Compile Include="Helpers\Extensions\ColorExtensions.cs" />
     <Compile Include="Helpers\Extensions\ImageExtensions.cs" />
     <Compile Include="Helpers\Extensions\ListExtensions.cs" />
-    <Compile Include="Helpers\Mongo\MongoExtensions.cs" />
+    <Compile Include="Helpers\Data\Mongo\MongoExtensions.cs" />
     <Compile Include="Helpers\Extensions\StreamExtensions.cs" />
     <Compile Include="Data\Answer\Answer.cs" />
     <Compile Include="Helpers\AWithId.cs" />
@@ -191,13 +199,12 @@
     <Compile Include="Game\IGameService.cs" />
     <Compile Include="Game\Player\Player.cs" />
     <Compile Include="Data\Category\ICategoryService.cs" />
-    <Compile Include="Helpers\Mongo\IModelService.cs" />
     <Compile Include="Data\Files\IFileService.cs" />
-    <Compile Include="Helpers\Mongo\IMongoDataServiceSettings.cs" />
-    <Compile Include="Helpers\Mongo\AMongoModelService.cs" />
+    <Compile Include="Helpers\Data\Mongo\IMongoDataServiceSettings.cs" />
+    <Compile Include="Helpers\Data\Mongo\AMongoModelService.cs" />
     <Compile Include="Data\Category\CategoryService.cs" />
-    <Compile Include="Data\Files\FileService.cs" />
-    <Compile Include="Helpers\Mongo\MongoDataServiceSettings.cs" />
+    <Compile Include="Data\Files\MongoFileService.cs" />
+    <Compile Include="Helpers\Data\Mongo\MongoDataServiceSettings.cs" />
     <Compile Include="Data\Question\QuestionService.cs" />
     <Compile Include="Data\QuestionType\QuestionTypeService.cs" />
     <Compile Include="Data\Question\IQuestionService.cs" />
