@@ -304,7 +304,7 @@ namespace Cranium.WPF.Strings
             set => SetProperty(ref _timer, value);
         }
 
-        public string StartTiner
+        public string StartTimer
         {
             get => _startTimer;
             set => SetProperty(ref _startTimer, value);

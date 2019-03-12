@@ -23,7 +23,7 @@ namespace Cranium.WPF.Game.GameControl
                 _gameWindow = App.UnityContainer.Resolve<GameWindow>();
 
                 var screens = Screen.AllScreens.ToList();
-                if (screens.Count > 0)
+                if (screens.Count > 1)
                 {
                     var rect = screens[1].Bounds;
                     _gameWindow.Top = rect.Top;
