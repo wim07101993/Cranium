@@ -53,7 +53,7 @@ namespace Cranium.WPF.Data.Files
         public async Task<ObjectId> CreateAsync(Stream fileToAdd, string title)
             => await _mediaBucket.UploadFromStreamAsync(title, fileToAdd);
 
-        public async Task GetOneAsync(ObjectId id, Stream outStream)
+        public async Task GetOneAsync(ObjectId id, Stream outStream) 
             => await _mediaBucket.DownloadToStreamAsync(id, outStream);
 
         public async Task<byte[]> GetOneAsync(ObjectId id)

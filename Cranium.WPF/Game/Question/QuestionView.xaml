@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:category="clr-namespace:Cranium.WPF.Data.Category"
+    xmlns:controls="clr-namespace:Cranium.WPF.Helpers.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -111,30 +112,45 @@
                 AutoGenerateColumns="False"
                 HeadersVisibility="None"
                 IsReadOnly="True"
-                ItemsSource="{Binding Model.Answers}">
+                ItemsSource="{Binding Answers}"
+                RowHeight="50">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <materialDesign:PackIcon
+                                <materialDesign:PackIcon VerticalAlignment="Center"
                                     Foreground="{DynamicResource PrimaryHueMidBrush}"
                                     Kind="Check"
-                                    Visibility="{Binding IsCorrect, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                    Visibility="{Binding Model.IsCorrect, Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Binding="{Binding Value}" />
+                    <DataGridTextColumn Binding="{Binding Model.Value}"  />
+
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding ImageAttachment}" Visibility="{Binding ImageAttachment, Converter={StaticResource ObjectToVisibilityConverter}}" />
-                                </Grid>
+                                <Image Source="{Binding ImageAttachment}" VerticalAlignment="Center" Visibility="{Binding ImageAttachment, Converter={StaticResource ObjectToVisibilityConverter}}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding Info}" />
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="question:AnswerViewModel">
+                                <controls:MusicPlayer
+                                    Width="160"
+                                    Height="40"
+                                    PauseCommand="{Binding PauseCommand}"
+                                    PlayCommand="{Binding PlayCommand}"
+                                    StopCommand="{Binding StopCommand}"
+                                    Visibility="{Binding MusicAttachment, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Binding="{Binding Model.Info}" />
                 </DataGrid.Columns>
             </DataGrid>
 

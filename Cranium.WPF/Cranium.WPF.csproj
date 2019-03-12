@@ -148,6 +148,7 @@
     <Compile Include="Game\StopTimerEvent.cs" />
     <Compile Include="Helpers\AsyncEventHandler.cs" />
     <Compile Include="Helpers\Controls\EButtonsAlignment.cs" />
+    <Compile Include="Helpers\Controls\MusicPlayer.cs" />
     <Compile Include="Helpers\Controls\NumericTextBox.cs" />
     <Compile Include="Helpers\Controls\NumericTextBoxChangedRoutedEventArgs.cs" />
     <Compile Include="Helpers\Controls\NumericTextBoxChangedRoutedEventHandler.cs" />
@@ -321,6 +322,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Helpers\Controls\Themes\ChromelessButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Helpers\Controls\Themes\MusicPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

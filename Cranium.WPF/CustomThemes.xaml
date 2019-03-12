@@ -4,6 +4,7 @@
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/Themes/ColorSpectrumSlider.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/Themes/NumericTextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/Themes/ChromelessButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Cranium;component/Helpers/Controls/Themes/MusicPlayer.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/Answer/AnswerEditingControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Cranium;component/Data/Category/CategoryEditingControl.xaml" />
