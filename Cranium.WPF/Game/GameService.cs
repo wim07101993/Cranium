@@ -116,6 +116,7 @@ namespace Cranium.WPF.Game
 
             _questions.Clear();
             _questions.Add(game.Questions);
+            _questions.Shuffle();
 
             _answeredQuestions.Clear();
             _answeredQuestions.Add(game.AnsweredQuestions);
@@ -157,6 +158,7 @@ namespace Cranium.WPF.Game
 
             // add new questions
             _questions.Add(await _questionService.GetAsync());
+            _questions.Shuffle();
             _questions.Shuffle();
 
             // refresh categories
@@ -388,12 +390,14 @@ namespace Cranium.WPF.Game
             if (isSpecialCategory)
                 return null;
 
+            _questions.Shuffle();
             var question = _questions.FirstOrDefault(x => x.QuestionType.Category.Id == categoryId);
             if (question == null)
             {
                 if (_answeredQuestions.Any(x => x.QuestionType.Category.Id == categoryId))
                 {
                     _questions.Add(_answeredQuestions.Where(x => x.QuestionType.Category.Id == categoryId));
+                    _questions.Shuffle();
                     return await GetQuestionAsync(categoryId);
                 }
 
