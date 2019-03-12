@@ -75,10 +75,21 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0" Background="{Binding QuestionViewModel.Category.Color.BaseColor, Converter={StaticResource ColorToSolidColorBrushConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
                                 <Image
+                                    Grid.Row="0"
                                     MaxWidth="400"
                                     VerticalAlignment="Center"
                                     Source="{Binding QuestionViewModel.CategoryImage}" />
+
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Margin="8"
+                                    Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                    Text="{Binding QuestionViewModel.Model.QuestionType.Name}" />
                             </Grid>
 
                             <Grid
