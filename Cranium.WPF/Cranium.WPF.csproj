@@ -140,6 +140,9 @@
     <Compile Include="Game\Player\PlayersViewModel.cs" />
     <Compile Include="Game\Question\AnswerViewModel.cs" />
     <Compile Include="Game\Question\HideQuestionEvent.cs" />
+    <Compile Include="Game\Question\InGameQuestionView.xaml.cs">
+      <DependentUpon>InGameQuestionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game\Question\ShowQuestionEvent.cs" />
     <Compile Include="Game\StartTimerEvent.cs" />
     <Compile Include="Game\StopTimerEvent.cs" />
@@ -301,6 +304,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Game\Player\PlayersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Game\Question\InGameQuestionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
