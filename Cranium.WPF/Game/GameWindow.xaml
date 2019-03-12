@@ -18,8 +18,24 @@
 
 
     <Grid>
-        <Grid>
-            <TextBlock Text="{Binding Time}" Visibility="{Binding ShowTime, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <Grid Margin="50,12,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Panel.ZIndex="10">
+            <Border Background="{DynamicResource MaterialDesignBackground}" Opacity="0.63" CornerRadius="10" />
+            <TextBlock
+                Margin="15"
+                Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                
+                Visibility="{Binding ShowTime, Converter={StaticResource BooleanToVisibilityConverter}}" >
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0:00}:{1:00;00},{2:000;00}">
+                        <Binding Path="Time.Minutes"></Binding>
+                        <Binding Path="Time.Seconds"></Binding>
+                        <Binding Path="Time.Milliseconds"></Binding>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
         </Grid>
 
         <materialDesign:DialogHost IsOpen="{Binding Winner, Converter={StaticResource ObjectToBooleanConverter}, Mode=OneWay}">
