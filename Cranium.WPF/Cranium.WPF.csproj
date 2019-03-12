@@ -162,6 +162,7 @@
     <Compile Include="Helpers\Converters\ObjectToVisibilityConverter.cs" />
     <Compile Include="Data\Category\CategoryChangedEvent.cs" />
     <Compile Include="Data\QuestionType\QuestionTypeChangedEvent.cs" />
+    <Compile Include="Helpers\Converters\StringToVisibilityConverter.cs" />
     <Compile Include="Helpers\Mongo\DatabaseException.cs" />
     <Compile Include="Helpers\Mongo\EDatabaseMethod.cs" />
     <Compile Include="Game\GameException.cs" />

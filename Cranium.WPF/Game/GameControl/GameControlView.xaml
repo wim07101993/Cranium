@@ -114,6 +114,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
+                    <!--  players  -->
                     <GroupBox
                         Grid.Row="0"
                         Grid.Column="0"
@@ -139,6 +140,7 @@
                         <player:PlayersView DataContext="{Binding PlayersViewModel}" />
                     </GroupBox>
 
+                    <!--  timer  -->
                     <GroupBox
                         Grid.Row="1"
                         Grid.Column="0"
@@ -165,6 +167,7 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!--  question  -->
                     <GroupBox
                         Grid.Row="0"
                         Grid.RowSpan="2"

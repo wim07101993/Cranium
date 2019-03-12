@@ -18,7 +18,7 @@
                 HorizontalAlignment="Center"
                 Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                 Text="{Binding Strings.SelectACategory}"
-                Visibility="{Binding Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                Visibility="{Binding Model.Tip, Converter={StaticResource StringToVisibilityConverter}}" />
             <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding Categories}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -87,7 +87,7 @@
                         Text="{Binding Model.Task}"
                         TextAlignment="Center"
                         TextWrapping="Wrap"
-                        Visibility="{Binding Model.Task, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                        Visibility="{Binding Model.Task, Converter={StaticResource StringToVisibilityConverter}}" />
 
                     <TextBlock
                         Margin="8"
@@ -95,7 +95,7 @@
                         Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                         Text="{Binding Model.Tip}"
                         TextAlignment="Center"
-                        Visibility="{Binding Model.Tip, Converter={StaticResource ObjectToVisibilityConverter}}" />
+                        Visibility="{Binding Model.Tip, Converter={StaticResource StringToVisibilityConverter}}" />
                 </StackPanel>
 
                 <Image

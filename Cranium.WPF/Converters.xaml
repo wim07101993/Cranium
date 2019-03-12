@@ -8,6 +8,7 @@
     <converters:InvertedObjectToVisibilityConverter x:Key="InvertedObjectToVisibilityConverter" />
     <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter" />
     <converters:MultiBooleanAndToVisibilityConverter x:Key="MultiBooleanAndToVisibilityConverter" />
+    <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
 
     <converters:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
 
