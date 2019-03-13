@@ -59,19 +59,25 @@
                                     Orientation="Horizontal">
                                     <Button
                                         Margin="0,0,12,0"
-                                        BorderBrush="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         Background="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                                        BorderBrush="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                         <materialDesign:PackIcon Kind="ColorLens" />
                                     </Button>
                                     <Button
                                         Margin="0,0,12,0"
-                                        BorderBrush="{DynamicResource SecondaryAccentBrush}"
                                         Background="{DynamicResource SecondaryAccentBrush}"
+                                        BorderBrush="{DynamicResource SecondaryAccentBrush}"
                                         Command="{TemplateBinding ChangeImageCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                         <materialDesign:PackIcon Kind="InsertPhoto" />
+                                    </Button>
+                                    <Button
+                                        Command="{TemplateBinding SaveCommand}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                        <materialDesign:PackIcon Kind="ContentSave" />
                                     </Button>
                                     <Button
                                         Command="{TemplateBinding DeleteCommand}"
