@@ -57,7 +57,7 @@
                     <materialDesign:PackIcon
                         Width="24"
                         Height="24"
-                        Kind="ContentSave" />
+                        Kind="ContentSaveAll" />
                 </Button>
             </StackPanel>
         </Grid>
