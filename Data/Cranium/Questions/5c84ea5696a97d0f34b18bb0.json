@@ -1,0 +1,36 @@
+{
+  "Task": "Welke vrouw was de eerste persoon die twee Nobelprijzen won?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Kwistum",
+    "Explanation": "Om deze Kwistum te winnen, moet je team het juiste antwoord geven op onderstaande vraag. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8fee4fe3539485a9c31"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Marie Curie",
+      "Info": "Ze was ook de eerste vrouw die een nobelprijs ontving, in 1903 voor fysica en in 1911 voor chemie.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84ea7096a97d0f34b18bb1"
+    }
+  ],
+  "Id": "5c84ea5696a97d0f34b18bb0"
+}

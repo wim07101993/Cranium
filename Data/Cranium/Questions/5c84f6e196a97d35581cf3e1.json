@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Multi-Kopiander",
+    "Explanation": "Iedereen speelt mee in deze multi-kopiander! Kies een artiest uit elk team om de bekende persoon of het personage te imiteren. De artiest mag praten zoals de persoon in de opdracht, maar mag geen plaatsen of namen van personen vermelden. Het eerste team dat het antwoord raadt, mag meteen nog eens gooien. Als deze opdracht werd gegeven tijdens jouw beurt, krijg je een andere opdracht nadat de winnaar nog eens heeft gegooid.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c84f63996a97d0f34b18c64"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Mary Poppins",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f6f696a97d35581cf3e2"
+    }
+  ],
+  "Id": "5c84f6e196a97d35581cf3e1"
+}

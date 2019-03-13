@@ -1,0 +1,36 @@
+{
+  "Task": "Rob eet erg",
+  "Tip": "Ster van het bos",
+  "QuestionType": {
+    "Name": "Dorelkar",
+    "Explanation": "Om deze Dorelkar te winnen, moet je team de letters in de husselpuzzel hieronder in de juiste volgorde zetten om het antwoord te vinden. Ik lees de tip hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e41ae4fe3509a4c5b85f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Grote beer",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c8986ef96a97d2608c1b02f"
+    }
+  ],
+  "Id": "5c8986e396a97d2608c1b02e"
+}

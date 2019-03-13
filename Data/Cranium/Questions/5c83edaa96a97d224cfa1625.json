@@ -1,0 +1,44 @@
+{
+  "Task": "Als je Mentos in een tweeliterfles Cola light laat vallen, schiet de drank de lucht in omdat het snoep sporen van dynamiet bevat.",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Warofnie",
+    "Explanation": "Om deze Warofnie te winnen, moet je team uitmaken of onderstaande bewering waar of onwaar is. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8c2e4fe3539485a9c30"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83edd296a97d224cfa1626"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Niet waar",
+      "Info": "De frisdrankeplosie wordt veroorzaakt door een koolstofdioxidereactie, een proces dat versneld wordt door het snoep.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83edd596a97d224cfa1627"
+    }
+  ],
+  "Id": "5c83edaa96a97d224cfa1625"
+}

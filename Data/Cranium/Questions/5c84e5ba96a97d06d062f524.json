@@ -1,0 +1,60 @@
+{
+  "Task": "Welke van deze sprongen uit het kunstschaatsen is een voorwaartse sprong?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Lutz",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e5d196a97d06d062f525"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Axel",
+      "Info": "Bij alle andere sprongen springt de schaatser achterwaarts.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e5d596a97d06d062f526"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Salchow",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e5da96a97d06d062f527"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Toeloop",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e5e196a97d06d062f528"
+    }
+  ],
+  "Id": "5c84e5ba96a97d06d062f524"
+}

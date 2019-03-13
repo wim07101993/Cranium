@@ -1,0 +1,44 @@
+{
+  "Task": "Staat dit gebouw in Bombay, India?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Kwistum",
+    "Explanation": "Om deze Kwistum te winnen, moet je team het juiste antwoord geven op onderstaande vraag. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8fee4fe3539485a9c31"
+  },
+  "Attachment": "5c84eb2f96a97d0f34b18bbb",
+  "AttachmentType": 1,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84ead796a97d0f34b18bb9"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Niet waar",
+      "Info": "Dit is de Blauwe Moskee in Istambul, Turkije. Deze stad vol architectonische hoogstandjes is de enige stad die op twee wereld delen ligt: Europa en Azië.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84eada96a97d0f34b18bba"
+    }
+  ],
+  "Id": "5c84eac496a97d0f34b18bb8"
+}

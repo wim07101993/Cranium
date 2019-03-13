@@ -1,0 +1,60 @@
+{
+  "Task": "Wat is het meest luidruchtige landdier?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "De mens",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ecde96a97d224cfa1616"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Brulaap",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ece396a97d224cfa1617"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Afrikaanse olifant",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ece996a97d224cfa1618"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Hyena",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ecef96a97d224cfa1619"
+    }
+  ],
+  "Id": "5c83eccd96a97d224cfa1615"
+}

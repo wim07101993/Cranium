@@ -1,0 +1,36 @@
+{
+  "Task": "20 olifanten, 10 giraffes en 10 kangoeroes slaan op hol en komen recht op je af. Hoeveel poten rennen er op je af?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Kwistum",
+    "Explanation": "Om deze Kwistum te winnen, moet je team het juiste antwoord geven op onderstaande vraag. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8fee4fe3539485a9c31"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "140",
+      "Info": "De 20 olifanten hebben 80 poten, de 10 giraffen hebben 40 poten en de kangoeroes gebruiken alleen hun achterpoten als ze rennen, dus 20 poten.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84de3c96a97d06d062f4c7"
+    }
+  ],
+  "Id": "5c84de0196a97d06d062f4c6"
+}

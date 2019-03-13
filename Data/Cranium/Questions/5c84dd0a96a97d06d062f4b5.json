@@ -1,0 +1,36 @@
+{
+  "Task": "Wat is de som van de gatallen in een rij of in een 3x3 raster van een standaard Sudokupuzzel?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Kwistum",
+    "Explanation": "Om deze Kwistum te winnen, moet je team het juiste antwoord geven op onderstaande vraag. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8fee4fe3539485a9c31"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "45",
+      "Info": "De getallen 1-9 moeten er allemaal in zitten: 1+2+3+4+5+6+7+8+9=45.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84dd3196a97d06d062f4b6"
+    }
+  ],
+  "Id": "5c84dd0a96a97d06d062f4b5"
+}

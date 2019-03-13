@@ -1,0 +1,44 @@
+{
+  "Task": "Het Corioliseffect maakt dat gootstenen en badkuipen boven en onder de evenaar in een andere richting leeglopen.",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Warofnie",
+    "Explanation": "Om deze Warofnie te winnen, moet je team uitmaken of onderstaande bewering waar of onwaar is. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8c2e4fe3539485a9c30"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e9e696a97d224cfa15ea"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Niet waar",
+      "Info": "Het corioliseffect, dat wordt veroorzaakt door de rotatie van de aarde, beïnvloed de draairichtign van grote weersystemen maar heeft geen invloed op de richting van de draaikolk in je gootsteen.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c898c1d96a97d1ea816c217"
+    }
+  ],
+  "Id": "5c83e9c696a97d224cfa15e9"
+}

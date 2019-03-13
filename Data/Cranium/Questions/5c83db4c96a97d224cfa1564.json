@@ -1,0 +1,68 @@
+{
+  "Task": "Hoofdsteden",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Warschau",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83db5596a97d224cfa1565"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Sydney",
+      "Info": "De hoofdstad van Australië is Canberra.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83db6696a97d224cfa1566"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Québec",
+      "Info": "De hoofdstad van Canada is Ottawa.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83db7f96a97d224cfa1567"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Oslo",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83db9596a97d224cfa1568"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Peking",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83db9c96a97d224cfa1569"
+    }
+  ],
+  "Id": "5c83db4c96a97d224cfa1564"
+}

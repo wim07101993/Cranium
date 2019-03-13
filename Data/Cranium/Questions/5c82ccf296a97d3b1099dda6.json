@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Activiteit",
+  "QuestionType": {
+    "Name": "Multi-Kladski",
+    "Explanation": "Iedereen speelt mee in deze multi-Kladskie. Kies een tekenaar uit elk team om hints op een vel papier te tekenen, zonder te praten en zonder letters of symbolen. \r\nHet eerste team dat het antwoord raadt, wint direct een bonusworp. Als deze opdracht tijdens jouw beurt gegeven werd, krijg je na de bonusworp van de winnaar een andere opdracht.",
+    "Category": {
+      "Name": "Poekie Palet",
+      "Description": "Deze categorie zit vol met opdrachten die je laten tekenen en boetseren",
+      "Image": "5c7166dce4fe353f0433e32a",
+      "Color": {
+        "BaseColor": "#FF2E47E8",
+        "A": 255,
+        "R": 46,
+        "G": 71,
+        "B": 232
+      },
+      "IsSpecial": false,
+      "Id": "5c713f38afec74f891e51f72"
+    },
+    "Id": "5c76d97fe4fe3539485a9c34"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Biologische klok",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c89796196a97d4190cf7896"
+    }
+  ],
+  "Id": "5c82ccf296a97d3b1099dda6"
+}

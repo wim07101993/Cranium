@@ -1,0 +1,60 @@
+{
+  "Task": "Welk land ligt niet op het noordelijk halfrond?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Bolivia",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d6d496a97d36005818b9"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Thailand",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d6dd96a97d36005818ba"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Ethiopië",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d6e396a97d36005818bb"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "India",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d6f196a97d36005818bc"
+    }
+  ],
+  "Id": "5c82d6ba96a97d36005818b8"
+}

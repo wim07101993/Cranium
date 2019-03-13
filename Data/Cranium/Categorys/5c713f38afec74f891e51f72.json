@@ -1,0 +1,14 @@
+{
+  "Name": "Poekie Palet",
+  "Description": "Deze categorie zit vol met opdrachten die je laten tekenen en boetseren",
+  "Image": "5c7166dce4fe353f0433e32a",
+  "Color": {
+    "BaseColor": "#FF2E47E8",
+    "A": 255,
+    "R": 46,
+    "G": 71,
+    "B": 232
+  },
+  "IsSpecial": false,
+  "Id": "5c713f38afec74f891e51f72"
+}

@@ -1,0 +1,60 @@
+{
+  "Task": "Wie is de butler van Batman?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Hubert Smithers",
+      "Info": "Hubert Smithers (of gewoon Smithers) is de butler van de Lodge Family in de Archie stripreeks",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e14d96a97d06d062f4f4"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Edwin Jarvis",
+      "Info": "Edwin Jarvis is de butler van Tony Stark in Iron Man.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e15496a97d06d062f4f5"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Herbert Cadbury",
+      "Info": "Herbert Cadbury is de butler van Richie Rich uit de gelijknamige film.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e15b96a97d06d062f4f6"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Alfred Pennyworth",
+      "Info": "Batman's trouwe butler was ooit een acteur met de naam Alfred Beagle.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e16396a97d06d062f4f7"
+    }
+  ],
+  "Id": "5c84e14096a97d06d062f4f3"
+}

@@ -1,0 +1,44 @@
+{
+  "Task": "Je kan tomaten ondersteboven laten groeien.",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Warofnie",
+    "Explanation": "Om deze Warofnie te winnen, moet je team uitmaken of onderstaande bewering waar of onwaar is. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8c2e4fe3539485a9c30"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Waar",
+      "Info": "De plant kan naar beneden groeien uit de boden van een hangende pot of zak.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83df9596a97d224cfa158f"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Niet waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83dfb096a97d224cfa1590"
+    }
+  ],
+  "Id": "5c83df8496a97d224cfa158e"
+}

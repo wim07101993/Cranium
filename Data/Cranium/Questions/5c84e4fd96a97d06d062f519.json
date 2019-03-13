@@ -1,0 +1,60 @@
+{
+  "Task": "Wat zijn vrije radicalen",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Een wiskundig begrip",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e50896a97d06d062f51a"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Een politieke partij",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e51096a97d06d062f51b"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Punkrokcers",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e51896a97d06d062f51c"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Uiterst reactieve molecules",
+      "Info": "Vrije radicalen vormen een van de voornaamste oorzaken van veroudering. Gelukkig zitten fruit en groenten vol antioxidanten die vrije radicalen tegengaan.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e51f96a97d06d062f51d"
+    }
+  ],
+  "Id": "5c84e4fd96a97d06d062f519"
+}

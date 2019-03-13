@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Activiteit",
+  "QuestionType": {
+    "Name": "Poppenmeester",
+    "Explanation": "Om deze Poppenmeester te winnen, kies je iemand uit je team die jullie het antwoord moet laten raden door de armen en benen van een teamgenoot als een marionet te bewegen, zonder praten of geluiden te maken. De marionet mag helpen raden naar het antwoord. De tip wordt hardop voorgelezen, de poppenspeler krijgt het antwoord en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c76deb9e4fe3509a4c5b858"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Schermen",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c8519d796a97d35581cf628"
+    }
+  ],
+  "Id": "5c8519d096a97d35581cf627"
+}

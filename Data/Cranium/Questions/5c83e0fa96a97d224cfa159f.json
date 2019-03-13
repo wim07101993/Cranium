@@ -1,0 +1,44 @@
+{
+  "Task": "Maanfasen worden veroorzaakt door de schaduw van de aarde op de maan.",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Warofnie",
+    "Explanation": "Om deze Warofnie te winnen, moet je team uitmaken of onderstaande bewering waar of onwaar is. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8c2e4fe3539485a9c30"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e11596a97d224cfa15a0"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Niet waar",
+      "Info": "De zijzigende relatieve standen van de maan, zon en aarde zorgen voor de maanfasen. De schaduw van de aarde op de maan resulteerd in een maansverduistering",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e11a96a97d224cfa15a1"
+    }
+  ],
+  "Id": "5c83e0fa96a97d224cfa159f"
+}

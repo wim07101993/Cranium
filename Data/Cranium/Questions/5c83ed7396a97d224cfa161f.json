@@ -1,0 +1,68 @@
+{
+  "Task": "Pixar-films",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "The Incredibles",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ed7f96a97d224cfa1620"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Monsters, Inc.",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ed8896a97d224cfa1621"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Shark Tale",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ed9096a97d224cfa1622"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Finding Nemo",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ed9696a97d224cfa1623"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Ice Age",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ed9c96a97d224cfa1624"
+    }
+  ],
+  "Id": "5c83ed7396a97d224cfa161f"
+}

@@ -1,0 +1,60 @@
+{
+  "Task": "Wat bracht Galileo in de problemen bij de Katholieke Ker?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Hij geloofde dat de wereld plat was.",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f26696a97d0f34b18c39"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Hij geloofde dat de wereld rond was.",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f26696a97d0f34b18c3a"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Hij geloofde dat de aarde rond de zon draaide.",
+      "Info": "Galileo's theorie dat de zon het midden van het universum was, werd tegengesproken door de leer van de Katholieke Kerk. In 1992 verklaarde paus Johannes Paulus II dat Galileo gelijk had.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f26796a97d0f34b18c3b"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Hij geloofde dat geen twee sneeuwvlokken identiek zijn.",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f26896a97d0f34b18c3c"
+    }
+  ],
+  "Id": "5c84f24f96a97d0f34b18c38"
+}

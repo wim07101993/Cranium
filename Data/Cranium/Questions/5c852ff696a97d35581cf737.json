@@ -1,0 +1,36 @@
+{
+  "Task": "Bewonder ook",
+  "Tip": "Alfabetbijbel",
+  "QuestionType": {
+    "Name": "Dorelkar",
+    "Explanation": "Om deze Dorelkar te winnen, moet je team de letters in de husselpuzzel hieronder in de juiste volgorde zetten om het antwoord te vinden. Ik lees de tip hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e41ae4fe3509a4c5b85f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Woordenboek",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85300796a97d35581cf738"
+    }
+  ],
+  "Id": "5c852ff696a97d35581cf737"
+}

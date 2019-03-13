@@ -1,0 +1,36 @@
+{
+  "Task": "_ _ _ S _ _   _ N   _ D _ _ _ A _",
+  "Tip": "Avontuurlijk circusduo",
+  "QuestionType": {
+    "Name": "Stucawoord",
+    "Explanation": "Om deze Stucawoord te winnen, moet je team de ontbrekende letters in onderstaande puzzel. Ik lees de tip hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e5a9e4fe3509a4c5b862"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Bassie en Adriaan",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85309496a97d35581cf741"
+    }
+  ],
+  "Id": "5c85306a96a97d35581cf740"
+}

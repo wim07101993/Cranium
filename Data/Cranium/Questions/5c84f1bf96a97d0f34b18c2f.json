@@ -1,0 +1,68 @@
+{
+  "Task": "Hondenrassen",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Groenendaeler",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f1cb96a97d0f34b18c30"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Britse korthaar",
+      "Info": "Een Britse korthaar is een kattenras.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f1cb96a97d0f34b18c31"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Bouvier",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f1cb96a97d0f34b18c32"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Freiberger",
+      "Info": "Een Freiberger is een paardensoort.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f1cb96a97d0f34b18c33"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Schipperke",
+      "Info": "",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f1cb96a97d0f34b18c34"
+    }
+  ],
+  "Id": "5c84f1bf96a97d0f34b18c2f"
+}

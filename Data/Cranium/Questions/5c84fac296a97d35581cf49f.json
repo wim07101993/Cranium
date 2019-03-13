@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Kopiander",
+    "Explanation": "Om deze Kopiander te winnen, kies je iemand uit je team die jullie het antwoord moet laten raden door de bekende persoon of de figuur te imiteren. De imitator mag praten zoals de figuur, maar mag geen namen of plaatsen noemen. De uitbeelder krijgt het antwoordt en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c76dfa3e4fe3509a4c5b859"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Ali Baba",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84fac996a97d35581cf4a0"
+    }
+  ],
+  "Id": "5c84fac296a97d35581cf49f"
+}

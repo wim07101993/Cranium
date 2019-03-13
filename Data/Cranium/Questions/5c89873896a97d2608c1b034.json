@@ -1,0 +1,36 @@
+{
+  "Task": "_ _ R _ _   _ _ R _ _ _ _ S",
+  "Tip": "Laat je hier niet verleiden",
+  "QuestionType": {
+    "Name": "Stucawoord",
+    "Explanation": "Om deze Stucawoord te winnen, moet je team de ontbrekende letters in onderstaande puzzel. Ik lees de tip hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e5a9e4fe3509a4c5b862"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Aards paradijs",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c89875396a97d2608c1b035"
+    }
+  ],
+  "Id": "5c89873896a97d2608c1b034"
+}

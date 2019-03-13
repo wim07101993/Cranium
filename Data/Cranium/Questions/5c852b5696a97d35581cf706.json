@@ -1,0 +1,60 @@
+{
+  "Task": "Taikonaut",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Flexicon",
+    "Explanation": "Om deze Flexicon te winnen, moet je team de juiste betekenis van het onderstaande woord raden. Ik lees het woord en de betekenissen hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e5d8e4fe3509a4c5b863"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Japanse drummer",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852b6296a97d35581cf707"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Chinese astronaut",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852b6296a97d35581cf708"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Taekwondo-beoefenaar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852b6396a97d35581cf709"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Koreaanse chef-kok",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852b6396a97d35581cf70a"
+    }
+  ],
+  "Id": "5c852b5696a97d35581cf706"
+}

@@ -1,0 +1,60 @@
+{
+  "Task": "Wlke van de volgende sterrenbeelden is GEEN waterteken?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Kreeft",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e4cf96a97d06d062f515"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Waterman",
+      "Info": "Samen met tweeling en weegschaal is waterman een luchtteken.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e4d496a97d06d062f516"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Schorpioen",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e4d996a97d06d062f517"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Vissen",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e4df96a97d06d062f518"
+    }
+  ],
+  "Id": "5c84e4bc96a97d06d062f514"
+}

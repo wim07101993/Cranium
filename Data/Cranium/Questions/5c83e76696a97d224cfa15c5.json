@@ -1,0 +1,44 @@
+{
+  "Task": "Voordat de achteruitkijkspiegel werd gebruikt, namen autocoureurs een passagier mee die naar achter keek en de bestuurder op de hoogte hield van wat er gebeurde",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Waar",
+      "Info": "De eerste op een auto gemonteerde achteruitkijkspiegel werd in 1911 gebruikt door autocoureur Ray Harroun in de Indianapolis 500-race. Bij alle andere auto's in de race werden geen spiegels gebruikt en reden monteurs mee.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e78996a97d224cfa15c6"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Niet waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e7c696a97d224cfa15c7"
+    }
+  ],
+  "Id": "5c83e76696a97d224cfa15c5"
+}

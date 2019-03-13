@@ -1,0 +1,60 @@
+{
+  "Task": "Onder welke wetenschappelijke naam is gorilla ook bekend?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "5c7a747be4fe3535540db639",
+  "AttachmentType": 1,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Gorilla gorillus gorilloptigus",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c76e7a8e4fe3509a4c5b867"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Apius maximus giantus",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c76e7c3e4fe3509a4c5b868"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Gorilla gorilla gorilla",
+      "Info": "Ook bekend als de westelijke laaglandgorilla",
+      "Attachment": "5c76f467e4fe35238424f61f",
+      "AttachmentType": 1,
+      "Id": "5c76e7cee4fe3509a4c5b869"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Magilla gorilla flotilla",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c76e7d9e4fe3509a4c5b86a"
+    }
+  ],
+  "Id": "5c76e781e4fe3509a4c5b866"
+}

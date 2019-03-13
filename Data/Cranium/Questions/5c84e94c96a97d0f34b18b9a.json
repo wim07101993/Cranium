@@ -1,0 +1,68 @@
+{
+  "Task": "Dansstijlen",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Fandango",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e95596a97d0f34b18b9b"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Chicago",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e95c96a97d0f34b18b9c"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Jive",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e96196a97d0f34b18b9d"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Free step",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e96496a97d0f34b18b9e"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Discofox",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84e96896a97d0f34b18b9f"
+    }
+  ],
+  "Id": "5c84e94c96a97d0f34b18b9a"
+}

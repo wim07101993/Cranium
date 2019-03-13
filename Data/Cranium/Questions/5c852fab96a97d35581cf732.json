@@ -1,0 +1,60 @@
+{
+  "Task": "Glabella",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Flexicon",
+    "Explanation": "Om deze Flexicon te winnen, moet je team de juiste betekenis van het onderstaande woord raden. Ik lees het woord en de betekenissen hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e5d8e4fe3509a4c5b863"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Stuk land dat eigendom is van een kerk",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852fbb96a97d35581cf733"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Vlak gedeelte tussen de wenkbrauwen",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852fbb96a97d35581cf734"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Standaard voor metalen bol",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852fbc96a97d35581cf735"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Besmettelijke huiduitslag",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852fbd96a97d35581cf736"
+    }
+  ],
+  "Id": "5c852fab96a97d35581cf732"
+}

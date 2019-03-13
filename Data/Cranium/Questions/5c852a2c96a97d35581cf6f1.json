@@ -1,0 +1,60 @@
+{
+  "Task": "Diftong",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Flexicon",
+    "Explanation": "Om deze Flexicon te winnen, moet je team de juiste betekenis van het onderstaande woord raden. Ik lees het woord en de betekenissen hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e5d8e4fe3509a4c5b863"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Scheepvaartterm voor het meten van diepte",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852a3696a97d35581cf6f2"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Tweeklank",
+      "Info": "De au in \"pauze\" en de ui in \"tuin\" zijn diftongen",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852a3696a97d35581cf6f3"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Medisch instrument voor het onderzoeken van de keel",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852a3796a97d35581cf6f4"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Schaarse badmode",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852a3796a97d35581cf6f5"
+    }
+  ],
+  "Id": "5c852a2c96a97d35581cf6f1"
+}

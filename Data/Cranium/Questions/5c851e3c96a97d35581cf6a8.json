@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Neurodie",
+    "Explanation": "Om deze Neurodie te winnen, kies je iemand uit je team die jullie het liedje op de achterkant moet laten raden door het liedje te neuriën of te fluiten, zonder tekst of gebaren. De neuriër en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c76e21ae4fe3509a4c5b85c"
+  },
+  "Attachment": "5c851e8396a97d35581cf6ac",
+  "AttachmentType": 2,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Thriller",
+      "Info": "(Michael Jackson)",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c851e5296a97d35581cf6a9"
+    }
+  ],
+  "Id": "5c851e3c96a97d35581cf6a8"
+}

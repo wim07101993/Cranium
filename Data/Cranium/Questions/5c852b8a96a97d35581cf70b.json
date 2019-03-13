@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Team Gnilleps",
+    "Explanation": "Om deze Team Gnilleps te winnen, moeten jullie samen het onderstaande woord achterstevoren spellen. Je mag het maar één keer proberen en het woord niet opschrijven. Alle spelers van het team zeggen om de beurt één letter om het woord achterstevoren te spellen. Ik lees het woord hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e545e4fe3509a4c5b861"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Lingerie",
+      "Info": "e i r e g n i L",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c852b9096a97d35581cf70c"
+    }
+  ],
+  "Id": "5c852b8a96a97d35581cf70b"
+}

@@ -1,0 +1,60 @@
+{
+  "Task": "Eponiem",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Flexicon",
+    "Explanation": "Om deze Flexicon te winnen, moet je team de juiste betekenis van het onderstaande woord raden. Ik lees het woord en de betekenissen hardop voor en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Woord Wurm",
+      "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+      "Image": "5c717da9e4fe3526c4c2d431",
+      "Color": {
+        "BaseColor": "#FFECD330",
+        "A": 255,
+        "R": 236,
+        "G": 211,
+        "B": 48
+      },
+      "IsSpecial": false,
+      "Id": "5c717be0e4fe350f602d0aa2"
+    },
+    "Id": "5c76e5d8e4fe3509a4c5b863"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Zwaard gebruikt bij het schermen",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85239d96a97d35581cf6c4"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Woord afgeleid van een naam of persoon",
+      "Info": "Bijvoorbeeld Saxofoon, Diesel en Sandwich.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85239d96a97d35581cf6c5"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Plaatselijke verdoving toegediend bij bevalling",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85239d96a97d35581cf6c6"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Woord met dezelfde betekenis als een ander woord",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85239e96a97d35581cf6c7"
+    }
+  ],
+  "Id": "5c85239196a97d35581cf6c3"
+}

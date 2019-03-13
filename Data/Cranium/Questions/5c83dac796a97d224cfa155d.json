@@ -1,0 +1,60 @@
+{
+  "Task": "Welke van deze tennisbanen is het traagst.",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Parket",
+      "Info": "Snel",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83dad996a97d224cfa155e"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Cement",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c897dc996a97d18e8e5ff02"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Gras",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c897dce96a97d18e8e5ff03"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Klei",
+      "Info": "Hout en cement zijn snel; gras is supersnel.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c897dd396a97d18e8e5ff04"
+    }
+  ],
+  "Id": "5c83dac796a97d224cfa155d"
+}

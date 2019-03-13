@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Ding",
+  "QuestionType": {
+    "Name": "Multi-Poppenmeester",
+    "Explanation": "Iedereen speelt mee met deze multi-Poppenmeester! Kies een poppenmeester uit elk team om de armen en benen van een teamgenoot te bewegen als een marionet, zonder te praten of geluid te maken. De marionet kan het antwoord helpen raden.\r\nHet eerste team dat het antwoord raadt, mag meteen nog eens gooien. Als deze opdracht werd gegeven tijdens jouw beurt, krijg je een andere opdracht nadat de winnaar nog eens heeft gegooid.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c76e305e4fe3509a4c5b85e"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Slacentrifuge",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c89832496a97d0210569b13"
+    }
+  ],
+  "Id": "5c85038496a97d35581cf505"
+}

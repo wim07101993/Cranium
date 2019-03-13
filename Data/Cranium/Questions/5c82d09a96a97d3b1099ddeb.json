@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Ding",
+  "QuestionType": {
+    "Name": "Multi-Sensopen",
+    "Explanation": "Iedereen speelt mee in deze multi-Sensopen. Kies een tekenaar uit om - met de ogen dicht - hints op een vel papier te tekenen, zonder gluren, praten en zonder letters of symbolen. Het eerste team dat het antwoord raadt, wint direct een bonusworp. Als deze opdracht tijdens jouw beurt gepakt gegeven werd, krijg je na de bonusworp van de winnaar een andere opdracht.",
+    "Category": {
+      "Name": "Poekie Palet",
+      "Description": "Deze categorie zit vol met opdrachten die je laten tekenen en boetseren",
+      "Image": "5c7166dce4fe353f0433e32a",
+      "Color": {
+        "BaseColor": "#FF2E47E8",
+        "A": 255,
+        "R": 46,
+        "G": 71,
+        "B": 232
+      },
+      "IsSpecial": false,
+      "Id": "5c713f38afec74f891e51f72"
+    },
+    "Id": "5c76dd4ee4fe3509a4c5b856"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Aquarium",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d0a296a97d3b1099ddec"
+    }
+  ],
+  "Id": "5c82d09a96a97d3b1099ddeb"
+}

@@ -1,0 +1,68 @@
+{
+  "Task": "Harry Potter: Vakken op Zweinstein",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Leer der oude tekens",
+      "Info": "De leerlingen krijgen wél leer der oude runen",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d71b96a97d36005818be"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Plantkunde",
+      "Info": "De leerlingen krijgen wel Kruidenkunde",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d73b96a97d36005818bf"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Dreuzelkunde",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d74e96a97d36005818c0"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Verweer tegen de Zwarte Kunsten",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d75796a97d36005818c1"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Toverdranken",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c897d4696a97d18e8e5fefe"
+    }
+  ],
+  "Id": "5c82d6fd96a97d36005818bd"
+}

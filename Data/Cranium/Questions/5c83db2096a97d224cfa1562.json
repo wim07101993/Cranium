@@ -1,0 +1,36 @@
+{
+  "Task": "Volgens een feministische slogan is een vrouw zonder man als een vis zonder ...?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Kwistum",
+    "Explanation": "Om deze Kwistum te winnen, moet je team het juiste antwoord geven op onderstaande vraag. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8fee4fe3539485a9c31"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Fiets",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c897dec96a97d18e8e5ff05"
+    }
+  ],
+  "Id": "5c83db2096a97d224cfa1562"
+}

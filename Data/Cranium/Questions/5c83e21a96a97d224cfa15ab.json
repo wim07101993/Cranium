@@ -1,0 +1,60 @@
+{
+  "Task": "Waarom wordt wijn bij voorkeur liggend bewaard?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Om de kurk vochtig te houden",
+      "Info": "Door de fles liggend of ondersteboven te bewaren, blijft de kurk vochtig en droogt hij niet uit. Dit voorkomt oxidatie (en bij gevolg het bederven) van de wijn.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e22f96a97d224cfa15ac"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Om plaats te besparen en de fles gemakkelijk bereikbaar te maken",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e23996a97d224cfa15ad"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Het is een oude Franse traditie",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e24a96a97d224cfa15ae"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Om het rijpen te bevorderen",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e25596a97d224cfa15af"
+    }
+  ],
+  "Id": "5c83e21a96a97d224cfa15ab"
+}

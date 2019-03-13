@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Multi-Neurodie",
+    "Explanation": "Iedereen speelt mee met deze multi-Neurodie! Kies een artiest uit elk team om het liedje te neuriën of te fluiten zonder tekst of gebaren. Het eerste team dat het antwoord raadt, mag meteen nog eens gooien. Als deze opdracht tijdens jouw beurt gegeven werd, krijg je een andere opdracht nadat de winnaar nog eens heeft gegooid.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c76e10ae4fe3509a4c5b85b"
+  },
+  "Attachment": "5c85041296a97d35581cf50b",
+  "AttachmentType": 2,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Spiegelbeeld",
+      "Info": "(Willeke Alberti)",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c8503cb96a97d35581cf508"
+    }
+  ],
+  "Id": "5c8503b996a97d35581cf507"
+}

@@ -1,0 +1,14 @@
+{
+  "Name": "Cranium",
+  "Description": "Bij deze categorie mag je een categorie kiezen.",
+  "Image": "5c7a9726e4fe35355446d4e6",
+  "Color": {
+    "BaseColor": "#FF9331B7",
+    "A": 255,
+    "R": 147,
+    "G": 49,
+    "B": 183
+  },
+  "IsSpecial": true,
+  "Id": "5c7a9707e4fe35355446d4e5"
+}

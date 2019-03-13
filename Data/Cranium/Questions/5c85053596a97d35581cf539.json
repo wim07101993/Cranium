@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Ding",
+  "QuestionType": {
+    "Name": "Mimitator",
+    "Explanation": "Om deze Mimimator te winnen, kies je iemand uit je team die jullie heet antwoord moet laten raden door stille hints uit te beelden. Ik lees de tip hardop voor, de uitbeelder krijgt het antwoord en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c76e274e4fe3509a4c5b85d"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Tijdmachine",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85054096a97d35581cf53a"
+    }
+  ],
+  "Id": "5c85053596a97d35581cf539"
+}

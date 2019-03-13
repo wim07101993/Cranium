@@ -1,0 +1,36 @@
+{
+  "Task": "Een muis valt van een klif van 15m. De klif heeft smalle randen waarop de muis kan rusten en elke dag klimt ze 4m, maar valt ze ook 2m. Hoeveel dagen duurt het tot ze de top bereikt?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Kwistum",
+    "Explanation": "Om deze Kwistum te winnen, moet je team het juiste antwoord geven op onderstaande vraag. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8fee4fe3539485a9c31"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "7 Dagen",
+      "Info": "Aangezien ze 2m per dag wint, bereikt de muis na zes dagen 12m. Op dag zeven klimt ze de resterende 3m naar de top en rent weg.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84f02e96a97d0f34b18c1e"
+    }
+  ],
+  "Id": "5c84efff96a97d0f34b18c1d"
+}

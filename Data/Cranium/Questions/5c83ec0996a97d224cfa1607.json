@@ -1,0 +1,60 @@
+{
+  "Task": "Wat is geocoaching?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Schatzoeken met behulp van GPS",
+      "Info": "Spelers doen sieraden of andere voorwerpen in een waterdicht doosje, verstoppen het ergens en geven de GPS-coördinaten aan andere spelers.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ec1996a97d224cfa1608"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Internetbestanden op je harde schijf zetten",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ec2396a97d224cfa1609"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Bepaalde gesteenten zoeken",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ec3596a97d224cfa160a"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Geoducks verzamelen",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83ec3d96a97d224cfa160b"
+    }
+  ],
+  "Id": "5c83ec0996a97d224cfa1607"
+}

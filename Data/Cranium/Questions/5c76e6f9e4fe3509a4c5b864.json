@@ -1,0 +1,44 @@
+{
+  "Task": "Varkens kunnen niet zweten",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Warofnie",
+    "Explanation": "Om deze Warofnie te winnen, moet je team uitmaken of onderstaande bewering waar of onwaar is. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8c2e4fe3539485a9c30"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Waar",
+      "Info": "Aangezien varkens geen zweetklieren hebben, kan je nooit \"Zweten als een varken\". Varkens koelen zichzelf af door in modder of water te rollen - Of door een stal met airconditioning op te zoeken.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d5da96a97d36005818ae"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Niet waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c898b0296a97d1ea816c216"
+    }
+  ],
+  "Id": "5c76e6f9e4fe3509a4c5b864"
+}

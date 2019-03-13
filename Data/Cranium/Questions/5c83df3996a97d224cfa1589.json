@@ -1,0 +1,60 @@
+{
+  "Task": "Wat heeft de hoogste zuurgraad volgens de pH-schaal?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Cola",
+      "Info": "Cola heeft de hoogste zuurgraad van de opgesomde items, met een pH-waarde van ongeveer 2,5",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83df4f96a97d224cfa158a"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Bloed",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83df5796a97d224cfa158b"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Koffie",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83df5c96a97d224cfa158c"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Speeksel",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83df6196a97d224cfa158d"
+    }
+  ],
+  "Id": "5c83df3996a97d224cfa1589"
+}

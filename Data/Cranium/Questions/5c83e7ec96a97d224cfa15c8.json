@@ -1,0 +1,68 @@
+{
+  "Task": "Belgische bieren",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Delirium Tremens",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e7f896a97d224cfa15c9"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Gulden Draak",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e80196a97d224cfa15ca"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Westvleteren",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e80996a97d224cfa15cb"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "De Blondine",
+      "Info": "De Blondine is een Nederlands bier",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e81096a97d224cfa15cc"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Dikke Deur",
+      "Info": "Dikke Deur is een Nederlands bier",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e81796a97d224cfa15cd"
+    }
+  ],
+  "Id": "5c83e7ec96a97d224cfa15c8"
+}

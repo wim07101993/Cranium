@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Proces",
+  "QuestionType": {
+    "Name": "Kladski",
+    "Explanation": "Om deze Kladskie te winnen, Kies je een tekenaar uit je team die jullie het antwoord moet laten raden. Hij/zij tekent hints op een vel papier te tekenen, zonder te praten en zonder letters of symbolen.  De tip wordt hardop voorgelezen, de tekenaars krijgen het antwoord en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Poekie Palet",
+      "Description": "Deze categorie zit vol met opdrachten die je laten tekenen en boetseren",
+      "Image": "5c7166dce4fe353f0433e32a",
+      "Color": {
+        "BaseColor": "#FF2E47E8",
+        "A": 255,
+        "R": 46,
+        "G": 71,
+        "B": 232
+      },
+      "IsSpecial": false,
+      "Id": "5c713f38afec74f891e51f72"
+    },
+    "Id": "5c76d97ee4fe3539485a9c33"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Opwarming van de aarde",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d30596a97d1f284b04b1"
+    }
+  ],
+  "Id": "5c82d2fb96a97d1f284b04b0"
+}

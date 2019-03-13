@@ -1,0 +1,44 @@
+{
+  "Task": "Het is gemakkelijker om je evenwicht te bewaren met gesloten ogen dan met je vingers in je oren.",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Warofnie",
+    "Explanation": "Om deze Warofnie te winnen, moet je team uitmaken of onderstaande bewering waar of onwaar is. De vraag wordt luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d8c2e4fe3539485a9c30"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Waar",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e8f096a97d224cfa15da"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Niet waar",
+      "Info": "Je vingers in je oren steken heeft geen invloed op je evenwicht, maar je ogen geven visuele oriëntatie-info aan je lichaam.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e8f796a97d224cfa15db"
+    }
+  ],
+  "Id": "5c83e8d396a97d224cfa15d9"
+}

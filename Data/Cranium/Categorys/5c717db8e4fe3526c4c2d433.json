@@ -1,0 +1,14 @@
+{
+  "Name": "Show Spetter",
+  "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+  "Image": "5c717dcee4fe3526c4c2d434",
+  "Color": {
+    "BaseColor": "#FF9FCA38",
+    "A": 255,
+    "R": 159,
+    "G": 202,
+    "B": 56
+  },
+  "IsSpecial": false,
+  "Id": "5c717db8e4fe3526c4c2d433"
+}

@@ -1,0 +1,19 @@
+{
+  "Name": "Mindmatch",
+  "Explanation": "Om deze Mindmatch te winnen, moeten twee of meer spelers van je team ten minste één antwoord hetzelfde hebben als een teamgenoot. Elke speler van je team schrijft stiekem drie woorden op waaraan hij/zij moet denken bij het onderwerp. Ik lees het onderwerp hardop voor en dan gaat de tijd in.",
+  "Category": {
+    "Name": "Woord Wurm",
+    "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+    "Image": "5c717da9e4fe3526c4c2d431",
+    "Color": {
+      "BaseColor": "#FFECD330",
+      "A": 255,
+      "R": 236,
+      "G": 211,
+      "B": 48
+    },
+    "IsSpecial": false,
+    "Id": "5c717be0e4fe350f602d0aa2"
+  },
+  "Id": "5c76e4cee4fe3509a4c5b860"
+}

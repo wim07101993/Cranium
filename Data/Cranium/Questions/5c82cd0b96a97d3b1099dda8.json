@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Ding",
+  "QuestionType": {
+    "Name": "Sensopen",
+    "Explanation": "Om deze Sensopen te winnen, kies je een tekenaar uit je team die jullie het antwoord moet laten raden. Hij/zij tekent - met de ogen dicht! - hints op een vel papier, zonder gluren, praten en zonder letters of symbolen. De tekenaar krijgt het antwoord te zien en dan gaat de tijd in.",
+    "Category": {
+      "Name": "Poekie Palet",
+      "Description": "Deze categorie zit vol met opdrachten die je laten tekenen en boetseren",
+      "Image": "5c7166dce4fe353f0433e32a",
+      "Color": {
+        "BaseColor": "#FF2E47E8",
+        "A": 255,
+        "R": 46,
+        "G": 71,
+        "B": 232
+      },
+      "IsSpecial": false,
+      "Id": "5c713f38afec74f891e51f72"
+    },
+    "Id": "5c7177f6e4fe350dfcf510ac"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Pizzasnijder",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c89797296a97d4190cf7897"
+    }
+  ],
+  "Id": "5c82cd0b96a97d3b1099dda8"
+}

@@ -1,0 +1,60 @@
+{
+  "Task": "Welk dier verzamelt voedsel voor de winter in de beroemde fabel van Aesopus?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Haas",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e98f96a97d224cfa15e5"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Muis",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e99496a97d224cfa15e6"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Eekhoorn",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e99796a97d224cfa15e7"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Mier",
+      "Info": "In \"De krekel en de mier\" toont de gedisciplineerde mier de zorgeloze krekel het belang van voorbereid zijn.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83e99c96a97d224cfa15e8"
+    }
+  ],
+  "Id": "5c83e97296a97d224cfa15e4"
+}

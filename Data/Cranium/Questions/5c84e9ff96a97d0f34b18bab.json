@@ -1,0 +1,60 @@
+{
+  "Task": "Wat was de job van Luke Skywalker voordat hij zich bij de rebellen aansloot in Star Wars?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Bantha-herder",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84ea1b96a97d0f34b18bac"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Vochtboer",
+      "Info": "Luke woonde, werkte en dronk blauwe melk op de boerderij van zijn oom owen.",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84ea2296a97d0f34b18bad"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Speeder-monteur",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84ea2796a97d0f34b18bae"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Droid-verkoper",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c84ea2d96a97d0f34b18baf"
+    }
+  ],
+  "Id": "5c84e9ff96a97d0f34b18bab"
+}

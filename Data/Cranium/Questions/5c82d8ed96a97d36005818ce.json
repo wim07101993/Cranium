@@ -1,0 +1,68 @@
+{
+  "Task": "Wasmiddelen",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Duoderuit",
+    "Explanation": "Om deze Duoderuit te winnen, moet je team twee dingen uit het onderstaande rijtje kiezen die er niet bij horen. De categorie en het rijtje worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d932e4fe3539485a9c32"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": false,
+      "Value": "Ariel",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d90096a97d36005818cf"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Dash",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d90596a97d36005818d0"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Sunli",
+      "Info": "Deze is fout gespeld (sunil)",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d91096a97d36005818d1"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Dixan",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d92496a97d36005818d2"
+    },
+    {
+      "IsCorrect": true,
+      "Value": "Derft",
+      "Info": "Deze is ook fout gespeld (dreft)",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c82d92b96a97d36005818d3"
+    }
+  ],
+  "Id": "5c82d8ed96a97d36005818ce"
+}

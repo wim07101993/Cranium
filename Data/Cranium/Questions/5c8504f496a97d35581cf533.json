@@ -1,0 +1,36 @@
+{
+  "Task": null,
+  "Tip": "Activiteit",
+  "QuestionType": {
+    "Name": "Multi-Mimitator",
+    "Explanation": "Iedereen speelt mee met deze multi-Mimitator! Kies een artiest uit elk team om stille hints uit te beelden. Het eerste team dat het antwoord raadt, mag meteen nog eens gooien. Als deze opdracht tijdens jouw beurt gegeven werd, krijg je een andere opdracht nadat de winnaar nog eens heeft gegooid.",
+    "Category": {
+      "Name": "Show Spetter",
+      "Description": "Deze categorie zit vol met opdrachten waarbij je iemand moet imiteren, neuriën,...",
+      "Image": "5c717dcee4fe3526c4c2d434",
+      "Color": {
+        "BaseColor": "#FF9FCA38",
+        "A": 255,
+        "R": 159,
+        "G": 202,
+        "B": 56
+      },
+      "IsSpecial": false,
+      "Id": "5c717db8e4fe3526c4c2d433"
+    },
+    "Id": "5c76e01ee4fe3509a4c5b85a"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Vogeltjesdans",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c85050296a97d35581cf534"
+    }
+  ],
+  "Id": "5c8504f496a97d35581cf533"
+}

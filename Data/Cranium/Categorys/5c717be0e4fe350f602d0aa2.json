@@ -1,0 +1,14 @@
+{
+  "Name": "Woord Wurm",
+  "Description": "Deze categorie zit vol met opdrachten die je spelling testen.",
+  "Image": "5c717da9e4fe3526c4c2d431",
+  "Color": {
+    "BaseColor": "#FFECD330",
+    "A": 255,
+    "R": 236,
+    "G": 211,
+    "B": 48
+  },
+  "IsSpecial": false,
+  "Id": "5c717be0e4fe350f602d0aa2"
+}

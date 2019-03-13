@@ -1,0 +1,60 @@
+{
+  "Task": "Wat is het grootste continentale meer op aarde?",
+  "Tip": null,
+  "QuestionType": {
+    "Name": "Keuzenkwestie",
+    "Explanation": "Om deze Keuzenkwestie te winnen, moet je team het juiste antwoord geven op onderstaande meerkeuzevraag. De vraag en antwoorden worden luidop voorgelezen, dan gaat de tijd in.",
+    "Category": {
+      "Name": "Knappe Kop",
+      "Description": "Deze categorie zit vol met opdrachten die je kennis testen met meerkeuze vragen, open vragen,...",
+      "Image": "5c71771de4fe3509503bc1b5",
+      "Color": {
+        "BaseColor": "#FFE61111",
+        "A": 255,
+        "R": 230,
+        "G": 17,
+        "B": 17
+      },
+      "IsSpecial": false,
+      "Id": "5c71770ee4fe3509503bc1b4"
+    },
+    "Id": "5c76d864e4fe3539485a9c2f"
+  },
+  "Attachment": "000000000000000000000000",
+  "AttachmentType": 0,
+  "Answers": [
+    {
+      "IsCorrect": true,
+      "Value": "Kaspische Zee",
+      "Info": "De Kaspische Zee is een zoutwatermeer op de grens van Azië en Europa. Het is ongeveer 371.000 km2 groot",
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83dcc796a97d224cfa1576"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Aralmeer",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83dcf196a97d224cfa1577"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Eriemeer",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83dcf996a97d224cfa1578"
+    },
+    {
+      "IsCorrect": false,
+      "Value": "Dode Zee",
+      "Info": null,
+      "Attachment": "000000000000000000000000",
+      "AttachmentType": 0,
+      "Id": "5c83dcfe96a97d224cfa1579"
+    }
+  ],
+  "Id": "5c83dcb196a97d224cfa1575"
+}
