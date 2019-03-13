@@ -7,13 +7,23 @@ namespace Cranium.WPF.Helpers.ViewModels
     public class AModelContainerViewModel<T> : AViewModelBase
         where T : INotifyPropertyChanged
     {
+        #region FIELDS
+
         private T _model;
 
+        #endregion FIELDS
+
+
+        #region CONSTRUCTOR
 
         public AModelContainerViewModel(IStringsProvider stringsProvider) : base(stringsProvider)
         {
         }
 
+        #endregion CONSTRUCTOR
+
+
+        #region PROPERTIES
 
         public T Model
         {
@@ -34,6 +44,10 @@ namespace Cranium.WPF.Helpers.ViewModels
             }
         }
 
+        #endregion PROPERTIES
+
+
+        #region METHODS
 
         protected virtual void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -42,5 +56,7 @@ namespace Cranium.WPF.Helpers.ViewModels
 
         protected virtual Task OnModelPropertyChangedAsync(T model, string propertyName) => Task.CompletedTask;
         protected virtual Task OnModelChangedAsync() => Task.CompletedTask;
+
+        #endregion METHODS
     }
 }

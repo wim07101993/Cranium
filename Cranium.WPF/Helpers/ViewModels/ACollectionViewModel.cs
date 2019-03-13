@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Cranium.WPF.Helpers.Data;
-using Cranium.WPF.Helpers.Data.File;
 using Cranium.WPF.Strings;
 using Prism.Commands;
 using Unity;
@@ -18,8 +16,7 @@ namespace Cranium.WPF.Helpers.ViewModels
         #region FIELDS
 
         private readonly IUnityContainer _unityContainer;
-        private AFileModelService<TModel> _fileModelService;
-
+        
         #endregion FIELDS
 
 
@@ -30,13 +27,27 @@ namespace Cranium.WPF.Helpers.ViewModels
         {
             _unityContainer = unityContainer;
             ModelService = unityContainer.Resolve<IModelService<TModel>>();
-            _fileModelService = unityContainer.Resolve<AFileModelService<TModel>>();
-
-            ItemsSource = new ObservableCollection<TViewModel>();
-
-            CreateCommand = new DelegateCommand(async () => await CreateAsync());
-            DeleteCommand = new DelegateCommand<TViewModel>(async x => await DeleteAsync(x));
-            UpdateCollectionCommand = new DelegateCommand(async () => await UpdateCollectionAsync());
+           
+            CreateCommand = new DelegateCommand(() => 
+            {
+                var _ = CreateAsync();
+            });
+            DeleteCommand = new DelegateCommand<TViewModel>(x =>
+            {
+                var _ = DeleteAsync(x);
+            });
+            UpdateCollectionCommand = new DelegateCommand(() =>
+            {
+                var _ = UpdateCollectionAsync();
+            });
+            SaveCommand = new DelegateCommand<TViewModel>(x =>
+            {
+                var _ = SaveAsync(x);
+            });
+            SaveAllCommand = new DelegateCommand(() =>
+            {
+                var _ = SaveAllAsync();
+            });
         }
 
         #endregion CONSTRUCTOR
@@ -46,11 +57,14 @@ namespace Cranium.WPF.Helpers.ViewModels
 
         protected IModelService<TModel> ModelService { get; }
 
-        public ObservableCollection<TViewModel> ItemsSource { get; }
+        public ObservableCollection<TViewModel> ItemsSource { get; } = new ObservableCollection<TViewModel>();
 
         public ICommand CreateCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand UpdateCollectionCommand { get; }
+
+        public ICommand SaveCommand { get; }
+        public ICommand SaveAllCommand { get; }
 
         #endregion PROPERTIES
 
@@ -59,25 +73,36 @@ namespace Cranium.WPF.Helpers.ViewModels
 
         public virtual async Task UpdateCollectionAsync()
         {
-//            try
-//            {
-//                var newItems = await ModelService.GetAsync();
-//                
-//                ItemsSource.Clear();
-//                foreach (var model in newItems)
-//                    AddModelToCollection(model);
-//            }
-//            catch (Exception e)
-//            {
-//                // todo
-//                throw e;
-//            }
+            try
+            {
+                var newItems = await ModelService.GetAsync();
+
+                ItemsSource.Clear();
+                foreach (var model in newItems)
+                {
+                    model.ChangedProperties.Clear();
+                    AddModelToCollection(model);
+                }
+            }
+            catch (Exception e)
+            {
+                // todo
+                throw e;
+            }
         }
 
         public virtual async Task CreateAsync()
         {
-            var model = await ModelService.CreateAsync(ConstructElement());
-            AddModelToCollection(model);
+            try
+            {
+                var model = await ModelService.CreateAsync(ConstructElement());
+                model.ChangedProperties.Clear();
+                AddModelToCollection(model);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
         }
 
         protected virtual TModel ConstructElement() => Activator.CreateInstance<TModel>();
@@ -106,6 +131,31 @@ namespace Cranium.WPF.Helpers.ViewModels
             catch (Exception e)
             {
                 // TODO
+            }
+        }
+
+        public virtual async Task SaveAsync(TViewModel viewModel)
+        {
+            try
+            {
+                await ModelService.UpdateAsync(viewModel.Model);
+            }
+            catch (Exception e)
+            {
+                // TODO 
+            }
+        }
+
+        public virtual async Task SaveAllAsync()
+        {
+            try
+            {
+                foreach (var item in ItemsSource)
+                    await ModelService.UpdateAsync(item.Model);
+            }
+            catch (Exception e)
+            {
+                // TODO 
             }
         }
 
