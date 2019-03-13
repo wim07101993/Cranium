@@ -25,7 +25,7 @@ namespace Cranium.WPF.Data.Question
             _questionTypeService = unityContainer.Resolve<IQuestionTypeService>();
             unityContainer.Resolve<IEventAggregator>()
                 .GetEvent<QuestionTypeChangedEvent>()
-                .Subscribe(UpdateQuestionTypes);
+                .Subscribe(UpdateQuestionType);
 
             var _ = UpdateCollectionAsync();
         }
@@ -49,9 +49,11 @@ namespace Cranium.WPF.Data.Question
             var questionTypes = await _questionTypeService.GetAsync();
             QuestionTypes.Clear();
             QuestionTypes.Add(questionTypes);
+
+            await base.UpdateCollectionAsync();
         }
 
-        private void UpdateQuestionTypes(QuestionType.QuestionType questionType)
+        private void UpdateQuestionType(QuestionType.QuestionType questionType)
         {
             var i = QuestionTypes.FindFirstIndex(x => questionType.Id == x.Id);
             if (i < 0)
@@ -60,6 +62,16 @@ namespace Cranium.WPF.Data.Question
             QuestionTypes[i].Category = questionType.Category;
             QuestionTypes[i].Explanation = questionType.Explanation;
             QuestionTypes[i].Name = questionType.Name;
+
+            foreach (var viewModel in ItemsSource)
+            {
+                if (viewModel.Model.QuestionType.Id == questionType.Id)
+                {
+                    viewModel.Model.QuestionType.Category = questionType.Category;
+                    viewModel.Model.QuestionType.Explanation = questionType.Explanation;
+                    viewModel.Model.QuestionType.Name = questionType.Name;
+                }
+            }
         }
 
         public override Task SaveAsync(QuestionViewModel viewModel)

@@ -10,22 +10,36 @@ namespace Cranium.WPF.Data.QuestionType
 {
     public sealed class QuestionTypesViewModel : ACollectionViewModel<QuestionType, QuestionTypeViewModel>
     {
-        private readonly ICategoryService _categoryService;
+        #region FIELDS
 
+        private readonly ICategoryService _categoryService;
+        private readonly IEventAggregator _eventAggregator;
+
+        #endregion FIELDS
+
+
+        #region CONSTRUCTOR
 
         public QuestionTypesViewModel(IUnityContainer unityContainer) : base(unityContainer)
         {
             _categoryService = unityContainer.Resolve<ICategoryService>();
-            unityContainer.Resolve<IEventAggregator>()
-                .GetEvent<CategoryChangedEvent>()
-                .Subscribe(UpdateCategory);
+            _eventAggregator = unityContainer.Resolve<IEventAggregator>();
+            _eventAggregator.GetEvent<CategoryChangedEvent>().Subscribe(UpdateCategory);
 
             var _ = UpdateCollectionAsync();
         }
 
+        #endregion CONSTRUCTOR
+
+
+        #region PROPERTIES
 
         public ObservableCollection<Category.Category> Categories { get; } = new ObservableCollection<Category.Category>();
 
+        #endregion PROPERTIES
+
+
+        #region METHODS
 
         public override async Task UpdateCollectionAsync()
         {
@@ -47,6 +61,26 @@ namespace Cranium.WPF.Data.QuestionType
             Categories[i].Image = category.Image;
             Categories[i].Name = category.Name;
             Categories[i].Id = category.Id;
+
+            foreach (var viewModel in ItemsSource)
+            {
+                if (viewModel.Model.Category.Id == category.Id)
+                {
+                    viewModel.Model.Category.Color = category.Color;
+                    viewModel.Model.Category.Description = category.Description;
+                    viewModel.Model.Category.Image = category.Image;
+                    viewModel.Model.Category.Name = category.Name;
+                    viewModel.Model.Category.Id = category.Id;
+                }
+            }
         }
+
+        public override async Task SaveAsync(QuestionTypeViewModel viewModel)
+        {
+            await base.SaveAsync(viewModel);
+            _eventAggregator.GetEvent<QuestionTypeChangedEvent>().Publish(viewModel.Model);
+        }
+
+        #endregion METHODS
     }
 }
