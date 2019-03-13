@@ -15,29 +15,39 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type question:QuestionEditingControl}">
                     <Grid>
-                        <Button
+                        <StackPanel
                             Margin="0"
                             HorizontalAlignment="Right"
-                            VerticalAlignment="Top" 
+                            VerticalAlignment="Top"
                             Panel.ZIndex="5"
-                            Command="{TemplateBinding DeleteCommand}"
-                            CommandParameter="{Binding}"
-                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
-                            <Button.Background>
-                                <SolidColorBrush Color="{StaticResource RedPrimary800}" />
-                            </Button.Background>
-                            <Button.BorderBrush>
-                                <SolidColorBrush Color="{StaticResource RedPrimary800}" />
-                            </Button.BorderBrush>
-                            <materialDesign:PackIcon Kind="Delete" />
-                        </Button>
+                            Orientation="Horizontal">
+                            <Button
+                                Command="{TemplateBinding SaveCommand}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </Button>
+                            <Button Margin="8,0,0,0"
+                                Command="{TemplateBinding DeleteCommand}"
+                                CommandParameter="{Binding}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                <Button.Background>
+                                    <SolidColorBrush Color="{StaticResource RedPrimary800}" />
+                                </Button.Background>
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="{StaticResource RedPrimary800}" />
+                                </Button.BorderBrush>
+                                <materialDesign:PackIcon Kind="Delete" />
+                            </Button>
+                        </StackPanel>
+
 
                         <materialDesign:Card
                             Height="Auto"
                             MinWidth="200"
                             Margin="12,16,16,12"
-                            BorderBrush="{DynamicResource MaterialDesignPaper}"
-                            Background="{DynamicResource MaterialDesignPaper}">
+                            Background="{DynamicResource MaterialDesignPaper}"
+                            BorderBrush="{DynamicResource MaterialDesignPaper}">
                             <StackPanel>
 
                                 <Border VerticalAlignment="Top" Background="{Binding Model.QuestionType.Category.Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}">

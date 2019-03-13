@@ -26,10 +26,11 @@
                                     MaxWidth="300"
                                     AnswersViewModel="{Binding AnswersViewModel}"
                                     ChangeAttachmentCommand="{Binding ChangeAttachmentCommand}"
-                                    DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                    DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
                                     ImageSource="{Binding ImageAttachment, UpdateSourceTrigger=PropertyChanged}"
                                     Model="{Binding Model}"
-                                    QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                    QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                    SaveCommand="{Binding DataContext.SaveCommadn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
                                     Strings="{Binding Strings}" />
                             </StackPanel>
                         </DataTemplate>
@@ -38,17 +39,27 @@
             </ScrollViewer>
 
 
-            <Button
+            <StackPanel
                 Margin="32"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
-                Command="{Binding CreateCommand}"
-                Style="{StaticResource MaterialDesignFloatingActionButton}">
-                <materialDesign:PackIcon
-                    Width="24"
-                    Height="24"
-                    Kind="Add" />
-            </Button>
+                Orientation="Horizontal">
+                <Button Command="{Binding CreateCommand}" Style="{StaticResource MaterialDesignFloatingActionButton}">
+                    <materialDesign:PackIcon
+                        Width="24"
+                        Height="24"
+                        Kind="Add" />
+                </Button>
+                <Button
+                    Margin="8,0,0,0"
+                    Command="{Binding SaveAllCommand}"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}">
+                    <materialDesign:PackIcon
+                        Width="24"
+                        Height="24"
+                        Kind="ContentSave" />
+                </Button>
+            </StackPanel>
         </Grid>
     </materialDesign:DialogHost>
 
