@@ -20,7 +20,7 @@ namespace Cranium.WPF.Helpers
 
         #region CONSTRUCTOR
 
-        public AWithId()
+        protected AWithId()
         {
             PropertyChanged += OnPropertyChanged;
         }
