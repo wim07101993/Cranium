@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Cranium.WPF.Data.Files;
 using Cranium.WPF.Helpers;
 using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;
@@ -19,8 +20,10 @@ namespace Cranium.WPF.Data.Category
 
         private readonly ICategoryService _categoryService;
         private readonly IEventAggregator _eventAggregator;
+        private readonly IAttachmentService _attachmentService;
 
         private BitmapImage _image;
+        private string _imagePath;
 
         #endregion FIELDS
 
@@ -28,15 +31,20 @@ namespace Cranium.WPF.Data.Category
         #region CONSTRUCTOR
 
         public CategoryViewModel(
-            IStringsProvider stringsProvider, ICategoryService categoryService, IEventAggregator eventAggregator)
+            IStringsProvider stringsProvider, ICategoryService categoryService, IEventAggregator eventAggregator,
+            IAttachmentService attachmentService)
             : base(stringsProvider)
         {
             _categoryService = categoryService;
             _eventAggregator = eventAggregator;
+            _attachmentService = attachmentService;
 
-            ChangeImageCommand = new DelegateCommand(async () => await ChangeImageAsync());
+            ChangeImageCommand = new DelegateCommand(() =>
+            {
+                var _ = ChangeImageAsync();
+            });
 
-            var _ = GetImageFromDbAsync();
+            var __ = GetImageAsync();
         }
 
         #endregion CONSTRUCTOR
@@ -52,42 +60,18 @@ namespace Cranium.WPF.Data.Category
 
         public ICommand ChangeImageCommand { get; }
 
+        public string ImagePath
+        {
+            get => _imagePath;
+            set => SetProperty(ref _imagePath, value);
+        }
+
         #endregion PROPERTIES
 
 
         #region METHODS
 
-        protected override async Task OnModelChangedAsync()
-        {
-            await GetImageFromDbAsync();
-        }
-
-        protected override async Task OnModelPropertyChangedAsync(Category category, string propertyName)
-        {
-            if (category == null)
-                return;
-
-            switch (propertyName)
-            {
-                case nameof(Model.Color):
-                    await _categoryService.UpdateAsync(category);
-                    break;
-                case nameof(Model.Description):
-                    await _categoryService.UpdateAsync(category);
-                    break;
-                case nameof(Model.Image):
-                    await GetImageFromDbAsync();
-                    UpdateColor(category);
-                    break;
-                case nameof(Model.Name):
-                    await _categoryService.UpdateAsync(category);
-                    break;
-            }
-
-            _eventAggregator.GetEvent<CategoryChangedEvent>().Publish(category);
-        }
-
-        public async Task GetImageFromDbAsync()
+        public async Task GetImageAsync()
         {
             if (Model == null || Model.Image == default)
             {
@@ -107,30 +91,32 @@ namespace Cranium.WPF.Data.Category
 
         public async Task ChangeImageAsync()
         {
+            await Task.CompletedTask;
+
             var dialog = new OpenFileDialog
             {
                 Multiselect = false,
-                Title = Strings.SelectAnImageFile
+                Title = Strings.SelectAnImageFile,
+                Filter = $"{_attachmentService.GenerateImageFilter()}|" +
+                         $"{_attachmentService.GenerateMusicFilter()}|" +
+                         $"{_attachmentService.GenerateVideoFilter()}"
             };
             dialog.ShowDialog();
 
             if (string.IsNullOrWhiteSpace(dialog.FileName))
                 return;
 
-            var stream = File.OpenRead(dialog.FileName);
-            var fileName = Path.GetFileName(dialog.FileName);
+            ImagePath = dialog.FileName;
 
-            try
-            {
-                var imgId = await _categoryService.UpdateImageAsync(Model, stream, fileName);
-                Model.Image = imgId;
-            }
-            catch (Exception e)
-            {
-                // TODO
-            }
+            using (var file = File.Open(ImagePath, FileMode.Open, FileAccess.Read))
+                Image = file.ToImage();
         }
 
+        protected override async Task OnModelChangedAsync()
+        {
+            await GetImageAsync();
+        }
+        
         private void UpdateColor(Category category)
         {
             if (category.Color.A == 0 ||

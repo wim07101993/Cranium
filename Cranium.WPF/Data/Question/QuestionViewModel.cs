@@ -19,7 +19,7 @@ namespace Cranium.WPF.Data.Question
     {
         #region FIELDS
 
-        private readonly IAttachmentService _fileService;
+        private readonly IAttachmentService _attachmentService;
         private readonly IQuestionService _questionService;
 
         private BitmapImage _imageAttachment;
@@ -33,7 +33,7 @@ namespace Cranium.WPF.Data.Question
         public QuestionViewModel(IUnityContainer unityContainer)
             : base(unityContainer.Resolve<IStringsProvider>())
         {
-            _fileService = unityContainer.Resolve<IAttachmentService>();
+            _attachmentService = unityContainer.Resolve<IAttachmentService>();
             _questionService = unityContainer.Resolve<IQuestionService>();
             AnswersViewModel = unityContainer.Resolve<AnswersViewModel>();
 
@@ -53,7 +53,7 @@ namespace Cranium.WPF.Data.Question
         public BitmapImage ImageAttachment
         {
             get => _imageAttachment;
-            set => SetProperty(ref _imageAttachment, value);
+            private set => SetProperty(ref _imageAttachment, value);
         }   
 
         public ICommand ChangeAttachmentCommand { get; }
@@ -99,9 +99,9 @@ namespace Cranium.WPF.Data.Question
             {
                 Multiselect = false,
                 Title = Strings.SelectAnImageFile,
-                Filter = $"{_fileService.GenerateImageFilter()}|" +
-                         $"{_fileService.GenerateMusicFilter()}|" +
-                         $"{_fileService.GenerateVideoFilter()}"
+                Filter = $"{_attachmentService.GenerateImageFilter()}|" +
+                         $"{_attachmentService.GenerateMusicFilter()}|" +
+                         $"{_attachmentService.GenerateVideoFilter()}"
             };
             dialog.ShowDialog();
 
@@ -128,20 +128,7 @@ namespace Cranium.WPF.Data.Question
                 AnswersViewModel.Models = Model.Answers;
             }
         }
-
-        protected override async Task OnModelPropertyChangedAsync(Question model, string propertyName)
-        {
-            if (model == null)
-                return;
-
-            switch (propertyName)
-            {
-                case nameof(Question.Attachment):
-                    await GetAttachmentAsync();
-                    break;
-            }
-        }
-
+        
         #endregion METHODS
     }
 }
