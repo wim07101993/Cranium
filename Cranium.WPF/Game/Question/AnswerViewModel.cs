@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Media;
 using Cranium.WPF.Data.Answer;
-using Cranium.WPF.Data.Files;
+using Cranium.WPF.Data.Attachment;
 using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;

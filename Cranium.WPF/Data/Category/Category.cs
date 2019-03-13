@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Windows.Media;
 using Cranium.WPF.Helpers;
+using Cranium.WPF.Helpers.Data;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using Color = Cranium.WPF.Helpers.Color;
 
 namespace Cranium.WPF.Data.Category
@@ -38,6 +40,7 @@ namespace Cranium.WPF.Data.Category
         }
 
         [BsonElement("image")]
+        [JsonConverter(typeof(ObjectIdConverter))]
         public ObjectId Image
         {
             get => _image;

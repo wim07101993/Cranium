@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using Cranium.WPF.Helpers.Data;
 
 namespace Cranium.WPF.Helpers
 {
@@ -31,6 +32,7 @@ namespace Cranium.WPF.Helpers
         #region PROPERTIES
 
         [BsonId]
+        [JsonConverter(typeof(ObjectIdConverter))]
         public ObjectId Id
         {
             get => _id;

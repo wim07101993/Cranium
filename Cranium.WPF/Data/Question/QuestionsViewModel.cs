@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.QuestionType;
@@ -44,13 +45,19 @@ namespace Cranium.WPF.Data.Question
 
         public override async Task UpdateCollectionAsync()
         {
-            await base.UpdateCollectionAsync();
-
-            var questionTypes = await _questionTypeService.GetAsync();
-            QuestionTypes.Clear();
-            QuestionTypes.Add(questionTypes);
 
             await base.UpdateCollectionAsync();
+
+            try
+            {
+                var questionTypes = await _questionTypeService.GetAsync();
+                QuestionTypes.Clear();
+                QuestionTypes.Add(questionTypes);
+            }
+            catch (Exception e)
+            {
+                // TODO
+            }
         }
 
         private void UpdateQuestionType(QuestionType.QuestionType questionType)

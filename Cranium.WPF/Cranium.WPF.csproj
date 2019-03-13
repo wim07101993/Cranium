@@ -169,6 +169,7 @@
     <Compile Include="Data\Category\CategoryChangedEvent.cs" />
     <Compile Include="Data\QuestionType\QuestionTypeChangedEvent.cs" />
     <Compile Include="Helpers\Converters\StringToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Data\ObjectIdConverter.cs" />
     <Compile Include="Helpers\Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\Data\File\AFileModelService.cs" />
     <Compile Include="Helpers\Data\IModelService.cs" />

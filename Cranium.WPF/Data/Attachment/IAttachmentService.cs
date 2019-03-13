@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 
-namespace Cranium.WPF.Data.Files
+namespace Cranium.WPF.Data.Attachment
 {
     public interface IAttachmentService
     {

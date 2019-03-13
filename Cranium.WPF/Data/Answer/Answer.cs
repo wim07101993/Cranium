@@ -1,7 +1,9 @@
-﻿using Cranium.WPF.Data.Files;
+﻿using Cranium.WPF.Data.Attachment;
 using Cranium.WPF.Helpers;
+using Cranium.WPF.Helpers.Data;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 
 namespace Cranium.WPF.Data.Answer
 {
@@ -38,6 +40,7 @@ namespace Cranium.WPF.Data.Answer
         }
 
         [BsonElement("attachment")]
+        [JsonConverter(typeof(ObjectIdConverter))]
         public ObjectId Attachment
         {
             get => _attachment;

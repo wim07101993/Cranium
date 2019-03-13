@@ -11,7 +11,10 @@
 
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-            <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
+            <ItemsControl
+                Margin="12"
+                ItemsSource="{Binding ItemsSource}"
+                VirtualizingStackPanel.IsVirtualizing="True">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
@@ -24,7 +27,7 @@
                             Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type questionType:QuestionTypesView}}}"
                             DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type questionType:QuestionTypesView}}}"
                             Model="{Binding Model}"
-                            SaveCommand="{Binding DataContext.SaveCommadn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type questionType:QuestionTypesView}}}"
+                            SaveCommand="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type questionType:QuestionTypesView}}}"
                             Strings="{Binding Strings}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

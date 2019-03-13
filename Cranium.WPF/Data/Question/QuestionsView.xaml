@@ -12,7 +12,10 @@
     <materialDesign:DialogHost CloseOnClickAway="True">
         <Grid>
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                <ItemsControl Margin="12" ItemsSource="{Binding ItemsSource}">
+                <ItemsControl
+                    Margin="12"
+                    ItemsSource="{Binding ItemsSource}"
+                    VirtualizingStackPanel.IsVirtualizing="True">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
@@ -21,18 +24,16 @@
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type question:QuestionViewModel}">
-                            <StackPanel>
-                                <question:QuestionEditingControl
-                                    MaxWidth="300"
-                                    AnswersViewModel="{Binding AnswersViewModel}"
-                                    ChangeAttachmentCommand="{Binding ChangeAttachmentCommand}"
-                                    DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
-                                    ImageSource="{Binding ImageAttachment, UpdateSourceTrigger=PropertyChanged}"
-                                    Model="{Binding Model}"
-                                    QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
-                                    SaveCommand="{Binding DataContext.SaveCommadn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
-                                    Strings="{Binding Strings}" />
-                            </StackPanel>
+                            <question:QuestionEditingControl
+                                MaxWidth="300"
+                                AnswersViewModel="{Binding AnswersViewModel}"
+                                ChangeAttachmentCommand="{Binding ChangeAttachmentCommand}"
+                                DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                ImageSource="{Binding ImageAttachment, UpdateSourceTrigger=PropertyChanged}"
+                                Model="{Binding Model}"
+                                QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                SaveCommand="{Binding DataContext.SaveCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
+                                Strings="{Binding Strings}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

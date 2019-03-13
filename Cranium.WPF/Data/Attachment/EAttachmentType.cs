@@ -1,4 +1,4 @@
-﻿namespace Cranium.WPF.Data.Files
+﻿namespace Cranium.WPF.Data.Attachment
 {
     public enum EAttachmentType
     {

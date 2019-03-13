@@ -1,18 +1,14 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Cranium.WPF.Helpers.Data.Mongo;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
-using Unity;
 
-namespace Cranium.WPF.Data.Files
+namespace Cranium.WPF.Data.Attachment
 {
     public class MongoAttachmentService : AAttachmentService
     {
-        private readonly FileAttachmentService _mediaFileService;
-
         #region FIELDS
 
         public const int ChunkSize = 1048576;
@@ -25,9 +21,8 @@ namespace Cranium.WPF.Data.Files
 
         #region CONSTRUCTOR
 
-        public MongoAttachmentService(IMongoDataServiceSettings config, FileAttachmentService mediaFileService)
+        public MongoAttachmentService(IMongoDataServiceSettings config)
         {
-            _mediaFileService = mediaFileService;
             var database = new MongoClient(config.ConnectionString)
                 .GetDatabase(config.DatabaseName);
 

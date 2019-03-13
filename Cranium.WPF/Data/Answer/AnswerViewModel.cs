@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Cranium.WPF.Data.Files;
+using Cranium.WPF.Data.Attachment;
 using Cranium.WPF.Helpers.ViewModels;
 using Cranium.WPF.Strings;
 using Microsoft.Win32;

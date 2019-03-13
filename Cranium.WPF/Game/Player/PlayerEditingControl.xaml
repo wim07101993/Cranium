@@ -55,8 +55,8 @@
                                     <TextBox Margin="8" Text="{Binding Model.Name, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />
                                     <Button
                                         Margin="8"
-                                        BorderBrush="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         Background="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
+                                        BorderBrush="{Binding Model.Color.BaseColor, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ColorToSolidColorBrushConverter}}"
                                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                                         Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                                         <materialDesign:PackIcon Kind="ColorLens" />

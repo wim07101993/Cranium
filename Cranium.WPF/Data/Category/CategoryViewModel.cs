@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using Cranium.WPF.Data.Files;
+using Cranium.WPF.Data.Attachment;
 using Cranium.WPF.Helpers;
 using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Helpers.ViewModels;

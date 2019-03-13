@@ -29,7 +29,13 @@ namespace Cranium.WPF.Helpers.Data.File
         public async Task<T> GetOneAsync(ObjectId id)
         {
             if (!Directory.Exists(DataDir))
+            {
                 Directory.CreateDirectory(DataDir);
+                return default;
+            }
+
+            if (id == default)
+                return default;
 
             var files = Directory.GetFiles(DataDir);
             var filePath = files.First(x => x.Contains(id.ToString()));

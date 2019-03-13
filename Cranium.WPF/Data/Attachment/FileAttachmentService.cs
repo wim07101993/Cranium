@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 
-namespace Cranium.WPF.Data.Files
+namespace Cranium.WPF.Data.Attachment
 {
     public class FileAttachmentService : AAttachmentService
     {
@@ -46,7 +46,13 @@ namespace Cranium.WPF.Data.Files
         public override async Task GetOneAsync(ObjectId id, Stream outStream)
         {
             if (!Directory.Exists(DataDir))
+            {
                 Directory.CreateDirectory(DataDir);
+                return;
+            }
+            
+            if (id == default)
+                return;
 
             var files = Directory.GetFiles(DataDir);
             var filePath = files.First(x => x.Contains(id.ToString()));
@@ -61,6 +67,9 @@ namespace Cranium.WPF.Data.Files
 
         public override async Task<byte[]> GetOneAsync(ObjectId id)
         {
+            if (id == default)
+                return null;
+
             byte[] bytes;
             using (var stream = new MemoryStream())
             {

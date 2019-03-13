@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using Cranium.WPF.Data.Files;
+using Cranium.WPF.Data.Attachment;
 using Cranium.WPF.Helpers.Data.File;
 using Cranium.WPF.Helpers.Extensions;
 using MongoDB.Bson;
