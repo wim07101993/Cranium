@@ -23,7 +23,8 @@ namespace Cranium.WPF.Data.Question
         private readonly IAttachmentService _fileService;
         private readonly IQuestionService _questionService;
 
-        private byte[] _attachment;
+        private BitmapImage _imageAttachment;
+        private string _attachmentPath;
 
         #endregion FIELDS
 
@@ -37,10 +38,12 @@ namespace Cranium.WPF.Data.Question
             _questionService = unityContainer.Resolve<IQuestionService>();
             AnswersViewModel = unityContainer.Resolve<AnswersViewModel>();
 
-            ChangeAttachmentCommand = new DelegateCommand(async () => await ChangeAttachmentAsync());
+            ChangeAttachmentCommand = new DelegateCommand(() =>
+            {
+                var _ = ChangeAttachmentAsync();
+            });
 
-            var _ = GetAttachmentFromDbAsync();
-            AnswersViewModel.AnyAnswerChanged += OnAnyAnswerChanged;
+            var __ = GetAttachmentAsync();
         }
 
         #endregion CONSTRUCTOR
@@ -48,41 +51,40 @@ namespace Cranium.WPF.Data.Question
 
         #region PROPERTIES
         
-        public byte[] Attachment
+        public BitmapImage ImageAttachment
         {
-            get => _attachment;
-            private set
-            {
-                SetProperty(ref _attachment, value);
-                RaisePropertyChanged(nameof(ImageSource));
-            }
-        }
-
-        public BitmapImage ImageSource
-            => Model?.AttachmentType == EAttachmentType.Image 
-            ? Attachment?.ToImage() 
-            : null;
+            get => _imageAttachment;
+            set => SetProperty(ref _imageAttachment, value);
+        }   
 
         public ICommand ChangeAttachmentCommand { get; }
 
         public AnswersViewModel AnswersViewModel { get; }
+
+        public string AttachmentPath
+        {
+            get => _attachmentPath;
+            set => SetProperty(ref _attachmentPath, value);
+        }
 
         #endregion PROPERTIES
 
 
         #region METHODS
 
-        public async Task GetAttachmentFromDbAsync()
+        public async Task GetAttachmentAsync()
         {
             if (Model == null)
             {
-                Attachment = null;
+                ImageAttachment = null;
                 return;
             }
 
             try
             {
-                Attachment = await _questionService.GetAttachmentAsync(Model);
+                var bytes = await _questionService.GetAttachmentAsync(Model);
+                if (Model.AttachmentType == EAttachmentType.Image)
+                    ImageAttachment = bytes.ToImage();
             }
             catch (Exception e)
             {
@@ -92,6 +94,8 @@ namespace Cranium.WPF.Data.Question
 
         public async Task ChangeAttachmentAsync()
         {
+            await Task.CompletedTask;
+
             var dialog = new OpenFileDialog
             {
                 Multiselect = false,
@@ -105,32 +109,15 @@ namespace Cranium.WPF.Data.Question
             if (string.IsNullOrWhiteSpace(dialog.FileName))
                 return;
 
-            var stream = File.OpenRead(dialog.FileName);
-            var fileName = Path.GetFileName(dialog.FileName);
+            AttachmentPath = dialog.FileName;
 
-            var attachmentType = EAttachmentType.None;
-            var extension = Path.GetExtension(fileName);
-            if (_fileService.ImageExtensions.Any(x => x == extension))
-                attachmentType = EAttachmentType.Image;
-            else if (_fileService.MusicExtensions.Any(x => x == extension))
-                attachmentType = EAttachmentType.Music;
-            else if (_fileService.VideoExtensions.Any(x => x == extension))
-                attachmentType = EAttachmentType.Video;
-
-            try
-            {
-                Model.Attachment = await _questionService.UpdateAttachment(Model, stream, fileName, attachmentType);
-                Model.AttachmentType = attachmentType;
-            }
-            catch (Exception e)
-            {
-                // TODO
-            }
+            using (var file = File.Open(AttachmentPath, FileMode.Open, FileAccess.Read))
+                ImageAttachment = file.ToImage();
         }
 
         protected override async Task OnModelChangedAsync()
         {
-            await GetAttachmentFromDbAsync();
+            await GetAttachmentAsync();
 
             if (Model == null)
                 AnswersViewModel.Models = null;
@@ -143,32 +130,15 @@ namespace Cranium.WPF.Data.Question
             }
         }
 
-        private void OnAnyAnswerChanged(object sender, EventArgs e)
+        protected override async Task OnModelPropertyChangedAsync(Question model, string propertyName)
         {
-            var _ = OnModelPropertyChangedAsync(Model, nameof(Question.Answers));
-        }
-
-        protected override async Task OnModelPropertyChangedAsync(Question item, string propertyName)
-        {
-            if (item == null)
+            if (model == null)
                 return;
 
             switch (propertyName)
             {
-                case nameof(Question.Task):
-                    await _questionService.UpdateAsync(item);
-                    break;
-                case nameof(Question.QuestionType):
-                    await _questionService.UpdateAsync(item);
-                    break;
-                case nameof(Question.Answers):
-                    await _questionService.UpdateAsync(item);
-                    break;
-                case nameof(Question.Tip):
-                    await _questionService.UpdateAsync(item);
-                    break;
                 case nameof(Question.Attachment):
-                    await GetAttachmentFromDbAsync();
+                    await GetAttachmentAsync();
                     break;
             }
         }

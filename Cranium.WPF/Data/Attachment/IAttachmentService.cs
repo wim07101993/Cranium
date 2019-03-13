@@ -13,6 +13,7 @@ namespace Cranium.WPF.Data.Files
 
 
         Task<ObjectId> CreateAsync(Stream fileToAdd, string title);
+        Task<ObjectId> CreateAsync(string filePath);
 
         Task GetOneAsync(ObjectId id, Stream outStream);
         Task<byte[]> GetOneAsync(ObjectId id);

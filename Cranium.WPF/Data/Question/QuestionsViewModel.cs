@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.QuestionType;
 using Cranium.WPF.Helpers.Extensions;
@@ -10,8 +11,14 @@ namespace Cranium.WPF.Data.Question
 {
     public sealed class QuestionsViewModel : ACollectionViewModel<Question, QuestionViewModel>
     {
+        #region FIELDS
+
         private readonly IQuestionTypeService _questionTypeService;
 
+        #endregion FIELDS
+
+
+        #region CONSTRUCTOR
 
         public QuestionsViewModel(IUnityContainer unityContainer) : base(unityContainer)
         {
@@ -23,9 +30,17 @@ namespace Cranium.WPF.Data.Question
             var _ = UpdateCollectionAsync();
         }
 
+        #endregion CONSTRUCTOR
+
+
+        #region PROPERTIES
 
         public ObservableCollection<QuestionType.QuestionType> QuestionTypes {get;} = new ObservableCollection<QuestionType.QuestionType>();
 
+        #endregion PROPERTIES
+
+
+        #region METHODS
 
         public override async Task UpdateCollectionAsync()
         {
@@ -46,5 +61,17 @@ namespace Cranium.WPF.Data.Question
             QuestionTypes[i].Explanation = questionType.Explanation;
             QuestionTypes[i].Name = questionType.Name;
         }
+
+        public override Task SaveAsync(QuestionViewModel viewModel)
+        {
+            if (!string.IsNullOrWhiteSpace(viewModel.AttachmentPath))
+            {
+                ((IQuestionService)ModelService).UpdateAttachment(viewModel.Model, viewModel.AttachmentPath);
+            }
+
+            return base.SaveAsync(viewModel);
+        }
+
+        #endregion METHODS
     }
 }

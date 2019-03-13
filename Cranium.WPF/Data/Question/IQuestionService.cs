@@ -12,5 +12,7 @@ namespace Cranium.WPF.Data.Question
 
         Task<ObjectId> UpdateAttachment(
             Question question, Stream fileStream, string fileName, EAttachmentType attachmentType);
+
+        Task<ObjectId> UpdateAttachment(Question question, string filePath);
     }
 }

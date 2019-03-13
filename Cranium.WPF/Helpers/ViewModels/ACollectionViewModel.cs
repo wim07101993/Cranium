@@ -151,7 +151,7 @@ namespace Cranium.WPF.Helpers.ViewModels
             try
             {
                 foreach (var item in ItemsSource)
-                    await ModelService.UpdateAsync(item.Model);
+                    await SaveAsync(item);
             }
             catch (Exception e)
             {

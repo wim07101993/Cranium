@@ -33,5 +33,18 @@ namespace Cranium.WPF.Data.Question
 
             return newAttachmentId;
         }
+
+        public async Task<ObjectId> UpdateAttachment(Question question, string filePath)
+        {
+            var oldQuestion = await GetOneAsync(question.Id);
+            if (oldQuestion.Attachment != default)
+                await _fileService.RemoveAsync(oldQuestion.Attachment);
+
+            var newAttachmentId = await _fileService.CreateAsync(filePath);
+            question.Attachment = newAttachmentId;
+            await UpdateAsync(question);
+
+            return newAttachmentId;
+        }
     }
 }

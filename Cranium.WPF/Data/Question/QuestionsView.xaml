@@ -27,7 +27,7 @@
                                     AnswersViewModel="{Binding AnswersViewModel}"
                                     ChangeAttachmentCommand="{Binding ChangeAttachmentCommand}"
                                     DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
-                                    ImageSource="{Binding ImageSource, UpdateSourceTrigger=PropertyChanged}"
+                                    ImageSource="{Binding ImageAttachment, UpdateSourceTrigger=PropertyChanged}"
                                     Model="{Binding Model}"
                                     QuestionTypes="{Binding DataContext.QuestionTypes, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type question:QuestionsView}}}"
                                     Strings="{Binding Strings}" />

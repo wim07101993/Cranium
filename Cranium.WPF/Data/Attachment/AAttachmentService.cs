@@ -8,7 +8,7 @@ namespace Cranium.WPF.Data.Files
 {
     public abstract class AAttachmentService : IAttachmentService
     {
-         #region PROPERTIES
+        #region PROPERTIES
 
         public IReadOnlyList<string> ImageExtensions => new[] { ".bmp", ".jpg", ".gif", ".png" };
         public IReadOnlyList<string> MusicExtensions => new[] { ".mp3", ".m4a", ".wma" };
@@ -20,6 +20,12 @@ namespace Cranium.WPF.Data.Files
         #region METHDOS
 
         public abstract Task<ObjectId> CreateAsync(Stream fileToAdd, string title);
+
+        public async Task<ObjectId> CreateAsync(string filePath)
+        {
+            var stream = File.OpenRead(filePath);
+            return await CreateAsync(stream, Path.GetFileName(filePath));
+        }
 
         public abstract Task GetOneAsync(ObjectId id, Stream outStream);
 
