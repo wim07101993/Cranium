@@ -9,9 +9,9 @@ using Unity;
 
 namespace Cranium.WPF.Data.Files
 {
-    public class MongoFileService : AFileService
+    public class MongoAttachmentService : AAttachmentService
     {
-        private readonly MediaFileService _mediaFileService;
+        private readonly FileAttachmentService _mediaFileService;
 
         #region FIELDS
 
@@ -25,7 +25,7 @@ namespace Cranium.WPF.Data.Files
 
         #region CONSTRUCTOR
 
-        public MongoFileService(IMongoDataServiceSettings config, MediaFileService mediaFileService)
+        public MongoAttachmentService(IMongoDataServiceSettings config, FileAttachmentService mediaFileService)
         {
             _mediaFileService = mediaFileService;
             var database = new MongoClient(config.ConnectionString)

@@ -13,7 +13,7 @@ namespace Cranium.WPF.Game.Question
     {
         #region FIELDS
 
-        private readonly IFileService _fileService;
+        private readonly IAttachmentService _fileService;
 
         private byte[] _attachment;
 
@@ -22,7 +22,7 @@ namespace Cranium.WPF.Game.Question
 
         #region CONSTRCUTOR
 
-        public AnswerViewModel(IStringsProvider stringsProvider, IFileService fileService)
+        public AnswerViewModel(IStringsProvider stringsProvider, IAttachmentService fileService)
             : base(stringsProvider)
         {
             _fileService = fileService;

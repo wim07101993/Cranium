@@ -13,10 +13,10 @@ namespace Cranium.WPF.Data.Answer
 {
     public class AnswerViewModel : AModelContainerViewModel<Answer>
     {
-        private readonly IFileService _fileService;
+        private readonly IAttachmentService _fileService;
 
 
-        public AnswerViewModel(IStringsProvider stringsProvider, IFileService fileService)
+        public AnswerViewModel(IStringsProvider stringsProvider, IAttachmentService fileService)
             : base(stringsProvider)
         {
             _fileService = fileService;

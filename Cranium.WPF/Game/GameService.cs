@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.Answer;
 using Cranium.WPF.Data.Category;
+using Cranium.WPF.Data.Game;
 using Cranium.WPF.Data.Question;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Tile;
@@ -96,7 +97,7 @@ namespace Cranium.WPF.Game
         #region game creation
 
         public async Task SaveGameAsync()
-            => await _mongoGameService.CreateAsync(new Game
+            => await _mongoGameService.CreateAsync(new Data.Game.Game
             {
                 AnsweredQuestions = AnsweredQuestions,
                 CurrentPlayerIndex = _currentPlayer,

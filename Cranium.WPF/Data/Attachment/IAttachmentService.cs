@@ -5,7 +5,7 @@ using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Files
 {
-    public interface IFileService
+    public interface IAttachmentService
     {
         IReadOnlyList<string> ImageExtensions { get; }
         IReadOnlyList<string> MusicExtensions { get; }

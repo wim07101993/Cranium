@@ -7,7 +7,7 @@ using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Files
 {
-    public class MediaFileService : AFileService
+    public class FileAttachmentService : AAttachmentService
     {
         private static readonly string DataDir =
             $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}/{Assembly.GetEntryAssembly().GetName().Name}/Attachments";

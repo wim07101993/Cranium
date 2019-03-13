@@ -27,7 +27,7 @@ namespace Cranium.WPF.Game.Question
         private readonly IGameService _gameService;
         private readonly IUnityContainer _unityContainer;
         private readonly IEventAggregator _eventAggregator;
-        private readonly IFileService _fileService;
+        private readonly IAttachmentService _fileService;
 
         private BitmapImage _imageAttachment;
 
@@ -49,7 +49,7 @@ namespace Cranium.WPF.Game.Question
             _questionService = _unityContainer.Resolve<IQuestionService>();
             _gameService = _unityContainer.Resolve<IGameService>();
             _eventAggregator = _unityContainer.Resolve<IEventAggregator>();
-            _fileService = _unityContainer.Resolve<IFileService>();
+            _fileService = _unityContainer.Resolve<IAttachmentService>();
 
             _gameService.GameChanged += GameChangedAsync;
             _gameService.PlayerChanged += OnPlayerChanged;

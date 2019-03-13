@@ -6,7 +6,7 @@ using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Files
 {
-    public abstract class AFileService : IFileService
+    public abstract class AAttachmentService : IAttachmentService
     {
          #region PROPERTIES
 

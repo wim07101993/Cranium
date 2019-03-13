@@ -20,7 +20,7 @@ namespace Cranium.WPF.Data.Question
     {
         #region FIELDS
 
-        private readonly IFileService _fileService;
+        private readonly IAttachmentService _fileService;
         private readonly IQuestionService _questionService;
 
         private byte[] _attachment;
@@ -33,7 +33,7 @@ namespace Cranium.WPF.Data.Question
         public QuestionViewModel(IUnityContainer unityContainer)
             : base(unityContainer.Resolve<IStringsProvider>())
         {
-            _fileService = unityContainer.Resolve<IFileService>();
+            _fileService = unityContainer.Resolve<IAttachmentService>();
             _questionService = unityContainer.Resolve<IQuestionService>();
             AnswersViewModel = unityContainer.Resolve<AnswersViewModel>();
 

@@ -1,20 +1,16 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.Files;
-using Cranium.WPF.Helpers.Data.Mongo;
+using Cranium.WPF.Helpers.Data.File;
 using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Question
 {
-    public class QuestionService : AMongoModelService<Question>, IQuestionService
+    public class FileQuestionService : AFileModelService<Question>, IQuestionService
     {
-        private const string CollectionName = "questions";
+        private readonly FileAttachmentService _fileService;
 
-        private readonly IFileService _fileService;
-
-
-        public QuestionService(IMongoDataServiceSettings settings, IFileService fileService)
-            : base(settings, CollectionName)
+        public FileQuestionService(FileAttachmentService fileService)
         {
             _fileService = fileService;
         }
@@ -22,14 +18,10 @@ namespace Cranium.WPF.Data.Question
 
         public async Task<byte[]> GetAttachmentAsync(Question question)
         {
-            if (question.Attachment == default)
-                return null;
-
             return await _fileService.GetOneAsync(question.Attachment);
         }
 
-        public async Task<ObjectId> UpdateAttachment(
-            Question question, Stream fileStream, string fileName, EAttachmentType attachmentType)
+        public async Task<ObjectId> UpdateAttachment(Question question, Stream fileStream, string fileName, EAttachmentType attachmentType)
         {
             var oldQuestion = await GetOneAsync(question.Id);
             if (oldQuestion.Attachment != default)
@@ -37,8 +29,6 @@ namespace Cranium.WPF.Data.Question
 
             var newAttachmentId = await _fileService.CreateAsync(fileStream, fileName);
             question.Attachment = newAttachmentId;
-            question.AttachmentType = attachmentType;
-
             await UpdateAsync(question);
 
             return newAttachmentId;

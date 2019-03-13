@@ -1,6 +1,6 @@
 ﻿using Cranium.WPF.Helpers.Data.Mongo;
 
-namespace Cranium.WPF.Game
+namespace Cranium.WPF.Data.Game
 {
     public class MongoGameService : AMongoModelService<Game>, IGameDataService
     {

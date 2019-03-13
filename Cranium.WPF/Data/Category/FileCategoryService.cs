@@ -8,11 +8,11 @@ using MongoDB.Bson;
 
 namespace Cranium.WPF.Data.Category
 {
-    public class CategoryFileService : AFileModelService<Category>, ICategoryService
+    public class FileCategoryService : AFileModelService<Category>, ICategoryService
     {
-        private readonly MediaFileService _fileService;
+        private readonly FileAttachmentService _fileService;
 
-        public CategoryFileService(MediaFileService fileService)
+        public FileCategoryService(FileAttachmentService fileService)
         {
             _fileService = fileService;
         }
