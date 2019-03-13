@@ -2,7 +2,7 @@
 
 namespace Cranium.WPF.Game
 {
-    public class MongoGameService : AMongoModelService<Game>, IMongoGameService
+    public class MongoGameService : AMongoModelService<Game>, IGameDataService
     {
         private const string CollectionName = "games";
 

@@ -25,7 +25,7 @@ namespace Cranium.WPF.Game
 
         private readonly ICategoryService _categoryService;
         private readonly IQuestionService _questionService;
-        private readonly IMongoGameService _mongoGameService;
+        private readonly IGameDataService _mongoGameService;
 
         private readonly ObservableCollection<Player.Player> _players =
             new ObservableCollection<Player.Player>();
@@ -48,7 +48,7 @@ namespace Cranium.WPF.Game
         #region CONSTRUCTORS
 
         public GameService(
-            ICategoryService categoryService, IQuestionService questionService, IMongoGameService mongoGameService)
+            ICategoryService categoryService, IQuestionService questionService, IGameDataService mongoGameService)
         {
             _categoryService = categoryService;
             _questionService = questionService;

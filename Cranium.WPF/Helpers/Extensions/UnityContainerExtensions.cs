@@ -25,7 +25,7 @@ namespace Cranium.WPF.Helpers.Extensions
                 .RegisterType<IQuestionService, QuestionService>()
                 .RegisterType<IModelService<Question>, QuestionService>()
                 .RegisterType<IFileService, MongoFileService>()
-                .RegisterType<IMongoGameService, MongoGameService>();
+                .RegisterType<IGameDataService, MongoGameService>();
 
         public static IUnityContainer RegisterFileDataServices(this IUnityContainer container)
             => container
@@ -35,7 +35,7 @@ namespace Cranium.WPF.Helpers.Extensions
                 .RegisterType<IModelService<QuestionType>, QuestionTypeFileService>()
                 .RegisterType<IQuestionService, QuestionFileService>()
                 .RegisterType<IModelService<Question>, QuestionFileService>()
-                .RegisterType<IFileService, MediaFileService>();
-                //.RegisterType<IMongoGameService, MongoGameService>();
+                .RegisterType<IFileService, MediaFileService>()
+                .RegisterType<IGameDataService, FileGameService>();
     }
 }

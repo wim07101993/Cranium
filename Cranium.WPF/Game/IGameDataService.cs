@@ -2,7 +2,7 @@
 
 namespace Cranium.WPF.Game
 {
-    public interface IMongoGameService : IModelService<Game>
+    public interface IGameDataService : IModelService<Game>
     {
     }
 }
