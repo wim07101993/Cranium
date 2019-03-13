@@ -186,6 +186,7 @@
     <Compile Include="Helpers\Extensions\StreamExtensions.cs" />
     <Compile Include="Data\Answer\Answer.cs" />
     <Compile Include="Helpers\AWithId.cs" />
+    <Compile Include="Helpers\Extensions\UnityContainerExtensions.cs" />
     <Compile Include="Helpers\IWithId.cs" />
     <Compile Include="Data\Category\Category.cs" />
     <Compile Include="Helpers\Color.cs" />

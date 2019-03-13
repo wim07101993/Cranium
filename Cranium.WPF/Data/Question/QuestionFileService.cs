@@ -2,7 +2,7 @@
 
 namespace Cranium.WPF.Data.Question
 {
-    public class QuestionFileService : AFileModelService<Question>
+    public class QuestionFileService : AFileModelService<Question>, IQuestionService
     {
        
     }

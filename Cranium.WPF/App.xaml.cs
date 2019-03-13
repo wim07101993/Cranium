@@ -2,7 +2,6 @@
 using Cranium.WPF.Data;
 using Cranium.WPF.Data.Answer;
 using Cranium.WPF.Data.Category;
-using Cranium.WPF.Data.Files;
 using Cranium.WPF.Data.Question;
 using Cranium.WPF.Data.QuestionType;
 using Cranium.WPF.Game;
@@ -11,14 +10,11 @@ using Cranium.WPF.Game.GameControl;
 using Cranium.WPF.Game.Player;
 using Cranium.WPF.Game.Tile;
 using Cranium.WPF.HamburgerMenu;
-using Cranium.WPF.Helpers.Data;
-using Cranium.WPF.Helpers.Data.File;
-using Cranium.WPF.Helpers.Data.Mongo;
+using Cranium.WPF.Helpers.Extensions;
 using Cranium.WPF.Settings;
 using Cranium.WPF.Strings;
 using Prism.Events;
 using Unity;
-using QuestionViewModel = Cranium.WPF.Data.Question.QuestionViewModel;
 
 namespace Cranium.WPF
 {
@@ -55,26 +51,11 @@ namespace Cranium.WPF
         {
             UnityContainer
                 // SERVICES
-                .RegisterInstance<IMongoDataServiceSettings>(new MongoDataServiceSettings
-                {
-                    ConnectionString = "mongodb://localhost:27017",
-                    DatabaseName = "cranium"
-                })
-                .RegisterType<ICategoryService, CategoryService>()
-                .RegisterType<IModelService<Category>, CategoryService>()
-                .RegisterType<IQuestionTypeService, QuestionTypeService>()
-                .RegisterType<IModelService<QuestionType>, QuestionTypeService>()
-                .RegisterType<IQuestionService, QuestionService>()
-                .RegisterType<IModelService<Question>, QuestionService>()
-                .RegisterType<IFileService, MongoFileService>()
                 .RegisterSingleton<IStringsProvider, StringsProvider>()
                 .RegisterSingleton<IEventAggregator, EventAggregator>()
                 .RegisterSingleton<IGameService, GameService>()
-                .RegisterType<IMongoGameService, MongoGameService>()
-                .RegisterType<AFileModelService<Question>, QuestionFileService>()
-                .RegisterType<MediaFileService>()
-                .RegisterType<AFileModelService<Category>, CategoryFileService>()
-                .RegisterType<AFileModelService<QuestionType>, QuestionTypeFileService>()
+                //.RegisterMongoDataServices()
+                .RegisterFileDataServices()
                 // VIEW-MODELS
                 .RegisterType< MainWindowViewModel>()
                 // data
@@ -88,18 +69,21 @@ namespace Cranium.WPF
                 .RegisterType<CategoriesViewModel>()
                 .RegisterType<CategoryViewModel>()
                 // game
-                .RegisterType< GameControlViewModel>()
-                .RegisterType< GameBoardViewModel>()
-                .RegisterType< TileViewModel>()
-                .RegisterType< Game.Question.QuestionViewModel>()
-                .RegisterType< GameWindowViewModel>()
-                .RegisterType< PlayerViewModel>()
-                .RegisterType< PlayersViewModel>()
+                .RegisterType<GameControlViewModel>()
+                .RegisterType<GameBoardViewModel>()
+                .RegisterType<TileViewModel>()
+                .RegisterType<Game.Question.QuestionViewModel>()
+                .RegisterType<GameWindowViewModel>()
+                .RegisterType<PlayerViewModel>()
+                .RegisterType<PlayersViewModel>()
                 // settings
-                .RegisterType< SettingsViewModel>()
-                .RegisterSingleton< HamburgerMenuViewModel>()
+                .RegisterType<SettingsViewModel>()
+                .RegisterSingleton<HamburgerMenuViewModel>()
                 // extensions
                 .AddExtension(new Diagnostic());
         }
+        
     }
+
+    
 }
