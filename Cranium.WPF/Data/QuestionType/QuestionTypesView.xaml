@@ -24,22 +24,33 @@
                             Categories="{Binding DataContext.Categories, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type questionType:QuestionTypesView}}}"
                             DeleteCommand="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type questionType:QuestionTypesView}}}"
                             Model="{Binding Model}"
+                            SaveCommand="{Binding DataContext.SaveCommadn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type questionType:QuestionTypesView}}}"
                             Strings="{Binding Strings}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
 
-        <Button
+        <StackPanel
             Margin="32"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"
-            Command="{Binding CreateCommand}"
-            Style="{StaticResource MaterialDesignFloatingActionButton}">
-            <materialDesign:PackIcon
-                Width="24"
-                Height="24"
-                Kind="Add" />
-        </Button>
+            Orientation="Horizontal">
+            <Button Command="{Binding CreateCommand}" Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="Add" />
+            </Button>
+            <Button
+                Margin="8,0,0,0"
+                Command="{Binding SaveAllCommand}"
+                Style="{StaticResource MaterialDesignFloatingActionButton}">
+                <materialDesign:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="ContentSaveAll" />
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>
