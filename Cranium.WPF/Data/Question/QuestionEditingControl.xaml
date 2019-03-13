@@ -18,7 +18,7 @@
                         <Button
                             Margin="0"
                             HorizontalAlignment="Right"
-                            VerticalAlignment="Top" 
+                            VerticalAlignment="Top"
                             Panel.ZIndex="5"
                             Command="{TemplateBinding DeleteCommand}"
                             CommandParameter="{Binding}"
@@ -36,8 +36,8 @@
                             Height="Auto"
                             MinWidth="200"
                             Margin="12,16,16,12"
-                            BorderBrush="{DynamicResource MaterialDesignPaper}"
-                            Background="{DynamicResource MaterialDesignPaper}">
+                            Background="{DynamicResource MaterialDesignPaper}"
+                            BorderBrush="{DynamicResource MaterialDesignPaper}">
                             <StackPanel>
 
                                 <Border VerticalAlignment="Top" Background="{Binding Model.QuestionType.Category.Color, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ColorToSolidColorBrushConverter}}">
@@ -91,6 +91,35 @@
                                             Command="{TemplateBinding ChangeAttachmentCommand}"
                                             Content="{Binding Strings.File, RelativeSource={RelativeSource TemplatedParent}}" />
                                     </StackPanel>
+
+                                    <ListBox
+                                        x:Name="ListBox"
+                                        MinWidth="200"
+                                        MaxHeight="300"
+                                        Margin="0,0,0,12"
+                                        IsEnabled="False"
+                                        ItemsSource="{Binding AnswersViewModel.Models, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate DataType="{x:Type answer:Answer}">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <CheckBox
+                                                        Grid.Column="0"
+                                                        Margin="0,0,6,0"
+                                                        IsChecked="{Binding IsCorrect}" />
+                                                    <TextBlock
+                                                        Grid.Column="1"
+                                                        MaxWidth="350"
+                                                        Text="{Binding Value}"
+                                                        TextWrapping="Wrap" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
 
                                     <Button
                                         Margin="0,16,0,0"

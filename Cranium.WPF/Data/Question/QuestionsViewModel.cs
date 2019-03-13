@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Cranium.WPF.Data.QuestionType;
 using Cranium.WPF.Helpers.Extensions;
@@ -24,7 +26,8 @@ namespace Cranium.WPF.Data.Question
         }
 
 
-        public ObservableCollection<QuestionType.QuestionType> QuestionTypes {get;} = new ObservableCollection<QuestionType.QuestionType>();
+        public ObservableCollection<QuestionType.QuestionType> QuestionTypes { get; } =
+            new ObservableCollection<QuestionType.QuestionType>();
 
 
         public override async Task UpdateCollectionAsync()
