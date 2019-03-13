@@ -44,7 +44,10 @@ namespace Cranium.WPF.Helpers.Mongo
 
         /// <inheritdoc />
         public virtual async Task<T> CreateAsync(T item)
-            => await CreateAsync(item, true);
+        {
+            throw new NotImplementedException();
+            return await CreateAsync(item, true);
+        }
 
         /// <summary>
         /// Creates a new <see cref="T"/> in the database.
@@ -57,6 +60,8 @@ namespace Cranium.WPF.Helpers.Mongo
         /// <exception cref="DatabaseException">Throws when the database throws an exception.</exception>
         protected virtual async Task<T> CreateAsync(T item, bool generateNewId)
         {
+            throw new NotImplementedException();
+
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
@@ -83,6 +88,8 @@ namespace Cranium.WPF.Helpers.Mongo
             ObjectId id,
             Expression<Func<T, IEnumerable<TValue>>> propertyToAddItemTo, TValue itemToAdd)
         {
+            throw new NotImplementedException();
+
             if (itemToAdd == null)
                 throw new ArgumentNullException(nameof(itemToAdd));
             if (itemToAdd is IWithId modelWithId)
@@ -192,6 +199,7 @@ namespace Cranium.WPF.Helpers.Mongo
             T newItem,
             IEnumerable<Expression<Func<T, object>>> propertiesToUpdate = null)
         {
+            throw new NotImplementedException();
             if (propertiesToUpdate == null)
             {
                 await ReplaceAsync(newItem);
@@ -222,6 +230,7 @@ namespace Cranium.WPF.Helpers.Mongo
         /// <exception cref="DatabaseException">Throws when the database throws an exception.</exception>
         public virtual async Task ReplaceAsync(T newItem)
         {
+            throw new NotImplementedException();
             if (newItem == null)
                 throw new ArgumentNullException(nameof(newItem));
 
@@ -238,6 +247,7 @@ namespace Cranium.WPF.Helpers.Mongo
             ObjectId id, Expression<Func<T, TValue>> propertyToUpdate,
             TValue value)
         {
+            throw new NotImplementedException();
             if (propertyToUpdate == null)
                 throw new ArgumentNullException(nameof(propertyToUpdate));
 
@@ -257,10 +267,14 @@ namespace Cranium.WPF.Helpers.Mongo
         #region delete
 
         public virtual async Task RemoveAsync(ObjectId id)
-            => await RemoveByAsync(x => x.Id == id);
+        {
+            throw new NotImplementedException();
+            await RemoveByAsync(x => x.Id == id);
+        }
 
         protected async Task RemoveByAsync(Expression<Func<T, bool>> condition)
         {
+            throw new NotImplementedException();
             var deleteResult = await MongoCollection.DeleteOneAsync(condition);
 
             if (!deleteResult.IsAcknowledged)
@@ -273,6 +287,7 @@ namespace Cranium.WPF.Helpers.Mongo
             ObjectId id,
             Expression<Func<T, IEnumerable<TValue>>> propertyToRemoveItemFrom, TValue itemToRemove)
         {
+            throw new NotImplementedException();
             if (itemToRemove == null)
                 throw new ArgumentNullException(nameof(itemToRemove));
 

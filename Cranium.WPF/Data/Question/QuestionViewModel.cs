@@ -156,19 +156,19 @@ namespace Cranium.WPF.Data.Question
             switch (propertyName)
             {
                 case nameof(Question.Task):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Task, item.Task);
+//                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Task, item.Task);
                     break;
                 case nameof(Question.QuestionType):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.QuestionType, item.QuestionType);
+//                    await _questionService.UpdatePropertyAsync(item.Id, x => x.QuestionType, item.QuestionType);
                     break;
                 case nameof(Question.Answers):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Answers, AnswersViewModel.Models);
+//                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Answers, AnswersViewModel.Models);
                     break;
                 case nameof(Question.Tip):
-                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Tip, item.Tip);
+//                    await _questionService.UpdatePropertyAsync(item.Id, x => x.Tip, item.Tip);
                     break;
                 case nameof(Question.Attachment):
-                    await GetAttachmentFromDbAsync();
+//                    await GetAttachmentFromDbAsync();
                     break;
             }
         }
