@@ -37,28 +37,8 @@ namespace Cranium.WPF.Data.Files
                     BucketName = BucketName,
                     ChunkSizeBytes = ChunkSize,
                 });
-
-            var _ = CopyAsync();
         }
-
-        private async Task CopyAsync()
-        {
-            var files = await _mediaBucket.Find(new ExpressionFilterDefinition<GridFSFileInfo>(x => true))
-                .ToListAsync();
-
-            foreach (var fileInfo in files)
-            {
-                var existingPaths = Directory.GetFiles(@"C:\Users\wimva\AppData\Roaming\Cranium\Attachments");
-                if (existingPaths.Any(x => x.Contains(fileInfo.Filename)))
-                    continue;
-                using (var stream = new MemoryStream())
-                {
-                    await GetOneAsync(fileInfo.Id, stream);
-                    await _mediaFileService.CreateAsync(fileInfo.Id, stream, fileInfo.Filename);
-                }
-            }
-        }
-
+        
         #endregion CONSTRUCTOR
 
 
