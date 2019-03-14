@@ -13,4 +13,9 @@
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Files\" />
+    <Folder Include="Services\MongoDb\" />
+  </ItemGroup>
+
 </Project>

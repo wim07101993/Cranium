@@ -6,6 +6,6 @@
         Image = 1,
         Music = 2,
         Video = 3,
-        Strign = 4
+        String = 4
     }
 }
