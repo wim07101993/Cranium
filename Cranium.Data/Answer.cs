@@ -1,51 +1,25 @@
-﻿namespace Cranium.Data
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+
+namespace Cranium.Data
 {
-    public class Answer
+    public class Answer : AModel
     {
-        private bool _isCorrect;
-        private string _value;
-        private string _info;
-        private ObjectId _attachment;
-        private EAttachmentType _attachmentType;
+        [BsonRequired, JsonRequired]
+        [BsonElement("isCorrect"), JsonProperty("isCorrect")]
+        public bool IsCorrect { get; set; }
 
+        [BsonRequired, JsonRequired]
+        [BsonElement("value"), JsonProperty("value")]
+        public string Value { get; set; }
 
-        [BsonRequired]
-        [BsonElement("isCorrect")]
-        public bool IsCorrect
-        {
-            get => _isCorrect;
-            set => SetProperty(ref _isCorrect, value);
-        }
+        [BsonElement("info"), JsonProperty("info")]
+        public string Info { get; set; }
 
-        [BsonRequired]
-        [BsonElement("value")]
-        public string Value
-        {
-            get => _value;
-            set => SetProperty(ref _value, value);
-        }
-
-        [BsonElement("info")]
-        public string Info
-        {
-            get => _info;
-            set => SetProperty(ref _info, value);
-        }
-
-        [BsonElement("attachment")]
-        [JsonConverter(typeof(ObjectIdConverter))]
-        public ObjectId Attachment
-        {
-            get => _attachment;
-            set => SetProperty(ref _attachment, value);
-        }
-
-
-        [BsonElement("attachmentType")]
-        public EAttachmentType AttachmentType
-        {
-            get => _attachmentType;
-            set => SetProperty(ref _attachmentType, value);
-        }
+        [BsonElement("attachments"), JsonProperty("attachments")]
+        public List<Guid> Attachments { get; set; }
     }
 }
