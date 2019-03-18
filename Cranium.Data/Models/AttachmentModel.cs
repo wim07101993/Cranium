@@ -11,7 +11,7 @@ namespace Cranium.Data.Models
         public string Name { get; set; }
 
         [BsonElement("file"), JsonProperty("file")]
-        public Guid File { get; set; }
+        public string File { get; set; }
 
         [BsonRequired, JsonRequired]
         [BsonElement("value"), JsonProperty("value")]

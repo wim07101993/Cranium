@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Cranium.Data.Models
 {
-    public class ColorModel.Models
+    public class ColorModel
     {
         [BsonElement("a"), JsonProperty("a")]
         public byte A { get; set; } = 255;
