@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Cranium.Data
+namespace Cranium.Data.Models
 {
-    public class Answer : AModel
+    public class AnswerModel : AModel
     {
         [BsonRequired, JsonRequired]
         [BsonElement("isCorrect"), JsonProperty("isCorrect")]

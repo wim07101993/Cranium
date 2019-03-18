@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Cranium.Data
+namespace Cranium.Data.Models
 {
-    public class Tile : AModel
+    public class TileModel : AModel
     {
         [BsonRequired, JsonRequired]
         [BsonElement("category"), JsonProperty("category")]

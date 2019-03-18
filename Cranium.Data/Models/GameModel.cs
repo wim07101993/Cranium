@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Cranium.Data
+namespace Cranium.Data.Models
 {
-    public class Game : AModel
+    public class GameModel : AModel
     {
         [BsonRequired, JsonRequired]
         [BsonElement("gameBoard"), JsonProperty("gameBoard")]

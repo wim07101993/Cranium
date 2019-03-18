@@ -4,9 +4,9 @@ using Shared;
 using System;
 using System.Collections.Generic;
 
-namespace Cranium.Data
+namespace Cranium.Data.Models
 {
-    public class GameBoard : List<Guid>, IWithId
+    public class GameBoardModel : List<Guid>, IWithId
     {
         [BsonId]
         [BsonRequired, JsonRequired]

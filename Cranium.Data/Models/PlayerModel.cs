@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
-namespace Cranium.Data
+namespace Cranium.Data.Models
 {
     public class Team : AModel
     {
@@ -10,6 +10,6 @@ namespace Cranium.Data
         public string Name { get; set; }
         
         [BsonElement("color"), JsonProperty("color")]
-        public Color Color { get; set; }
+        public ColorModel Color { get; set; }
     }
 }

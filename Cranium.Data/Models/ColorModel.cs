@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
-namespace Cranium.Data
+namespace Cranium.Data.Models
 {
-    public class Color
+    public class ColorModel.Models
     {
         [BsonElement("a"), JsonProperty("a")]
         public byte A { get; set; } = 255;

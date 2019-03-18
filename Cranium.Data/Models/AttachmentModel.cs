@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Cranium.Data
+namespace Cranium.Data.Models
 {
-    public class Attachment : AModel
+    public class AttachmentModel : AModel
     {
         [BsonRequired, JsonRequired]
         [BsonElement("name"), JsonProperty("name")]
@@ -14,8 +14,8 @@ namespace Cranium.Data
         public Guid File { get; set; }
 
         [BsonRequired, JsonRequired]
-        [BsonElement("content"), JsonProperty("content")]
-        public string Content { get; set; }
+        [BsonElement("value"), JsonProperty("value")]
+        public string Value { get; set; }
 
         [BsonRequired, JsonRequired]
         [BsonElement("attachmentType"), JsonProperty("attachmentType")]
