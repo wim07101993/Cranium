@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cranium.WPF", "Cranium.WPF\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cranium.WPF.Tests", "Cranium.WPF.Tests\Cranium.WPF.Tests.csproj", "{5CE9A682-21D6-4D00-A392-A8A4A701B110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cranium.Data", "Cranium.Data\Cranium.Data.csproj", "{65291414-A33B-4C38-97D3-6F11BBC901F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cranium.Data", "Cranium.Data\Cranium.Data.csproj", "{65291414-A33B-4C38-97D3-6F11BBC901F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cranium.Data.MongoDb", "Cranium.Data.MongoDb\Cranium.Data.MongoDb.csproj", "{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +109,26 @@ Global
 		{65291414-A33B-4C38-97D3-6F11BBC901F7}.Release|x64.Build.0 = Release|Any CPU
 		{65291414-A33B-4C38-97D3-6F11BBC901F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{65291414-A33B-4C38-97D3-6F11BBC901F7}.Release|x86.Build.0 = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|x64.Build.0 = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Debug|x86.Build.0 = Debug|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|ARM.Build.0 = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|ARM64.Build.0 = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|x64.ActiveCfg = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|x64.Build.0 = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|x86.ActiveCfg = Release|Any CPU
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +136,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8F915249-65C5-44E7-8E96-6F9B65E0957B} = {146236C6-DD80-4C4F-B72C-9E6210FE0E24}
 		{65291414-A33B-4C38-97D3-6F11BBC901F7} = {146236C6-DD80-4C4F-B72C-9E6210FE0E24}
+		{B26C5C7B-C729-48A7-BFB2-F4974EB11C28} = {146236C6-DD80-4C4F-B72C-9E6210FE0E24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62E92B04-6EE9-4ED8-A2E4-00AED83531BC}

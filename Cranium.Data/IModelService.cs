@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Cranium.Data.Services
+namespace Cranium.Data
 {
     public interface IModelService<T>
        where T : IWithId
