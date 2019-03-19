@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Cranium.Data.Models
+namespace Cranium.Data.DbModels
 {
     public class AnswerModel : AModel
     {

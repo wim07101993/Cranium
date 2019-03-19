@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Cranium.Data.Models
+namespace Cranium.Data.DbModels
 {
     public class AttachmentModel : AModel
     {

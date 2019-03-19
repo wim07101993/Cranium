@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
-namespace Cranium.Data.Models
+namespace Cranium.Data.DbModels
 {
     public class ColorModel
     {

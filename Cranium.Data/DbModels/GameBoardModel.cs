@@ -4,7 +4,7 @@ using Shared;
 using System;
 using System.Collections.Generic;
 
-namespace Cranium.Data.Models
+namespace Cranium.Data.DbModels
 {
     public class GameBoardModel : List<Guid>, IWithId
     {

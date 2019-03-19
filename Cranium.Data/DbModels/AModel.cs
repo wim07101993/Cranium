@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 using Shared;
 
-namespace Cranium.Data.Models
+namespace Cranium.Data.DbModels
 {
     public class AModel : IWithId
     {
