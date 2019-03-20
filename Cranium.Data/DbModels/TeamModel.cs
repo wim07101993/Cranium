@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Cranium.Data.DbModels
 {
-    public class Team : AModel
+    public class TeamModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("name"), JsonProperty("name")]

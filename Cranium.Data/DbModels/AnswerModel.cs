@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Cranium.Data.DbModels
 {
-    public class AnswerModel : AModel
+    public class AnswerModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("isCorrect"), JsonProperty("isCorrect")]
@@ -20,6 +20,6 @@ namespace Cranium.Data.DbModels
         public string Info { get; set; }
 
         [BsonElement("attachments"), JsonProperty("attachments")]
-        public List<Guid> Attachments { get; set; }
+        public IList<Guid> Attachments { get; set; }
     }
 }

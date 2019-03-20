@@ -5,7 +5,7 @@ using Shared;
 
 namespace Cranium.Data.DbModels
 {
-    public class AModel : IWithId
+    public class AWithId : IWithId
     {
         [BsonId]
         [BsonRequired, JsonRequired]

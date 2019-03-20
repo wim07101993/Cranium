@@ -5,24 +5,24 @@ using System.Collections.Generic;
 
 namespace Cranium.Data.DbModels
 {
-    public class GameModel : AModel
+    public class GameModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("gameBoard"), JsonProperty("gameBoard")]
         public Guid GameBoard { get; set; }
 
         [BsonRequired, JsonRequired]
-        [BsonElement("players"), JsonProperty("players")]
-        public IList<Guid> Players { get; set; }
+        [BsonElement("teams"), JsonProperty("teams")]
+        public IList<Guid> Teams { get; set; }
 
         [BsonRequired, JsonRequired]
-        [BsonElement("questions"), JsonProperty("questions")]
-        public IList<Guid> Questions { get; set; }
+        [BsonElement("tasks"), JsonProperty("tasks")]
+        public IList<Guid> Tasks { get; set; }
 
-        [BsonElement("answeredQuestions"), JsonProperty("answeredQuestions")]
-        public IList<Guid> AnsweredQuestions { get; set; }
+        [BsonElement("completedTasks"), JsonProperty("completedTasks")]
+        public IList<Guid> CompletedTasks { get; set; }
 
-        [BsonElement("currentPlayerIndex"), JsonProperty("currentPlayerIndex")]
-        public int CurrentPlayerIndex { get; set; }
+        [BsonElement("currentTeamIndex"), JsonProperty("currentTeamIndex")]
+        public int CurrentTeamIndex { get; set; }
     }
 }

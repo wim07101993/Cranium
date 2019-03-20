@@ -4,7 +4,7 @@ using System;
 
 namespace Cranium.Data.DbModels
 {
-    public class CategoryModel : AModel
+    public class CategoryModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("name"), JsonProperty("name")]

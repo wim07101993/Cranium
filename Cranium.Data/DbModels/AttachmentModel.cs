@@ -1,10 +1,9 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
-using System;
 
 namespace Cranium.Data.DbModels
 {
-    public class AttachmentModel : AModel
+    public class AttachmentModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("name"), JsonProperty("name")]

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Cranium.Data.DbModels
 {
-    public class TaskModel : AModel
+    public class TaskModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("value"), JsonProperty("value")]
@@ -15,14 +15,14 @@ namespace Cranium.Data.DbModels
         public string Tip { get; set; }
 
         [BsonRequired, JsonRequired]
-        [BsonElement("questionType"), JsonProperty("questionType")]
-        public Guid QuestionType { get; set; }
+        [BsonElement("taskType"), JsonProperty("taskType")]
+        public Guid TaskType { get; set; }
 
         [BsonElement("attachments"), JsonProperty("attachments")]
-        public List<Guid> Attachments { get; set; }
+        public IList<Guid> Attachments { get; set; }
 
         [BsonRequired, JsonRequired]
         [BsonElement("answers"), JsonProperty("answers")]
-        public List<AnswerModel> Answers { get; set; }
+        public IList<AnswerModel> Answers { get; set; }
     }
 }
