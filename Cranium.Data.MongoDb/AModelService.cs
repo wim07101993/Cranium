@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Cranium.Data.MongoDb
 {
-    public abstract class AModelService<T> : IModelService<T>
+    public abstract class AModelService<TDb, T> : IModelService<T>
        where T : IWithId
+       where TDb : IWithId
     {
         #region CONSTRUCTORS
 
@@ -16,7 +17,7 @@ namespace Cranium.Data.MongoDb
         {
             MongoCollection = new MongoClient(settings.ConnectionString)
                 .GetDatabase(settings.DatabaseName)
-                .GetCollection<T>(collectionName);
+                .GetCollection<TDb>(collectionName);
         }
 
         #endregion CONSTRCUTORS
@@ -24,18 +25,19 @@ namespace Cranium.Data.MongoDb
 
         #region PROPERTIES
 
-        public IMongoCollection<T> MongoCollection { get; }
+        public IMongoCollection<TDb> MongoCollection { get; }
 
         #endregion PROPERTIES
 
 
         #region METHDOS
 
-        public virtual async Task<T> CreateAsync(T item)
+        public abstract Task<T> CreateAsync(T item);
+        protected virtual async Task<TDb> CreateInDbAsync(TDb item)
         {
             try
             {
-                return await CreateAsync(item, true);
+                return await CreateInDbAsync(item, true);
             }
             catch (Exception e)
             {
@@ -43,9 +45,12 @@ namespace Cranium.Data.MongoDb
             }
         }
 
-        protected virtual async Task<T> CreateAsync(T item, bool generateNewId)
+        protected abstract Task<T> CreateAsync(T item, bool generateNewId);
+        protected virtual async Task<TDb> CreateInDbAsync(TDb item, bool generateNewId)
         {
+#pragma warning disable RECS0017 // Possible compare of value type with 'null'
             if (item == null)
+#pragma warning restore RECS0017 // Possible compare of value type with 'null'
                 throw new ArgumentNullException(nameof(item));
 
             if (generateNewId)
@@ -55,12 +60,13 @@ namespace Cranium.Data.MongoDb
             return item;
         }
 
-        public virtual async Task<IList<T>> GetAsync()
+        public abstract Task<IList<T>> GetAsync();
+        protected virtual async Task<IList<TDb>> GetFromDbAsync()
         {
             try
             {
                 return await MongoCollection
-                          .Find(FilterDefinition<T>.Empty)
+                          .Find(FilterDefinition<TDb>.Empty)
                           .ToListAsync();
             }
             catch (Exception e)
@@ -69,7 +75,8 @@ namespace Cranium.Data.MongoDb
             }
         }
 
-        public virtual async Task<T> GetOneAsync(Guid id)
+        public abstract Task<T> GetOneAsync(Guid id);
+        protected virtual async Task<TDb> GetOneFromDbAsync(Guid id)
         {
             try
             {
@@ -91,9 +98,12 @@ namespace Cranium.Data.MongoDb
             }
         }
 
-        public virtual async Task UpdateAsync(T newItem)
+        public abstract Task UpdateAsync(T newItem);
+        public virtual async Task UpdateInDbAsync(TDb newItem)
         {
+#pragma warning disable RECS0017 // Possible compare of value type with 'null'
             if (newItem == null)
+#pragma warning restore RECS0017 // Possible compare of value type with 'null'
                 throw new ArgumentNullException(nameof(newItem));
 
             ReplaceOneResult result = null;
@@ -113,7 +123,8 @@ namespace Cranium.Data.MongoDb
                 throw new NotFoundException<T>(nameof(IWithId.Id), newItem.Id.ToString());
         }
 
-        public virtual async Task RemoveAsync(Guid id)
+        public abstract Task RemoveAsync(Guid id);
+        public virtual async Task RemoveFromDbAsync(Guid id)
         {
             DeleteResult result = null;
 
