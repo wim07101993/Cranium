@@ -1,17 +1,33 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Cranium.Data.Models
 {
-    public class Answer : AWithId
+    public class Solution : AWithId
     {
         #region FIELDS
 
         private bool _isCorrect;
         private string _value;
         private string _info;
-        private ObservableCollection<Attachment> _attachments;
 
         #endregion FIELDS
+
+
+        #region CONSTRUCTOR
+
+        public Solution() : this(null)
+        {
+        }
+
+        public Solution(IEnumerable<Attachment> attachments)
+        {
+            Attachments = attachments == null 
+                ? new ObservableCollection<Attachment>()
+                : new ObservableCollection<Attachment>(attachments);
+        }
+
+        #endregion CONSTRCUTOR
 
 
         #region PROPERTIES
@@ -34,11 +50,7 @@ namespace Cranium.Data.Models
             set => SetProperty(ref _info, value);
         }
 
-        public ObservableCollection<Attachment> Attachments
-        {
-            get => _attachments;
-            internal set => SetProperty(ref _attachments, value);
-        }
+        public ObservableCollection<Attachment> Attachments { get; }
 
         #endregion PROPERTIES
     }

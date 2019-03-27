@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Cranium.Data.DbModels
 {
-    public class AnswerModel : AWithId
+    public class SolutionModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("isCorrect"), JsonProperty("isCorrect")]

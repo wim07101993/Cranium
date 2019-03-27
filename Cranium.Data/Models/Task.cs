@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Cranium.Data.Models
 {
@@ -9,10 +10,28 @@ namespace Cranium.Data.Models
         private string _value;
         private string _tip;
         private TaskType _taskType;
-        private ObservableCollection<Attachment> _attachments;
-        private ObservableCollection<Answer> _answers;
 
         #endregion FIELDS
+
+
+        #region CONSTRUCTOR
+
+        public Task() : this(null, null)
+        {
+        }
+
+        public Task(IEnumerable<Attachment> attachments, IEnumerable<Solution> solutions)
+        {
+            Attachments = attachments == null
+                ? new ObservableCollection<Attachment>()
+                : new ObservableCollection<Attachment>(attachments);
+
+            Solutions = solutions == null 
+                ? new ObservableCollection<Solution>()
+                : new ObservableCollection<Solution>(solutions);
+        }
+
+        #endregion CONSTRCUTOR
 
 
         #region PROPERTIES
@@ -35,17 +54,9 @@ namespace Cranium.Data.Models
             set => SetProperty(ref _taskType, value);
         }
 
-        public ObservableCollection<Attachment> Attachments
-        {
-            get => _attachments;
-            internal set => SetProperty(ref _attachments, value);
-        }
+        public ObservableCollection<Attachment> Attachments { get; }
 
-        public ObservableCollection<Answer> Answers
-        {
-            get => _answers;
-            internal set => SetProperty(ref _answers, value);
-        }
+        public ObservableCollection<Solution> Solutions { get; }
 
         #endregion PROPERTIES
     }

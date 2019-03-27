@@ -22,7 +22,7 @@ namespace Cranium.Data.DbModels
         public IList<Guid> Attachments { get; set; }
 
         [BsonRequired, JsonRequired]
-        [BsonElement("answers"), JsonProperty("answers")]
-        public IList<AnswerModel> Answers { get; set; }
+        [BsonElement("solutions"), JsonProperty("solutions")]
+        public IList<SolutionModel> Solutions { get; set; }
     }
 }

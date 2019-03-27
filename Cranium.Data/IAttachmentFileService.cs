@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Cranium.Data
 {
-    public interface IAttachmentService
+    public interface IAttachmentFileService
     {
         IReadOnlyList<string> ImageExtensions { get; }
         IReadOnlyList<string> MusicExtensions { get; }

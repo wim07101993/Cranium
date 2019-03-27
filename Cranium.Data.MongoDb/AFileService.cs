@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cranium.Data.MongoDb
 {
-    public abstract class AFileService : AAttachmentService
+    public abstract class AFileService : AAttachmentFileService
     {
         #region FIELDS
 

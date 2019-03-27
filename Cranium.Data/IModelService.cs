@@ -15,6 +15,7 @@ namespace Cranium.Data
         Task<IList<T>> GetAsync();
 
         Task UpdateAsync(T newItem);
+        Task UpdateOrCreateAsync(T newItem);
 
         Task RemoveAsync(Guid id);
     }

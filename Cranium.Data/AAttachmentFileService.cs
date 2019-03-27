@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cranium.Data
 {
-    public abstract class AAttachmentService : IAttachmentService
+    public abstract class AAttachmentFileService : IAttachmentFileService
     {
         #region PROPERTIES
 
