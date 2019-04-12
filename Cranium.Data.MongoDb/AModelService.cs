@@ -38,28 +38,28 @@ namespace Cranium.Data.MongoDb
 
         #region create
 
-        public virtual async Task<T> CreateAsync(T item) 
-            => await CreateAsync(item, false);
+        public virtual async Task<T> CreateAsync(T model) 
+            => await CreateAsync(model, false);
 
-        protected virtual async Task<T> CreateAsync(T item, bool generateNewId)
+        protected virtual async Task<T> CreateAsync(T model, bool generateNewId)
         {
-            var dbItem = await ModelToDbModelAsync(item);
+            var dbItem = await ModelToDbModel(model);
             dbItem = await CreateInDbAsync(dbItem, generateNewId);
             return await DbModelToModelAsync(dbItem);
         }
 
-        protected virtual async Task<TDb> CreateInDbAsync(TDb item, bool generateNewId)
+        protected virtual async Task<TDb> CreateInDbAsync(TDb model, bool generateNewId)
         {
 #pragma warning disable RECS0017 // Possible compare of value type with 'null'
-            if (item == null)
+            if (model == null)
 #pragma warning restore RECS0017 // Possible compare of value type with 'null'
-                throw new ArgumentNullException(nameof(item));
+                throw new ArgumentNullException(nameof(model));
 
             if (generateNewId)
-                item.Id = Guid.NewGuid();
+                model.Id = Guid.NewGuid();
 
-            await MongoCollection.InsertOneAsync(item);
-            return item;
+            await MongoCollection.InsertOneAsync(model);
+            return model;
         }
 
         #endregion create
@@ -125,24 +125,53 @@ namespace Cranium.Data.MongoDb
 
         #region update
 
-        public virtual async Task UpdateAsync(T newItem)
+        public virtual async Task UpdateAsync(T newModel)
         {
-            var dbModel = await ModelToDbModelAsync(newItem);
+            var dbModel = await ModelToDbModel(newModel);
             await UpdateInDbAsync(dbModel);
         }
 
-        public virtual async Task UpdateInDbAsync(TDb newItem)
+        public virtual async Task UpdateAsync(IEnumerable<T> newModels)
         {
 #pragma warning disable RECS0017 // Possible compare of value type with 'null'
-            if (newItem == null)
+            if (newModels == null)
 #pragma warning restore RECS0017 // Possible compare of value type with 'null'
-                throw new ArgumentNullException(nameof(newItem));
+                throw new ArgumentNullException(nameof(newModels));
+
+            foreach (var newModel in newModels)
+                await UpdateAsync(newModel);
+        }
+
+        public virtual async Task UpdateOrCreateAsync(T newModel)
+        {
+            var dbModel = await ModelToDbModel(newModel);
+            await UpdateOrCreateInDbAsync(dbModel);
+        }
+
+        public virtual async Task UpdateOrCreateAsync(IEnumerable<T> newModels)
+        {
+#pragma warning disable RECS0017 // Possible compare of value type with 'null'
+            if (newModels == null)
+#pragma warning restore RECS0017 // Possible compare of value type with 'null'
+                throw new ArgumentNullException(nameof(newModels));
+
+            foreach (var newModel in newModels)
+                await UpdateOrCreateAsync(newModel);
+        }
+
+
+        public virtual async Task UpdateInDbAsync(TDb newModel)
+        {
+#pragma warning disable RECS0017 // Possible compare of value type with 'null'
+            if (newModel == null)
+#pragma warning restore RECS0017 // Possible compare of value type with 'null'
+                throw new ArgumentNullException(nameof(newModel));
 
             ReplaceOneResult result = null;
 
             try
             {
-                result = await MongoCollection.ReplaceOneAsync(x => x.Id == newItem.Id, newItem);
+                result = await MongoCollection.ReplaceOneAsync(x => x.Id == newModel.Id, newModel);
             }
             catch (Exception e)
             {
@@ -152,27 +181,32 @@ namespace Cranium.Data.MongoDb
             if (!result.IsAcknowledged)
                 throw new DataException(ECrudMethod.Replace);
             if (result.MatchedCount <= 0)
-                throw new NotFoundException<T>(nameof(IWithId.Id), newItem.Id.ToString());
+                throw new NotFoundException<T>(nameof(IWithId.Id), newModel.Id.ToString());
         }
 
-        public virtual async Task UpdateOrCreateAsync(T newItem)
-        {
-            var dbModel = await ModelToDbModelAsync(newItem);
-            await UpdateOrCreateInDbAsync(dbModel);
-        }
-
-        public virtual async Task UpdateOrCreateInDbAsync(TDb newItem)
+        public virtual async Task UpdateInDbAsync(IEnumerable<TDb> newModels)
         {
 #pragma warning disable RECS0017 // Possible compare of value type with 'null'
-            if (newItem == null)
+            if (newModels == null)
 #pragma warning restore RECS0017 // Possible compare of value type with 'null'
-                throw new ArgumentNullException(nameof(newItem));
+                throw new ArgumentNullException(nameof(newModels));
+
+            foreach (var newModel in newModels)
+                await UpdateInDbAsync(newModel);
+        }
+
+        public virtual async Task UpdateOrCreateInDbAsync(TDb newModel, bool generateNewId)
+        {
+#pragma warning disable RECS0017 // Possible compare of value type with 'null'
+            if (newModel == null)
+#pragma warning restore RECS0017 // Possible compare of value type with 'null'
+                throw new ArgumentNullException(nameof(newModel));
 
             ReplaceOneResult result = null;
 
             try
             {
-                result = await MongoCollection.ReplaceOneAsync(x => x.Id == newItem.Id, newItem);
+                result = await MongoCollection.ReplaceOneAsync(x => x.Id == newModel.Id, newModel);
             }
             catch (Exception e)
             {
@@ -180,9 +214,20 @@ namespace Cranium.Data.MongoDb
             }
 
             if (result.MatchedCount <= 0)
-                await CreateInDbAsync(newItem, true);
+                await CreateInDbAsync(newModel, true);
             else if (!result.IsAcknowledged)
                 throw new DataException(ECrudMethod.Replace);
+        }
+
+        public virtual async Task UpdateOrCreateInDbAsync(IEnumerable<TDb> newModels)
+        {
+#pragma warning disable RECS0017 // Possible compare of value type with 'null'
+            if (newModels == null)
+#pragma warning restore RECS0017 // Possible compare of value type with 'null'
+                throw new ArgumentNullException(nameof(newModels));
+
+            foreach (var newModel in newModels)
+                await UpdateOrCreateInDbAsync(newModel);
         }
 
         #endregion update
@@ -190,7 +235,10 @@ namespace Cranium.Data.MongoDb
 
         #region delete
 
-        public abstract Task RemoveAsync(Guid id);
+        public override async Task RemoveAsync(Guid id)
+        {
+            await RemoveFromDbAsync(id);
+        }
         public virtual async Task RemoveFromDbAsync(Guid id)
         {
             DeleteResult result = null;
@@ -214,7 +262,7 @@ namespace Cranium.Data.MongoDb
 
 
         public abstract Task<T> DbModelToModelAsync(TDb dbModel);
-        public abstract Task<TDb> ModelToDbModelAsync(T model);
+        public abstract Task<TDb> ModelToDbModel(T model);
 
         #endregion METHODS
     }

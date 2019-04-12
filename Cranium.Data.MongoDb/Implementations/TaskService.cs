@@ -34,108 +34,88 @@ namespace Cranium.Data.MongoDb
 
 
         #region METHODS
-
-        #region create
         
-        protected override async Task<Models.Task> CreateAsync(Models.Task item, bool generateNewId)
+        protected override async Task<Models.Task> CreateAsync(Models.Task model, bool generateNewId)
         {
-            var dbTask = new TaskModel
-            {
-                Id = item.Id,
-                TaskType = item.TaskType.Id,
-                Tip = item.Tip,
-                Value = item.Value,
+            var dbTask = await ModelToDbModel(model);
 
-                Attachments = item.Attachments
-                    .Select(x => x.Id)
-                    .ToList(),
+            var attachmentTask = _attachmentService.UpdateOrCreateAsync(model.Attachments);
+            var taskTypeTask = _taskTypeService.UpdateOrCreateAsync(model.TaskType);
 
-                Solutions = item.Solutions
-                    .Select(solution => new SolutionModel
-                    {
-                        Id = solution.Id,
-                        Attachments = solution.Attachments.Select(x => x.Id).ToList(),
-                        Info = solution.Info,
-                        IsCorrect = solution.IsCorrect,
-                        Value = solution.Value,
-                    })
-                    .ToList()
-            };
+            await Task.WhenAll(attachmentTask, taskTypeTask);
+
+            var exceptions = new List<Exception>();
+            if (attachmentTask.Exception != null)
+                exceptions.Add(attachmentTask.Exception);
+            if (taskTypeTask.Exception != null)
+                exceptions.Add(taskTypeTask.Exception);
+
+            if (exceptions.Count > 0)
+                throw new AggregateException("Some exceptions happened whil trying to create a new task", exceptions);
 
             dbTask = await CreateInDbAsync(dbTask, generateNewId);
             return await DbModelToModelAsync(dbTask);
         }
-
-        #endregion create
-
-        #region get
-
-        public override async Task<IList<Models.Task>> GetAsync()
-        {
-            var dbTasks = await GetFromDbAsync();
-
-            var tasks = new List<Models.Task>(dbTasks.Count);
-            foreach (var dbTask in dbTasks)
-                tasks.Add(await DbModelToModelAsync(dbTask));
-
-            return tasks;
-        }
-
-        public override async Task<Models.Task> GetOneAsync(Guid id)
-        {
-            var dbTask = await GetOneFromDbAsync(id);
-            return await DbModelToModelAsync(dbTask);
-        }
         
-        #endregion get
-
-        #region update
-
-        public override async Task UpdateAsync(Models.Task newItem)
+        public override async Task UpdateAsync(Models.Task newModel)
         {
-            var dbTask = await ModelToDbModelAsync(newItem);
+            var dbTask = await ModelToDbModel(newModel);
+
+            var attachmentTask = _attachmentService.UpdateAsync(newModel.Attachments);
+            var taskTypeTask = _taskTypeService.UpdateAsync(newModel.TaskType);
+
+            await Task.WhenAll(attachmentTask, taskTypeTask);
+
+            var exceptions = new List<Exception>();
+            if (attachmentTask.Exception != null)
+                exceptions.Add(attachmentTask.Exception);
+            if (taskTypeTask.Exception != null)
+                exceptions.Add(taskTypeTask.Exception);
+
+            if (exceptions.Count > 0)
+                throw new AggregateException("Some exceptions happened whil trying to upate a task", exceptions);
+
             await UpdateInDbAsync(dbTask);
         }
 
-        #endregion update
-
-        #region delete
-
         public override async Task RemoveAsync(Guid id)
         {
+            var dbModel = GetOneFromDbAsync(id);
+
+
+
             await RemoveFromDbAsync(id);
         }
 
         #endregion delete
 
-        public override async Task<Models.Task> DbModelToModelAsync(TaskModel dbTask)
+        public override async Task<Models.Task> DbModelToModelAsync(TaskModel dbModel)
         {
             return new Models.Task(
-               await GetAttachmentsAsync(dbTask.Attachments),
-               await GetSolutionsAsync(dbTask))
+               await GetAttachmentsAsync(dbModel.Attachments),
+               await GetSolutionsAsync(dbModel))
             {
-                Id = dbTask.Id,
-                TaskType = await _taskTypeService.GetOneAsync(dbTask.TaskType),
-                Tip = dbTask.Tip,
-                Value = dbTask.Value
+                Id = dbModel.Id,
+                TaskType = await _taskTypeService.GetOneAsync(dbModel.TaskType),
+                Tip = dbModel.Tip,
+                Value = dbModel.Value
             };
         }
 
-        public override async Task<TaskModel> ModelToDbModelAsync(Models.Task task)
+        public override Task<TaskModel> ModelToDbModel(Models.Task model)
         {
-
-            var dbTask = new TaskModel
+            return Task.FromResult(new TaskModel
             {
-                Id = task.Id,
-                TaskType = task.TaskType.Id,
-                Tip = task.Tip,
-                Value = task.Value,
+                Id = model.Id,
+                TaskType = model.TaskType.Id,
+                Tip = model.Tip,
+                Value = model.Value,
 
-                Attachments = task.Attachments
+                Attachments = model.Attachments
                     .Select(x => x.Id)
                     .ToList(),
 
-                Solutions = task.Solutions
+                Solutions = model.Solutions
                     .Select(solution => new SolutionModel
                     {
                         Id = solution.Id,
@@ -145,8 +125,7 @@ namespace Cranium.Data.MongoDb
                         Value = solution.Value,
                     })
                     .ToList()
-            };
-            return dbTask;
+            });
         }
 
         private async Task<IList<Solution>> GetSolutionsAsync(TaskModel task)
