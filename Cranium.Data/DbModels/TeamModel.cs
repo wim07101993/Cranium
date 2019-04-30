@@ -1,15 +1,15 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
-namespace Cranium.Data
+namespace Cranium.Data.DbModels
 {
-    public class Team : AModel
+    public class TeamModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("name"), JsonProperty("name")]
         public string Name { get; set; }
         
         [BsonElement("color"), JsonProperty("color")]
-        public Color Color { get; set; }
+        public ColorModel Color { get; set; }
     }
 }

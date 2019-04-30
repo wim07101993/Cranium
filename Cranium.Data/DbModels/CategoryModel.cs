@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Cranium.Data
+namespace Cranium.Data.DbModels
 {
-    public class Category : AModel
+    public class CategoryModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("name"), JsonProperty("name")]
@@ -17,7 +17,7 @@ namespace Cranium.Data
         public Guid Image { get; set; }
 
         [BsonElement("color"), JsonProperty("color")]
-        public Color Color { get; set; }
+        public ColorModel Color { get; set; }
 
         [BsonElement("isSpecial"), JsonProperty("isSpecial")]
         public bool IsSpecial { get; set; }

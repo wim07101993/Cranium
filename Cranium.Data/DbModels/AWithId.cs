@@ -1,12 +1,11 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using System;
+using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 using Shared;
-using System;
-using System.Collections.Generic;
 
-namespace Cranium.Data
+namespace Cranium.Data.DbModels
 {
-    public class GameBoard : List<Guid>, IWithId
+    public class AWithId : IWithId
     {
         [BsonId]
         [BsonRequired, JsonRequired]

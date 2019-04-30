@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Cranium.Data
+namespace Cranium.Data.DbModels
 {
-    public class Answer : AModel
+    public class SolutionModel : AWithId
     {
         [BsonRequired, JsonRequired]
         [BsonElement("isCorrect"), JsonProperty("isCorrect")]
@@ -19,6 +19,6 @@ namespace Cranium.Data
         public string Info { get; set; }
 
         [BsonElement("attachments"), JsonProperty("attachments")]
-        public List<Guid> Attachments { get; set; }
+        public IList<Guid> Attachments { get; set; }
     }
 }
